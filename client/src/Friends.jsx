@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 
 class Friends extends Component {
   render() {
+    const response = this.props.response
     return (
      <div>
         <div className='textcontainer'>
         <img/>
-        <h3> John Smith </h3>
+        <h3> {response} </h3>
           <p className="textsummary">
           Hey thanks for the connection...
           </p>
