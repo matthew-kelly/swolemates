@@ -41,9 +41,10 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  knex.schema
-    .dropTable('ratings')
-    .dropTable('events')
-    .dropTable('users')
-    .dropTable('gyms')
+  return Promise.all([
+    knex.schema.dropTable('ratings'),
+    knex.schema.dropTable('events'),
+    knex.schema.dropTable('users'),
+    knex.schema.dropTable('gyms')
+    ])
 };
