@@ -11,6 +11,7 @@ import Profile from './Profile.jsx'
 import ChatHead from './ChatHead.jsx'
 import Calendar from './Calendar.jsx'
 import Friends from './Friends.jsx'
+import Login from './Login.jsx'
 
 // class App extends Component {
 //     constructor(props) {
@@ -61,6 +62,7 @@ class App extends Component {
       <Router>
       <div>
       <NavBar/>
+        <Route exact path="/" component={Login}/>
         <Route path="/calendar" component={Calendar}/>
         <Route path="/profile" component={Profile}/>
         <Route path="/connections" component={ChatHead}/>

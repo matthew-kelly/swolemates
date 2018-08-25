@@ -18,6 +18,12 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
+      return knex('gyms').insert({
+        name: 'SNFW Arbutus',
+        address: '1230 West Broadway'
+      });
+    })
+    .then(() => {
       return knex('users').insert({
         first_name: 'Mark',
         last_name: 'Johnson',
@@ -44,6 +50,32 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
+      return knex('users').insert({
+        first_name: 'Keanu',
+        last_name: 'Reeves',
+        email: 'keanu@reeves.reeves',
+        password: 'keanu',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 1,
+        profile_pic: 'https://imgix.ranker.com/user_node_img/50013/1000250501/original/keanu-reeves-doesn-t-want-your-money-all-people-photo-u1?w=650&q=50&fm=jpg&fit=crop&crop=faces',
+        connections: JSON.stringify([1]),
+        goals: JSON.stringify(['Get super jacked', 'Be nice to people'])
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Terry',
+        last_name: 'Crews',
+        email: 'terry@crews.crews',
+        password: 'terry',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 2,
+        profile_pic: 'https://timedotcom.files.wordpress.com/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg',
+        connections: JSON.stringify([1]),
+        goals: JSON.stringify(['Live my life', 'Be nice to people'])
+      });
+    })
+    .then(() => {
       return knex('events').insert({
         user_id: 1,
         gym_id: 1,
@@ -52,6 +84,28 @@ exports.seed = function(knex, Promise) {
         time_begin: 'August 30, 2018 12:00:00',
         time_end: 'August 30, 2018 13:00:00',
         tags: JSON.stringify(['Legs', 'Quads'])
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 1,
+        gym_id: 1,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
+        public: true,
+        time_begin: 'August 30, 2018 12:00:00',
+        time_end: 'August 30, 2018 13:00:00',
+        tags: JSON.stringify(['Legs', 'Shoulders'])
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 3,
+        gym_id: 1,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
+        public: true,
+        time_begin: 'August 29, 2018 12:00:00',
+        time_end: 'August 29, 2018 14:00:00',
+        tags: JSON.stringify(['Chest', 'Tris'])
       });
     })
     .then(() => {
@@ -74,6 +128,33 @@ exports.seed = function(knex, Promise) {
         time_begin: 'August 29, 2018 19:30:00',
         time_end: 'August 29, 2018 20:30:00',
         tags: JSON.stringify(['Cardio', 'Stretching'])
+      });
+    })
+    .then(() => {
+      return knex('ratings').insert({
+        user_id: 1,
+        category1: 4,
+        category2: 4,
+        category3: 5,
+        comment: 'He was great to work out with. Super nice guy.'
+      });
+    })
+    .then(() => {
+      return knex('ratings').insert({
+        user_id: 2,
+        category1: 1,
+        category2: 1,
+        category3: 1,
+        comment: 'Distracted the entire time.'
+      });
+    })
+    .then(() => {
+      return knex('ratings').insert({
+        user_id: 2,
+        category1: 2,
+        category2: 5,
+        category3: 5,
+        comment: 'Living his best life.'
       });
     })
     .then(() => {

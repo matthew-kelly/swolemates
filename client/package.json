@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "date-fns": "^1.29.0",
     "knex": "^0.15.2",
+    "moment": "^2.22.2",
     "pg": "^7.4.3",
     "react": "^16.4.2",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.4.2",
     "react-infinite-calendar": "^2.3.1",
+    "react-moment": "^0.7.9",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5"
   },
