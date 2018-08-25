@@ -1,3 +1,27 @@
 .container {
-  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
 }
+
+.tile {
+  background-color: aliceblue;
+  height: 40%;
+  width: 50%;
+  padding: 1em;
+  margin: 1em;
+  box-shadow: 0px 0px 8px 1px lightgrey;
+}
+
+.textcontainer{
+  display: flex;
+  align-items: center;
+  background-color: lightblue;
+  margin: 1em;
+  border-radius: 2em;
+  padding: 1.5em;
+}
+
+.textsummary{
+  margin-left: 1em;
+}
+
