@@ -12,30 +12,8 @@ import ChatHead from './ChatHead.jsx'
 import Calendar from './Calendar.jsx'
 import Friends from './Friends.jsx'
 import Login from './Login.jsx'
+import Register from './Register.jsx'
 
-// class App extends Component {
-//     constructor(props) {
-//     super(props);
-//     this.state = {
-//       currentUser: { name: 'Fred'},
-//     };
-//   }
-
-  // render() {
-  //   return (
-  //     <Router>
-  //     <div>
-  //     <NavBar/>
-  //       <Route exact path="/" component={NavBar}/>
-  //       <Route path="/calendar" component={Calendar}/>
-  //       <Route path="/profile" component={Profile}/>
-  //       <Route path="/connections" component={ChatHead}/>
-  //       <Route path="/friends" component={Friends}/>
-  //     </div>
-  //     </Router>
-  //   );
-  // }
-// }
 
 class App extends Component {
   state = {
@@ -62,7 +40,8 @@ class App extends Component {
       <Router>
       <div>
       <NavBar/>
-        <Route exact path="/" component={Login}/>
+        <Route exact path="/login" component={Login}/>
+        <Route exact path='/register/' component={Register}/>
         <Route path="/calendar" component={Calendar}/>
         <Route path="/profile" component={Profile}/>
         <Route path="/connections" component={ChatHead}/>

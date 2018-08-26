@@ -3,10 +3,41 @@ import { render } from 'react-dom';
 import dateFns from "date-fns";
 
 class Calendar extends Component {
-  state = {
+constructor(props) {
+    super(props);
+    this.state = {
     currentMonth: new Date(),
     selectedDate: new Date()
-  };
+    };
+  }
+
+   componentDidMount() {
+    document.addEventListener('mousedown', this.handleClick, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClick, false);
+  }
+
+  handleClick = (e) => {
+    if (this.node.contains(e.target)) {
+      return;
+    }
+
+    this.handleClickOutside();
+  }
+
+  handleClickOutside(event) {
+    document.getElementById("popup").style = "display: none";
+    }
+
+  renderPopUp(){
+    return(
+      <div style={{display:'none'}} id='popup'>
+      <h1> hi </h1>
+      </div>
+      )
+  }
 
   renderHeader() {
     const dateFormat = "MMMM YYYY";
@@ -93,7 +124,7 @@ class Calendar extends Component {
     this.setState({
       selectedDate: day
     });
-    alert(day)
+    document.getElementById("popup").style = "display: show";
   };
 
   nextMonth = () => {
@@ -110,10 +141,13 @@ class Calendar extends Component {
 
   render() {
     return (
+      <div ref={node => this.node = node}>
+        {this.renderPopUp()}
       <div className="calendar">
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
+        </div>
       </div>
     );
   }

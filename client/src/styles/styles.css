@@ -12,7 +12,30 @@
   box-shadow: 0px 0px 8px 1px lightgrey;
 }
 
-.textcontainer{
+.navbar {
+  font-size: 1.4em;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0px 0px 8px 1px lightgrey;
+  border-radius: 2em;
+  margin-bottom: 1em;
+  padding: 0.2em;
+}
+
+#popup {
+  position: fixed;
+  width: 40%;
+  height: 80%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: lightblue;
+  z-index: 999;
+}
+
+.textcontainer {
   display: flex;
   align-items: center;
   background-color: lightblue;
@@ -21,9 +44,10 @@
   padding: 1.5em;
 }
 
-.textsummary{
+.textsummary {
   margin-left: 1em;
 }
+
 
 
 /* FONT IMPORTS */
@@ -50,6 +74,7 @@
 }
 
 
+
 /* VARIABLES */
 
 :root {
@@ -62,6 +87,7 @@
 }
 
 
+
 /* GENERAL */
 
 * {
@@ -69,13 +95,13 @@
 }
 
 body {
-    font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-    font-size: 1em;
-    font-weight: 300;
-    line-height: 1.5;
-    color: var(--text-color);
-    background: var(--bg-color);
-    position: relative;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-color);
+  background: var(--bg-color);
+  position: relative;
 }
 
 header {
@@ -103,6 +129,7 @@ main {
   margin-top: 5em;
   max-width: 50em;
 }
+
 
 
 /* GRID */
@@ -140,6 +167,7 @@ main {
   justify-content: flex-end;
   text-align: right;
 }
+
 
 
 /* Calendar */
@@ -205,7 +233,7 @@ main {
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%,#53cbf1 40%);
+  border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
   border-image-slice: 1;
 }
 
@@ -248,7 +276,8 @@ main {
   letter-spacing: -.07em;
 }
 
-.calendar .body .cell:hover .bg, .calendar .body .selected .bg  {
+.calendar .body .cell:hover .bg,
+.calendar .body .selected .bg {
   opacity: 0.05;
   transition: .5s ease-in;
 }

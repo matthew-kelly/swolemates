@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +26,12 @@ class Login extends Component {
     return(
     <div className="tile">
     <form>
+      <input name='first_name' placeholder='First name'/>
+    </form>
+    <form>
+      <input name='last_name' placeholder='Last Name'/>
+    </form>
+    <form>
       <input name='email' placeholder='email'/>
     </form>
     <form>
@@ -37,4 +43,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;
