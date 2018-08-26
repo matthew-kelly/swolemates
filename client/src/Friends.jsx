@@ -36,7 +36,7 @@ class Friends extends Component {
     }
 
     return (
-      <div>
+      <div className="chat-head-list">
         {allFriends}
       </div>
     );

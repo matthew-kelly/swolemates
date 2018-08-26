@@ -10,7 +10,7 @@ class Connections extends Component {
     super();
     this.state = {
       connections: '',
-      current_user: 2
+      current_user: 1
     }
   }
   
@@ -36,7 +36,7 @@ class Connections extends Component {
     }
 
     return (
-      <div>
+      <div className="chat-head-list">
         {allConnections}
       </div>
     );
