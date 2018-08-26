@@ -5,42 +5,42 @@ import User from './User.jsx'
 
 const API = 'http://localhost:5000/api'
 
-class Friends extends Component {
+class Connections extends Component {
   constructor() {
     super();
     this.state = {
-      friends: '',
+      connections: '',
       current_user: 1
     }
   }
   
   componentWillMount() {
-    this.getFriends(this.state.current_user)
-    .then(res => this.setState({ friends: res }))
+    this.getConnections(this.state.current_user)
+    .then(res => this.setState({ connections: res }))
     .catch(err => console.log(err));
   }
 
-  // Get all friends
-  async getFriends(id) {
-    const res = await axios.get(`${API}/users/${id}/friends`);
+  // Get all connections
+  async getConnections(id) {
+    const res = await axios.get(`${API}/users/${id}/connections`);
     return await res.data;
   }
 
   render() {
-    const friends = this.state.friends;
-    let allFriends;
-    if (friends){
-      allFriends = friends.map((user_obj) => {
+    const connections = this.state.connections;
+    let allConnections;
+    if (connections){
+      allConnections = connections.map((user_obj) => {
         return <User key={user_obj.id} user_obj={user_obj} />
       });
     }
 
     return (
       <div className="chat-head-list">
-        {allFriends}
+        {allConnections}
       </div>
     );
   }
 }
 
-export default Friends
+export default Connections

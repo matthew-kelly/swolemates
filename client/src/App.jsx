@@ -4,8 +4,11 @@ import {
   Route,
   Link,
   render
-} from 'react-router-dom'
+} from 'react-router-dom';
+
+// import logo from './logo.svg';
 import NavBar from './NavBar.jsx'
+import Connections from './Connections.jsx'
 import Dashboard from './Dashboard.jsx'
 import ChatHead from './ChatHead.jsx'
 import Calendar from './Calendar.jsx'
@@ -43,7 +46,7 @@ class App extends Component {
         <Route exact path='/register/' component={Register}/>
         <Route path="/calendar" component={Calendar}/>
         <Route path="/dashboard" component={Dashboard}/>
-        <Route path="/connections" component={ChatHead}/>
+        <Route path="/connections" component={Connections}/>
         <Route path="/friends"
          render={(props) => <Friends {...props} response={this.state.response}/>}/>
       </div>

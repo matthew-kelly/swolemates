@@ -1,3 +1,8 @@
+/* FONT IMPORTS */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+/* ------------ */
+
 .container {
   display: flex;
   justify-content: space-between;
@@ -63,12 +68,48 @@ div#popup {
   margin-left: 1em;
 }
 
+.profile_pic {
+  max-width: 300px;
+}
 
+/* ------------- User.jsx Chat Heads ------------- */
+.chat-head-list {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-/* FONT IMPORTS */
+.chat-head-container {
+  background-color: white;
+  border: 1px solid #aaa;
+  padding: 50px;
+  margin: 0;
+  height: 250px;
+  width: 250px;
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+}
+
+/* .chat-head-content {
+
+} */
+
+.chat-head-pic {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-head-pic img{
+  max-width: 200%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+/* ---------------------------------------------- */
 
 .icon {
   font-family: 'Material Icons', serif;
@@ -88,8 +129,7 @@ div#popup {
   font-feature-settings: 'liga';
 }
 
-
-
+/* ------------- Calendar.jsx Styles ------------- */
 /* VARIABLES */
 
 :root {
@@ -243,7 +283,7 @@ main {
 
 .calendar .body .cell:hover {
   background: var(--bg-color);
-  transition: 0.5s ease-out;
+  transition: 0.25s ease-out;
 }
 
 .calendar .body .selected {
@@ -294,7 +334,7 @@ main {
 .calendar .body .cell:hover .bg,
 .calendar .body .selected .bg {
   opacity: 0.05;
-  transition: .5s ease-in;
+  transition: .25s ease-in;
 }
 
 .calendar .body .col {
