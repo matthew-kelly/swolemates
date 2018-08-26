@@ -3,6 +3,21 @@ exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('ratings').del()
     .then(() => {
+      return knex('tags').del()
+    })
+    .then(() => {
+      return knex('goals').del()
+    })
+    .then(() => {
+      return knex('blocks').del()
+    })
+    .then(() => {
+      return knex('connections').del()
+    })
+    .then(() => {
+      return knex('friends').del()
+    })
+    .then(() => {
       return knex('events').del();
     })
     .then(() => {
@@ -23,11 +38,9 @@ exports.seed = function(knex, Promise) {
         last_name: 'Johnson',
         email: 'mark@mark.mark',
         password: 'mark',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         gym_id: 1,
-        profile_pic: 'https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/32436_117915591572150_2707307_n.jpg?_nc_cat=0&oh=f8c80b6d9a7d9b47f8fc19d394d581c2&oe=5C03FF20',
-        connections: JSON.stringify([2]),
-        goals: JSON.stringify(['Get jacked', 'Look good'])
+        profile_pic: 'https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/32436_117915591572150_2707307_n.jpg?_nc_cat=0&oh=f8c80b6d9a7d9b47f8fc19d394d581c2&oe=5C03FF20'
       });
     })
     .then(() => {
@@ -36,44 +49,150 @@ exports.seed = function(knex, Promise) {
         last_name: 'Doe',
         email: 'john@john.john',
         password: 'john',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         gym_id: 1,
-        profile_pic: 'https://powerplay.co.uk/app/resources/php/timthumb/timthumb.php?src=L2FwcC9yZXNvdXJjZXMvaW1hZ2VzL3VzZXIvc2xpZGVyLzcyNS90ZWFtc2xpZGVyOTA5NTVHbG9ib0d5bS5qcGc=&w=635&h=400',
-        connections: JSON.stringify([1]),
-        goals: JSON.stringify(['Get super jacked', 'Look super good'])
+        profile_pic: 'https://powerplay.co.uk/app/resources/php/timthumb/timthumb.php?src=L2FwcC9yZXNvdXJjZXMvaW1hZ2VzL3VzZXIvc2xpZGVyLzcyNS90ZWFtc2xpZGVyOTA5NTVHbG9ib0d5bS5qcGc=&w=635&h=400'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Paul',
+        last_name: 'Paulson',
+        email: 'paul@paul.paul',
+        password: 'paul',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        gym_id: 1,
+        profile_pic: 'https://powerplay.co.uk/app/resources/php/timthumb/timthumb.php?src=L2FwcC9yZXNvdXJjZXMvaW1hZ2VzL3VzZXIvc2xpZGVyLzcyNS90ZWFtc2xpZGVyOTA5NTVHbG9ib0d5bS5qcGc=&w=635&h=400'
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 1,
+        goal: "I wanna get jacked."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 1,
+        goal: "Cultivate mass."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 2,
+        goal: "Gotta get yoked."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 2,
+        goal: "Look good."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 3,
+        goal: "Cultivate mass."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 3,
+        goal: "Cultivate more mass."
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 2
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 3
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 2,
+        friend_id: 1
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 3,
+        friend_id: 1
+      });
+    })
+    .then(() => {
+      return knex('connections').insert({
+        user_id: 2,
+        connection_id: 3
+      });
+    })
+    .then(() => {
+      return knex('connections').insert({
+        user_id: 3,
+        connection_id: 2
       });
     })
     .then(() => {
       return knex('events').insert({
         user_id: 1,
         gym_id: 1,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
+        description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
         time_begin: 'August 30, 2018 12:00:00',
-        time_end: 'August 30, 2018 13:00:00',
-        tags: JSON.stringify(['Legs', 'Quads'])
+        time_end: 'August 30, 2018 13:00:00'
       });
     })
     .then(() => {
       return knex('events').insert({
         user_id: 1,
         gym_id: 1,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
+        description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
         time_begin: 'August 28, 2018 14:00:00',
-        time_end: 'August 28, 2018 15:00:00',
-        tags: JSON.stringify(['Cardio'])
+        time_end: 'August 28, 2018 15:00:00'
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 1,
+        tag: "Legs"
       });
     })
     .then(() => {
       return knex('events').insert({
         user_id: 2,
         gym_id: 1,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
+        description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
         time_begin: 'August 29, 2018 19:30:00',
-        time_end: 'August 29, 2018 20:30:00',
-        tags: JSON.stringify(['Cardio', 'Stretching'])
+        time_end: 'August 29, 2018 20:30:00'
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 2,
+        tag: "Cardio"
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 3,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: 'September 1, 2018 11:30:00',
+        time_end: 'September 1, 2018 12:30:00'
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 3,
+        tag: "Crossfit"
       });
     })
     .then(() => {

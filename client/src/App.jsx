@@ -4,10 +4,12 @@ import {
   Route,
   Link,
   render
-} from 'react-router-dom'
+} from 'react-router-dom';
+
 // import logo from './logo.svg';
 import NavBar from './NavBar.jsx'
 import Profile from './Profile.jsx'
+import Connections from './Connections.jsx'
 import ChatHead from './ChatHead.jsx'
 import Calendar from './Calendar.jsx'
 import Friends from './Friends.jsx'
@@ -63,7 +65,7 @@ class App extends Component {
       <NavBar/>
         <Route path="/calendar" component={Calendar}/>
         <Route path="/profile" component={Profile}/>
-        <Route path="/connections" component={ChatHead}/>
+        <Route path="/connections" component={Connections}/>
         <Route path="/friends"
          render={(props) => <Friends {...props} response={this.state.response}/>}/>
       </div>
