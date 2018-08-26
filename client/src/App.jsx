@@ -5,9 +5,8 @@ import {
   Link,
   render
 } from 'react-router-dom'
-// import logo from './logo.svg';
 import NavBar from './NavBar.jsx'
-import Profile from './Profile.jsx'
+import Dashboard from './Dashboard.jsx'
 import ChatHead from './ChatHead.jsx'
 import Calendar from './Calendar.jsx'
 import Friends from './Friends.jsx'
@@ -43,7 +42,7 @@ class App extends Component {
         <Route exact path="/login" component={Login}/>
         <Route exact path='/register/' component={Register}/>
         <Route path="/calendar" component={Calendar}/>
-        <Route path="/profile" component={Profile}/>
+        <Route path="/dashboard" component={Dashboard}/>
         <Route path="/connections" component={ChatHead}/>
         <Route path="/friends"
          render={(props) => <Friends {...props} response={this.state.response}/>}/>
