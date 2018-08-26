@@ -6,22 +6,46 @@ import makeAnimated from 'react-select/lib/animated';
 import { tagOptions } from './docs/data';
 import { colourStyles } from './docs/data';
 import chroma from 'chroma-js';
+import TimeRange from 'react-time-range';
+import moment from 'moment';
+import 'moment-timezone';
 
 
 class Calendar extends Component {
 constructor(props) {
     super(props);
     this.state = {
+    tags: '',
     currentMonth: new Date(),
-    selectedDate: new Date()
+    selectedDate: new Date(),
     };
   }
 
   createEvent = (event) => {
-    console.log(document.getElementById("eventDescription").value);
+    let description = document.getElementById("eventDescription").value;
+    let tagArray = [];
+    let date = moment(this.state.selectedDate).format('YYYYMMDD')
+    let sTime = date + " " + moment(this.state.startTime).format('HHmm')
+    let eTime = date + " " + moment(this.state.endTime).format('HHmm')
+    for(let tag of this.state.tags){
+      tagArray.push(tag.value);
+    }
+    this.setState({ tags: '' });
+  }
+
+  changeTime = (event) =>{
+
+    let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
+    let endTime = moment(event.endTime).format('YYYYMMDD HHmm')
+    this.setState({ startTime: startTime });
+    this.setState({ endTime: endTime });
   }
 
   onCancel = (event) => {
+    this.onClear(event);
+  }
+
+  onClear = (event) => {
     document.getElementById("popup").style = "display: none";
     document.getElementById("popupBackground").style = "display: none";
     document.getElementById("eventDescription").value = '';
@@ -37,7 +61,6 @@ constructor(props) {
 
   handleClick = (event) => {
     if (this.node.contains(event.target)) {
-      console.log(event.target)
       return;
     }
 
@@ -45,10 +68,12 @@ constructor(props) {
   }
 
   handleClickOutside(event) {
-    document.getElementById("popup").style = "display: none";
-    document.getElementById("popupBackground").style = "display: none";
-    document.getElementById("eventDescription").value = '';
-    }
+    this.onClear(event);
+  }
+
+  addTag = (event) => {
+    this.setState({tags: event});
+  }
 
   renderPopUp(){
     return(
@@ -62,11 +87,19 @@ constructor(props) {
         <input name='eventDescription' id='eventDescription' placeholder='Event description...'/>
         </form>
         <Select
+          onChange={this.addTag}
+          className="tagform"
           closeMenuOnSelect={false}
           components={makeAnimated()}
           isMulti
           options={tagOptions}
           styles={colourStyles}
+        />
+        <TimeRange
+          sameIsValid={false}
+          startMoment={this.state.startTime}
+          endMoment={this.state.endTime}
+          onChange={this.changeTime}
         />
         <button onClick={this.createEvent}>Confirm</button>
         <button onClick={this.onCancel}>Cancel</button>
