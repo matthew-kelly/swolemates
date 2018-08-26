@@ -1,12 +1,79 @@
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 import dateFns from "date-fns";
+import Select from 'react-select'
+import makeAnimated from 'react-select/lib/animated';
+import { tagOptions } from './docs/data';
+import { colourStyles } from './docs/data';
+import chroma from 'chroma-js';
+
 
 class Calendar extends Component {
-  state = {
+constructor(props) {
+    super(props);
+    this.state = {
     currentMonth: new Date(),
     selectedDate: new Date()
-  };
+    };
+  }
+
+  createEvent = (event) => {
+    console.log(document.getElementById("eventDescription").value);
+  }
+
+  onCancel = (event) => {
+    document.getElementById("popup").style = "display: none";
+    document.getElementById("popupBackground").style = "display: none";
+    document.getElementById("eventDescription").value = '';
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClick, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClick, false);
+  }
+
+  handleClick = (event) => {
+    if (this.node.contains(event.target)) {
+      console.log(event.target)
+      return;
+    }
+
+    this.handleClickOutside();
+  }
+
+  handleClickOutside(event) {
+    document.getElementById("popup").style = "display: none";
+    document.getElementById("popupBackground").style = "display: none";
+    document.getElementById("eventDescription").value = '';
+    }
+
+  renderPopUp(){
+    return(
+      <div>
+        <div style={{display:'none'}} id='popupBackground'>
+        </div>
+        <div ref={node => this.node = node} style={{display:'none'}} id='popup'>
+        <h1 id="popuptitle">Create an Event</h1>
+        <h3>Description</h3>
+        <form>
+        <input name='eventDescription' id='eventDescription' placeholder='Event description...'/>
+        </form>
+        <Select
+          closeMenuOnSelect={false}
+          components={makeAnimated()}
+          isMulti
+          options={tagOptions}
+          styles={colourStyles}
+        />
+        <button onClick={this.createEvent}>Confirm</button>
+        <button onClick={this.onCancel}>Cancel</button>
+        </div>
+      </div>
+      )
+  }
 
   renderHeader() {
     const dateFormat = "MMMM YYYY";
@@ -93,7 +160,8 @@ class Calendar extends Component {
     this.setState({
       selectedDate: day
     });
-    alert(day)
+    document.getElementById("popup").style = "display: show";
+    document.getElementById("popupBackground").style = "display: show";
   };
 
   nextMonth = () => {
@@ -110,10 +178,13 @@ class Calendar extends Component {
 
   render() {
     return (
+      <div>
+        {this.renderPopUp()}
       <div className="calendar">
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
+        </div>
       </div>
     );
   }

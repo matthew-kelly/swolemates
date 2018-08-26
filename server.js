@@ -19,8 +19,25 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Test Request
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express' });
+});
+
+// Specific User data
+app.get('/api/users/:id', (req, res) => {
+  database.getUser(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
+});
+
+// Goals data for specific user
+app.get('/api/users/:id/goals', (req, res) => {
+  database.getGoals(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
 });
 
 // Friends list

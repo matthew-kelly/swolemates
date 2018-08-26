@@ -24,9 +24,17 @@ module.exports = function knexData(knex) {
     getUser: (id) => {
       return knex.select('*')
       .from('users')
-      .join('goals', 'user_id', '=', 'users.id')
       .where({
         id: id
+      })
+    },
+
+    // Return all goals for one user
+    getGoals: (id) => {
+      return knex.select('*')
+      .from('goals')
+      .where({
+        user_id: id
       })
     },
 

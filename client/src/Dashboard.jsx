@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API = 'http://localhost:5000/api'
 
-class Profile extends Component {
+class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
@@ -63,9 +63,12 @@ class Profile extends Component {
         <div id="calendar" className="tile">
           <p>calendar goes here </p>
         </div>
+        <div id="activity" className="tile">
+          <p>This is my activity graph</p>
+        </div>
       </div>
     );
   }
 }
 
-export default Profile;
+export default Dashboard;
