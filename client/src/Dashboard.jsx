@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Calendar from './Calendar.jsx'
 
@@ -8,18 +9,17 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      current_user: 16,
       user_data: '',
       goals: ''
     }
   }
 
   componentWillMount() {
-    this.getUser(this.state.current_user)
-    .then(res => this.setState({ user_data: res[0] }))
+    this.getUser(this.props.appState.current_user.id)
+    .then(res => this.setState({ user_data: res }))
     .catch(err => console.log(err));
 
-    this.getGoals(this.state.current_user)
+    this.getGoals(this.props.appState.current_user.id)
     .then(res => this.setState({ goals: res }))
     .catch(err => console.log(err));
   }
@@ -37,7 +37,12 @@ class Dashboard extends Component {
   }
 
   render() {
-    const user_data = this.state.user_data;
+    
+    if (this.props.appState.isLoggedIn !== true) {
+      return <Redirect to='/' />
+    }
+
+    const user_data = this.props.appState.current_user;
     const goals_data = this.state.goals;
 
     let allGoals;

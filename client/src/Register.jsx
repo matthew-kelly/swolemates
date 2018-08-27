@@ -1,20 +1,10 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoggedIn :false,
-      userEmail : '',
-      userPassword : '',
-    }
 
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(event) {
-    console.log(event)
+  handleClick = (event) => {
+    event.preventDefault();
     this.setState({
       isLoggedIn : true,
       userEmail: '',
@@ -23,22 +13,20 @@ class Register extends Component {
   }
 
   render() {
+    if (this.props.appState.isLoggedIn === true) {
+      return <Redirect to='/dashboard' />
+    }
+
     return(
-    <div className="tile">
-    <form>
-      <input name='first_name' placeholder='First name'/>
-    </form>
-    <form>
-      <input name='last_name' placeholder='Last Name'/>
-    </form>
-    <form>
-      <input name='email' placeholder='email'/>
-    </form>
-    <form>
-      <input name='password' placeholder='password'/>
-    </form>
-    <button onClick={this.handleClick}>Submit</button>
-    </div>
+      <div className="tile">
+        <form onClick={this.handleClick}>
+          <input name='first_name' placeholder='First name'/>
+          <input name='last_name' placeholder='Last Name'/>
+          <input name='email' placeholder='email'/>
+          <input name='password' placeholder='password'/>
+          <button>Register</button>
+        </form>
+      </div>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
+import { Redirect } from 'react-router-dom';
 import dateFns from "date-fns";
 import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated';
@@ -231,6 +232,10 @@ constructor(props) {
   };
 
   render() {
+    if (this.props.appState.isLoggedIn !== true) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div>
         {this.renderPopUp()}
