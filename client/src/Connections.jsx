@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import User from './User.jsx'
@@ -6,16 +7,15 @@ import User from './User.jsx'
 const API = 'http://localhost:5000/api'
 
 class Connections extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      connections: '',
-      current_user: 1
+      connections: ''
     }
   }
   
-  componentWillMount() {
-    this.getConnections(this.state.current_user)
+  componentDidMount() {
+    this.getConnections(this.props.appState.current_user.id)
     .then(res => this.setState({ connections: res }))
     .catch(err => console.log(err));
   }
@@ -27,6 +27,10 @@ class Connections extends Component {
   }
 
   render() {
+    if (this.props.appState.isLoggedIn !== true) {
+      return <Redirect to='/' />
+    }
+
     const connections = this.state.connections;
     let allConnections;
     if (connections){

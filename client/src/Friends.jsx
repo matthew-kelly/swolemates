@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 import User from './User.jsx'
@@ -6,16 +7,15 @@ import User from './User.jsx'
 const API = 'http://localhost:5000/api'
 
 class Friends extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      friends: '',
-      current_user: 1
+      friends: ''
     }
   }
   
-  componentWillMount() {
-    this.getFriends(this.state.current_user)
+  componentDidMount() {
+    this.getFriends(this.props.appState.current_user.id)
     .then(res => this.setState({ friends: res }))
     .catch(err => console.log(err));
   }
@@ -27,6 +27,10 @@ class Friends extends Component {
   }
 
   render() {
+    if (this.props.appState.isLoggedIn !== true) {
+      return <Redirect to='/' />
+    }
+
     const friends = this.state.friends;
     let allFriends;
     if (friends){

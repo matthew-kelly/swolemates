@@ -12,12 +12,25 @@ module.exports = function knexData(knex) {
 
     // Return user data for Connections list
     getConnectionsList: (id) => {
-      return knex.select('*')
+      return result = knex.select('*')
       .from('connections')
       .join('users', 'connection_id', '=', 'users.id')
       .where({
         user_id: id
       })
+    },
+
+    // Authenticate login
+    authenticateLogin: (email, password) => {
+      const result = knex.select('id', 'first_name', 'last_name', 'bio', 'gym_id', 'profile_pic')
+      .from('users')
+      .where({
+        email,
+        password
+      })
+      if (result) {
+        return result;
+      }
     },
 
     // Return user and goals data for one user

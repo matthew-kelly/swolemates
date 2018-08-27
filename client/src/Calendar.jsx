@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
+import { Redirect } from 'react-router-dom';
 import dateFns from "date-fns";
 import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated';
 import { tagOptions } from './docs/data';
 import { colourStyles } from './docs/data';
-import chroma from 'chroma-js';
+// import chroma from 'chroma-js';
 
 
 class Calendar extends Component {
@@ -177,6 +178,10 @@ constructor(props) {
   };
 
   render() {
+    if (this.props.appState.isLoggedIn !== true) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div>
         {this.renderPopUp()}
