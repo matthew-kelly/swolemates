@@ -316,7 +316,7 @@ main {
 
 .calendar .body .cell {
   position: relative;
-  height: 5em;
+  height: 6.4em;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
   cursor: pointer;
@@ -352,7 +352,7 @@ main {
   font-size: 82.5%;
   line-height: 1;
   top: .75em;
-  right: .75em;
+  left: .75em;
   font-weight: 700;
 }
 
@@ -376,8 +376,8 @@ main {
 
 .calendar .body .cell:hover .bg,
 .calendar .body .selected .bg {
-  opacity: 0.05;
-  transition: .25s ease-in;
+  opacity: 0.2;
+  transition:0.5s ease-in;
 }
 
 .calendar .body .col {
