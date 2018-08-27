@@ -15,9 +15,11 @@
     "express": "^4.16.2",
     "knex": "^0.15.2",
     "moment": "^2.22.2",
+    "moment-timezone": "^0.5.21",
     "pg": "^7.4.3",
     "react-moment": "^0.7.9",
-    "react-select": "^2.0.0"
+    "react-select": "^2.0.0",
+    "react-time-range": "^1.0.2"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"

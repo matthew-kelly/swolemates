@@ -1,20 +1,53 @@
 /* FONT IMPORTS */
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+
 /* ------------ */
 
 .container {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 90vh;
+  max-width: 94vw;
 }
 
 .tile {
-  background-color: aliceblue;
-  height: 40%;
-  width: 50%;
+  background-color: white;
+  height: fit-content;
+  width: fit-content;
   padding: 1em;
-  margin: 1em;
+  margin: 0.5em;
   box-shadow: 0px 0px 8px 1px lightgrey;
+}
+
+.dashboardSmall {
+  font-size: 200%;
+  padding-top: 2em;
+  width: 10vw;
+  height: 20vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboardSubtitle{
+  font-size: 60%;
+}
+
+#calendarDashboard {
+  max-width: 47vw;
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+.tile:hover {
+  box-shadow: 0px 0px 10px 2px lightgrey;
 }
 
 .navbar {
@@ -28,7 +61,12 @@
 }
 
 div#popup {
-  opacity: 1.0;
+  border: 1px solid black;
+  border-radius: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 1.5em 1.5em 1.5em;
   position: fixed;
   width: 40%;
   height: 80%;
@@ -37,10 +75,62 @@ div#popup {
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: lightblue;
+  background-color: #fcfcfc;
   z-index: 999;
 }
-#popupBackground{
+
+h3 {
+  margin-top: -1em;
+}
+
+#eventButtonMenu {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.eventButton {
+  width: 25%;
+  height: 3em;
+  border-radius: 2em;
+  border: 1px solid black;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+div#react-time-range,
+div#start-component.component {
+  padding: 0;
+}
+
+#confirmButton {
+  background-color: #5ed95e;
+}
+
+#cancelButton {
+  background-color: tomato;
+}
+
+#eventDescription {
+  width: 100%;
+  height: 5em;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#timeRangeMenu {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#popuptitle {
+  display: flex;
+  justify-content: center;
+}
+
+#popupBackground {
   opacity: 0.5;
   position: fixed;
   /*position: absolute;*/
@@ -51,7 +141,7 @@ div#popup {
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: lightgrey;
+  background-color: #7a7a7a;
   z-index: 998;
 }
 
@@ -72,36 +162,51 @@ div#popup {
   max-width: 300px;
 }
 
+
+
 /* ------------- User.jsx Chat Heads ------------- */
+
 .chat-head-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .chat-head-container {
   background-color: white;
-  border: 1px solid #aaa;
-  padding: 50px;
+  /*border: 1px solid #aaa;*/
   margin: 0;
   height: 250px;
   width: 250px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
 }
+
+.chat-head-container:hover{
+  border: 1px solid #aaa;
+  box-shadow: 0px 0px 8px 1px grey;
+}
+
+
 
 /* .chat-head-content {
 
 } */
 
 .chat-head-pic {
+  margin: auto;
   border-radius: 50%;
   width: 100px;
   height: 100px;
   position: relative;
   overflow: hidden;
+  border: 1px solid black;
 }
 
-.chat-head-pic img{
-  max-width: 200%;
+.chat-head-pic img {
+  max-width: 130%;
   width: auto;
   height: auto;
   position: absolute;
@@ -109,6 +214,9 @@ div#popup {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+
 /* ---------------------------------------------- */
 
 .icon {
@@ -129,7 +237,11 @@ div#popup {
   font-feature-settings: 'liga';
 }
 
+
+
 /* ------------- Calendar.jsx Styles ------------- */
+
+
 /* VARIABLES */
 
 :root {
@@ -140,6 +252,8 @@ div#popup {
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
+
+
 
 
 
@@ -155,7 +269,7 @@ body {
   font-weight: 300;
   line-height: 1.5;
   color: var(--text-color);
-  background: var(--bg-color);
+  background: white;
   position: relative;
 }
 
@@ -184,6 +298,8 @@ main {
   margin-top: 5em;
   max-width: 50em;
 }
+
+
 
 
 
@@ -222,6 +338,8 @@ main {
   justify-content: flex-end;
   text-align: right;
 }
+
+
 
 
 
@@ -273,7 +391,7 @@ main {
 
 .calendar .body .cell {
   position: relative;
-  height: 5em;
+  height: 6.4em;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
   cursor: pointer;
@@ -309,7 +427,7 @@ main {
   font-size: 82.5%;
   line-height: 1;
   top: .75em;
-  right: .75em;
+  left: .75em;
   font-weight: 700;
 }
 
@@ -333,8 +451,8 @@ main {
 
 .calendar .body .cell:hover .bg,
 .calendar .body .selected .bg {
-  opacity: 0.05;
-  transition: .25s ease-in;
+  opacity: 0.2;
+  transition: 0.5s ease-in;
 }
 
 .calendar .body .col {

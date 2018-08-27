@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import Calendar from './Calendar.jsx'
 
 const API = 'http://localhost:5000/api'
 
@@ -59,14 +60,19 @@ class Dashboard extends Component {
           <h1>About {user_data.first_name}</h1>
           <p>{user_data.bio}</p>
         </div>
+        <div id="gym" className="tile dashboardSmall">
+          <i class="fas fa-dumbbell"></i>
+          <h4 className='dashboardSubtitle'>{user_data.gym_id}</h4>
+        </div>
+        <div id="calendarDashboard" className="tile dashboardSmall">
+          <i class="far fa-calendar"></i>
+          <h4 className='dashboardSubtitle'>Calendar</h4>
+        </div>
         <div id="goals" className="tile">
           <h1>Goals</h1>
           <ul>
             {allGoals}
           </ul>
-        </div>
-        <div id="calendar" className="tile">
-          <p>calendar goes here </p>
         </div>
         <div id="activity" className="tile">
           <p>This is my activity graph</p>

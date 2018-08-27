@@ -6,26 +6,65 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated';
 import { tagOptions } from './docs/data';
 import { colourStyles } from './docs/data';
-// import chroma from 'chroma-js';
+import chroma from 'chroma-js';
+import TimeRange from 'react-time-range';
+import moment from 'moment';
+import 'moment-timezone';
 
 
 class Calendar extends Component {
 constructor(props) {
     super(props);
     this.state = {
+    tags: '',
     currentMonth: new Date(),
-    selectedDate: new Date()
+    selectedDate: new Date(),
     };
   }
 
+//Creates event object with all relevant information
   createEvent = (event) => {
-    console.log(document.getElementById("eventDescription").value);
+    let description = document.getElementById("eventDescription").value;
+    let tagArray = [];
+    let date = moment(this.state.selectedDate).format('YYYYMMDD')
+    let sTime = date + " " + moment(this.state.startTime).format('HHmm')
+    let eTime = date + " " + moment(this.state.endTime).format('HHmm')
+    let publicCheck = false;
+    if(document.getElementById('publicCheckbox').checked){
+      publicCheck = true;
+    }
+    // console.log(publicCheck)
+    for(let tag of this.state.tags){
+      tagArray.push(tag.value);
+    }
+
+    let eventObj = {
+      tags: tagArray,
+      // gym_id: ???,
+      description: description,
+      public: publicCheck,
+      time_begin: sTime,
+      time_end: eTime,
+    }
+    console.log(eventObj)
+    this.setState({ tags: '' });
   }
 
-  onCancel = (event) => {
+//Called when user clicks on timedropdown menu, sets state to set time
+  changeTime = (event) =>{
+    let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
+    let endTime = moment(event.endTime).format('YYYYMMDD HHmm')
+    this.setState({ startTime: startTime });
+    this.setState({ endTime: endTime });
+  }
+
+//Hides popup and resets checkbox/event description
+  onClear = (event) => {
     document.getElementById("popup").style = "display: none";
     document.getElementById("popupBackground").style = "display: none";
     document.getElementById("eventDescription").value = '';
+    document.getElementById('publicCheckbox').checked = '';
+
   }
 
   componentDidMount() {
@@ -36,53 +75,67 @@ constructor(props) {
     document.removeEventListener('mousedown', this.handleClick, false);
   }
 
+//Does nothing if click is inside the event popup/else clears
   handleClick = (event) => {
     if (this.node.contains(event.target)) {
-      console.log(event.target)
       return;
     }
-
-    this.handleClickOutside();
+    this.onClear();
   }
 
-  handleClickOutside(event) {
-    document.getElementById("popup").style = "display: none";
-    document.getElementById("popupBackground").style = "display: none";
-    document.getElementById("eventDescription").value = '';
-    }
+//Adds tags selected by user to the state with each tag click
+  addTag = (event) => {
+    this.setState({tags: event});
+  }
 
+//Renders the popup with forms/buttons
   renderPopUp(){
     return(
       <div>
         <div style={{display:'none'}} id='popupBackground'>
         </div>
         <div ref={node => this.node = node} style={{display:'none'}} id='popup'>
-        <h1 id="popuptitle">Create an Event</h1>
-        <h3>Description</h3>
-        <form>
-        <input name='eventDescription' id='eventDescription' placeholder='Event description...'/>
-        </form>
-        <Select
-          closeMenuOnSelect={false}
-          components={makeAnimated()}
-          isMulti
-          options={tagOptions}
-          styles={colourStyles}
-        />
-        <button onClick={this.createEvent}>Confirm</button>
-        <button onClick={this.onCancel}>Cancel</button>
+          <h1 id="popuptitle">Create an Event</h1>
+          <h3>Description</h3>
+          <form>
+          <textarea name='eventDescription' id='eventDescription' placeholder='Event description...'/>
+          </form>
+          <Select
+            onChange={this.addTag}
+            className='tagform'
+            closeMenuOnSelect={false}
+            components={makeAnimated()}
+            isMulti
+            options={tagOptions}
+            styles={colourStyles}
+          />
+          <div id='timeRangeMenu'>
+            <TimeRange
+              sameIsValid={false}
+              startMoment={this.state.startTime}
+              endMoment={this.state.endTime}
+              onChange={this.changeTime}
+            />
+            <div className='checkbox'>
+              <input id='publicCheckbox'type='checkbox' name='public' value='public'/>Public Event
+            </div>
+          </div>
+          <div id='eventButtonMenu'>
+            <button id='confirmButton' className='eventButton' onClick={this.createEvent}>Confirm</button>
+            <button id='cancelButton' className='eventButton' onClick={this.onClear}>Cancel</button>
+          </div>
         </div>
       </div>
       )
   }
 
+//Renders Calendar Header
   renderHeader() {
-    const dateFormat = "MMMM YYYY";
-
+    const dateFormat = 'MMMM YYYY';
     return (
-      <div className="header row flex-middle">
-        <div className="col col-start">
-          <div className="icon" onClick={this.prevMonth}>
+      <div className='header row flex-middle'>
+        <div className='col col-start'>
+          <div className='icon' onClick={this.prevMonth}>
             chevron_left
           </div>
         </div>
@@ -157,6 +210,7 @@ constructor(props) {
     return <div className="body">{rows}</div>;
   }
 
+//On clicking a day, gets the popup information to show, sets the state.
   onDateClick = day => {
     this.setState({
       selectedDate: day
