@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
 class NavBar extends Component {
-  
+
   render() {
     let logoutButton;
 
     if (this.props.appState.isLoggedIn === true) {
-      logoutButton = <span><a href='/' onClick={this.props.logoutSubmit}><i className="far fa-user-circle"></i>Logout</a></span>;
+      logoutButton = <span><a href='/' onClick={this.props.logoutSubmit}><i className="fas fa-sign-out-alt"></i>
+Logout</a></span>;
       return (
         <nav className="navbar">
           <span><a href='/dashboard'><i className="far fa-user-circle"></i>Dashboard</a></span>

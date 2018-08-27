@@ -37,7 +37,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    
+
     if (this.props.appState.isLoggedIn !== true) {
       return <Redirect to='/' />
     }
@@ -61,11 +61,11 @@ class Dashboard extends Component {
           <p>{user_data.bio}</p>
         </div>
         <div id="gym" className="tile dashboardSmall">
-          <i class="fas fa-dumbbell"></i>
+          <i className="fas fa-dumbbell"></i>
           <h4 className='dashboardSubtitle'>{user_data.gym_id}</h4>
         </div>
         <div id="calendarDashboard" className="tile dashboardSmall">
-          <i class="far fa-calendar"></i>
+          <i className="far fa-calendar"></i>
           <h4 className='dashboardSubtitle'>Calendar</h4>
         </div>
         <div id="goals" className="tile">
