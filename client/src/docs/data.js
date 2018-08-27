@@ -59,12 +59,12 @@ export const tagOptions = [
         { value: 'chest', label: 'Chest', color: '#FF5630'},
         { value: 'core', label: 'Core', color: '#FFC400'},
         { value: 'hIT', label: 'HIT', color: '#253858'},
-        { value: 'legs', label: 'Legs', color: '#00B8D9'},
-        { value: 'oRM', label: 'ORM', color: '#00B8D9'},
-        { value: 'shoulders', label: 'Shoulders', color: '#00B8D9'},
-        { value: 'sprints', label: 'Sprints', color: '#00B8D9'},
-        { value: 'stretching', label: 'Stretching', color: '#00B8D9'},
-        { value: 'traps', label: 'Traps', color: '#00B8D9'},
-        { value: 'triceps', label: 'Triceps', color: '#00B8D9'},
-        { value: 'yoga', label: 'Yoga', color: '#00B8D9'}
+        { value: 'legs', label: 'Legs', color: '#e424de'},
+        { value: 'oRM', label: 'ORM', color: '#6d6fc3'},
+        { value: 'shoulders', label: 'Shoulders', color: '#1dd2c1'},
+        { value: 'sprints', label: 'Sprints', color: '#e84b85'},
+        { value: 'stretching', label: 'Stretching', color: '#7fb378'},
+        { value: 'traps', label: 'Traps', color: '#929292'},
+        { value: 'triceps', label: 'Triceps', color: '#017eff'},
+        { value: 'yoga', label: 'Yoga', color: '#d5da82'}
       ]

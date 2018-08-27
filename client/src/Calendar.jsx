@@ -21,6 +21,7 @@ constructor(props) {
     };
   }
 
+//Creates event object with all relevant information
   createEvent = (event) => {
     let description = document.getElementById("eventDescription").value;
     let tagArray = [];
@@ -48,6 +49,7 @@ constructor(props) {
     this.setState({ tags: '' });
   }
 
+//Called when user clicks on timedropdown menu, sets state to set time
   changeTime = (event) =>{
     let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
     let endTime = moment(event.endTime).format('YYYYMMDD HHmm')
@@ -55,10 +57,7 @@ constructor(props) {
     this.setState({ endTime: endTime });
   }
 
-  onCancel = (event) => {
-    this.onClear(event);
-  }
-
+//Hides popup and resets checkbox/event description
   onClear = (event) => {
     document.getElementById("popup").style = "display: none";
     document.getElementById("popupBackground").style = "display: none";
@@ -75,22 +74,20 @@ constructor(props) {
     document.removeEventListener('mousedown', this.handleClick, false);
   }
 
+//Does nothing if click is inside the event popup/else clears
   handleClick = (event) => {
     if (this.node.contains(event.target)) {
       return;
     }
-
-    this.handleClickOutside();
+    this.onClear();
   }
 
-  handleClickOutside(event) {
-    this.onClear(event);
-  }
-
+//Adds tags selected by user to the state with each tag click
   addTag = (event) => {
     this.setState({tags: event});
   }
 
+//Renders the popup with forms/buttons
   renderPopUp(){
     return(
       <div>
@@ -100,7 +97,7 @@ constructor(props) {
           <h1 id="popuptitle">Create an Event</h1>
           <h3>Description</h3>
           <form>
-          <input name='eventDescription' id='eventDescription' placeholder='Event description...'/>
+          <textarea name='eventDescription' id='eventDescription' placeholder='Event description...'/>
           </form>
           <Select
             onChange={this.addTag}
@@ -124,16 +121,16 @@ constructor(props) {
           </div>
           <div id='eventButtonMenu'>
             <button id='confirmButton' className='eventButton' onClick={this.createEvent}>Confirm</button>
-            <button id='cancelButton' className='eventButton' onClick={this.onCancel}>Cancel</button>
+            <button id='cancelButton' className='eventButton' onClick={this.onClear}>Cancel</button>
           </div>
         </div>
       </div>
       )
   }
 
+//Renders Calendar Header
   renderHeader() {
     const dateFormat = 'MMMM YYYY';
-
     return (
       <div className='header row flex-middle'>
         <div className='col col-start'>
@@ -212,6 +209,7 @@ constructor(props) {
     return <div className="body">{rows}</div>;
   }
 
+//On clicking a day, gets the popup information to show, sets the state.
   onDateClick = day => {
     this.setState({
       selectedDate: day

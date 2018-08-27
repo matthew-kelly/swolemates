@@ -390,7 +390,79 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('friends').insert({
         user_id: 1,
+        friend_id: 4
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
         friend_id: 5
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 6
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 7
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 8
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 9
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 10
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 11
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 12
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 13
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 14
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 15
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 1,
+        friend_id: 16
       });
     })
     .then(() => {
