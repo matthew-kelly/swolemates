@@ -53,12 +53,12 @@ export const colourStyles = {
 
 export const tagOptions = [
         { value: 'back', label: 'Back', color: '#00B8D9'},
-        { value: 'biceps', label: 'Biceps', color: '#00B8D9'},
-        { value: 'calisthenics', label: 'Calisthenics', color: '#00B8D9'},
-        { value: 'cardio', label: 'Cardio', color: '#00B8D9'},
-        { value: 'chest', label: 'Chest', color: '#00B8D9'},
-        { value: 'core', label: 'Core', color: '#00B8D9'},
-        { value: 'hIT', label: 'HIT', color: '#00B8D9'},
+        { value: 'biceps', label: 'Biceps', color: '#FF8B00'},
+        { value: 'calisthenics', label: 'Calisthenics', color: '#5243AA'},
+        { value: 'cardio', label: 'Cardio', color: '#00875A'},
+        { value: 'chest', label: 'Chest', color: '#FF5630'},
+        { value: 'core', label: 'Core', color: '#FFC400'},
+        { value: 'hIT', label: 'HIT', color: '#253858'},
         { value: 'legs', label: 'Legs', color: '#00B8D9'},
         { value: 'oRM', label: 'ORM', color: '#00B8D9'},
         { value: 'shoulders', label: 'Shoulders', color: '#00B8D9'},

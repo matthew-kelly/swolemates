@@ -28,7 +28,11 @@
 }
 
 div#popup {
-  opacity: 1.0;
+  border-radius: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0 1.5em 1.5em 1.5em;
   position: fixed;
   width: 40%;
   height: 80%;
@@ -37,8 +41,47 @@ div#popup {
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: lightblue;
+  background-color: #fcfcfc;
   z-index: 999;
+}
+
+h3{
+  margin-top: -1em;
+}
+#eventButtonMenu{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.eventButton{
+  width: 25%;
+  height: 3em;
+  border-radius: 2em;
+  border: 1px solid black;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
+div#react-time-range, div#start-component.component {
+  padding:0;
+}
+#confirmButton{
+  background-color: #5ed95e;
+}
+#cancelButton{
+  background-color: tomato;
+}
+#eventDescription{
+  width: 100%;
+  height: 5em;
+}
+#timeRangeMenu{
+  display: flex;
+  justify-content:space-evenly;
+}
+#popuptitle{
+  display: flex;
+  justify-content: center;
 }
 #popupBackground{
   opacity: 0.5;
@@ -51,7 +94,7 @@ div#popup {
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: lightgrey;
+  background-color: #7a7a7a;
   z-index: 998;
 }
 

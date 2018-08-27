@@ -27,14 +27,28 @@ constructor(props) {
     let date = moment(this.state.selectedDate).format('YYYYMMDD')
     let sTime = date + " " + moment(this.state.startTime).format('HHmm')
     let eTime = date + " " + moment(this.state.endTime).format('HHmm')
+    let publicCheck = false;
+    if(document.getElementById('publicCheckbox').checked){
+      publicCheck = true;
+    }
+    // console.log(publicCheck)
     for(let tag of this.state.tags){
       tagArray.push(tag.value);
     }
+
+    let eventObj = {
+      tags: tagArray,
+      // gym_id: ???,
+      description: description,
+      public: publicCheck,
+      time_begin: sTime,
+      time_end: eTime,
+    }
+    console.log(eventObj)
     this.setState({ tags: '' });
   }
 
   changeTime = (event) =>{
-
     let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
     let endTime = moment(event.endTime).format('YYYYMMDD HHmm')
     this.setState({ startTime: startTime });
@@ -49,6 +63,8 @@ constructor(props) {
     document.getElementById("popup").style = "display: none";
     document.getElementById("popupBackground").style = "display: none";
     document.getElementById("eventDescription").value = '';
+    document.getElementById('publicCheckbox').checked = '';
+
   }
 
   componentDidMount() {
@@ -81,40 +97,47 @@ constructor(props) {
         <div style={{display:'none'}} id='popupBackground'>
         </div>
         <div ref={node => this.node = node} style={{display:'none'}} id='popup'>
-        <h1 id="popuptitle">Create an Event</h1>
-        <h3>Description</h3>
-        <form>
-        <input name='eventDescription' id='eventDescription' placeholder='Event description...'/>
-        </form>
-        <Select
-          onChange={this.addTag}
-          className="tagform"
-          closeMenuOnSelect={false}
-          components={makeAnimated()}
-          isMulti
-          options={tagOptions}
-          styles={colourStyles}
-        />
-        <TimeRange
-          sameIsValid={false}
-          startMoment={this.state.startTime}
-          endMoment={this.state.endTime}
-          onChange={this.changeTime}
-        />
-        <button onClick={this.createEvent}>Confirm</button>
-        <button onClick={this.onCancel}>Cancel</button>
+          <h1 id="popuptitle">Create an Event</h1>
+          <h3>Description</h3>
+          <form>
+          <input name='eventDescription' id='eventDescription' placeholder='Event description...'/>
+          </form>
+          <Select
+            onChange={this.addTag}
+            className='tagform'
+            closeMenuOnSelect={false}
+            components={makeAnimated()}
+            isMulti
+            options={tagOptions}
+            styles={colourStyles}
+          />
+          <div id='timeRangeMenu'>
+            <TimeRange
+              sameIsValid={false}
+              startMoment={this.state.startTime}
+              endMoment={this.state.endTime}
+              onChange={this.changeTime}
+            />
+            <div className='checkbox'>
+              <input id='publicCheckbox'type='checkbox' name='public' value='public'/>Public Event
+            </div>
+          </div>
+          <div id='eventButtonMenu'>
+            <button id='confirmButton' className='eventButton' onClick={this.createEvent}>Confirm</button>
+            <button id='cancelButton' className='eventButton' onClick={this.onCancel}>Cancel</button>
+          </div>
         </div>
       </div>
       )
   }
 
   renderHeader() {
-    const dateFormat = "MMMM YYYY";
+    const dateFormat = 'MMMM YYYY';
 
     return (
-      <div className="header row flex-middle">
-        <div className="col col-start">
-          <div className="icon" onClick={this.prevMonth}>
+      <div className='header row flex-middle'>
+        <div className='col col-start'>
+          <div className='icon' onClick={this.prevMonth}>
             chevron_left
           </div>
         </div>

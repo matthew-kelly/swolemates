@@ -13,7 +13,7 @@ class Friends extends Component {
       current_user: 1
     }
   }
-  
+
   componentWillMount() {
     this.getFriends(this.state.current_user)
     .then(res => this.setState({ friends: res }))
