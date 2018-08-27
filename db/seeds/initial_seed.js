@@ -34,8 +34,44 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('gyms').insert({
-        name: 'SNFW Arbutus',
-        address: '1230 West Broadway'
+        name: 'SNFW Kitsilano',
+        address: '2150 W Broadway'
+      });
+    })
+    .then(() => {
+      return knex('gyms').insert({
+        name: 'SNFW Cambie',
+        address: '555 West 12th Ave'
+      });
+    })
+    .then(() => {
+      return knex('gyms').insert({
+        name: 'SNFW Coquitlam',
+        address: '111-3000 Lougheed Hwy'
+      });
+    })
+    .then(() => {
+      return knex('gyms').insert({
+        name: 'SNFW Downtown Sports Club',
+        address: '610 Granville St'
+      });
+    })
+    .then(() => {
+      return knex('gyms').insert({
+        name: 'SNFW Howe & Davie',
+        address: '1214 Howe St'
+      });
+    })
+    .then(() => {
+      return knex('gyms').insert({
+        name: 'SNFW Yaletown',
+        address: '1085 Homer St'
+      });
+    })
+    .then(() => {
+      return knex('gyms').insert({
+        name: 'FitForever',
+        address: '1615 E 1st Ave'
       });
     })
     .then(() => {
@@ -94,6 +130,138 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
+      return knex('users').insert({
+        first_name: 'Arnie',
+        last_name: 'ARNIE',
+        email: 'arnie@arnie.arnie',
+        password: 'arnie',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 2,
+        profile_pic: 'https://24smi.org/public/media/2018/4/9/06-9j5po29.jpg'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Ronda',
+        last_name: 'Rousey',
+        email: 'ronda@rousey.rousey',
+        password: 'ronda',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 2,
+        profile_pic: 'https://tribktla.files.wordpress.com/2015/09/rousey.jpg?quality=85&strip=all&strip=all'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Yuna',
+        last_name: 'Kim',
+        email: 'yuna@kim.kim',
+        password: 'yuna',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 2,
+        profile_pic: 'http://www.nbcolympics.com/sites/default/files/field_image/19April2017/yuna-kim-ambassador-pyc-flickr-1920-15691841066_a142e51565_o.jpg'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Simone',
+        last_name: 'Biles',
+        email: 'simone@biles.biles',
+        password: 'simone',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 2,
+        profile_pic: 'https://usagym.org/pages/athletes/athletephotos/164887.jpg'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Chris',
+        last_name: 'Hadfield',
+        email: 'chris@hadfield.hadfield',
+        password: 'chris',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 3,
+        profile_pic: 'http://www.spacefacts.de/bios/portraits_hi/international/hadfield_chris.jpg'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Robert',
+        last_name: 'Thirsk',
+        email: 'robert@thirsk.thirsk',
+        password: 'robert',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 3,
+        profile_pic: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Robert_thirsk_v2.jpg'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Don',
+        last_name: 'Cherry',
+        email: 'don@cherry.cherry',
+        password: 'don',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 3,
+        profile_pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGsbOlAbIIuSjxiyEvAU31CHaQP0KM1emKTK91q5NeWVIpD7CJ'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Henrik',
+        last_name: 'Sedin',
+        email: 'henrik@sedin.sedin',
+        password: 'henrik',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 3,
+        profile_pic: 'http://www.hockeydb.com/ihdb/photos/henrik-sedin-2017-39.jpg'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Daniel',
+        last_name: 'Sedin',
+        email: 'daniel@sedin.sedin',
+        password: 'daniel',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 3,
+        profile_pic: 'http://www.hockeydb.com/ihdb/photos/daniel-sedin-2018-39.jpg'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Obi-Wan',
+        last_name: 'Kenobi',
+        email: 'obi-wan@kenobi.kenobi',
+        password: 'obi-wan',
+        bio: 'Hello there.',
+        gym_id: 4,
+        profile_pic: 'https://www.thoughtco.com/thmb/pYLUnM7lQ6ef-ShHTdunHcExcw0=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/EP2-IA-60435_R_8x10-56a83bea3df78cf7729d314a.jpg'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Master',
+        last_name: 'Yoda',
+        email: 'master@yoda.yoda',
+        password: 'master',
+        bio: 'Be fit, you must.',
+        gym_id: 4,
+        profile_pic: 'https://vignette.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png/revision/latest?cb=20150206140125'
+      });
+    })
+    .then(() => {
+      return knex('users').insert({
+        first_name: 'Count',
+        last_name: 'Dooku',
+        email: 'count@dooku.dooku',
+        password: 'count',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        gym_id: 4,
+        profile_pic: 'https://vignette.wikia.nocookie.net/starwars/images/b/b8/Dooku_Headshot.jpg/revision/latest?cb=20180430181839'
+      });
+    })
+    .then(() => {
       return knex('goals').insert({
         user_id: 1,
         goal: "I wanna get jacked."
@@ -127,6 +295,84 @@ exports.seed = function(knex, Promise) {
       return knex('goals').insert({
         user_id: 3,
         goal: "Cultivate more mass."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 16,
+        goal: "Be fit, I must."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 15,
+        goal: "Have the higher ground."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 15,
+        goal: "Train the best jedi."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 5,
+        goal: "Be a walking tank."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 6,
+        goal: "I want to be great."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 11,
+        goal: "I want to do really well."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 15,
+        goal: "Be as strong as my mitochlorian count."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 16,
+        goal: "Be strong, I must."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 7,
+        goal: "Be as humanly fit as possible."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 6,
+        goal: "Cultivate strength."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 8,
+        goal: "Cultivate a lot of strength."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 9,
+        goal: "Be fast."
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 10,
+        goal: "Be really fast."
       });
     })
     .then(() => {
@@ -179,6 +425,18 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
+        user_id: 15,
+        friend_id: 16
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 16,
+        friend_id: 15
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
         user_id: 4,
         friend_id: 2
       });
@@ -219,8 +477,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
-        time_begin: 'August 30, 2018 12:00:00',
-        time_end: 'August 30, 2018 13:00:00'
+        time_begin: '20180830 1100',
+        time_end: '20180830 1500'
       });
     })
     .then(() => {
@@ -235,8 +493,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
-        time_begin: 'August 30, 2018 12:00:00',
-        time_end: 'August 30, 2018 13:00:00'
+        time_begin: '20180902 1000',
+        time_end: '20180902 1200'
       });
     })
     .then(() => {
@@ -257,8 +515,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
         public: true,
-        time_begin: 'August 29, 2018 12:00:00',
-        time_end: 'August 29, 2018 14:00:00'
+        time_begin: '20180903 1700',
+        time_end: '20180903 1830'
       });
     })
     .then(() => {
@@ -279,8 +537,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
         public: true,
-        time_begin: 'August 28, 2018 14:00:00',
-        time_end: 'August 28, 2018 15:00:00'
+        time_begin: '20180828 1400',
+        time_end: '20180828 1500'
       });
     })
     .then(() => {
@@ -295,8 +553,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
-        time_begin: 'August 29, 2018 19:30:00',
-        time_end: 'August 29, 2018 20:30:00'
+        time_begin: '20180809 1930',
+        time_end: '20180809 2030'
       });
     })
     .then(() => {
@@ -311,14 +569,30 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Donec eu ex nec velit dignissim semper.',
         public: false,
-        time_begin: 'September 1, 2018 11:30:00',
-        time_end: 'September 1, 2018 12:30:00'
+        time_begin: '20180901 1300',
+        time_end: '20180901 1430'
       });
     })
     .then(() => {
       return knex('tags').insert({
         event_id: 6,
         tag: "HIT"
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 16,
+        gym_id: 4,
+        description: 'Work everything, I must',
+        public: true,
+        time_begin: '20180901 1300',
+        time_end: '20180901 1430'
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 7,
+        tag: "ORM"
       });
     })
     .then(() => {

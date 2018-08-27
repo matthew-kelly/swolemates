@@ -22,8 +22,8 @@ exports.up = function(knex, Promise) {
       table.integer('gym_id').references('gyms.id');
       table.text('description');
       table.boolean('public');
-      table.dateTime('time_begin');
-      table.dateTime('time_end');
+      table.string('time_begin');
+      table.string('time_end');
     })
     .createTable('ratings', (table) => {
       table.increments('id');
