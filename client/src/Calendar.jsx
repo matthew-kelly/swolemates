@@ -29,18 +29,7 @@ constructor(props) {
 
   async getAllEvents(gym_id) {
     const res = axios.get(`${API}/gyms/${gym_id}/events`);
-    // const res = await axios({
-    //   method: 'get',
-    //   url: `${API}/events`,
-    //   data: {
-    //     gym_id: gym_id
-    //   }
-    // })
-    // if (res.data.length > 0) {
-      return await res;
-    // } else {
-      // return false;
-    // }
+    return await res;
   }
 
   async addEventTag(eventId, tag) {
@@ -94,7 +83,7 @@ constructor(props) {
     }
 
     let eventObj = {
-      user_id: this.props.appState.current_user.id, 
+      user_id: this.props.appState.current_user.id,
       gym_id: this.props.appState.current_user.gym_id,
       description: description,
       public: publicCheck,
@@ -110,6 +99,8 @@ constructor(props) {
         });
       })
       .catch(err => console.error(err));
+
+      console.log(document.getElementsByClassName('css-10nd86i'))
   }
 
 
@@ -246,6 +237,8 @@ constructor(props) {
     let days = [];
     let day = startDate;
     let formattedDate = "";
+    let button;
+
 
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
@@ -262,6 +255,7 @@ constructor(props) {
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
+            {button}
             <span className="bg">{formattedDate}</span>
           </div>
         );
@@ -270,6 +264,7 @@ constructor(props) {
       rows.push(
         <div className="row" key={day}>
           {days}
+          }
         </div>
       );
       days = [];

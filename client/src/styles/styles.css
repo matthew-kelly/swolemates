@@ -4,11 +4,11 @@
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 
+
 /* ------------ */
 
-.container {
+/*.container {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   flex-wrap: wrap;
   max-height: 90vh;
@@ -20,14 +20,22 @@
   height: fit-content;
   width: fit-content;
   padding: 1em;
-  margin: 0.5em;
+  margin: 0.1em 0em 0.1em 0em;
   box-shadow: 0px 0px 8px 1px lightgrey;
+}
+
+#smallTileCollection {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 22vw;
 }
 
 .dashboardSmall {
   font-size: 200%;
   padding-top: 2em;
-  width: 10vw;
+  width: 11vw;
   height: 20vh;
   display: flex;
   justify-content: space-evenly;
@@ -36,8 +44,34 @@
   flex-direction: column;
 }
 
-.dashboardSubtitle{
+.dashboardMedium {
+  padding-top: 2em;
+  width: 23vw;
+  height: 40vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboardBig {
+  padding-top: 2em;
+  width: 20vw;
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboardSubtitle {
   font-size: 60%;
+}
+
+#profileImage {
+  overflow: hidden;
 }
 
 #calendarDashboard {
@@ -49,7 +83,72 @@
 .tile:hover {
   box-shadow: 0px 0px 10px 2px lightgrey;
 }
+*/
+body {
+  margin: 0 auto;
+  max-width: 90vw;
+  padding: 1em 0;
+}
 
+.container {
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 15vw 15vw 30vw 10vw;
+  grid-template-rows: auto;
+  grid-gap: 1em;
+  grid-template-areas:
+  "profile-image profile-image bio bio goals goals"
+  "profile-image profile-image bio bio goals goals"
+  "profile-image profile-image bio bio goals goals"
+  "gym calendarDashboard1 activity activity activity activity"
+  "calendarDashboard2 calendarDashboard3 activity activity activity activity";
+}
+
+.tile {
+  background: white;
+  /*align-self: center;*/
+  justify-self: stretch;
+  box-shadow: 0px 0px 8px 1px #eeeeee;
+  padding: 0.8em;
+  border-radius: 0.5em;
+}
+.tile:hover{
+  box-shadow: 0px 0px 10px 2px lightgrey;
+}
+.tileSmall{
+  font-size: 1.2em;
+}
+.tileMedium{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+
+#profileImage{
+  grid-area: profile-image;
+}
+#bio{
+  grid-area: bio;
+}
+#goals{
+  grid-area: goals;
+}
+#gym{
+  grid-area: gym;
+}
+#calendarDashboard1{
+  grid-area: calendarDashboard1;
+}
+#calendarDashboard2{
+  grid-area: calendarDashboard2;
+}
+#calendarDashboard3{
+  grid-area: calendarDashboard3;
+}
+#activity{
+  grid-area: activity;
+}
 .navbar {
   font-size: 1.4em;
   display: flex;
@@ -164,6 +263,7 @@ div#start-component.component {
 
 
 
+
 /* ------------- User.jsx Chat Heads ------------- */
 
 .chat-head-list {
@@ -184,11 +284,10 @@ div#start-component.component {
   border-radius: 1em;
 }
 
-.chat-head-container:hover{
+.chat-head-container:hover {
   border: 1px solid #aaa;
   box-shadow: 0px 0px 8px 1px grey;
 }
-
 
 
 /* .chat-head-content {
@@ -217,6 +316,7 @@ div#start-component.component {
 
 
 
+
 /* ---------------------------------------------- */
 
 .icon {
@@ -239,6 +339,7 @@ div#start-component.component {
 
 
 
+
 /* ------------- Calendar.jsx Styles ------------- */
 
 
@@ -252,6 +353,7 @@ div#start-component.component {
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
+
 
 
 
@@ -303,6 +405,7 @@ main {
 
 
 
+
 /* GRID */
 
 .row {
@@ -338,6 +441,7 @@ main {
   justify-content: flex-end;
   text-align: right;
 }
+
 
 
 
