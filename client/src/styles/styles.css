@@ -299,7 +299,17 @@ main {
   max-width: 50em;
 }
 
+.day-event-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 5em;
+  
+}
 
+.day-event-container li {
+  list-style-type: none;
+}
 
 
 
