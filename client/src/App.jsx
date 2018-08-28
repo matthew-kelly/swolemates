@@ -74,7 +74,7 @@ class App extends Component {
           window.alert("Could not log in. Please try again")
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => console.err(err));
   }
 
   logoutSubmit = (event) => {

@@ -67,9 +67,34 @@ module.exports = function knexData(knex) {
         .from('users')
     },
 
+    // Return list of all events
     allEvents: () => {
       return knex.select('*')
         .from('events')
-    }
+    },
+
+    // Create a new event
+    createNewEvent: (user_id, gym_id, description, public, time_begin, time_end) => {
+      return knex('events')
+        .insert({
+          user_id: user_id,
+          gym_id: gym_id,
+          description: description,
+          public: public,
+          time_begin: time_begin,
+          time_end: time_end
+        })
+        .returning('id')
+    },
+
+    // Add tag to event
+    addEventTag: (event_id, tag) => {
+      return knex('tags')
+        .insert({
+          event_id: event_id,
+          tag: tag
+        })
+        .returning('id')
+    },
   }
 }
