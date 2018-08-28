@@ -29,18 +29,7 @@ constructor(props) {
 
   async getAllEvents(gym_id) {
     const res = axios.get(`${API}/gyms/${gym_id}/events`);
-    // const res = await axios({
-    //   method: 'get',
-    //   url: `${API}/events`,
-    //   data: {
-    //     gym_id: gym_id
-    //   }
-    // })
-    // if (res.data.length > 0) {
-      return await res;
-    // } else {
-      // return false;
-    // }
+    return await res;
   }
 
   async addEventTag(eventId, tag) {
