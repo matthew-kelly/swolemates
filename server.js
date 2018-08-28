@@ -75,6 +75,7 @@ app.get('/api/users/:id/friends', (req, res) => {
     })
 });
 
+// Get all events for a user
 app.get('/api/users/:id/events', (req, res) => {
   database.getEventsList(req.params.id)
     .then((result) => {
@@ -107,14 +108,37 @@ app.get('/api/users', (req, res) => {
     })
 });
 
-app.get('/api/events', (req, res) => {
-  database.allEvents()
+// Get all events for a gym
+app.get('/api/gyms/:id/events', (req, res) => {
+  database.allGymEvents(req.params.id)
     .then((result) => {
       res.send(result);
     })
     .catch((e) => {
       console.error(e)
     })
+});
+
+// Create new event
+app.post('/api/events', (req, res) => {
+  database.createNewEvent(req.body.user_id, req.body.gym_id, req.body.description, req.body.public, req.body.time_begin, req.body.time_end)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
+// Add tag to event
+app.post('/api/events/:id/tags', (req, res) => {
+  database.addEventTag(req.params.id, req.body.tag)
+  .then((result) => {
+    res.send(result);
+  })
+  .catch((e) => {
+    console.error(e)
+  })
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

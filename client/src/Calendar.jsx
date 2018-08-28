@@ -19,14 +19,38 @@ class Calendar extends Component {
 constructor(props) {
     super(props);
     this.state = {
-    tags: '',
-    currentMonth: new Date(),
-    selectedDate: new Date(),
+      tags: '',
+      currentMonth: new Date(),
+      selectedDate: new Date(),
+      events: ''
     };
+    this.getAllEvents = this.getAllEvents.bind(this);
   }
 
-  async postEvent(event) {
-    const res = await axios({method: 'get', url: `${API}/events`})
+  async getAllEvents(gym_id) {
+    const res = axios.get(`${API}/gyms/${gym_id}/events`);
+    // const res = await axios({
+    //   method: 'get',
+    //   url: `${API}/events`,
+    //   data: {
+    //     gym_id: gym_id
+    //   }
+    // })
+    // if (res.data.length > 0) {
+      return await res;
+    // } else {
+      // return false;
+    // }
+  }
+
+  async addEventTag(eventId, tag) {
+    const res = await axios({
+      method: 'post',
+      url: `${API}/events/${eventId}/tags`,
+      data: {
+        tag: tag
+      }
+    })
     if (res.data.length > 0) {
       return await res.data;
     } else {
@@ -34,6 +58,25 @@ constructor(props) {
     }
   }
 
+  async postEvent(eventObj) {
+    const res = await axios({
+      method: 'post',
+      url: `${API}/events`,
+      data: {
+        user_id: eventObj.user_id,
+        gym_id: eventObj.gym_id,
+        description: eventObj.description,
+        public: eventObj.public,
+        time_begin: eventObj.time_begin,
+        time_end: eventObj.time_end
+      }
+    })
+    if (res.data.length > 0) {
+      return await res.data;
+    } else {
+      return false;
+    }
+  }
 
 //Creates event object with all relevant information
   createEvent = (event) => {
@@ -46,23 +89,27 @@ constructor(props) {
     if(document.getElementById('publicCheckbox').checked){
       publicCheck = true;
     }
-    // console.log(publicCheck)
     for(let tag of this.state.tags){
       tagArray.push(tag.value);
     }
 
     let eventObj = {
-      tags: tagArray,
-      // gym_id: ???,
+      user_id: this.props.appState.current_user.id, 
+      gym_id: this.props.appState.current_user.gym_id,
       description: description,
       public: publicCheck,
       time_begin: sTime,
       time_end: eTime,
     }
-    console.log(eventObj)
-    this.setState({ tags: '' });
-    this.postEvent().then(res => {console.log(res)
-    });
+    this.postEvent(eventObj)
+      .then(res => {
+        const eventId = res[0];
+        tagArray.map((tag) => {
+          this.addEventTag(eventId, tag)
+            .catch(err => console.err(err));
+        });
+      })
+      .catch(err => console.err(err));
   }
 
 
@@ -80,11 +127,15 @@ constructor(props) {
     document.getElementById("popupBackground").style = "display: none";
     document.getElementById("eventDescription").value = '';
     document.getElementById('publicCheckbox').checked = '';
-
   }
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClick, false);
+
+    this.getAllEvents(this.props.appState.current_user.gym_id)
+    .then(res => this.setState({ events: res.data }))
+    .then(res => console.log(this.state.events))
+    .catch(err => console.err(err));
   }
 
   componentWillUnmount() {
