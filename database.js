@@ -10,6 +10,16 @@ module.exports = function knexData(knex) {
       })
     },
 
+    //Returns user data for Events list
+    getEventsList: (id) => {
+      return knex.select('*')
+      .from('events')
+      .join('users', 'user_id', '=', 'users.id')
+      .where({
+        user_id: id
+      })
+    },
+
     // Return user data for Connections list
     getConnectionsList: (id) => {
       return result = knex.select('*')
@@ -55,6 +65,11 @@ module.exports = function knexData(knex) {
     allUsers: () => {
       return knex.select('*')
         .from('users')
+    },
+
+    allEvents: () => {
+      return knex.select('*')
+        .from('events')
     }
   }
 }

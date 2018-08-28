@@ -10,6 +10,9 @@ import chroma from 'chroma-js';
 import TimeRange from 'react-time-range';
 import moment from 'moment';
 import 'moment-timezone';
+import axios from 'axios';
+const API = 'http://localhost:5000/api'
+
 
 
 class Calendar extends Component {
@@ -21,6 +24,16 @@ constructor(props) {
     selectedDate: new Date(),
     };
   }
+
+  async postEvent(event) {
+    const res = await axios({method: 'get', url: `${API}/events`})
+    if (res.data.length > 0) {
+      return await res.data;
+    } else {
+      return false;
+    }
+  }
+
 
 //Creates event object with all relevant information
   createEvent = (event) => {
@@ -48,7 +61,10 @@ constructor(props) {
     }
     console.log(eventObj)
     this.setState({ tags: '' });
+    this.postEvent().then(res => {console.log(res)
+    });
   }
+
 
 //Called when user clicks on timedropdown menu, sets state to set time
   changeTime = (event) =>{

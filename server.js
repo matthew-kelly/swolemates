@@ -75,6 +75,16 @@ app.get('/api/users/:id/friends', (req, res) => {
     })
 });
 
+app.get('/api/users/:id/events', (req, res) => {
+  database.getEventsList(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
 // Connections list
 app.get('/api/users/:id/connections', (req, res) => {
   database.getConnectionsList(req.params.id)
@@ -89,6 +99,16 @@ app.get('/api/users/:id/connections', (req, res) => {
 // All users
 app.get('/api/users', (req, res) => {
   database.allUsers()
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
+app.get('/api/events', (req, res) => {
+  database.allEvents()
     .then((result) => {
       res.send(result);
     })
