@@ -106,10 +106,10 @@ constructor(props) {
         const eventId = res[0];
         tagArray.map((tag) => {
           this.addEventTag(eventId, tag)
-            .catch(err => console.err(err));
+            .catch(err => console.error(err));
         });
       })
-      .catch(err => console.err(err));
+      .catch(err => console.error(err));
   }
 
 
@@ -135,7 +135,7 @@ constructor(props) {
     this.getAllEvents(this.props.appState.current_user.gym_id)
     .then(res => this.setState({ events: res.data }))
     .then(res => console.log(this.state.events))
-    .catch(err => console.err(err));
+    .catch(err => console.error(err));
   }
 
   componentWillUnmount() {
