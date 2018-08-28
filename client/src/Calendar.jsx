@@ -19,11 +19,28 @@ class Calendar extends Component {
 constructor(props) {
     super(props);
     this.state = {
-    tags: '',
-    newEventTags: '',
-    currentMonth: new Date(),
-    selectedDate: new Date(),
+      tags: '',
+      currentMonth: new Date(),
+      selectedDate: new Date(),
+      events: ''
     };
+    this.getAllEvents = this.getAllEvents.bind(this);
+  }
+
+  async getAllEvents(gym_id) {
+    const res = axios.get(`${API}/gyms/${gym_id}/events`);
+    // const res = await axios({
+    //   method: 'get',
+    //   url: `${API}/events`,
+    //   data: {
+    //     gym_id: gym_id
+    //   }
+    // })
+    // if (res.data.length > 0) {
+      return await res;
+    // } else {
+      // return false;
+    // }
   }
 
   async addEventTag(eventId, tag) {
@@ -84,7 +101,6 @@ constructor(props) {
       time_begin: sTime,
       time_end: eTime,
     }
-    this.setState({ newEventTags: tagArray });
     this.postEvent(eventObj)
       .then(res => {
         const eventId = res[0];
@@ -111,11 +127,15 @@ constructor(props) {
     document.getElementById("popupBackground").style = "display: none";
     document.getElementById("eventDescription").value = '';
     document.getElementById('publicCheckbox').checked = '';
-
   }
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClick, false);
+
+    this.getAllEvents(this.props.appState.current_user.gym_id)
+    .then(res => this.setState({ events: res.data }))
+    .then(res => console.log(this.state.events))
+    .catch(err => console.err(err));
   }
 
   componentWillUnmount() {

@@ -75,6 +75,7 @@ app.get('/api/users/:id/friends', (req, res) => {
     })
 });
 
+// Get all events for a user
 app.get('/api/users/:id/events', (req, res) => {
   database.getEventsList(req.params.id)
     .then((result) => {
@@ -107,9 +108,9 @@ app.get('/api/users', (req, res) => {
     })
 });
 
-// All events
-app.get('/api/events', (req, res) => {
-  database.allEvents()
+// Get all events for a gym
+app.get('/api/gyms/:id/events', (req, res) => {
+  database.allGymEvents(req.params.id)
     .then((result) => {
       res.send(result);
     })
@@ -129,6 +130,7 @@ app.post('/api/events', (req, res) => {
     })
 });
 
+// Add tag to event
 app.post('/api/events/:id/tags', (req, res) => {
   database.addEventTag(req.params.id, req.body.tag)
   .then((result) => {

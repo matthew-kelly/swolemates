@@ -73,6 +73,15 @@ module.exports = function knexData(knex) {
         .from('events')
     },
 
+    // Return list of all events for a gym
+    allGymEvents: (gym_id) => {
+      return knex.select('*')
+        .from('events')
+        .where({
+          gym_id: gym_id
+        })
+    },
+
     // Create a new event
     createNewEvent: (user_id, gym_id, description, public, time_begin, time_end) => {
       return knex('events')
