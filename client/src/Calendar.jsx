@@ -11,12 +11,13 @@ import TimeRange from 'react-time-range';
 import moment from 'moment';
 import 'moment-timezone';
 import axios from 'axios';
+
 const API = 'http://localhost:5000/api'
 
 
 
 class Calendar extends Component {
-constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       tags: '',
@@ -67,7 +68,38 @@ constructor(props) {
     }
   }
 
-//Creates event object with all relevant information
+  
+  
+  // Called when user clicks on timedropdown menu, sets state to set time
+  changeTime = (event) =>{
+    let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
+    let endTime = moment(event.endTime).format('YYYYMMDD HHmm')
+    this.setState({ startTime: startTime });
+    this.setState({ endTime: endTime });
+  }
+  
+// Hides popup and resets checkbox/event description
+  onClear = (event) => {
+    document.getElementById("popup").style = "display: none";
+    document.getElementById("popupBackground").style = "display: none";
+    document.getElementById("eventDescription").value = '';
+    document.getElementById('publicCheckbox').checked = '';
+  }
+  
+  // Does nothing if click is inside the event popup/else clears
+  handleClick = (event) => {
+    if (this.node.contains(event.target)) {
+      return;
+    }
+    this.onClear();
+  }
+
+  // Adds tags selected by user to the state with each tag click
+  addTag = (event) => {
+    this.setState({tags: event});
+  }
+  
+  // Creates event object with all relevant information
   createEvent = (event) => {
     let description = document.getElementById("eventDescription").value;
     let tagArray = [];
@@ -82,48 +114,38 @@ constructor(props) {
       tagArray.push(tag.value);
     }
 
-    let eventObj = {
-      user_id: this.props.appState.current_user.id, 
-      gym_id: this.props.appState.current_user.gym_id,
-      description: description,
-      public: publicCheck,
-      time_begin: sTime,
-      time_end: eTime,
-    }
-    this.postEvent(eventObj)
-      .then(res => {
-        const eventId = res[0];
-        tagArray.map((tag) => {
-          this.addEventTag(eventId, tag)
+    if (description.length > 0 && tagArray.length > 0 && date.length > 0 && sTime < eTime) {
+      let eventObj = {
+        user_id: this.props.appState.current_user.id, 
+        gym_id: this.props.appState.current_user.gym_id,
+        description: description,
+        public: publicCheck,
+        time_begin: sTime,
+        time_end: eTime,
+      }
+      this.postEvent(eventObj)
+        .then(res => {
+          const eventId = res[0];
+          
+          tagArray.map((tag) => {
+            this.addEventTag(eventId, tag)
             .catch(err => console.error(err));
-        });
-      })
-      .catch(err => console.error(err));
+          });
+        })
+        .catch(err => console.error(err));
+        
+      this.onClear();
+      window.location.reload(true);
+    } else {
+      window.alert("Event is not valid");
+    }
   }
-
-
-//Called when user clicks on timedropdown menu, sets state to set time
-  changeTime = (event) =>{
-    let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
-    let endTime = moment(event.endTime).format('YYYYMMDD HHmm')
-    this.setState({ startTime: startTime });
-    this.setState({ endTime: endTime });
-  }
-
-//Hides popup and resets checkbox/event description
-  onClear = (event) => {
-    document.getElementById("popup").style = "display: none";
-    document.getElementById("popupBackground").style = "display: none";
-    document.getElementById("eventDescription").value = '';
-    document.getElementById('publicCheckbox').checked = '';
-  }
-
+  
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClick, false);
-
+    
     this.getAllEvents(this.props.appState.current_user.gym_id)
     .then(res => this.setState({ events: res.data }))
-    .then(res => console.log(this.state.events))
     .catch(err => console.error(err));
   }
 
@@ -131,20 +153,7 @@ constructor(props) {
     document.removeEventListener('mousedown', this.handleClick, false);
   }
 
-//Does nothing if click is inside the event popup/else clears
-  handleClick = (event) => {
-    if (this.node.contains(event.target)) {
-      return;
-    }
-    this.onClear();
-  }
-
-//Adds tags selected by user to the state with each tag click
-  addTag = (event) => {
-    this.setState({tags: event});
-  }
-
-//Renders the popup with forms/buttons
+  // Renders the popup with forms/buttons
   renderPopUp(){
     return(
       <div>
@@ -185,7 +194,7 @@ constructor(props) {
       )
   }
 
-//Renders Calendar Header
+// Renders Calendar Header
   renderHeader() {
     const dateFormat = 'MMMM YYYY';
     return (
@@ -238,8 +247,20 @@ constructor(props) {
 
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
+
+        const dayEventsArray = [];
+
+        for (let j = 0; j < this.state.events.length; j++) {
+          let eventStartDate = moment(this.state.events[j].time_begin).format('YYYYMMDD');
+          let calendarDate = moment(day).format('YYYYMMDD');
+          if (eventStartDate === calendarDate) {
+            dayEventsArray.push(<li key={this.state.events[j].id}>{this.state.events[j].id} </li>)
+          }
+        }
+
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day;
+
         days.push(
           <div
             className={`col cell ${
@@ -252,6 +273,9 @@ constructor(props) {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
+            <ul className="day-event-container">
+              {dayEventsArray}
+            </ul>
           </div>
         );
         day = dateFns.addDays(day, 1);
@@ -266,7 +290,7 @@ constructor(props) {
     return <div className="body">{rows}</div>;
   }
 
-//On clicking a day, gets the popup information to show, sets the state.
+// On clicking a day, gets the popup information to show, sets the state.
   onDateClick = day => {
     this.setState({
       selectedDate: day
@@ -295,7 +319,7 @@ constructor(props) {
     return (
       <div>
         {this.renderPopUp()}
-      <div className="calendar">
+        <div className="calendar">
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
