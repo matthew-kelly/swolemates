@@ -68,8 +68,8 @@ class Calendar extends Component {
     }
   }
 
-  
-  
+
+
   // Called when user clicks on timedropdown menu, sets state to set time
   changeTime = (event) =>{
     let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
@@ -77,7 +77,7 @@ class Calendar extends Component {
     this.setState({ startTime: startTime });
     this.setState({ endTime: endTime });
   }
-  
+
 // Hides popup and resets checkbox/event description
   onClear = (event) => {
     document.getElementById("popup").style = "display: none";
@@ -85,7 +85,7 @@ class Calendar extends Component {
     document.getElementById("eventDescription").value = '';
     document.getElementById('publicCheckbox').checked = '';
   }
-  
+
   // Does nothing if click is inside the event popup/else clears
   handleClick = (event) => {
     if (this.node.contains(event.target)) {
@@ -98,7 +98,7 @@ class Calendar extends Component {
   addTag = (event) => {
     this.setState({tags: event});
   }
-  
+
   // Creates event object with all relevant information
   createEvent = (event) => {
     let description = document.getElementById("eventDescription").value;
@@ -116,7 +116,7 @@ class Calendar extends Component {
 
     if (description.length > 0 && tagArray.length > 0 && date.length > 0 && sTime < eTime) {
       let eventObj = {
-        user_id: this.props.appState.current_user.id, 
+        user_id: this.props.appState.current_user.id,
         gym_id: this.props.appState.current_user.gym_id,
         description: description,
         public: publicCheck,
@@ -126,24 +126,24 @@ class Calendar extends Component {
       this.postEvent(eventObj)
         .then(res => {
           const eventId = res[0];
-          
+
           tagArray.map((tag) => {
             this.addEventTag(eventId, tag)
             .catch(err => console.error(err));
           });
         })
         .catch(err => console.error(err));
-        
+
       this.onClear();
       window.location.reload(true);
     } else {
       window.alert("Event is not valid");
     }
   }
-  
+
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClick, false);
-    
+
     this.getAllEvents(this.props.appState.current_user.gym_id)
     .then(res => this.setState({ events: res.data }))
     .catch(err => console.error(err));

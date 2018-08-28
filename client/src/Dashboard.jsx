@@ -53,22 +53,30 @@ class Dashboard extends Component {
     }
     return (
       <div className="container">
-        <div id="image" className="tile">
+        <div id="profileImage" className="tile tileMedium">
           <img className="profile_pic" src={user_data.profile_pic} alt="profile" />
         </div>
-        <div id="bio" className="tile">
+          <div id="gym" className="tile tileSmall">
+            <i className="fas fa-dumbbell"></i>
+            <h4 className='dashboardSubtitle'>{user_data.gym_id}</h4>
+          </div>
+          <div id="calendarDashboard1" className="tile tileSmall">
+            <i className="far fa-calendar"></i>
+            <h4 className='dashboardSubtitle'>Calendar</h4>
+          </div>
+          <div id="calendarDashboard2" className="tile tileSmall">
+            <i className="far fa-calendar"></i>
+            <h4 className='dashboardSubtitle'>Calendar</h4>
+          </div>
+          <div id="calendarDashboard3" className="tile tileSmall">
+            <i className="far fa-calendar"></i>
+            <h4 className='dashboardSubtitle'>Calendar</h4>
+          </div>
+        <div id="bio" className="tile tileBig">
           <h1>About {user_data.first_name}</h1>
           <p>{user_data.bio}</p>
         </div>
-        <div id="gym" className="tile dashboardSmall">
-          <i className="fas fa-dumbbell"></i>
-          <h4 className='dashboardSubtitle'>{user_data.gym_id}</h4>
-        </div>
-        <div id="calendarDashboard" className="tile dashboardSmall">
-          <i className="far fa-calendar"></i>
-          <h4 className='dashboardSubtitle'>Calendar</h4>
-        </div>
-        <div id="goals" className="tile">
+        <div id="goals" className="tile tileMedium">
           <h1>Goals</h1>
           <ul>
             {allGoals}
