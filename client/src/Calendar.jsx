@@ -33,6 +33,11 @@ class Calendar extends Component {
     return await res;
   }
 
+  async getFriends(id) {
+    const res = await axios.get(`${API}/users/${id}/friends`);
+    return await res.data;
+  }
+
   async addEventTag(eventId, tag) {
     const res = await axios({
       method: 'post',
@@ -84,6 +89,7 @@ class Calendar extends Component {
     document.getElementById("popupBackground").style = "display: none";
     document.getElementById("eventDescription").value = '';
     document.getElementById('publicCheckbox').checked = '';
+    this.setState({tags:''});
   }
 
   // Does nothing if click is inside the event popup/else clears
@@ -143,6 +149,10 @@ class Calendar extends Component {
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClick, false);
+
+    this.getFriends(this.props.appState.current_user.id)
+    .then(res => this.setState({ friends: res }))
+    .catch(err => console.log(err));
 
     this.getAllEvents(this.props.appState.current_user.gym_id)
     .then(res => this.setState({ events: res.data }))
@@ -253,7 +263,7 @@ class Calendar extends Component {
         for (let j = 0; j < this.state.events.length; j++) {
           let eventStartDate = moment(this.state.events[j].time_begin).format('YYYYMMDD');
           let calendarDate = moment(day).format('YYYYMMDD');
-          if (eventStartDate === calendarDate) {
+          if (eventStartDate === calendarDate && (this.state.events[j].public === true || this.state.events[j].user_id === this.props.appState.current_user.id)) {
             dayEventsArray.push(<li key={this.state.events[j].id}>{this.state.events[j].id} </li>)
           }
         }

@@ -97,6 +97,7 @@ app.get('/api/users/:id/connections', (req, res) => {
     })
 });
 
+
 // All users
 app.get('/api/users', (req, res) => {
   database.allUsers()

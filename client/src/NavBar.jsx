@@ -1,4 +1,12 @@
 import React, {Component} from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  // Redirect,
+  // Switch,
+  Link
+  // render
+} from 'react-router-dom';
 
 class NavBar extends Component {
 
@@ -10,10 +18,10 @@ class NavBar extends Component {
 Logout</a></span>;
       return (
         <nav className="navbar">
-          <span><a href='/dashboard'><i className="far fa-user-circle"></i>Dashboard</a></span>
-          <span><a href='/calendar'><i className="far fa-calendar"></i>Gym Calendar</a></span>
-          <span><a href='/connections'><i className="far fa-comments"></i>Connections</a></span>
-          <span><a href='/friends'><i className="fas fa-user-friends"></i>Friends</a></span>
+          <span><Link to={{pathname: '/dashboard'}}><i className="far fa-user-circle"></i>Dashboard</Link></span>
+          <span><Link to={{pathname:'/calendar'}}><i className="far fa-calendar"></i>Gym Calendar</Link></span>
+          <span><Link to={{pathname:'/connections'}}><i className="far fa-comments"></i>Connections</Link></span>
+          <span><Link to={{pathname:'/friends'}}><i className="fas fa-user-friends"></i>Friends</Link></span>
           {logoutButton}
         </nav>
       );
