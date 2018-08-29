@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-// import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-// import Calendar from './Calendar.jsx'
 import { tagOptions } from './docs/data';
 
 const API = 'http://localhost:5000/api'
@@ -42,10 +40,10 @@ class EventBubble extends Component {
       });
     }
 
-
+    const thisEvent = JSON.stringify(this.props.thisEvent);
     if (firstTag) {
       return(
-        <div className="event-circle" style={{backgroundColor: `${eventColour}`}}></div> // {this.state.eventColour}
+        <div data-thisevent={thisEvent} data-eventtags={JSON.stringify(this.state.tags)} onClick={this.props.showEventDataModal} className="event-circle" style={{backgroundColor: `${eventColour}`}}></div> // {this.state.eventColour}
       )
     } else {
       return false;
