@@ -97,6 +97,17 @@ app.get('/api/users/:id/connections', (req, res) => {
     })
 });
 
+// Messages list
+
+app.get('/api/users/:id/messages', (req, res) => {
+  database.getMessagesList(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
 
 // All users
 app.get('/api/users', (req, res) => {

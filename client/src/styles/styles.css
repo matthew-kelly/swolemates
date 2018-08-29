@@ -98,6 +98,37 @@ a{
   text-decoration: none;
 }
 
+#chatWindow{
+  border:1px solid black;
+  height: 60vh;
+  width: 30vw;
+  position: fixed;
+  bottom: 0.75em;
+  right: 0.75em;
+  border-radius: 2em 2em 0em 2em;
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#chatWindowMessageContainer{
+  padding: 0.7em;
+}
+
+#chatWindowClose{
+  position: fixed;
+  bottom: 25em;
+  right: 3em;
+  float:right;
+}
+
+#chatWindowTextArea{
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 0em 0em 0em 2.2em;
+}
+
 .container {
   justify-items: center;
   display: grid;
@@ -302,7 +333,7 @@ div#start-component.component {
 .chat-head-container {
   background-color: white;
   /*border: 1px solid #aaa;*/
-  margin: 0;
+  margin: 0.1em;
   height: 250px;
   width: 250px;
   display: flex;

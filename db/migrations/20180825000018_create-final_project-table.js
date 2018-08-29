@@ -58,6 +58,13 @@ exports.up = function(knex, Promise) {
       table.integer('event_id').references('events.id');
       table.string('tag');
     })
+    .createTable('messages', (table) => {
+      table.increments('id');
+      table.integer('creator_id').references('users.id');
+      table.integer('receiver_id').references('users.id');
+      table.string('content');
+      table.timestamp('created_at').defaultTo(knex.fn.now());
+    })
 };
 
 exports.down = function(knex, Promise) {
@@ -70,6 +77,7 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('goals'),
     knex.schema.dropTable('events'),
     knex.schema.dropTable('users'),
-    knex.schema.dropTable('gyms')
+    knex.schema.dropTable('gyms'),
+    knex.schema.dropTable('messages')
   ])
 };

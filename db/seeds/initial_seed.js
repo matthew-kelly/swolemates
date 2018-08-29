@@ -27,6 +27,9 @@ exports.seed = function(knex, Promise) {
       return knex('gyms').del()
     })
     .then(() => {
+      return knex('messages').del()
+    })
+    .then(() => {
       return knex('gyms').insert({
         name: 'Globo Gym',
         address: '123 Fourth Avenue'
@@ -746,6 +749,14 @@ exports.seed = function(knex, Promise) {
         category2: 1,
         category3: 2,
         comment: 'His parents obviously failed him. He sucks.'
+      });
+    })
+    .then(() => {
+      return knex('messages').insert({
+        creator_id: 1,
+        receiver_id: 2,
+        content: 'His parents obviously failed him. He sucks.',
+        created_at: '2018-08-29T12:00:00+00:00'
       });
     })
 };

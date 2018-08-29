@@ -30,6 +30,18 @@ module.exports = function knexData(knex) {
       })
     },
 
+    // Return user data for Messages list
+    getMessagesList: (id) => {
+      return result = knex.select('*')
+      .from('messages')
+      .where({
+        creator_id: id
+      })
+      .orWhere({
+        receiver_id: id
+      })
+    },
+
     // Authenticate login
     authenticateLogin: (email, password) => {
       const result = knex.select('id', 'first_name', 'last_name', 'bio', 'gym_id', 'profile_pic')
