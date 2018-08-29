@@ -1,12 +1,6 @@
 /* FONT IMPORTS */
-
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-
-
-
-
-/* ------------ */
 
 
 /*.container {
@@ -288,9 +282,6 @@ div#start-component.component {
 }
 
 
-
-
-
 /* ------------- User.jsx Chat Heads ------------- */
 
 .chat-head-list {
@@ -316,12 +307,6 @@ div#start-component.component {
   box-shadow: 0px 0px 8px 1px grey;
 }
 
-
-
-/* .chat-head-content {
-
-} */
-
 .chat-head-pic {
   margin: auto;
   border-radius: 50%;
@@ -342,34 +327,94 @@ div#start-component.component {
   transform: translate(-50%, -50%);
 }
 
-/* ---------------- EventBubble ---------------- */
+.add-event-button {
+  opacity: 0.3;
+  height: 20px;
+  width: 20px;
+  border-radius: 90px;
+  padding: 0;
+  margin: 0 0 5px 5px;
+  text-align: center;
+  line-height: 20px;
+  color: black;
+  transition: 0.25s ease-out;
+}
 
+.add-event-button:hover {
+  opacity: 1;
+  background-color: rgb(78, 252, 78);
+}
+
+.disabled .add-event-button {
+  opacity: 0;
+}
+
+.hidden-button {
+  opacity: 0;
+}
+
+.hidden-button:hover {
+  opacity: 0;
+}
+
+div.col.cell {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* ---------------- EventBubble ---------------- */
 .event-circle {
   height: 20px;
   width: 20px;
   border-radius: 90px;
   padding: 0;
   margin: 1px;
+  z-index: 997;
 }
 
-/* --------------------------------------------- */
+.disabled .event-circle {
+  opacity: 0.3;
+}
 
-.icon {
-  font-family: 'Material Icons', serif;
-  font-style: normal;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
 
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga';
+/* -------------- EventDataModal -------------- */
+.event-data-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.event-data-modal-main {
+  position:fixed;
+  background: white;
+  width: 80%;
+  height: auto;
+  padding: 2em 5em; 
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  z-index: 1001;
+}
+
+.event-data-modal-main h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+.event-data-modal-main ul {
+  margin: 0;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
 }
 
 
@@ -377,7 +422,6 @@ div#start-component.component {
 
 
 /* ------------- Calendar.jsx Styles ------------- */
-
 
 /* VARIABLES */
 
@@ -389,12 +433,6 @@ div#start-component.component {
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
-
-
-
-
-
-
 
 /* GENERAL */
 
@@ -443,15 +481,30 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   height: 5em;
+  padding-left: 10px;
 }
 
 .day-event-container li {
   list-style-type: none;
 }
 
+.icon {
+  font-family: 'Material Icons', serif;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 
-
-
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
 
 /* GRID */
 
@@ -488,12 +541,6 @@ main {
   justify-content: flex-end;
   text-align: right;
 }
-
-
-
-
-
-
 
 /* Calendar */
 
