@@ -289,11 +289,6 @@ div#start-component.component {
   box-shadow: 0px 0px 8px 1px grey;
 }
 
-
-/* .chat-head-content {
-
-} */
-
 .chat-head-pic {
   margin: auto;
   border-radius: 50%;
@@ -314,10 +309,18 @@ div#start-component.component {
   transform: translate(-50%, -50%);
 }
 
+/* ---------------- EventBubble ---------------- */
 
+.event-circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 90px;
+  padding: 0;
+  margin: 1px;
+  border: 1px solid black;
+}
 
-
-/* ---------------------------------------------- */
+/* --------------------------------------------- */
 
 .icon {
   font-family: 'Material Icons', serif;

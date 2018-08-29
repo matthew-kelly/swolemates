@@ -130,6 +130,17 @@ app.post('/api/events', (req, res) => {
     })
 });
 
+// Get all tags from event
+app.get('/api/events/:id/tags', (req, res) => {
+  database.getEventTags(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
 // Add tag to event
 app.post('/api/events/:id/tags', (req, res) => {
   database.addEventTag(req.params.id, req.body.tag)

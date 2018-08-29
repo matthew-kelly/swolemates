@@ -11,6 +11,7 @@ import TimeRange from 'react-time-range';
 import moment from 'moment';
 import 'moment-timezone';
 import axios from 'axios';
+import EventBubble from './EventBubble';
 
 const API = 'http://localhost:5000/api'
 
@@ -254,7 +255,8 @@ class Calendar extends Component {
           let eventStartDate = moment(this.state.events[j].time_begin).format('YYYYMMDD');
           let calendarDate = moment(day).format('YYYYMMDD');
           if (eventStartDate === calendarDate) {
-            dayEventsArray.push(<li key={this.state.events[j].id}>{this.state.events[j].id} </li>)
+            // dayEventsArray.push(<li key={this.state.events[j].id}>{this.state.events[j].id} </li>)
+            dayEventsArray.push(<EventBubble thisEvent={this.state.events[j]} key={this.state.events[j].id} />)
           }
         }
 

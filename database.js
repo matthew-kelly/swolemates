@@ -96,6 +96,15 @@ module.exports = function knexData(knex) {
         .returning('id')
     },
 
+    // Get all tags for event
+    getEventTags: (event_id) => {
+      return knex('*')
+        .from('tags')
+        .where({
+          event_id: event_id
+        })
+    },
+
     // Add tag to event
     addEventTag: (event_id, tag) => {
       return knex('tags')
