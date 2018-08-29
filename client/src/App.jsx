@@ -17,6 +17,7 @@ import Calendar from './Calendar.jsx'
 import Friends from './Friends.jsx'
 import Login from './Login.jsx'
 import Register from './Register.jsx'
+import FriendPage from './FriendPage.jsx'
 
 const API = 'http://localhost:5000/api'
 
@@ -89,10 +90,10 @@ class App extends Component {
     const finalProps = Object.assign({}, ...rest);
     return React.createElement(component, finalProps);
   }
-  
+
   PropsRoute({ component, ...rest }) {
     return (
-      <Route {...rest} 
+      <Route {...rest}
         render={routeProps => {
           return this.renderMergedProps(component, routeProps, rest);
         }
@@ -116,6 +117,7 @@ class App extends Component {
             <this.PropsRoute exact path="/dashboard" component={Dashboard} appState={appState} />
             <this.PropsRoute exact path="/connections" component={Connections} appState={appState} />
             <this.PropsRoute exact path="/friends" component={Friends} appState={appState} />
+            <this.PropsRoute path ='/profiles/:id' component={FriendPage} appState={appState}/>
             <this.PropsRoute exact path="/login" component={Login} loginSubmit={this.loginSubmit} appState={appState} />
             <this.PropsRoute exact path="/register" component={Register} loginSubmit={this.loginSubmit} appState={appState} />
           </div>

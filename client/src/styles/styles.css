@@ -5,7 +5,9 @@
 
 
 
+
 /* ------------ */
+
 
 /*.container {
   display: flex;
@@ -84,17 +86,23 @@
   box-shadow: 0px 0px 10px 2px lightgrey;
 }
 */
+
 body {
   margin: 0 auto;
   max-width: 90vw;
   padding: 1em 0;
 }
 
+a{
+  color: black;
+  text-decoration: none;
+}
+
 .container {
   justify-items: center;
   display: grid;
   grid-template-columns: 15vw 15vw 30vw 10vw;
-  grid-template-rows: auto;
+  grid-template-rows: 45vh;
   grid-gap: 1em;
   grid-template-areas:
   "profile-image profile-image bio bio goals goals"
@@ -112,43 +120,61 @@ body {
   padding: 0.8em;
   border-radius: 0.5em;
 }
-.tile:hover{
+
+.tile:hover {
   box-shadow: 0px 0px 10px 2px lightgrey;
 }
-.tileSmall{
+
+.tileSmall {
   font-size: 1.2em;
-}
-.tileMedium{
+  align-content: center;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
+}
+
+.tileMedium {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
-#profileImage{
+#profileImage {
   grid-area: profile-image;
 }
-#bio{
+
+#bio {
   grid-area: bio;
 }
-#goals{
+
+#goals {
   grid-area: goals;
 }
-#gym{
+
+#gym {
   grid-area: gym;
 }
-#calendarDashboard1{
+
+#calendarDashboard1 {
   grid-area: calendarDashboard1;
 }
-#calendarDashboard2{
+#calendarDashboard1:hover {
+  cursor: pointer;
+}
+
+#calendarDashboard2 {
   grid-area: calendarDashboard2;
 }
-#calendarDashboard3{
+
+#calendarDashboard3 {
   grid-area: calendarDashboard3;
 }
-#activity{
+
+#activity {
   grid-area: activity;
 }
+
 .navbar {
   font-size: 1.4em;
   display: flex;
@@ -264,6 +290,7 @@ div#start-component.component {
 
 
 
+
 /* ------------- User.jsx Chat Heads ------------- */
 
 .chat-head-list {
@@ -288,6 +315,12 @@ div#start-component.component {
   border: 1px solid #aaa;
   box-shadow: 0px 0px 8px 1px grey;
 }
+
+
+
+/* .chat-head-content {
+
+} */
 
 .chat-head-pic {
   margin: auto;
@@ -342,6 +375,7 @@ div#start-component.component {
 
 
 
+
 /* ------------- Calendar.jsx Styles ------------- */
 
 
@@ -355,6 +389,7 @@ div#start-component.component {
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
+
 
 
 
@@ -408,12 +443,12 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   height: 5em;
-  
 }
 
 .day-event-container li {
   list-style-type: none;
 }
+
 
 
 
@@ -453,6 +488,7 @@ main {
   justify-content: flex-end;
   text-align: right;
 }
+
 
 
 
