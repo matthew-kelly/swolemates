@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
-// import { render } from 'react-dom';
 import { Redirect } from 'react-router-dom';
 import dateFns from "date-fns";
 import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated';
 import { tagOptions } from './docs/data';
 import { colourStyles } from './docs/data';
-import chroma from 'chroma-js';
+// import chroma from 'chroma-js';
 import TimeRange from 'react-time-range';
 import moment from 'moment';
 import 'moment-timezone';
 import axios from 'axios';
 import EventBubble from './EventBubble';
+import EventDataModal from './EventDataModal';
 
 const API = 'http://localhost:5000/api'
 
@@ -24,7 +24,10 @@ class Calendar extends Component {
       tags: '',
       currentMonth: new Date(),
       selectedDate: new Date(),
-      events: ''
+      events: '',
+      showEventModal: false,
+      currentEvent: '',
+      currentEventTags: ''
     };
     this.getAllEvents = this.getAllEvents.bind(this);
   }
@@ -33,12 +36,12 @@ class Calendar extends Component {
     const res = axios.get(`${API}/gyms/${gym_id}/events`);
     return await res;
   }
-
+  
   async getFriends(id) {
     const res = await axios.get(`${API}/users/${id}/friends`);
     return await res.data;
   }
-
+  
   async addEventTag(eventId, tag) {
     const res = await axios({
       method: 'post',
@@ -53,7 +56,7 @@ class Calendar extends Component {
       return false;
     }
   }
-
+  
   async postEvent(eventObj) {
     const res = await axios({
       method: 'post',
@@ -73,9 +76,19 @@ class Calendar extends Component {
       return false;
     }
   }
+  
+  showEventDataModal = (event) => {
+    this.setState({
+      showEventModal: true,
+      currentEventTags: JSON.parse(event.target.getAttribute('data-eventtags')),
+      currentEvent: JSON.parse(event.target.getAttribute('data-thisevent')),
+     });
+  };
 
-
-
+  hideEventDataModal = () => {
+    this.setState({ showEventModal: false });
+  };
+  
   // Called when user clicks on timedropdown menu, sets state to set time
   changeTime = (event) =>{
     let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
@@ -83,8 +96,8 @@ class Calendar extends Component {
     this.setState({ startTime: startTime });
     this.setState({ endTime: endTime });
   }
-
-// Hides popup and resets checkbox/event description
+  
+  // Hides popup and resets checkbox/event description
   onClear = (event) => {
     document.getElementById("popup").style = "display: none";
     document.getElementById("popupBackground").style = "display: none";
@@ -264,9 +277,8 @@ class Calendar extends Component {
         for (let j = 0; j < this.state.events.length; j++) {
           let eventStartDate = moment(this.state.events[j].time_begin).format('YYYYMMDD');
           let calendarDate = moment(day).format('YYYYMMDD');
-          // if (eventStartDate === calendarDate) {
           if (eventStartDate === calendarDate && (this.state.events[j].public === true || this.state.events[j].user_id === this.props.appState.current_user.id)) {
-            dayEventsArray.push(<EventBubble thisEvent={this.state.events[j]} key={this.state.events[j].id} />)
+            dayEventsArray.push(<EventBubble showEventDataModal={this.showEventDataModal} thisEvent={this.state.events[j]} key={this.state.events[j].id} />)
           }
         }
 
@@ -281,10 +293,10 @@ class Calendar extends Component {
                 : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
             }`}
             key={day}
-            onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
+            <div className="add-event-button" onClick={() => this.onDateClick(dateFns.parse(cloneDay))}>+</div>
             <ul className="day-event-container">
               {dayEventsArray}
             </ul>
@@ -303,7 +315,7 @@ class Calendar extends Component {
   }
 
 // On clicking a day, gets the popup information to show, sets the state.
-  onDateClick = day => {
+  onDateClick = (day) => {
     this.setState({
       selectedDate: day
     });
@@ -332,10 +344,11 @@ class Calendar extends Component {
       <div>
         {this.renderPopUp()}
         <div className="calendar">
-        {this.renderHeader()}
-        {this.renderDays()}
-        {this.renderCells()}
+          {this.renderHeader()}
+          {this.renderDays()}
+          {this.renderCells()}
         </div>
+        <EventDataModal currentEvent={this.state.currentEvent} tags={this.state.currentEventTags} showEventModal={this.state.showEventModal} handleClose={this.hideEventDataModal} />
       </div>
     );
   }
