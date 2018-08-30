@@ -108,6 +108,16 @@ module.exports = function knexData(knex) {
         .returning('id')
     },
 
+    //Create new message
+    createNewMessage: (creator_id, receiver_id, content) =>{
+      return knex('messages')
+        .insert({
+          creator_id: creator_id,
+          receiver_id: receiver_id,
+          content: content
+        })
+    },
+
     // Get all tags for event
     getEventTags: (event_id) => {
       return knex('*')

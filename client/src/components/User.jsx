@@ -14,10 +14,10 @@ class User extends Component {
 renderFriendMenu(){
   let user_obj = this.props.user_obj;
   return(
-    <div>
-      <Link to ={{pathname: `/profiles/${user_obj.id}`, state: {user_obj} }}>View Profile</Link>
-      <button data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.renderChatWindow}>Chat</button>
-      <span>Delete from Friends</span>
+    <div className='friendMenu'>
+      <Link to ={{pathname: `/profiles/${user_obj.id}`, state: {user_obj} }}>Profile</Link>
+      <p data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.renderChatWindow}>Chat</p>
+      <span>Delete</span>
     </div>
   )
 }
@@ -31,7 +31,7 @@ renderFriendMenu(){
             <div className="chat-head-pic">
               <img src={user_obj.profile_pic} width="200" alt="profile" />
             </div>
-            <h2>{user_obj.first_name} {user_obj.last_name}</h2>
+            <h2 className="friendName">{user_obj.first_name} {user_obj.last_name}</h2>
             {this.renderFriendMenu()}
           </div>
         </div>

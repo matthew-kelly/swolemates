@@ -54,6 +54,36 @@ class Friends extends Component {
     return await res.data;
   }
 
+  // Write Messsage to DB
+  async writeMessagetoDB(creator_id, receiver_id, content) {
+    const res = await axios({
+      method: 'post',
+      url: `${API}/messages`,
+      data: {
+        creator_id: creator_id,
+        receiver_id: receiver_id,
+        content: content
+      }
+    })
+    if (res.data.length > 0) {
+      return await res.data;
+    } else {
+      return false;
+    }
+  }
+
+  handleUserMessage = (event) => {
+    event.preventDefault()
+    const receiver = (JSON.parse(event.target.getAttribute('data-currentfriend')))
+    const messageBody = (event.target.children[0].value)
+    this.writeMessagetoDB(this.props.appState.current_user.id, receiver.id, messageBody)
+    .then(res => this.setState({ friends: this.state.friends, messages: res }))
+    .catch(err => console.log(err));
+  }
+
+  // const messages = this.state.messages.concat(newMessage);
+  //     this.setState({ messages });
+
   render() {
     if (this.props.appState.isLoggedIn !== true) {
       return <Redirect to='/' />
@@ -69,7 +99,7 @@ class Friends extends Component {
     }
 
     if(this.state.currentFriend){
-      chatWindow = <ChatWindow closeWindow={this.closeWindow} currentFriend={this.state.currentFriend} messages={this.state.messages} appState={this.props.appState}/>
+      chatWindow = <ChatWindow closeWindow={this.closeWindow} currentFriend={this.state.currentFriend} handleUserMessage={this.handleUserMessage} messages={this.state.messages} appState={this.props.appState}/>
     }
 
     return (

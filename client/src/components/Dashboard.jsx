@@ -53,7 +53,7 @@ class Dashboard extends Component {
     }
     return (
       <div className="container">
-        <div id="profileImage" className="tile tileMedium">
+      <div id="profileImage" className="tile tileMedium">
           <img className="profile_pic" src={user_data.profile_pic} alt="profile" />
         </div>
           <div id="gym" className="tile tileSmall">
@@ -83,7 +83,6 @@ class Dashboard extends Component {
           </ul>
         </div>
         <div id="activity" className="tile">
-          <p>This is my activity graph</p>
         </div>
       </div>
     );
@@ -91,3 +90,6 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
+
+
+

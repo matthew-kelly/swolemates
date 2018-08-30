@@ -16,13 +16,13 @@ class Message extends Component {
     const message_obj = this.props.message_obj;
     if(this.props.current_user.id === message_obj.creator_id){
       return(
-        <div className='outgoingMessage'>
+        <div className='message outgoingMessage'>
           <p>{message_obj.content}</p>
         </div>
         )
     } else {
       return(
-        <div className="incomingMessage">
+        <div className="message incomingMessage">
         <p>{message_obj.content}</p>
         </div>
         );

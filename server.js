@@ -142,6 +142,17 @@ app.post('/api/events', (req, res) => {
     })
 });
 
+// Create new message
+app.post('/api/messages', (req, res) => {
+  database.createNewMessage(req.body.creator_id, req.body.receiver_id, req.body.content)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
 // Get all tags from event
 app.get('/api/events/:id/tags', (req, res) => {
   database.getEventTags(req.params.id)

@@ -22,7 +22,7 @@ class EventDataModal extends Component {
     }
 
     return (
-      <div className={showHideClassName}> 
+      <div className={showHideClassName}>
         <div className="event-data-modal-main">
           <h2>Event</h2>
           <h3>Time:</h3>
