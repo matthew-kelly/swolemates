@@ -88,7 +88,7 @@ body {
 }
 
 a{
-  color: black;
+  color: #fb9c37;
   text-decoration: none;
 }
 
@@ -147,7 +147,7 @@ a{
 }
 
 .tile:hover {
-  box-shadow: 0px 0px 10px 2px lightgrey;
+  box-shadow: 0px 0px 10px 2px #fb9c37;
 }
 
 .tileSmall {
@@ -201,6 +201,7 @@ a{
 }
 
 .navbar {
+  background-color: white;
   font-size: 1.4em;
   display: flex;
   justify-content: space-around;
@@ -424,7 +425,7 @@ div.col.cell {
   background: white;
   width: 80%;
   height: auto;
-  padding: 2em 5em; 
+  padding: 2em 5em;
   top: 50%;
   left:50%;
   transform: translate(-50%,-50%);

@@ -11,18 +11,22 @@ import {
 class Message extends Component {
   constructor(props){
     super(props)
-    this.state = this.props.appState
   }
   render() {
-  const message_obj = this.props.message_obj;
-  if(this.state.current_user.id === message_obj.creator_id){
-
-  }
-    return(
-      <div>
-      <p>{message_obj.content}</p>
-      </div>
-      );
+    const message_obj = this.props.message_obj;
+    if(this.props.current_user.id === message_obj.creator_id){
+      return(
+        <div className='outgoingMessage'>
+          <p>{message_obj.content}</p>
+        </div>
+        )
+    } else {
+      return(
+        <div className="incomingMessage">
+        <p>{message_obj.content}</p>
+        </div>
+        );
+      }
     }
   }
 

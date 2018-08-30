@@ -16,7 +16,7 @@ renderFriendMenu(){
   return(
     <div>
       <Link to ={{pathname: `/profiles/${user_obj.id}`, state: {user_obj} }}>View Profile</Link>
-      <button onClick={this.props.renderChatWindow}>Chat</button>
+      <button data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.renderChatWindow}>Chat</button>
       <span>Delete from Friends</span>
     </div>
   )

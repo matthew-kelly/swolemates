@@ -76,8 +76,8 @@ exports.down = function(knex, Promise) {
     knex.schema.dropTable('tags'),
     knex.schema.dropTable('goals'),
     knex.schema.dropTable('events'),
+    knex.schema.dropTable('messages'),
     knex.schema.dropTable('users'),
-    knex.schema.dropTable('gyms'),
-    knex.schema.dropTable('messages')
+    knex.schema.dropTable('gyms')
   ])
 };

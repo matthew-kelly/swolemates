@@ -759,4 +759,12 @@ exports.seed = function(knex, Promise) {
         created_at: '2018-08-29T12:00:00+00:00'
       });
     })
+    .then(() => {
+      return knex('messages').insert({
+        creator_id: 2,
+        receiver_id: 1,
+        content: 'My parents did not.',
+        created_at: '2018-08-30T12:00:00+00:00'
+      });
+    })
 };
