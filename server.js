@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -38,7 +39,7 @@ app.post('/api/login', (req, res) => {
       }
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 })
 
@@ -49,7 +50,7 @@ app.get('/api/users/:id', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
@@ -60,7 +61,7 @@ app.get('/api/users/:id/goals', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
@@ -71,7 +72,18 @@ app.get('/api/users/:id/friends', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
+    })
+});
+
+// Add a new friend
+app.post('/api/users/:id/friends/new', (req, res) => {
+  database.addFriend(req.params.id, req.body.friend_id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e);
     })
 });
 
@@ -82,7 +94,7 @@ app.get('/api/users/:id/events', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
@@ -93,19 +105,18 @@ app.get('/api/users/:id/connections', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
 // Messages list
-
 app.get('/api/users/:id/messages', (req, res) => {
   database.getMessagesList(req.params.id)
     .then((result) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
@@ -116,7 +127,7 @@ app.get('/api/users', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
@@ -127,7 +138,7 @@ app.get('/api/gyms/:id/events', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
@@ -138,7 +149,7 @@ app.post('/api/events', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
@@ -149,7 +160,7 @@ app.get('/api/events/:id/tags', (req, res) => {
       res.send(result);
     })
     .catch((e) => {
-      console.error(e)
+      console.error(e);
     })
 });
 
@@ -160,8 +171,70 @@ app.post('/api/events/:id/tags', (req, res) => {
     res.send(result);
   })
   .catch((e) => {
-    console.error(e)
+    console.error(e);
   })
 });
+
+// Get all requests for event
+app.get('/api/events/:id/request', (req, res) => {
+  database.getEventRequests(req.params.id)
+  .then((result) => {
+    res.send(result);
+  })
+  .catch((e) => {
+    console.error(e);
+  })
+});
+
+// Create new event request
+app.post('/api/events/:id/request', (req, res) => {
+  database.addEventRequest(req.body.event_id, req.body.requester_id)
+  .then((result) => {
+    res.send(result);
+  })
+  .catch((e) => {
+    console.error(e);
+  })
+});
+
+app.get('/api/notifications/:id/requests', (req, res) => {
+  database.getPendingEventRequests(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e);
+    })
+});
+
+app.post('/api/requests/:request_id/accept', (req, res) => {
+  database.acceptRequest(req.params.request_id, req.body.accepted)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((e) => {
+      console.error(e);
+    })
+});
+
+app.post('/api/requests/:request_id/delete', (req, res) => {
+  database.deleteRequest(req.params.request_id)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((e) => {
+      console.error(e);
+    })
+});
+
+app.get('/api/requests/:event_id/requester/:requester_id', (req, res) => {
+  database.getRequestRow(req.params.event_id, req.params.requester_id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e);
+    })
+})
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

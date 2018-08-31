@@ -65,10 +65,17 @@ exports.up = function(knex, Promise) {
       table.string('content');
       table.timestamp('created_at').defaultTo(knex.fn.now());
     })
+    .createTable('event_requests', (table) => {
+      table.increments('id');
+      table.integer('event_id').references('events.id');
+      table.integer('requester_id').references('users.id');
+      table.boolean('accepted');
+    })
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
+    knex.schema.dropTable('event_requests'),
     knex.schema.dropTable('ratings'),
     knex.schema.dropTable('connections'),
     knex.schema.dropTable('friends'),

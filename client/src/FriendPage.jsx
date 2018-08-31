@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Calendar from './Calendar.jsx'
+// import Calendar from './Calendar.jsx'
 
 const API = 'http://localhost:5000/api'
 

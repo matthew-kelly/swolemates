@@ -6,6 +6,9 @@ exports.seed = function(knex, Promise) {
       return knex('tags').del()
     })
     .then(() => {
+      return knex('event_requests').del()
+    })
+    .then(() => {
       return knex('goals').del()
     })
     .then(() => {
@@ -386,8 +389,20 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
+        user_id: 2,
+        friend_id: 1
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
         user_id: 1,
         friend_id: 3
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 3,
+        friend_id: 1
       });
     })
     .then(() => {
@@ -398,8 +413,8 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
-        user_id: 1,
-        friend_id: 5
+        user_id: 4,
+        friend_id: 1
       });
     })
     .then(() => {
@@ -410,8 +425,20 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
+        user_id: 6,
+        friend_id: 1
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
         user_id: 1,
         friend_id: 7
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 7,
+        friend_id: 1
       });
     })
     .then(() => {
@@ -422,8 +449,20 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
+        user_id: 8,
+        friend_id: 1
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
         user_id: 1,
         friend_id: 9
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 9,
+        friend_id: 1
       });
     })
     .then(() => {
@@ -434,8 +473,20 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
+        user_id: 10,
+        friend_id: 1
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
         user_id: 1,
         friend_id: 11
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 11,
+        friend_id: 1
       });
     })
     .then(() => {
@@ -446,8 +497,20 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
+        user_id: 12,
+        friend_id: 1
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
         user_id: 1,
         friend_id: 13
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 13,
+        friend_id: 1
       });
     })
     .then(() => {
@@ -458,8 +521,20 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
+        user_id: 14,
+        friend_id: 1
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
         user_id: 1,
         friend_id: 15
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 15,
+        friend_id: 1
       });
     })
     .then(() => {
@@ -470,13 +545,7 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('friends').insert({
-        user_id: 2,
-        friend_id: 1
-      });
-    })
-    .then(() => {
-      return knex('friends').insert({
-        user_id: 3,
+        user_id: 16,
         friend_id: 1
       });
     })
@@ -496,6 +565,12 @@ exports.seed = function(knex, Promise) {
       return knex('friends').insert({
         user_id: 4,
         friend_id: 3
+      });
+    })
+    .then(() => {
+      return knex('friends').insert({
+        user_id: 3,
+        friend_id: 4
       });
     })
     .then(() => {
@@ -511,15 +586,15 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
-      return knex('friends').insert({
-        user_id: 4,
-        friend_id: 2
+      return knex('connections').insert({
+        user_id: 3,
+        connection_id: 5
       });
     })
     .then(() => {
       return knex('connections').insert({
-        user_id: 4,
-        connection_id: 1
+        user_id: 5,
+        connection_id: 3
       });
     })
     .then(() => {
@@ -529,21 +604,9 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
-      return knex('friends').insert({
-        user_id: 5,
-        friend_id: 1
-      });
-    })
-    .then(() => {
       return knex('connections').insert({
         user_id: 5,
-        connection_id: 2
-      });
-    })
-    .then(() => {
-      return knex('connections').insert({
-        user_id: 5,
-        connection_id: 3
+        connection_id: 4
       });
     })
     .then(() => {
@@ -671,6 +734,22 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
+      return knex('events').insert({
+        user_id: 6,
+        gym_id: 1,
+        description: 'Working on my fitness (be my witness?)',
+        public: true,
+        time_begin: '20180831 1300',
+        time_end: '20180831 1430'
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 8,
+        tag: "ORM"
+      });
+    })
+    .then(() => {
       return knex('ratings').insert({
         user_id: 1,
         category1: 4,
@@ -765,6 +844,41 @@ exports.seed = function(knex, Promise) {
         receiver_id: 1,
         content: 'My parents did not.',
         created_at: '2018-08-30T12:00:00+00:00'
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 2,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 5,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 2,
+        requester_id: 2,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 2,
+        requester_id: 3,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 4,
+        requester_id: 2,
+        accepted: false
       });
     })
 };
