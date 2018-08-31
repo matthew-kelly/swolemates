@@ -42,11 +42,11 @@ class Friends extends Component {
     this.setState({currentFriend: ''})
   }
 
-  onDelete = (event) => {
-    let user_id = this.props.appState.current_user.id
-    let friend_id = (JSON.parse(event.target.getAttribute('data-thisfriend')))
-    this.deleteFriend(user_id, friend_id)
-  }
+  // onDelete = (event) => {
+  //   let user_id = this.props.appState.current_user.id
+  //   let friend_id = (JSON.parse(event.target.getAttribute('data-thisfriend')))
+  //   this.deleteFriend(user_id, friend_id)
+  // }
 
   // Get all friends
   async getFriends(id) {
