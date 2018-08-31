@@ -45,7 +45,7 @@ class Friends extends Component {
   // onDelete = (event) => {
   //   let user_id = this.props.appState.current_user.id
   //   let friend_id = (JSON.parse(event.target.getAttribute('data-thisfriend')))
-  //   this.deleteFriend(user_id, friend_id)
+  //   this.deleteFriend(user_id, friend_id.id)
   // }
 
   // Get all friends
@@ -96,12 +96,9 @@ class Friends extends Component {
     const receiver = (JSON.parse(event.target.getAttribute('data-currentfriend')))
     const messageBody = (event.target.children[0].value)
     this.writeMessagetoDB(this.props.appState.current_user.id, receiver.id, messageBody)
-    // .then(res => this.setState({ friends: this.state.friends, messages: res }))
-    // .catch(err => console.log(err));
+    .then(res => this.setState({ messages: this.state.messages.concat(res)}))
+    event.target.children[0].value = ''
   }
-
-  // const messages = this.state.messages.concat(newMessage);
-  //     this.setState({ messages });
 
   render() {
     if (this.props.appState.isLoggedIn !== true) {

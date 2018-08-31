@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Calendar from './Calendar.jsx'
+import Graph from './Graph.jsx'
+import Tile from './Tile.jsx'
 
 
 const API = 'http://localhost:5000/api'
@@ -59,7 +61,6 @@ class Dashboard extends Component {
     const goals_data = this.state.goals;
     const gym_data = this.state.gym;
 
-    console.log(gym_data);
     let allGoals;
     let gymName;
     if (goals_data){
@@ -72,38 +73,33 @@ class Dashboard extends Component {
         return <span key={gym.id}>{gym.name}</span>
       })
     }
+
     return (
       <div className="container">
       <div id="profileImage" className="tile tileMedium">
           <img className="profile_pic" src={user_data.profile_pic} alt="profile" />
         </div>
           <div id="gym" className="tile tileSmall">
-            <i className="fas fa-dumbbell"></i>
-            <h4 className='dashboardSubtitle'>{gymName}</h4>
+            <Tile tileData={gymName}/>
           </div>
           <div id="calendarDashboard1" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
+            <Tile/>
           </div>
           <div id="calendarDashboard2" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
+            <Tile/>
           </div>
           <div id="calendarDashboard3" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
+            <Tile/>
           </div>
         <div id="bio" className="tile tileBig">
-          <h1>About {user_data.first_name}</h1>
-          <p>{user_data.bio}</p>
+          <Tile tileData={user_data.bio} />
         </div>
         <div id="goals" className="tile tileMedium">
           <h1>Goals</h1>
-          <ul>
-            {allGoals}
-          </ul>
+          <Tile tileData={allGoals} />
         </div>
         <div id="activity" className="tile">
+        <Graph/>
         </div>
       </div>
     );

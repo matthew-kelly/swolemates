@@ -12,6 +12,7 @@ import 'moment-timezone';
 import axios from 'axios';
 import EventBubble from './EventBubble';
 import EventDataModal from './EventDataModal';
+import FriendList from './FriendList';
 
 const API = 'http://localhost:5000/api'
 
@@ -230,6 +231,14 @@ class Calendar extends Component {
         </div>
         <div className="col col-center">
           <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
+        </div>
+        <div className="dropdown">
+          <button className="dropbtn">Filter by: </button>
+          <div className="dropdown-content">
+            <ul id="dropdownList">
+              <FriendList appState={this.props.appState}/>
+            </ul>
+          </div>
         </div>
         <div className="col col-end" onClick={this.nextMonth}>
           <div className="icon">chevron_right</div>

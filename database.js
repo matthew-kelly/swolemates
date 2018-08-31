@@ -125,6 +125,7 @@ module.exports = function knexData(knex) {
           receiver_id: receiver_id,
           content: content
         })
+        .returning(['creator_id','receiver_id','content','created_at'])
     },
 
     // Get all tags for event
@@ -146,17 +147,17 @@ module.exports = function knexData(knex) {
         .returning('id')
     },
 
-    // deleteFriend: (user_id, friend_id) => {
-    //   return knex('friends')
-    //     .where({
-    //       user_id: user_id
-    //       friend_id: friend_id
-    //     })
-    //     .andWhere({
-    //       user_id: friend_id
-    //       friend_id: user_id
-    //     })
-    //     .del()
-    // }
+    deleteFriend: (user_id, friend_id) => {
+      return knex('friends')
+        .where({
+          user_id: user_id,
+          friend_id: friend_id
+        })
+        .andWhere({
+          user_id: friend_id,
+          friend_id: user_id
+        })
+        .del()
+    }
   }
 }

@@ -1,85 +1,6 @@
 /* FONT IMPORTS */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Baloo+Tammudu|Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-
-
-/*.container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 90vh;
-  max-width: 94vw;
-}
-
-.tile {
-  background-color: white;
-  height: fit-content;
-  width: fit-content;
-  padding: 1em;
-  margin: 0.1em 0em 0.1em 0em;
-  box-shadow: 0px 0px 8px 1px lightgrey;
-}
-
-#smallTileCollection {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 22vw;
-}
-
-.dashboardSmall {
-  font-size: 200%;
-  padding-top: 2em;
-  width: 11vw;
-  height: 20vh;
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.dashboardMedium {
-  padding-top: 2em;
-  width: 23vw;
-  height: 40vh;
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.dashboardBig {
-  padding-top: 2em;
-  width: 20vw;
-  height: 80vh;
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.dashboardSubtitle {
-  font-size: 60%;
-}
-
-#profileImage {
-  overflow: hidden;
-}
-
-#calendarDashboard {
-  max-width: 47vw;
-  max-height: 35vh;
-  overflow: hidden;
-}
-
-.tile:hover {
-  box-shadow: 0px 0px 10px 2px lightgrey;
-}
-*/
 
 body {
   margin: 0 auto;
@@ -92,31 +13,40 @@ a{
   text-decoration: none;
 }
 
+canvas.chartjs-render-monitor{
+  height:5em;
+  width: 10em;
+}
+
 #chatWindow{
   border:1.2px solid black;
-  height: 60vh;
+  height: 80vh;
   width: 30vw;
   position: fixed;
   bottom: 0.75em;
   right: 0.75em;
-  border-radius: 2em 2em 0em 2em;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 0.7em 0.7em 0em 0.7em;
 }
 #chatWindowHeader{
-  border-radius: 1.9em 1.9em 0em 0em;
   background-color: steelblue;
-  height: 3em;
+  height: 15%;
   display: flex;
   padding: 1em;
   color: white;
   font-weight: bold;
+  font-size: 1.3em;
+  border-radius: 0.5em 0.5em 0em 0em;
 }
 
 #chatWindowMessageContainer{
   padding: 0.7em;
+  display: flex;
+  flex-direction: column;
+  overflow: overlay;
 }
 
 #chatWindowClose{
@@ -130,8 +60,12 @@ a{
 
 #chatWindowInput{
   display: flex;
-  justify-content: flex-end;
-  border-radius: 0em 0em 0em 2.2em;
+  width: -webkit-fill-available;
+  border-top: 1px solid black;
+  border-left: none;
+  border-right: none;
+  height: 3em;
+  padding-left: 0.5em;
 }
 
 .outgoingMessage{
@@ -172,16 +106,26 @@ a{
   border-radius: 0.5em;
 }
 
+.tileBreadCrumbs {
+  display: flex;
+  justify-content: flex-end;
+}
+.tileComponent{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
 .tile:hover {
   box-shadow: 0px 0px 10px 2px #ff6200;
 }
 
 .tileSmall {
   font-size: 1.2em;
-  align-content: center;
+  /*align-content: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
 }
 
 .tileMedium {
@@ -376,11 +320,13 @@ div#start-component.component {
   justify-content: center;
   align-items: center;
   border-radius: 1em;
+  opacity: 0.8;
 }
 
 .chat-head-container:hover {
-  border: 1px solid #aaa;
-  box-shadow: 0px 0px 8px 1px grey;
+  opacity: 1;
+  border: 0.3px solid #aaa;
+  box-shadow: 0px 0px 10px 1px #dbdbdb;
 }
 
 .chat-head-pic {
@@ -402,6 +348,7 @@ div#start-component.component {
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
 
 /*-----------Calender Events -----------*/
 .add-event-button {
@@ -494,6 +441,29 @@ div.col.cell {
   display: none;
 }
 
+#homepageContainer{
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  /*align-items: center;*/
+}
+
+#homepageLogoContainer{
+  display: flex;
+  justify-content: space-around;
+}
+
+#homepageTitle{
+  font-weight: bold;
+  font-size: 3em;
+  color: #ff6200;
+  font-family: 'Baloo Tammudu', cursive;
+}
+path{
+  fill: #ff6200;
+}
+
+
 
 
 
@@ -582,6 +552,47 @@ main {
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
 }
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+#dropdownList{
+  display: flex;
+  justify-content: start;
+  list-style-type: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 /* GRID */
 
@@ -682,7 +693,7 @@ main {
 
 .calendar .body .selected {
   border-left: 10px solid transparent;
-  border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
+  border-image: linear-gradient(45deg, #fe6103 0%, #f2ff75 40%);
   border-image-slice: 1;
 }
 

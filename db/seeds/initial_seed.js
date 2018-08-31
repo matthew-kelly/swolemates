@@ -83,7 +83,7 @@ exports.seed = function(knex, Promise) {
         last_name: 'Johnson',
         email: 'mark@mark.mark',
         password: 'mark',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        bio: 'Hi, my name is Mark. I am new to Vancouver and am keen to meet some like-minded gym go-ers. Currently working in and around Yaletown so working out somewhere like the Steve Nash Club near the 7/11 would be ideal. Find me posting workouts in the calender pretty much everyday most weeks. "You miss 100% of the shots you don\'t take" -- Wayne Gretzky -- Michael Scott',
         gym_id: 1,
         profile_pic: 'https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/32436_117915591572150_2707307_n.jpg?_nc_cat=0&oh=f8c80b6d9a7d9b47f8fc19d394d581c2&oe=5C03FF20'
       });
@@ -94,7 +94,7 @@ exports.seed = function(knex, Promise) {
         last_name: 'Doe',
         email: 'john@john.john',
         password: 'john',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        bio: 'I want to be really strong',
         gym_id: 1,
         profile_pic: 'https://powerplay.co.uk/app/resources/php/timthumb/timthumb.php?src=L2FwcC9yZXNvdXJjZXMvaW1hZ2VzL3VzZXIvc2xpZGVyLzcyNS90ZWFtc2xpZGVyOTA5NTVHbG9ib0d5bS5qcGc=&w=635&h=400'
       });

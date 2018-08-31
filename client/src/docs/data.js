@@ -52,19 +52,19 @@ export const colourStyles = {
 };
 
 export const tagOptions = [
-        { value: 'back', label: 'Back', color: '#00B8D9'},
-        { value: 'biceps', label: 'Biceps', color: '#FF8B00'},
+        { value: 'back', label: 'Back', color: '#ff6a6a'},
+        { value: 'biceps', label: 'Biceps', color: '#ffaa5d'},
         { value: 'calisthenics', label: 'Calisthenics', color: '#5243AA'},
-        { value: 'cardio', label: 'Cardio', color: '#00875A'},
-        { value: 'chest', label: 'Chest', color: '#FF5630'},
-        { value: 'core', label: 'Core', color: '#FFC400'},
+        { value: 'cardio', label: 'Cardio', color: '#fae747'},
+        { value: 'chest', label: 'Chest', color: '#a6d3ff'},
+        { value: 'core', label: 'Core', color: '#5effab'},
         { value: 'hIT', label: 'HIT', color: '#253858'},
-        { value: 'legs', label: 'Legs', color: '#e424de'},
+        { value: 'legs', label: 'Legs', color: '#cf93ff'},
         { value: 'oRM', label: 'ORM', color: '#6d6fc3'},
-        { value: 'shoulders', label: 'Shoulders', color: '#1dd2c1'},
+        { value: 'shoulders', label: 'Shoulders', color: '#ff93fd'},
         { value: 'sprints', label: 'Sprints', color: '#e84b85'},
         { value: 'stretching', label: 'Stretching', color: '#7fb378'},
         { value: 'traps', label: 'Traps', color: '#929292'},
         { value: 'triceps', label: 'Triceps', color: '#017eff'},
-        { value: 'yoga', label: 'Yoga', color: '#d5da82'}
+        { value: 'yoga', label: 'Yoga', color: '#b9bc7f'}
       ]

@@ -26,15 +26,15 @@ class ChatWindow extends Component {
 
     return(
       <div id='chatWindow'>
-        <span id='chatWindowClose' onClick={this.props.closeWindow}>x</span>
         <div id='chatWindowHeader'>
-          {`${friend.first_name} ${friend.last_name}`}
+        {`${friend.first_name} ${friend.last_name}`}
+        <span id='chatWindowClose'onClick={this.props.closeWindow}>X</span>
         </div>
         <div id='chatWindowMessageContainer'>
           {allMessages}
         </div>
         <form onSubmit={this.props.handleUserMessage} data-currentfriend={JSON.stringify(this.props.currentFriend)}>
-          <input name='chatWindowInput' id='chatWindowInput'></input>
+          <input defaultValue='' name='chatWindowInput' id='chatWindowInput'></input>
         </form>
       </div>
     )

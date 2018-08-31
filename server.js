@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -85,6 +86,7 @@ app.get('/api/users/:id/friends', (req, res) => {
       console.error(e)
     })
 });
+
 
 // Get all events for a user
 app.get('/api/users/:id/events', (req, res) => {
