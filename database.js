@@ -76,11 +76,11 @@ module.exports = function knexData(knex) {
     // Return Gym information for a user
     getGym: (id) => {
       return knex.select('*')
-      .from('goals')
+      .from('gyms')
       .where({
-        user_id: id
+        id: id
       })
-    }
+    },
 
     // Return list of all users
     allUsers: () => {

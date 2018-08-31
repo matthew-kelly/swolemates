@@ -64,8 +64,8 @@ app.get('/api/users/:id/goals', (req, res) => {
     })
 });
 
-// Get Gym data for specific user
-app.get('/api/users/:id/gym', (req, res) => {
+// Get a specific gyms data
+app.get('/api/gyms/:id', (req, res) => {
   database.getGym(req.params.id)
     .then((result) => {
       res.send(result);

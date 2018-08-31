@@ -25,7 +25,7 @@ class Dashboard extends Component {
     .then(res => this.setState({ goals: res }))
     .catch(err => console.log(err));
 
-    this.getGym(this.props.appState.current_user.id)
+    this.getGym(this.props.appState.current_user.gym_id)
     .then(res => this.setState({ gym: res}))
     .catch(err => console.log(err));
   }
@@ -44,7 +44,7 @@ class Dashboard extends Component {
 
   // Get user's gym
   async getGym(id) {
-    const res = await axios.get(`${API}/users/${id}/gym`);
+    const res = await axios.get(`${API}/gyms/${id}`);
     return await res.data;
   }
 
@@ -58,13 +58,19 @@ class Dashboard extends Component {
     const user_data = this.props.appState.current_user;
     const goals_data = this.state.goals;
     const gym_data = this.state.gym;
-    console.log(gym_data);
 
+    console.log(gym_data);
     let allGoals;
+    let gymName;
     if (goals_data){
       allGoals = goals_data.map((goal) => {
         return <li key={goal.id}>{goal.goal}</li>
       });
+    }
+    if (gym_data){
+      gymName = gym_data.map((gym) => {
+        return <span key={gym.id}>{gym.name}</span>
+      })
     }
     return (
       <div className="container">
@@ -73,7 +79,7 @@ class Dashboard extends Component {
         </div>
           <div id="gym" className="tile tileSmall">
             <i className="fas fa-dumbbell"></i>
-            <h4 className='dashboardSubtitle'>{gym_data.gym_name}</h4>
+            <h4 className='dashboardSubtitle'>{gymName}</h4>
           </div>
           <div id="calendarDashboard1" className="tile tileSmall">
             <i className="far fa-calendar"></i>
