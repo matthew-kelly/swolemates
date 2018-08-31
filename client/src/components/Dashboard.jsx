@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Calendar from './Calendar.jsx'
 
+
 const API = 'http://localhost:5000/api'
 
 class Dashboard extends Component {
@@ -10,7 +11,8 @@ class Dashboard extends Component {
     super();
     this.state = {
       user_data: '',
-      goals: ''
+      goals: '',
+      gym:''
     }
   }
 
@@ -21,6 +23,10 @@ class Dashboard extends Component {
 
     this.getGoals(this.props.appState.current_user.id)
     .then(res => this.setState({ goals: res }))
+    .catch(err => console.log(err));
+
+    this.getGym(this.props.appState.current_user.id)
+    .then(res => this.setState({ gym: res}))
     .catch(err => console.log(err));
   }
 
@@ -36,6 +42,13 @@ class Dashboard extends Component {
     return await res.data;
   }
 
+  // Get user's gym
+  async getGym(id) {
+    const res = await axios.get(`${API}/users/${id}/gym`);
+    return await res.data;
+  }
+
+
   render() {
 
     if (this.props.appState.isLoggedIn !== true) {
@@ -44,6 +57,8 @@ class Dashboard extends Component {
 
     const user_data = this.props.appState.current_user;
     const goals_data = this.state.goals;
+    const gym_data = this.state.gym;
+    console.log(gym_data);
 
     let allGoals;
     if (goals_data){
@@ -58,7 +73,7 @@ class Dashboard extends Component {
         </div>
           <div id="gym" className="tile tileSmall">
             <i className="fas fa-dumbbell"></i>
-            <h4 className='dashboardSubtitle'>{user_data.gym_id}</h4>
+            <h4 className='dashboardSubtitle'>{gym_data.gym_name}</h4>
           </div>
           <div id="calendarDashboard1" className="tile tileSmall">
             <i className="far fa-calendar"></i>

@@ -64,6 +64,17 @@ app.get('/api/users/:id/goals', (req, res) => {
     })
 });
 
+// Get Gym data for specific user
+app.get('/api/users/:id/gym', (req, res) => {
+  database.getGym(req.params.id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
 // Friends list
 app.get('/api/users/:id/friends', (req, res) => {
   database.getFriendsList(req.params.id)
@@ -142,17 +153,6 @@ app.post('/api/events', (req, res) => {
     })
 });
 
-// Create new message
-app.post('/api/messages', (req, res) => {
-  database.createNewMessage(req.body.creator_id, req.body.receiver_id, req.body.content)
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-});
-
 // Get all tags from event
 app.get('/api/events/:id/tags', (req, res) => {
   database.getEventTags(req.params.id)
@@ -173,6 +173,30 @@ app.post('/api/events/:id/tags', (req, res) => {
   .catch((e) => {
     console.error(e)
   })
+});
+
+// Create new message
+app.post('/api/messages', (req, res) => {
+  database.createNewMessage(req.body.creator_id, req.body.receiver_id, req.body.content)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
+
+// Delete friends
+
+app.post('/api/friends/delete', (req, res) => {
+  database.deleteFriend(req.body.user_id, req.body.friend_id)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

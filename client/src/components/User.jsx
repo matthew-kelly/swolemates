@@ -15,9 +15,9 @@ renderFriendMenu(){
   let user_obj = this.props.user_obj;
   return(
     <div className='friendMenu'>
-      <Link to ={{pathname: `/profiles/${user_obj.id}`, state: {user_obj} }}>Profile</Link>
+      <Link to ={{pathname: `/profiles/${user_obj.id}`, state: {user_obj} }}><i className="far fa-user"></i></Link>
       <p data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.renderChatWindow}>Chat</p>
-      <span>Delete</span>
+      <span><i data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.onDelete} className="far fa-trash-alt"></i></span>
     </div>
   )
 }

@@ -73,6 +73,15 @@ module.exports = function knexData(knex) {
       })
     },
 
+    // Return Gym information for a user
+    getGym: (id) => {
+      return knex.select('*')
+      .from('goals')
+      .where({
+        user_id: id
+      })
+    }
+
     // Return list of all users
     allUsers: () => {
       return knex.select('*')
@@ -136,5 +145,18 @@ module.exports = function knexData(knex) {
         })
         .returning('id')
     },
+
+    // deleteFriend: (user_id, friend_id) => {
+    //   return knex('friends')
+    //     .where({
+    //       user_id: user_id
+    //       friend_id: friend_id
+    //     })
+    //     .andWhere({
+    //       user_id: friend_id
+    //       friend_id: user_id
+    //     })
+    //     .del()
+    // }
   }
 }
