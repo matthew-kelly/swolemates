@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { tagOptions } from './docs/data';
+import { tagOptions } from '../docs/data';
 
 const API = 'http://localhost:5000/api'
 

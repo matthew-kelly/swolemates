@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 
+
 const API = 'http://localhost:5000/api'
 
 class Dashboard extends Component {
@@ -11,7 +12,8 @@ class Dashboard extends Component {
     this.state = {
       user_data: '',
       goals: '',
-      confirmedEvents: ''
+      confirmedEvents: '',
+      gym:''
     }
   }
 
@@ -26,6 +28,10 @@ class Dashboard extends Component {
 
     this.getConfirmedEvents(this.props.appState.current_user.id)
       .then(res => this.setState({ confirmedEvents: res }))
+      .catch(err => console.log(err));
+
+    this.getGym(this.props.appState.current_user.gym_id)
+      .then(res => this.setState({ gym: res}))
       .catch(err => console.log(err));
   }
 
@@ -47,6 +53,13 @@ class Dashboard extends Component {
     return await res.data;
   }
 
+  // Get user's gym
+  async getGym(id) {
+    const res = await axios.get(`${API}/gyms/${id}`);
+    return await res.data;
+  }
+
+
   render() {
 
     if (this.props.appState.isLoggedIn !== true) {
@@ -56,9 +69,12 @@ class Dashboard extends Component {
     const user_data = this.props.appState.current_user;
     const goals_data = this.state.goals;
     const events_data = this.state.confirmedEvents;
+    const gym_data = this.state.gym;
 
+    console.log(gym_data);
     let allGoals;
-    if (goals_data) {
+    let gymName;
+    if (goals_data){
       allGoals = goals_data.map((goal) => {
         return <li key={goal.id}>{goal.goal}</li>
       });
@@ -75,14 +91,20 @@ class Dashboard extends Component {
       earliestEventFormatted = <li><p>{moment(earliestEvent.time_begin).format('MMMM Do YYYY, h:mm a')} - {moment(earliestEvent.time_end).format('h:mm a')}</p><p>{earliestEvent.first_name} {earliestEvent.last_name}</p></li>
     }
 
+    if (gym_data){
+      gymName = gym_data.map((gym) => {
+        return <span key={gym.id}>{gym.name}</span>
+      })
+    }
+    
     return (
       <div className="container">
-        <div id="profileImage" className="tile tileMedium">
+      <div id="profileImage" className="tile tileMedium">
           <img className="profile_pic" src={user_data.profile_pic} alt="profile" />
         </div>
           <div id="gym" className="tile tileSmall">
             <i className="fas fa-dumbbell"></i>
-            <h4 className='dashboardSubtitle'>{user_data.gym_id}</h4>
+            <h4 className='dashboardSubtitle'>{gymName}</h4>
           </div>
           <div id="calendarDashboard1" className="tile tileSmall">
             <i className="far fa-calendar"></i>
@@ -107,7 +129,6 @@ class Dashboard extends Component {
           </ul>
         </div>
         <div id="activity" className="tile">
-          <p>This is my activity graph</p>
         </div>
         <div id="confirmed-events">
           <h1>Next Event</h1>
@@ -121,3 +142,6 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
+
+
+

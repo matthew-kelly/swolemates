@@ -3,8 +3,8 @@ import { Redirect } from 'react-router-dom';
 import dateFns from "date-fns";
 import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated';
-import { tagOptions } from './docs/data';
-import { colourStyles } from './docs/data';
+import { tagOptions } from '../docs/data';
+import { colourStyles } from '../docs/data';
 // import chroma from 'chroma-js';
 import TimeRange from 'react-time-range';
 import moment from 'moment';
@@ -37,12 +37,12 @@ class Calendar extends Component {
     const res = axios.get(`${API}/gyms/${gym_id}/events`);
     return await res;
   }
-  
+
   async getFriends(id) {
     const res = await axios.get(`${API}/users/${id}/friends`);
     return await res.data;
   }
-  
+
   async addEventTag(eventId, tag) {
     const res = await axios({
       method: 'post',
@@ -57,7 +57,7 @@ class Calendar extends Component {
       return false;
     }
   }
-  
+
   async postEvent(eventObj) {
     const res = await axios({
       method: 'post',
@@ -141,7 +141,7 @@ class Calendar extends Component {
     this.setState({ startTime: startTime });
     this.setState({ endTime: endTime });
   }
-  
+
   // Hides popup and resets checkbox/event description
   onClear = (event) => {
     document.getElementById("popup").style = "display: none";

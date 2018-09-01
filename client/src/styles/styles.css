@@ -88,22 +88,31 @@ body {
 }
 
 a{
-  color: #fb9c37;
+  color: #ff6200;
   text-decoration: none;
 }
 
 #chatWindow{
-  border:1px solid black;
+  border:1.2px solid black;
   height: 60vh;
   width: 30vw;
   position: fixed;
   bottom: 0.75em;
   right: 0.75em;
   border-radius: 2em 2em 0em 2em;
-  background-color: lightgrey;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+#chatWindowHeader{
+  border-radius: 1.9em 1.9em 0em 0em;
+  background-color: steelblue;
+  height: 3em;
+  display: flex;
+  padding: 1em;
+  color: white;
+  font-weight: bold;
 }
 
 #chatWindowMessageContainer{
@@ -115,12 +124,29 @@ a{
   bottom: 25em;
   right: 3em;
   float:right;
+  font-weight: bold;
+  color: white;
 }
 
-#chatWindowTextArea{
+#chatWindowInput{
   display: flex;
   justify-content: flex-end;
   border-radius: 0em 0em 0em 2.2em;
+}
+
+.outgoingMessage{
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 1em 1em 0em 1em;
+}
+.incomingMessage{
+  background-color: lightblue;
+  width: fit-content;
+  border-radius: 1em 1em 1em 0em;
+}
+.message{
+  padding: 0.5em;
+  margin: 0.5em;
 }
 
 .container {
@@ -147,7 +173,7 @@ a{
 }
 
 .tile:hover {
-  box-shadow: 0px 0px 10px 2px #fb9c37;
+  box-shadow: 0px 0px 10px 2px #ff6200;
 }
 
 .tileSmall {
@@ -322,10 +348,28 @@ div#start-component.component {
   justify-content: center;
 }
 
+
+.friendMenu{
+  display:none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.chat-head-container:hover .friendMenu{
+  display:flex
+}
+
+.chat-head-content{
+  width: 12em;
+}
+.friendName{
+  text-align: center;
+}
 .chat-head-container {
   background-color: white;
-  /*border: 1px solid #aaa;*/
-  margin: 0.1em;
+  margin: 0.2em;
   height: 250px;
   width: 250px;
   display: flex;
@@ -359,6 +403,7 @@ div#start-component.component {
   transform: translate(-50%, -50%);
 }
 
+/*-----------Calender Events -----------*/
 .add-event-button {
   opacity: 0.3;
   height: 20px;
@@ -758,4 +803,24 @@ main {
   flex-grow: 0;
   flex-basis: calc(100%/7);
   width: calc(100%/7);
+}
+
+/*-----RESIZEABLE BOX STYLE---------*/
+
+.react-resizable {
+  position: relative;
+}
+.react-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 0;
+  right: 0;
+  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDYiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmYwMCIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iNnB4Ij48ZyBvcGFjaXR5PSIwLjMwMiI+PHBhdGggZD0iTSA2IDYgTCAwIDYgTCAwIDQuMiBMIDQgNC4yIEwgNC4yIDQuMiBMIDQuMiAwIEwgNiAwIEwgNiA2IEwgNiA2IFoiIGZpbGw9IiMwMDAwMDAiLz48L2c+PC9zdmc+');
+  background-position: bottom right;
+  padding: 0 3px 3px 0;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  box-sizing: border-box;
+  cursor: se-resize;
 }

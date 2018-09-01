@@ -40,6 +40,12 @@ class Friends extends Component {
     this.setState({currentFriend: ''})
   }
 
+  // onDelete = (event) => {
+  //   let user_id = this.props.appState.current_user.id
+  //   let friend_id = (JSON.parse(event.target.getAttribute('data-thisfriend')))
+  //   this.deleteFriend(user_id, friend_id)
+  // }
+
   // Get all friends
   async getFriends(id) {
     const res = await axios.get(`${API}/users/${id}/friends`);
@@ -52,6 +58,49 @@ class Friends extends Component {
     return await res.data;
   }
 
+  // Write Messsage to DB
+  async writeMessagetoDB(creator_id, receiver_id, content) {
+    const res = await axios({
+      method: 'post',
+      url: `${API}/messages`,
+      data: {
+        creator_id: creator_id,
+        receiver_id: receiver_id,
+        content: content
+      }
+    })
+    if (res.data.length > 0) {
+      return await res.data;
+    } else {
+      return false;
+    }
+  }
+  // Delete Friend from DB
+  async deleteFriend(user_id, friend_id) {
+    const res = await axios({
+      method: 'delete',
+      url: `${API}/friends/delete`,
+      data: {
+        user_id: user_id,
+        friend_id: friend_id,
+      }
+    })
+    return await res.data;
+  }
+
+
+  handleUserMessage = (event) => {
+    event.preventDefault()
+    const receiver = (JSON.parse(event.target.getAttribute('data-currentfriend')))
+    const messageBody = (event.target.children[0].value)
+    this.writeMessagetoDB(this.props.appState.current_user.id, receiver.id, messageBody)
+    // .then(res => this.setState({ friends: this.state.friends, messages: res }))
+    // .catch(err => console.log(err));
+  }
+
+  // const messages = this.state.messages.concat(newMessage);
+  //     this.setState({ messages });
+
   render() {
     if (this.props.appState.isLoggedIn !== true) {
       return <Redirect to='/' />
@@ -62,12 +111,12 @@ class Friends extends Component {
     let allFriends;
     if (friends){
       allFriends = friends.map((user_obj) => {
-        return <User key={user_obj.id} renderChatWindow={this.renderChatWindow} user_obj={user_obj} />
-      })
+        return <User key={user_obj.id} onDelete={this.onDelete} renderChatWindow={this.renderChatWindow} user_obj={user_obj} />
+      });
     }
 
     if(this.state.currentFriend){
-      chatWindow = <ChatWindow closeWindow={this.closeWindow} currentFriend={this.state.currentFriend} messages={this.state.messages} appState={this.props.appState}/>
+      chatWindow = <ChatWindow closeWindow={this.closeWindow} currentFriend={this.state.currentFriend} handleUserMessage={this.handleUserMessage} messages={this.state.messages} appState={this.props.appState}/>
     }
 
     return (
