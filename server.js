@@ -188,6 +188,18 @@ app.post('/api/messages', (req, res) => {
     })
 });
 
+// Create a new User
+app.post('/api/users', (req, res) => {
+  database.createNewUser(req.body.first_name, req.body.last_name, req.body.email, req.body.password, req.body.bio, req.body.gym_id, req.body.profile_pic)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
+
 
 // Delete friends
 

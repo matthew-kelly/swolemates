@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Calendar from './Calendar.jsx'
-import Graph from './Graph.jsx'
-import Tile from './Tile.jsx'
-
+import ProfilePictureComponent from './DashboardComponents/ProfilePictureComponent.jsx'
+import GymTileComponent from './DashboardComponents/GymTileComponent.jsx'
+import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx'
+import BioComponent from './DashboardComponents/BioComponent.jsx'
+import GoalComponent from './DashboardComponents/GoalComponent.jsx'
+import AcitivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx'
 
 const API = 'http://localhost:5000/api'
 
@@ -73,34 +76,18 @@ class Dashboard extends Component {
         return <span key={gym.id}>{gym.name}</span>
       })
     }
-
     return (
       <div className="container">
-      <div id="profileImage" className="tile tileMedium">
-          <img className="profile_pic" src={user_data.profile_pic} alt="profile" />
-        </div>
-          <div id="gym" className="tile tileSmall">
-            <Tile tileData={gymName}/>
-          </div>
-          <div id="calendarDashboard1" className="tile tileSmall">
-            <Tile/>
-          </div>
-          <div id="calendarDashboard2" className="tile tileSmall">
-            <Tile/>
-          </div>
+      <ProfilePictureComponent content={user_data.profile_pic}/>
+      <GymTileComponent content={gymName}/>
+      <CalendarTileComponent />
           <div id="calendarDashboard3" className="tile tileSmall">
-            <Tile/>
+            <i className="far fa-calendar"></i>
+            <h4 className='dashboardSubtitle'>Calendar</h4>
           </div>
-        <div id="bio" className="tile tileBig">
-          <Tile tileData={user_data.bio} />
-        </div>
-        <div id="goals" className="tile tileMedium">
-          <h1>Goals</h1>
-          <Tile tileData={allGoals} />
-        </div>
-        <div id="activity" className="tile">
-        <Graph/>
-        </div>
+      <BioComponent content={user_data}/>
+      <GoalComponent content={allGoals}/>
+      <AcitivityGraphComponent/>
       </div>
     );
   }

@@ -128,6 +128,20 @@ module.exports = function knexData(knex) {
         .returning(['creator_id','receiver_id','content','created_at'])
     },
 
+    //Create new User
+    createNewUser: (first_name, last_name, email, password, bio, gym_id, profile_pic) => {
+      return knex('users')
+        .insert({
+          first_name: first_name,
+          last_name: last_name,
+          email: email,
+          password: password,
+          bio: bio,
+          gym_id: gym_id,
+          profile_pic: profile_pic
+        })
+    },
+
     // Get all tags for event
     getEventTags: (event_id) => {
       return knex('*')
