@@ -63,7 +63,7 @@ class Friends extends Component {
     if (friends){
       allFriends = friends.map((user_obj) => {
         return <User key={user_obj.id} renderChatWindow={this.renderChatWindow} user_obj={user_obj} />
-      });
+      })
     }
 
     if(this.state.currentFriend){

@@ -147,12 +147,12 @@ class Connections extends Component {
     }
     
     const connections = this.state.connections;
-    let allConnections;
-    if (connections){
-      allConnections = connections.map((user_obj) => {
-        return <User key={user_obj.id} user_obj={user_obj} />
-      });
-    }
+    // let allConnections;
+    // if (connections){
+    //   allConnections = connections.map((user_obj) => {
+    //     return <User key={user_obj.id} user_obj={user_obj} />
+    //   });
+    // }
 
     const eventRequests = this.state.eventRequests;
     let allEventRequests;
@@ -167,8 +167,8 @@ class Connections extends Component {
     return (
       <div>
         <div className="chat-head-list">
-          {allConnections}
-          <p>Test</p>
+          {/* {allConnections} */}
+          <h2>Pending Event Requests</h2>
         </div>
         <div className="event-request-list">
           {allEventRequests}

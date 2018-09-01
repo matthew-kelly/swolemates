@@ -108,6 +108,17 @@ module.exports = function knexData(knex) {
         .returning('id')
     },
 
+    getConfirmedEvents: (user) => {
+      return knex.select('time_begin', 'time_end', 'first_name', 'last_name', 'requester_id')
+        .from('events')
+        .join('event_requests', 'event_id', '=', 'events.id')
+        .join('users', 'requester_id', '=', 'users.id')
+        .where({
+          user_id: user,
+          accepted: true
+        })
+    },
+
     // Get all tags for event
     getEventTags: (event_id) => {
       return knex('*')
@@ -176,16 +187,6 @@ module.exports = function knexData(knex) {
         .update({
           accepted: accepted
         })
-        // .then((res) => {
-        //   knex('friends')
-        //     .insert({
-        //       user_id: user_id,
-        //       friend_id: friend_id
-        //     }, {
-        //       user_id: friend_id,
-        //       friend_id: user_id
-        //     })
-        // })
     },
 
     deleteRequest: (request_id) => {

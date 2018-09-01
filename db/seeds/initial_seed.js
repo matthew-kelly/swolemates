@@ -850,7 +850,7 @@ exports.seed = function(knex, Promise) {
       return knex('event_requests').insert({
         event_id: 1,
         requester_id: 2,
-        accepted: false
+        accepted: true
       });
     })
     .then(() => {
@@ -864,13 +864,6 @@ exports.seed = function(knex, Promise) {
       return knex('event_requests').insert({
         event_id: 2,
         requester_id: 2,
-        accepted: false
-      });
-    })
-    .then(() => {
-      return knex('event_requests').insert({
-        event_id: 2,
-        requester_id: 3,
         accepted: false
       });
     })

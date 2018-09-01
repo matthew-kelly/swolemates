@@ -87,9 +87,9 @@ app.post('/api/users/:id/friends/new', (req, res) => {
     })
 });
 
-// Get all events for a user
-app.get('/api/users/:id/events', (req, res) => {
-  database.getEventsList(req.params.id)
+// Get all confirmed events for a user
+app.get('/api/users/:id/events/confirmed', (req, res) => {
+  database.getConfirmedEvents(req.params.id)
     .then((result) => {
       res.send(result);
     })
@@ -97,6 +97,18 @@ app.get('/api/users/:id/events', (req, res) => {
       console.error(e);
     })
 });
+
+// Get all events for a user
+app.get('/api/users/:id/events', (req, res) => {
+  database.getEventsList(req.params.id)
+  .then((result) => {
+    res.send(result);
+  })
+  .catch((e) => {
+    console.error(e);
+  })
+});
+
 
 // Connections list
 app.get('/api/users/:id/connections', (req, res) => {
