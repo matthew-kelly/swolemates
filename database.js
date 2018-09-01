@@ -10,11 +10,20 @@ module.exports = function knexData(knex) {
       })
     },
 
+    // //Returns user data for Events list
+    // getEventsList: (id) => {
+    //   return knex.select('*')
+    //   .from('events')
+    //   .join('users', 'user_id', '=', 'users.id')
+    //   .where({
+    //     user_id: id
+    //   })
+    // },
+
     //Returns user data for Events list
     getEventsList: (id) => {
       return knex.select('*')
       .from('events')
-      .join('users', 'user_id', '=', 'users.id')
       .where({
         user_id: id
       })

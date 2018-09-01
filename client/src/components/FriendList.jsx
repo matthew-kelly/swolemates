@@ -28,20 +28,20 @@ class FriendList extends Component {
     .catch(err => console.log(err));
   }
 
-  onClick = (event) => {
-    const friend_id = (JSON.parse(event.target.getAttribute('data-thisfriendid')))
-    this.getFriendEvents(friend_id)
-    .then(res => this.setState({ selectedFriendEvents: res}))
-    .then(console.log(this.state))
-    .catch(err => console.log(err));
-  }
+  // onClick = (event) => {
+  //   const friend_id = (JSON.parse(event.target.getAttribute('data-thisfriendid')))
+  //   this.getFriendEvents(friend_id)
+  //   .then(res => this.setState({ selectedFriendEvents: res.data}))
+  //   .then(res => setTimeout(() => {console.log(this.state.selectedFriendEvents)}, 100))
+  //   .catch(err => console.log(err));
+  // }
 
   render(){
     const friends = this.state.friends;
     let allFriends;
      if (friends){
-      allFriends = friends.map((allFriends) => {
-        return <li key={allFriends.id} data-thisfriendid={JSON.stringify(allFriends.id)} onClick={this.onClick}>{allFriends.first_name}</li>
+      allFriends = friends.map((friend) => {
+        return <li key={friend.id} data-thisfriend={JSON.stringify(friend)} onClick={this.props.chooseFriend}>{friend.first_name}</li>
       });
     }
     return(

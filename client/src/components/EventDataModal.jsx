@@ -3,11 +3,6 @@ import moment from 'moment';
 
 
 class EventDataModal extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-    }
-  }
 
   render() {
     const showHideClassName = this.props.showEventModal ? "event-data-modal display-block" : "event-data-modal display-none";
