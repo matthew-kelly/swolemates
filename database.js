@@ -117,6 +117,17 @@ module.exports = function knexData(knex) {
         .returning('id')
     },
 
+    getConfirmedEvents: (user) => {
+      return knex.select('time_begin', 'time_end', 'first_name', 'last_name', 'requester_id')
+        .from('events')
+        .join('event_requests', 'event_id', '=', 'events.id')
+        .join('users', 'requester_id', '=', 'users.id')
+        .where({
+          user_id: user,
+          accepted: true
+        })
+    },
+    
     //Create new message
     createNewMessage: (creator_id, receiver_id, content) =>{
       return knex('messages')
@@ -146,6 +157,77 @@ module.exports = function knexData(knex) {
         .returning('id')
     },
 
+    // Create new event request
+    getEventRequests: (event_id) => {
+      return knex('*')
+        .from('event_requests')
+        .where({
+          event_id: event_id
+        })
+    },
+
+    // Create new event request
+    addEventRequest: (event_id, requester_id) => {
+      return knex('event_requests')
+        .insert({
+          event_id: event_id,
+          requester_id: requester_id
+        })
+        .returning('id')
+    },
+
+    // Get user's pending event requests
+    getPendingEventRequests: (user_id) => {
+      return knex.select('*')
+        .from('event_requests')
+        .join('events', 'event_id', '=', 'events.id')
+        .join('users', 'users.id', '=', 'requester_id')
+        .where({
+          user_id: user_id
+        })
+    },
+
+    // Get request row
+    getRequestRow: (event_id, requester_id) => {
+      return knex.select('*')
+        .from('event_requests')
+        .where({
+          event_id: event_id,
+          requester_id: requester_id
+        })
+    },
+
+    acceptRequest: (request_id, accepted) => {
+      return knex.select('*')
+        .from('event_requests')
+        .where({
+          id: request_id
+        })
+        .update({
+          accepted: accepted
+        })
+    },
+
+    deleteRequest: (request_id) => {
+      return knex.select('*')
+        .from('event_requests')
+        .where({
+          id: request_id
+        })
+        .del()
+    },
+
+     // Add a new friend
+     addFriend: (user, friend) => {
+      return knex('friends')
+        .insert([{
+          user_id: user,
+          friend_id: friend
+        }, {
+          user_id: friend,
+          friend_id: user
+        }])
+    },
     // deleteFriend: (user_id, friend_id) => {
     //   return knex('friends')
     //     .where({

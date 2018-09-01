@@ -19,15 +19,13 @@ class Friends extends Component {
   }
 
   componentDidMount() {
-
     this.getFriends(this.props.appState.current_user.id)
-    .then(res => this.setState({ friends: res }))
-    .catch(err => console.log(err));
+      .then(res => this.setState({ friends: res }))
+      .catch(err => console.log(err));
 
-    // setTimeout(function(){console.log(this.props.appState.current_user.id)}, 1000)
     this.getMessages(this.props.appState.current_user.id)
-    .then(res => this.setState({ friends: this.state.friends, messages: res }))
-    .catch(err => console.log(err));
+      .then(res => this.setState({ friends: this.state.friends, messages: res }))
+      .catch(err => console.log(err));
   }
 
 

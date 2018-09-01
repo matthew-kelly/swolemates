@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Calendar from './Calendar.jsx'
+import moment from 'moment';
 
 
 const API = 'http://localhost:5000/api'
@@ -12,22 +12,27 @@ class Dashboard extends Component {
     this.state = {
       user_data: '',
       goals: '',
+      confirmedEvents: '',
       gym:''
     }
   }
 
   componentWillMount() {
     this.getUser(this.props.appState.current_user.id)
-    .then(res => this.setState({ user_data: res }))
-    .catch(err => console.log(err));
+      .then(res => this.setState({ user_data: res }))
+      .catch(err => console.log(err));
 
     this.getGoals(this.props.appState.current_user.id)
-    .then(res => this.setState({ goals: res }))
-    .catch(err => console.log(err));
+      .then(res => this.setState({ goals: res }))
+      .catch(err => console.log(err));
+
+    this.getConfirmedEvents(this.props.appState.current_user.id)
+      .then(res => this.setState({ confirmedEvents: res }))
+      .catch(err => console.log(err));
 
     this.getGym(this.props.appState.current_user.gym_id)
-    .then(res => this.setState({ gym: res}))
-    .catch(err => console.log(err));
+      .then(res => this.setState({ gym: res}))
+      .catch(err => console.log(err));
   }
 
   // Get user
@@ -39,6 +44,12 @@ class Dashboard extends Component {
   // Get user's goals
   async getGoals(id) {
     const res = await axios.get(`${API}/users/${id}/goals`);
+    return await res.data;
+  }
+
+  // Get user's confirmed events
+  async getConfirmedEvents(id) {
+    const res = await axios.get(`${API}/users/${id}/events/confirmed`);
     return await res.data;
   }
 
@@ -57,6 +68,7 @@ class Dashboard extends Component {
 
     const user_data = this.props.appState.current_user;
     const goals_data = this.state.goals;
+    const events_data = this.state.confirmedEvents;
     const gym_data = this.state.gym;
 
     console.log(gym_data);
@@ -67,11 +79,24 @@ class Dashboard extends Component {
         return <li key={goal.id}>{goal.goal}</li>
       });
     }
+
+    let earliestEventFormatted = <li><p>No upcoming events</p></li>;
+    if (events_data.length > 0) {
+      let earliestEvent = events_data[0];
+      events_data.forEach(event => {
+        if (moment(event.time_begin).format('YYYYMMDDHHmm') < moment(earliestEvent.time_begin).format('YYYYMMDDHHmm')) {
+          earliestEvent = event;
+        }
+      })
+      earliestEventFormatted = <li><p>{moment(earliestEvent.time_begin).format('MMMM Do YYYY, h:mm a')} - {moment(earliestEvent.time_end).format('h:mm a')}</p><p>{earliestEvent.first_name} {earliestEvent.last_name}</p></li>
+    }
+
     if (gym_data){
       gymName = gym_data.map((gym) => {
         return <span key={gym.id}>{gym.name}</span>
       })
     }
+    
     return (
       <div className="container">
       <div id="profileImage" className="tile tileMedium">
@@ -104,6 +129,12 @@ class Dashboard extends Component {
           </ul>
         </div>
         <div id="activity" className="tile">
+        </div>
+        <div id="confirmed-events">
+          <h1>Next Event</h1>
+          <ul>
+            {earliestEventFormatted}
+          </ul>
         </div>
       </div>
     );

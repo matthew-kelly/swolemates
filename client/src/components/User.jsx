@@ -1,13 +1,5 @@
 import React, {Component} from 'react';
-import Dashboard from './Dashboard.jsx'
-import {
-  BrowserRouter as Router,
-  Route,
-  // Redirect,
-  // Switch,
-  Link,
-  render
-} from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 class User extends Component {
 
