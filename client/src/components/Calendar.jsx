@@ -28,7 +28,8 @@ class Calendar extends Component {
       events: '',
       showEventModal: false,
       currentEvent: '',
-      currentEventTags: ''
+      currentEventTags: '',
+      currentEventRequests: ''
     };
     this.getAllEvents = this.getAllEvents.bind(this);
   }
@@ -77,21 +78,65 @@ class Calendar extends Component {
       return false;
     }
   }
+  
+  async currentEventJoinRequests(event_id) {
+    const res = await axios.get(`${API}/events/${event_id}/request`);
+    return await res;
+  }
+
+  async newEventJoinRequest(requestObj) {
+    const res = await axios({
+      method: 'post',
+      url: `${API}/events/${requestObj.event_id}/request`,
+      data: {
+        event_id: requestObj.event_id,
+        requester_id: requestObj.requester_id,
+        accepted: false
+      }
+    })
+    if (res.data.length > 0) {
+      return await res.data;
+    } else {
+      return false;
+    }
+  }
 
   showEventDataModal = (event) => {
+    const thisEvent = JSON.parse(event.target.getAttribute('data-thisevent'));
     this.setState({
-      showEventModal: true,
       currentEventTags: JSON.parse(event.target.getAttribute('data-eventtags')),
       currentEvent: JSON.parse(event.target.getAttribute('data-thisevent')),
      });
+    this.currentEventJoinRequests(thisEvent.id)
+      .then(res => {
+        this.setState({
+          currentEventRequests: res.data,
+          showEventModal: true
+        })
+      })
+      .catch(err => console.error(err));
   };
 
   hideEventDataModal = () => {
     this.setState({ showEventModal: false });
   };
+  
+  // User requests an invitation to event
+  requestToJoin = (event) => {
+    const thisEvent = JSON.parse(event.target.getAttribute('data-event'));
+    const requestObj = {
+      event_id: thisEvent.id,
+      requester_id: this.props.appState.current_user.id
+    }
+    this.newEventJoinRequest(requestObj)
+      .then(res => {
+        this.hideEventDataModal();
+      })
+      .catch(err => console.error(err));
+  }
 
   // Called when user clicks on timedropdown menu, sets state to set time
-  changeTime = (event) =>{
+  changeTime = (event) => {
     let startTime = moment(event.startTime).format('YYYYMMDD HHmm')
     let endTime = moment(event.endTime).format('YYYYMMDD HHmm')
     this.setState({ startTime: startTime });
@@ -167,7 +212,7 @@ class Calendar extends Component {
 
     this.getFriends(this.props.appState.current_user.id)
     .then(res => this.setState({ friends: res }))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 
     this.getAllEvents(this.props.appState.current_user.gym_id)
     .then(res => this.setState({ events: res.data }))
@@ -179,7 +224,7 @@ class Calendar extends Component {
   }
 
   // Renders the popup with forms/buttons
-  renderPopUp(){
+  renderPopUp() {
     return(
       <div>
         <div style={{display:'none'}} id='popupBackground'>
@@ -323,7 +368,7 @@ class Calendar extends Component {
     return <div className="body">{rows}</div>;
   }
 
-// On clicking a day, gets the popup information to show, sets the state.
+  // On clicking a day, gets the popup information to show, sets the state.
   onDateClick = (day) => {
     this.setState({
       selectedDate: day
@@ -357,7 +402,7 @@ class Calendar extends Component {
           {this.renderDays()}
           {this.renderCells()}
         </div>
-        <EventDataModal currentEvent={this.state.currentEvent} tags={this.state.currentEventTags} showEventModal={this.state.showEventModal} handleClose={this.hideEventDataModal} />
+        <EventDataModal currentUser={this.props.appState.current_user} currentEventRequests={this.state.currentEventRequests} currentEvent={this.state.currentEvent} tags={this.state.currentEventTags} showEventModal={this.state.showEventModal} requestToJoin={this.requestToJoin} handleClose={this.hideEventDataModal} />
       </div>
     );
   }
