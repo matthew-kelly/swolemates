@@ -10,20 +10,11 @@ module.exports = function knexData(knex) {
       })
     },
 
-    // //Returns user data for Events list
-    // getEventsList: (id) => {
-    //   return knex.select('*')
-    //   .from('events')
-    //   .join('users', 'user_id', '=', 'users.id')
-    //   .where({
-    //     user_id: id
-    //   })
-    // },
-
     //Returns user data for Events list
     getEventsList: (id) => {
       return knex.select('*')
       .from('events')
+      .join('users', 'user_id', '=', 'users.id')
       .where({
         user_id: id
       })
@@ -107,9 +98,8 @@ module.exports = function knexData(knex) {
     allGymEvents: (gym_id) => {
       return knex.select('*')
         .from('events')
-        .where({
-          gym_id: gym_id
-        })
+        .join('users', 'user_id', '=', 'users.id')
+        .whereRaw('events.gym_id = ?' ,[gym_id])
     },
 
     // Create a new event

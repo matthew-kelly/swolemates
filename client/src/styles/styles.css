@@ -636,6 +636,18 @@ main {
   display: flex;
   justify-content: start;
   list-style-type: none;
+  text-transform: capitalize;
+  margin: 0.5em auto;
+  padding: 0 1em;
+}
+
+#dropdownList li {
+  white-space: nowrap;
+}
+
+#dropdownList li:hover {
+  color: orangered;
+  cursor: pointer;
 }
 
 .dropdown {

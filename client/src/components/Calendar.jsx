@@ -281,8 +281,6 @@ class Calendar extends Component {
     const thisFriend = JSON.parse(event.target.getAttribute('data-thisfriend'));
 
     this.setState({ selectedFriend: thisFriend })
-
-    // setTimeout(() => {console.log("set state for selectedFriend: ", this.state.selectedFriend)
     
     this.getFriendEvents(thisFriend.id)
       .then(res => {
@@ -294,17 +292,6 @@ class Calendar extends Component {
       .then(res => {
       })
       .catch(err => console.error(err));
-    
-    // }, 500);
-
-    // this.currentEventJoinRequests(thisEvent.id)
-    //   .then(res => {
-    //     this.setState({
-    //       currentEventRequests: res.data,
-    //       showEventModal: true
-    //     })
-    //   })
-    //   .catch(err => console.error(err));
   }
 
 // Renders Calendar Header
