@@ -127,7 +127,7 @@ class Connections extends Component {
         NotificationManager.success('Success!', 'Your event is being added to the Calendar');
         break;
       case 'deleteFriend':
-        NotificationManager.warning('Request Denied', `${first_name} ${last_name} request was denied`, 3000);
+        NotificationManager.warning('Request Denied', `${first_name} ${last_name}'s request was denied`, 3000);
         break;
       case 'error':
         NotificationManager.error('Error message', 'Click me!', 5000, () => {

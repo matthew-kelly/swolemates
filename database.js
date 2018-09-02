@@ -214,6 +214,17 @@ module.exports = function knexData(knex) {
         })
     },
 
+    //     // Get user's pending event requests OLD
+    // getPendingEventRequests: (user_id) => {
+    //   return knex.select('*')
+    //     .from('event_requests')
+    //     .join('events', 'event_id', '=', 'events.id')
+    //     .join('users', 'users.id', '=', 'requester_id')
+    //     .where({
+    //       user_id: user_id
+    //     })
+    // },
+
     // Get request row
     getRequestRow: (event_id, requester_id) => {
       return knex.select(knex.raw('event_requests.id AS id'), 'requester_id', 'event_id', 'accepted', 'first_name', 'last_name')
