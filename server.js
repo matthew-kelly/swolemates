@@ -264,6 +264,28 @@ app.post('/api/users', (req, res) => {
     })
 });
 
+//Update User Bio
+app.post('/api/users/:id/bio', (req, res) => {
+  database.updateUserBio(req.body.user_id, req.body.user_bio)
+    .then((result) => {
+      res.sendStatus(202);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
+//Update User Profile Pic
+app.post('/api/users/:id/profile_pic', (req, res) => {
+  database.updateUserProfilePic(req.body.user_id, req.body.user_profile_pic)
+    .then((result) => {
+      res.sendStatus(202);
+    })
+    .catch((e) => {
+      console.error(e)
+    })
+});
+
 app.post('/api/requests/:request_id/accept', (req, res) => {
   database.acceptRequest(req.params.request_id, req.body.accepted)
     .then((result) => {

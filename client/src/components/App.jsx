@@ -14,6 +14,7 @@ import Friends from './Friends.jsx'
 import Login from './Login.jsx'
 import Register from './Register.jsx'
 import FriendPage from './FriendPage.jsx'
+import Example from './Example.jsx'
 
 const API = 'http://localhost:5000/api'
 
@@ -116,6 +117,7 @@ class App extends Component {
             <this.PropsRoute path ='/profiles/:id' component={FriendPage} appState={appState}/>
             <this.PropsRoute exact path="/login" component={Login} loginSubmit={this.loginSubmit} appState={appState} />
             <this.PropsRoute exact path="/register" component={Register} loginSubmit={this.loginSubmit} appState={appState} />
+            <this.PropsRoute exact path='/example' component={Example}/>
           </div>
         </Route>
       </Router>

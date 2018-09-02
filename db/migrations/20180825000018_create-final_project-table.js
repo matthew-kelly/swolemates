@@ -14,7 +14,7 @@ exports.up = function(knex, Promise) {
       table.string('password');
       table.text('bio');
       table.integer('gym_id').references('gyms.id')
-      table.string('profile_pic');
+      table.text('profile_pic');
     })
     .createTable('events', (table) => {
       table.increments('id');

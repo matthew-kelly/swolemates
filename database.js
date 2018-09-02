@@ -204,12 +204,12 @@ module.exports = function knexData(knex) {
         .returning('id')
     },
 
-    // Get user's pending event requests
+// Get user's pending event requests
     getPendingEventRequests: (user_id) => {
-      return knex.select('*')
+      return knex.select(knex.raw('event_requests.id AS request_id'), 'requester_id', 'first_name', 'last_name', 'event_id', 'time_begin', 'time_end', 'profile_pic')
         .from('event_requests')
         .join('events', 'event_id', '=', 'events.id')
-        .join('users', 'users.id', '=', 'requester_id')
+        .join('users', 'requester_id', '=', 'users.id')
         .where({
           user_id: user_id
         })
@@ -217,8 +217,9 @@ module.exports = function knexData(knex) {
 
     // Get request row
     getRequestRow: (event_id, requester_id) => {
-      return knex.select('*')
+      return knex.select(knex.raw('event_requests.id AS id'), 'requester_id', 'event_id', 'accepted', 'first_name', 'last_name')
         .from('event_requests')
+        .join('users', 'users.id', '=', 'requester_id')
         .where({
           event_id: event_id,
           requester_id: requester_id
@@ -243,6 +244,28 @@ module.exports = function knexData(knex) {
           id: request_id
         })
         .del()
+    },
+
+    updateUserBio: (user_id, user_bio) => {
+      return knex.select('*')
+        .from('users')
+        .where({
+          id: user_id
+        })
+        .update({
+          bio: user_bio
+        })
+    },
+
+    updateUserProfilePic: (user_id, user_profile_pic) => {
+      return knex.select('*')
+        .from('users')
+        .where({
+          id: user_id
+        })
+        .update({
+          profile_pic: user_profile_pic
+        })
     },
 
      // Add a new friend

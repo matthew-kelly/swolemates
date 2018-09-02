@@ -8,6 +8,7 @@ import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.j
 import BioComponent from './DashboardComponents/BioComponent.jsx'
 import GoalComponent from './DashboardComponents/GoalComponent.jsx'
 import AcitivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx'
+import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsComponent.jsx'
 import moment from 'moment';
 
 
@@ -105,7 +106,7 @@ class Dashboard extends Component {
 
     return (
       <div className="container">
-      <ProfilePictureComponent content={user_data.profile_pic}/>
+      <ProfilePictureComponent appState={this.props.appState} content={user_data.profile_pic}/>
       <GymTileComponent content={gymName}/>
       <CalendarTileComponent />
           <div id="calendarDashboard3" className="tile tileSmall">
@@ -115,13 +116,7 @@ class Dashboard extends Component {
       <BioComponent content={user_data}/>
       <GoalComponent content={allGoals}/>
       <AcitivityGraphComponent/>
-
-        <div id="confirmed-events">
-          <h1>Next Event</h1>
-          <ul>
-            {earliestEventFormatted}
-          </ul>
-        </div>
+      <ConfirmedEventsComponent content={earliestEventFormatted}/>
       </div>
     );
   }
