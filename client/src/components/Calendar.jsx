@@ -30,6 +30,8 @@ class Calendar extends Component {
       currentMonth: new Date(),
       selectedDate: new Date(),
       events: '',
+      selectedEvents: '',
+      selectedFriend: '',
       showEventModal: false,
       currentEvent: '',
       currentEventTags: '',
@@ -43,15 +45,20 @@ class Calendar extends Component {
     return await res;
   }
 
-  async getFriends(id) {
-    const res = await axios.get(`${API}/users/${id}/friends`);
+  async getFriendEvents(friend_id) {
+    const res = axios.get(`${API}/users/${friend_id}/events`);
+    return await res;
+  }
+
+  async getFriends(user_id) {
+    const res = await axios.get(`${API}/users/${user_id}/friends`);
     return await res.data;
   }
 
-  async addEventTag(eventId, tag) {
+  async addEventTag(event_id, tag) {
     const res = await axios({
       method: 'post',
-      url: `${API}/events/${eventId}/tags`,
+      url: `${API}/events/${event_id}/tags`,
       data: {
         tag: tag
       }
@@ -238,9 +245,15 @@ class Calendar extends Component {
     .then(res => this.setState({ friends: res }))
     .catch(err => console.error(err));
 
-    this.getAllEvents(this.props.appState.current_user.gym_id)
-    .then(res => this.setState({ events: res.data }))
-    .catch(err => console.error(err));
+    if (this.state.selectedFriend) {
+      this.getFriendEvents(this.state.selectedFriend.id)
+        .then(res => this.setState({ selectedEvents: res.data }))
+        .catch(err => console.error(err));
+    } else {
+      this.getAllEvents(this.props.appState.current_user.gym_id)
+        .then(res => this.setState({ selectedEvents: res.data }))
+        .catch(err => console.error(err));
+    }
   }
 
   componentWillUnmount() {
@@ -288,6 +301,23 @@ class Calendar extends Component {
       )
   }
 
+  chooseFriend = (event) => {
+    const thisFriend = JSON.parse(event.target.getAttribute('data-thisfriend'));
+
+    this.setState({ selectedFriend: thisFriend })
+    
+    this.getFriendEvents(thisFriend.id)
+      .then(res => {
+        this.setState({ selectedEvents: res.data })
+        if (res.data.length > 0) {
+          this.renderCells(res.data);
+        }
+      })
+      .then(res => {
+      })
+      .catch(err => console.error(err));
+  }
+
 // Renders Calendar Header
   renderHeader() {
     const dateFormat = 'MMMM YYYY';
@@ -302,10 +332,10 @@ class Calendar extends Component {
           <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
         </div>
         <div className="dropdown">
-          <button className="dropbtn">Filter by: </button>
+          <button className="dropbtn">Friends</button>
           <div className="dropdown-content">
             <ul id="dropdownList">
-              <FriendList appState={this.props.appState}/>
+              <FriendList chooseFriend={this.chooseFriend} appState={this.props.appState}/>
             </ul>
           </div>
         </div>
@@ -333,7 +363,7 @@ class Calendar extends Component {
     return <div className="days row">{days}</div>;
   }
 
-  renderCells() {
+  renderCells(filteredEvents) {
     const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
@@ -352,11 +382,11 @@ class Calendar extends Component {
 
         const dayEventsArray = [];
 
-        for (let j = 0; j < this.state.events.length; j++) {
-          let eventStartDate = moment(this.state.events[j].time_begin).format('YYYYMMDD');
+        for (let j = 0; j < filteredEvents.length; j++) {
+          let eventStartDate = moment(filteredEvents[j].time_begin).format('YYYYMMDD');
           let calendarDate = moment(day).format('YYYYMMDD');
-          if (eventStartDate === calendarDate && (this.state.events[j].public === true || this.state.events[j].user_id === this.props.appState.current_user.id)) {
-            dayEventsArray.push(<EventBubble showEventDataModal={this.showEventDataModal} thisEvent={this.state.events[j]} key={this.state.events[j].id} />)
+          if (eventStartDate === calendarDate && (filteredEvents[j].public === true || filteredEvents[j].user_id === this.props.appState.current_user.id)) {
+            dayEventsArray.push(<EventBubble showEventDataModal={this.showEventDataModal} thisEvent={filteredEvents[j]} key={filteredEvents[j].id} />)
           }
         }
 
@@ -364,14 +394,7 @@ class Calendar extends Component {
         const cloneDay = day;
 
         days.push(
-          <div
-            className={`col cell ${
-              !dateFns.isSameMonth(day, monthStart)
-                ? "disabled"
-                : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
-            }`}
-            key={day}
-          >
+          <div className={`col cell ${!dateFns.isSameMonth(day, monthStart) ? "disabled" : dateFns.isSameDay(day, selectedDate) ? "selected" : ""}`} key={day} >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
             <div className="add-event-button" onClick={() => this.onDateClick(dateFns.parse(cloneDay))}>+</div>
@@ -424,7 +447,7 @@ class Calendar extends Component {
         <div className="calendar">
           {this.renderHeader()}
           {this.renderDays()}
-          {this.renderCells()}
+          {this.renderCells(this.state.selectedEvents)}
         </div>
         <EventDataModal currentUser={this.props.appState.current_user} currentEventRequests={this.state.currentEventRequests} currentEvent={this.state.currentEvent} tags={this.state.currentEventTags} showEventModal={this.state.showEventModal} requestToJoin={this.requestToJoin} handleClose={this.hideEventDataModal} />
         <NotificationContainer/>

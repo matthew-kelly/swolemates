@@ -1,12 +1,27 @@
 import React, {Component} from 'react';
 import moment from 'moment';
+import axios from 'axios';
+
+const API = 'http://localhost:5000/api'
 
 
 class EventDataModal extends Component {
-  constructor(props) {
+  constructor(props){
     super(props)
     this.state = {
+      friends: ''
     }
+  }
+
+  async getFriends(id) {
+    const res = await axios.get(`${API}/users/${id}/friends`);
+    return await res.data;
+  }
+
+  componentDidMount() {
+    this.getFriends(this.props.currentUser.id)
+      .then(res => this.setState({ friends: res }))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -34,11 +49,28 @@ class EventDataModal extends Component {
         }
       })
     }
+
+    let friendIdArray;
+    if (this.state.friends.length > 0) {
+      friendIdArray = [];
+      this.state.friends.forEach((friend) => {
+        friendIdArray.push(friend.id);
+      })
+    }
+
+    let eventOwner = <h2>Public Event</h2>
+
+    if (this.props.currentEvent.first_name && friendIdArray && friendIdArray.includes(this.props.currentEvent.user_id)) {
+      eventOwner = <h2>{this.props.currentEvent.first_name} {this.props.currentEvent.last_name}'s Event</h2>
+    }
+    if (this.props.currentEvent.user_id === this.props.currentUser.id) {
+      eventOwner = <h2>Your Event</h2>
+    }
       
     return (
       <div className={showHideClassName}>
         <div className="event-data-modal-main">
-          <h2>Event</h2>
+          {eventOwner}
           <h3>Time:</h3>
           <p>{moment(this.props.currentEvent.time_begin).format('MMMM Do YYYY, h:mm a')} - {moment(this.props.currentEvent.time_end).format('h:mm a')}</p>
           <h3>Description:</h3>

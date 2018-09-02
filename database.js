@@ -98,9 +98,8 @@ module.exports = function knexData(knex) {
     allGymEvents: (gym_id) => {
       return knex.select('*')
         .from('events')
-        .where({
-          gym_id: gym_id
-        })
+        .join('users', 'user_id', '=', 'users.id')
+        .whereRaw('events.gym_id = ?' ,[gym_id])
     },
 
     // Create a new event
