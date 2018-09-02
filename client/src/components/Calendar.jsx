@@ -13,6 +13,7 @@ import axios from 'axios';
 import EventBubble from './EventBubble';
 import EventDataModal from './EventDataModal';
 import FriendList from './FriendList';
+import TagList from './TagList';
 
 const API = 'http://localhost:5000/api'
 
@@ -22,6 +23,8 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      friends: '',
+      friendsIdArray: '',
       tags: '',
       currentMonth: new Date(),
       selectedDate: new Date(),
@@ -31,7 +34,8 @@ class Calendar extends Component {
       showEventModal: false,
       currentEvent: '',
       currentEventTags: '',
-      currentEventRequests: ''
+      currentEventRequests: '',
+      currentTime: moment(new Date()).format('YYYYMMDD')
     };
     this.getAllEvents = this.getAllEvents.bind(this);
   }
@@ -184,7 +188,7 @@ class Calendar extends Component {
       publicCheck = true;
     }
     for(let tag of this.state.tags){
-      tagArray.push(tag.value);
+      tagArray.push(tag.label);
     }
 
     if (description.length > 0 && tagArray.length > 0 && date.length > 0 && sTime < eTime) {
@@ -202,13 +206,13 @@ class Calendar extends Component {
 
           tagArray.map((tag) => {
             this.addEventTag(eventId, tag)
-            .catch(err => console.error(err));
+              .catch(err => console.error(err));
           });
         })
         .catch(err => console.error(err));
-
+      
       this.onClear();
-      window.location.reload(true);
+      // window.location.reload(true);
     } else {
       window.alert("Event is not valid");
     }
@@ -218,14 +222,19 @@ class Calendar extends Component {
     document.addEventListener('mousedown', this.handleClick, false);
 
     this.getFriends(this.props.appState.current_user.id)
-    .then(res => this.setState({ friends: res }))
+    .then(res => {
+      const friendsIdArray = res.map(friend => friend.id);
+      this.setState({ friends: res, friendsIdArray: friendsIdArray })
+    })
     .catch(err => console.error(err));
 
     if (this.state.selectedFriend) {
+      console.log("Getting friend's events");
       this.getFriendEvents(this.state.selectedFriend.id)
         .then(res => this.setState({ selectedEvents: res.data }))
         .catch(err => console.error(err));
     } else {
+      console.log("Getting all events");
       this.getAllEvents(this.props.appState.current_user.gym_id)
         .then(res => this.setState({ selectedEvents: res.data }))
         .catch(err => console.error(err));
@@ -279,7 +288,6 @@ class Calendar extends Component {
 
   chooseFriend = (event) => {
     const thisFriend = JSON.parse(event.target.getAttribute('data-thisfriend'));
-
     this.setState({ selectedFriend: thisFriend })
     
     this.getFriendEvents(thisFriend.id)
@@ -289,14 +297,63 @@ class Calendar extends Component {
           this.renderCells(res.data);
         }
       })
-      .then(res => {
-      })
       .catch(err => console.error(err));
   }
 
-// Renders Calendar Header
+  clearChosenFriend = () => {
+    this.setState({ selectedFriend: '' })
+
+    this.getAllEvents(this.props.appState.current_user.gym_id)
+    .then(res => {
+      this.setState({ selectedEvents: res.data })
+      if (res.data.length > 0) {
+        this.renderCells(res.data);
+      }
+    })
+    .catch(err => console.error(err));
+  }
+
+  chooseTag = (event) => {
+    const thisTag = JSON.parse(event.target.getAttribute('data-thistag'));
+
+    this.setState({ selectedTag: thisTag })
+    
+    // this.getTagEvents(thisTag.tag_id)
+    //   .then(res => {
+    //     this.setState({ selectedEvents: res.data })
+    //     if (res.data.length > 0) {
+    //       this.renderCells(res.data);
+    //     }
+    //   })
+    //   .catch(err => console.error(err));
+  }
+
+  clearChosenTag = () => {
+    this.setState({ selectedTag: '' })
+
+    this.getAllEvents(this.props.appState.current_user.gym_id)
+    .then(res => {
+      this.setState({ selectedEvents: res.data })
+      if (res.data.length > 0) {
+        this.renderCells(res.data);
+      }
+    })
+    .catch(err => console.error(err));
+  }
+
+  // Renders Calendar Header
   renderHeader() {
     const dateFormat = 'MMMM YYYY';
+
+    let currentTagButton = <button className="dropbtn">All Tags</button>;
+    let currentFriendButton = <button className="dropbtn">All Friends</button>;
+
+    if (this.state.selectedFriend) {
+      currentFriendButton = <button className="dropbtn">{this.state.selectedFriend.first_name} {this.state.selectedFriend.last_name}</button>;
+    }
+    if (this.state.selectedTag) {
+      currentTagButton = <button className="dropbtn">{this.state.selectedTag.label}</button>;
+    }
     return (
       <div className='header row flex-middle'>
         <div className='col col-start'>
@@ -304,14 +361,22 @@ class Calendar extends Component {
             chevron_left
           </div>
         </div>
-        <div className="col col-center">
-          <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
-        </div>
         <div className="dropdown">
-          <button className="dropbtn">Friends</button>
+          {currentTagButton}
           <div className="dropdown-content">
             <ul id="dropdownList">
-              <FriendList chooseFriend={this.chooseFriend} appState={this.props.appState}/>
+              <TagList clearChosenTag={this.clearChosenTag} chooseTag={this.chooseTag} appState={this.props.appState}/>
+            </ul>
+          </div>
+        </div>
+        <div className="col col-center">
+          <span className="calendar-header-month">{dateFns.format(this.state.currentMonth, dateFormat)}</span>
+        </div>
+        <div className="dropdown">
+          {currentFriendButton}
+          <div className="dropdown-content">
+            <ul id="dropdownList">
+              <FriendList clearChosenFriend={this.clearChosenFriend} chooseFriend={this.chooseFriend} appState={this.props.appState}/>
             </ul>
           </div>
         </div>
@@ -361,7 +426,16 @@ class Calendar extends Component {
         for (let j = 0; j < filteredEvents.length; j++) {
           let eventStartDate = moment(filteredEvents[j].time_begin).format('YYYYMMDD');
           let calendarDate = moment(day).format('YYYYMMDD');
-          if (eventStartDate === calendarDate && (filteredEvents[j].public === true || filteredEvents[j].user_id === this.props.appState.current_user.id)) {
+          
+          let friendStatus = '';
+          if (this.state.friendsIdArray) {
+            const eventCreatorId = filteredEvents[j].user_id;
+            if (filteredEvents[j].public === false && this.state.friendsIdArray.includes(eventCreatorId)) {
+              friendStatus = true;
+            }
+          }
+
+          if (eventStartDate >= this.state.currentTime && eventStartDate === calendarDate && ((filteredEvents[j].public === true || filteredEvents[j].user_id === this.props.appState.current_user.id || friendStatus ))) { //  || this.state.friends.findIndex(friend => friend.friend_id === filteredEvents[j].user_id)
             dayEventsArray.push(<EventBubble showEventDataModal={this.showEventDataModal} thisEvent={filteredEvents[j]} key={filteredEvents[j].id} />)
           }
         }

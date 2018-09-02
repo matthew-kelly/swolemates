@@ -365,6 +365,7 @@ div#start-component.component {
   line-height: 20px;
   color: black;
   transition: 0.25s ease-out;
+  cursor: pointer;
 }
 
 .add-event-button:hover {
@@ -397,6 +398,7 @@ div.col.cell {
   padding: 0;
   margin: 1px;
   z-index: 997;
+  cursor: pointer;
 }
 
 .disabled .event-circle {
@@ -677,6 +679,15 @@ main {
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+#dropdownList .event-circle {
+  margin: 3.5px 5px 3.5px 0;
+}
+
+.tag-li {
+  display: flex;
+
+}
+
 /* GRID */
 
 .row {
@@ -764,7 +775,6 @@ main {
   height: 6.4em;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
-  cursor: pointer;
   background: var(--neutral-color);
   transition: 0.25s ease-out;
 }

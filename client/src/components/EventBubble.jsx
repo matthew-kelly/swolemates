@@ -27,13 +27,16 @@ class EventBubble extends Component {
   }
 
   render() {
-    const firstTag = this.state.tags[0];
+    let firstTag;
+    if (this.state.tags) {
+      firstTag = this.state.tags[0];
+    }
 
     let eventColour = '';
 
     if (firstTag) {
       tagOptions.forEach((dataTag) => {
-        let tagOptionTag = dataTag
+        let tagOptionTag = dataTag;
         if ( firstTag.tag.toLowerCase() === tagOptionTag.value.toLowerCase()) {
           return eventColour = tagOptionTag.color;
         }

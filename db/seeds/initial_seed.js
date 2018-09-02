@@ -15,6 +15,9 @@ exports.seed = function(knex, Promise) {
       return knex('blocks').del()
     })
     .then(() => {
+      return knex('messages').del()
+    })
+    .then(() => {
       return knex('connections').del()
     })
     .then(() => {
@@ -28,9 +31,6 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('gyms').del()
-    })
-    .then(() => {
-      return knex('messages').del()
     })
     .then(() => {
       return knex('gyms').insert({
@@ -137,8 +137,8 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Arnie',
-        last_name: 'ARNIE',
+        first_name: 'Arnold',
+        last_name: 'Schwarzenegger',
         email: 'arnie@arnie.arnie',
         password: 'arnie',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
@@ -666,7 +666,7 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 3,
-        tag: "Tris"
+        tag: "Triceps"
       });
     })
     .then(() => {

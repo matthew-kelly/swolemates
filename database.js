@@ -10,9 +10,9 @@ module.exports = function knexData(knex) {
       })
     },
 
-    //Returns user data for Events list
+    // Returns user data for Events list
     getEventsList: (id) => {
-      return knex.select('*')
+      return knex.select(knex.raw('events.id AS id'), knex.raw('events.gym_id AS gym_id'), 'user_id', 'public', 'description', 'time_begin', 'time_end', 'first_name', 'last_name')
       .from('events')
       .join('users', 'user_id', '=', 'users.id')
       .where({
@@ -94,13 +94,22 @@ module.exports = function knexData(knex) {
         .from('events')
     },
 
-    // Return list of all events for a gym
+    // Return list of all events for a gym // ORIGINAL
     allGymEvents: (gym_id) => {
-      return knex.select('*')
+      return knex.select(knex.raw('events.id AS id'), knex.raw('events.gym_id AS gym_id'), 'user_id', 'public', 'time_begin', 'time_end', 'first_name', 'last_name', 'description')
         .from('events')
         .join('users', 'user_id', '=', 'users.id')
-        .whereRaw('events.gym_id = ?' ,[gym_id])
+        .whereRaw('events.gym_id = ?', [gym_id])
     },
+
+    // // Return list of all events for a gym
+    // allGymEvents: (gym_id) => {
+    //   return knex.select(knex.raw('events.id AS id'), knex.raw('events.gym_id AS gym_id'), knex.raw('tags.id AS tag_id'), 'user_id', 'public', 'time_begin', 'time_end', 'tag')
+    //     .from('events')
+    //     .join('users', 'user_id', '=', 'users.id')
+    //     .join('tags', 'event_id', '=', 'events.id')
+    //     .whereRaw('events.gym_id = ?' ,[gym_id])
+    // },
 
     // Create a new event
     createNewEvent: (user_id, gym_id, description, public, time_begin, time_end) => {
@@ -168,7 +177,7 @@ module.exports = function knexData(knex) {
           event_id: event_id,
           tag: tag
         })
-        .returning('id')
+        .returning('tag')
     },
 
     deleteFriend: (user_id, friend_id) => {
