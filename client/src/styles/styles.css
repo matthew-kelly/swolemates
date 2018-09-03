@@ -6,6 +6,7 @@ body {
   margin: 0 auto;
   max-width: 90vw;
   padding: 1em 0;
+  background-color: #efefef;
 }
 
 .far, .fas{
@@ -105,8 +106,8 @@ canvas.chartjs-render-monitor{
   /*align-self: center;*/
   /*justify-self: stretch;*/
   box-shadow: 0px 0px 8px 1px #eeeeee;
-  padding: 0.8em;
   border-radius: 0.5em;
+  overflow: hidden;
 }
 
 .tileBreadCrumbs {
@@ -140,6 +141,9 @@ canvas.chartjs-render-monitor{
 
 #profileImage {
   grid-area: profile-image;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 #bio {
@@ -148,6 +152,29 @@ canvas.chartjs-render-monitor{
 
 #goals {
   grid-area: goals;
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-edit{
+  display: none;
+}
+
+#inputBio{
+  width: -webkit-fill-available;
+  height: 12em;
+  border-radius: 1em;
+  padding: 0.5em;
+}
+
+#goals:hover .fa-edit{
+  display: block;
+}
+#bio:hover .fa-edit{
+  display: block;
+}
+#profileImage:hover .fa-edit{
+  display: block;
 }
 
 #gym {
@@ -173,6 +200,19 @@ canvas.chartjs-render-monitor{
   grid-area: activity;
 }
 
+.dashboardComponentHeader{
+  display: flex;
+  justify-content: space-between;
+  background-color: #ff620075;
+  padding: 0.5em;
+  color: white;
+  font-weight: bold;
+  align-items:center;
+}
+
+.dashboardComponentContent{
+  margin: 0.8em;
+}
 .navbar {
   background-color: white;
   font-size: 1.4em;
@@ -565,7 +605,6 @@ body {
   font-weight: 300;
   line-height: 1.5;
   color: var(--text-color);
-  background: white;
   position: relative;
 }
 

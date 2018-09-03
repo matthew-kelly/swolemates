@@ -26,6 +26,7 @@
     "react-chat-widget": "^2.1.4-1",
     "react-dom": "^16.4.2",
     "react-moment": "^0.7.9",
+    "react-notifications": "^1.4.3",
     "react-pose": "^3.2.1",
     "react-resizable": "^1.7.5",
     "react-select": "^2.0.0",

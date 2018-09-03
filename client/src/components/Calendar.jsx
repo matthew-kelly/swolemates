@@ -14,6 +14,10 @@ import EventBubble from './EventBubble';
 import EventDataModal from './EventDataModal';
 import FriendList from './FriendList';
 import TagList from './TagList';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+
+import 'react-notifications/lib/notifications.css';
+
 
 const API = 'http://localhost:5000/api'
 
@@ -97,7 +101,7 @@ class Calendar extends Component {
       return false;
     }
   }
-  
+
   async currentEventJoinRequests(event_id) {
     const res = await axios.get(`${API}/events/${event_id}/request`);
     return await res;
@@ -138,6 +142,25 @@ class Calendar extends Component {
     console.log("eventTagsArray: ", eventTagsArray);
     this.setState({ eventTagsArray: eventTagsArray });
   }
+  
+  createNotification = (type) =>{
+    switch (type) {
+      case 'info':
+        NotificationManager.info('Info message');
+        break;
+      case 'addEvent':
+        NotificationManager.success('Success!', 'Your event is being added to the Calendar');
+        break;
+      case 'warning':
+        NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+        break;
+      case 'error':
+        NotificationManager.error('Error message', 'Click me!', 5000, () => {
+          alert('callback');
+        });
+      break;
+    }
+  };
 
   showEventDataModal = (event) => {
     const thisEvent = JSON.parse(event.target.getAttribute('data-thisevent'));
@@ -158,7 +181,7 @@ class Calendar extends Component {
   hideEventDataModal = () => {
     this.setState({ showEventModal: false });
   };
-  
+
   // User requests an invitation to event
   requestToJoin = (event) => {
     const thisEvent = JSON.parse(event.target.getAttribute('data-event'));
@@ -239,7 +262,8 @@ class Calendar extends Component {
         .catch(err => console.error(err));
       
       this.onClear();
-      // window.location.reload(true);
+      this.createNotification('addEvent')
+      setTimeout(function(){window.location.reload(true);},1000);
     } else {
       window.alert("Event is not valid");
     }
@@ -565,6 +589,7 @@ class Calendar extends Component {
           {this.renderCells(this.state.selectedEvents)}
         </div>
         <EventDataModal currentUser={this.props.appState.current_user} currentEventRequests={this.state.currentEventRequests} currentEvent={this.state.currentEvent} tags={this.state.currentEventTags} showEventModal={this.state.showEventModal} requestToJoin={this.requestToJoin} handleClose={this.hideEventDataModal} />
+        <NotificationContainer/>
       </div>
     );
   }
