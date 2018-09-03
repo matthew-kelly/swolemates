@@ -65,7 +65,7 @@ canvas.chartjs-render-monitor{
 
 #chatWindowInput{
   display: flex;
-  width: -webkit-fill-available;
+  width: stretch;
   border-top: 1px solid black;
   border-left: none;
   border-right: none;
@@ -161,7 +161,7 @@ canvas.chartjs-render-monitor{
 }
 
 #inputBio{
-  width: -webkit-fill-available;
+  width: stretch;
   height: 12em;
   border-radius: 1em;
   padding: 0.5em;

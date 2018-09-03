@@ -10,6 +10,7 @@ import GoalComponent from './DashboardComponents/GoalComponent.jsx'
 import AcitivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx'
 import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsComponent.jsx'
 import moment from 'moment';
+import NoUpcomingEvents from './DashboardComponents/NoUpcomingEvents';
 
 
 const API = 'http://localhost:5000/api'
@@ -21,28 +22,11 @@ class Dashboard extends Component {
       user_data: '',
       goals: '',
       confirmedEvents: '',
-      gym:''
+      gym:'',
+      currentTime: moment(new Date()).format('YYYYMMDDHHmm')
     }
   }
-
-  componentWillMount() {
-    this.getUser(this.props.appState.current_user.id)
-      .then(res => this.setState({ user_data: res }))
-      .catch(err => console.log(err));
-
-    this.getGoals(this.props.appState.current_user.id)
-      .then(res => this.setState({ goals: res }))
-      .catch(err => console.log(err));
-
-    this.getConfirmedEvents(this.props.appState.current_user.id)
-      .then(res => this.setState({ confirmedEvents: res }))
-      .catch(err => console.log(err));
-
-    this.getGym(this.props.appState.current_user.gym_id)
-      .then(res => this.setState({ gym: res}))
-      .catch(err => console.log(err));
-  }
-
+  
   // Get user
   async getUser(id) {
     const res = await axios.get(`${API}/users/${id}`);
@@ -67,6 +51,23 @@ class Dashboard extends Component {
     return await res.data;
   }
 
+  componentDidMount() {
+    this.getUser(this.props.appState.current_user.id)
+      .then(res => this.setState({ user_data: res }))
+      .catch(err => console.log(err));
+
+    this.getGoals(this.props.appState.current_user.id)
+      .then(res => this.setState({ goals: res }))
+      .catch(err => console.log(err));
+
+    this.getConfirmedEvents(this.props.appState.current_user.id)
+      .then(res => this.setState({ confirmedEvents: res }))
+      .catch(err => console.log(err));
+
+    this.getGym(this.props.appState.current_user.gym_id)
+      .then(res => this.setState({ gym: res}))
+      .catch(err => console.log(err));
+  }
 
   render() {
 
@@ -87,15 +88,24 @@ class Dashboard extends Component {
       });
     }
 
-    let earliestEventFormatted = <li><p>No upcoming events</p></li>;
-    if (events_data.length > 0) {
-      let earliestEvent = events_data[0];
-      events_data.forEach(event => {
-        if (moment(event.time_begin).format('YYYYMMDDHHmm') < moment(earliestEvent.time_begin).format('YYYYMMDDHHmm')) {
-          earliestEvent = event;
+    let noUpcomingEvents = <li><p>No upcoming events</p></li>;
+    let eventsListFormatted = '';
+    
+    if (events_data && events_data.length > 0) {
+      noUpcomingEvents = '';
+      eventsListFormatted = events_data.map((event) => {
+        if (moment(event.time_end).format('YYYYMMDDHHmm') > this.state.currentTime) {
+          return <ConfirmedEventsComponent key={event.request_id} content={event} />
+        } else {
+          return;
         }
+      }).sort((a, b) => {
+        return moment(a.props.content.time_begin).format('YYYYMMDDHHmm') - moment(b.props.content.time_begin).format('YYYYMMDDHHmm')
       })
-      earliestEventFormatted = <li><p>{moment(earliestEvent.time_begin).format('MMMM Do YYYY, h:mm a')} - {moment(earliestEvent.time_end).format('h:mm a')}</p><p>{earliestEvent.first_name} {earliestEvent.last_name}</p></li>
+    }
+
+    if (noUpcomingEvents) {
+      eventsListFormatted = <NoUpcomingEvents content={noUpcomingEvents}/>
     }
 
     if (gym_data){
@@ -106,17 +116,22 @@ class Dashboard extends Component {
 
     return (
       <div className="container">
-      <ProfilePictureComponent appState={this.props.appState} content={user_data.profile_pic}/>
-      <GymTileComponent content={gymName}/>
-      <CalendarTileComponent />
-          <div id="calendarDashboard3" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
-          </div>
-      <BioComponent content={user_data}/>
-      <GoalComponent content={allGoals}/>
-      <AcitivityGraphComponent/>
-      <ConfirmedEventsComponent content={earliestEventFormatted}/>
+        <ProfilePictureComponent appState={this.props.appState} content={user_data.profile_pic}/>
+        <GymTileComponent content={gymName}/>
+        <CalendarTileComponent />
+            <div id="calendarDashboard3" className="tile tileSmall">
+              <i className="far fa-calendar"></i>
+              <h4 className='dashboardSubtitle'>Calendar</h4>
+            </div>
+        <BioComponent content={user_data}/>
+        <GoalComponent content={allGoals}/>
+        <AcitivityGraphComponent/>
+        <div id="confirmed-events">
+          <h1>Upcoming Events</h1>
+          <ul>
+            {eventsListFormatted}
+          </ul>
+        </div>
       </div>
     );
   }
