@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import ChatWindow from './ChatWindow.jsx'
-import Message from './Message.jsx'
+import ChatWindow from './ChatWindow.jsx';
 
 import User from './User.jsx'
 

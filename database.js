@@ -126,7 +126,7 @@ module.exports = function knexData(knex) {
     },
 
     getConfirmedEvents: (user) => {
-      return knex.select('time_begin', 'time_end', 'first_name', 'last_name', 'requester_id')
+      return knex.select(knex.raw('events.id AS event_id'), knex.raw('event_requests.id AS request_id'), 'time_begin', 'time_end', 'first_name', 'last_name', 'requester_id')
         .from('events')
         .join('event_requests', 'event_id', '=', 'events.id')
         .join('users', 'requester_id', '=', 'users.id')
@@ -214,7 +214,7 @@ module.exports = function knexData(knex) {
 
 // // Get user's pending event requests
 //     getPendingEventRequests: (user_id) => {
-//       return knex.select(knex.raw('event_requests.id AS request_id'), 'requester_id', 'first_name', 'last_name', 'event_id', 'time_begin', 'time_end', 'profile_pic')
+//       return knex.select(knex.raw('event_requests.id AS request_id'), knex.raw('events.id AS event_id'), 'requester_id', 'first_name', 'last_name', 'time_begin', 'time_end', 'profile_pic')
 //         .from('event_requests')
 //         .join('events', 'event_id', '=', 'events.id')
 //         .join('users', 'requester_id', '=', 'users.id')
