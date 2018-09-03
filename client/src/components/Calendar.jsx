@@ -13,6 +13,7 @@ import axios from 'axios';
 import EventBubble from './EventBubble';
 import EventDataModal from './EventDataModal';
 import FriendList from './FriendList';
+import TagList from './TagList';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import 'react-notifications/lib/notifications.css';
@@ -26,16 +27,22 @@ class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      friends: '',
+      friendsIdArray: '',
       tags: '',
       currentMonth: new Date(),
       selectedDate: new Date(),
       events: '',
       selectedEvents: '',
       selectedFriend: '',
+      eventTagsArray: '',
+      pageLoadEvents: '',
       showEventModal: false,
       currentEvent: '',
+      selectedTag: '',
       currentEventTags: '',
-      currentEventRequests: ''
+      currentEventRequests: '',
+      currentTime: moment(new Date()).format('YYYYMMDD')
     };
     this.getAllEvents = this.getAllEvents.bind(this);
   }
@@ -52,6 +59,11 @@ class Calendar extends Component {
 
   async getFriends(user_id) {
     const res = await axios.get(`${API}/users/${user_id}/friends`);
+    return await res.data;
+  }
+
+  async getEventTags(event_id) {
+    const res = await axios.get(`${API}/events/${event_id}/tags`);
     return await res.data;
   }
 
@@ -112,6 +124,25 @@ class Calendar extends Component {
     }
   }
 
+  getTagsForEvents = (eventsList) => {
+    const eventTagsArray = [];
+
+    eventsList.forEach(event => {
+      this.getEventTags(event.id)
+        .then(res => {
+          let eventTagsObj = { event_id: '', tags: [] };
+          res.forEach(row => {
+            eventTagsObj.event_id = row.event_id;
+            eventTagsObj.tags.push(row.tag);
+          })
+          eventTagsArray.push(eventTagsObj);
+        })
+        .catch(err => console.error(err));
+    })
+    console.log("eventTagsArray: ", eventTagsArray);
+    this.setState({ eventTagsArray: eventTagsArray });
+  }
+  
   createNotification = (type) =>{
     switch (type) {
       case 'info':
@@ -207,7 +238,7 @@ class Calendar extends Component {
       publicCheck = true;
     }
     for(let tag of this.state.tags){
-      tagArray.push(tag.value);
+      tagArray.push(tag.label);
     }
 
     if (description.length > 0 && tagArray.length > 0 && date.length > 0 && sTime < eTime) {
@@ -225,11 +256,11 @@ class Calendar extends Component {
 
           tagArray.map((tag) => {
             this.addEventTag(eventId, tag)
-            .catch(err => console.error(err));
+              .catch(err => console.error(err));
           });
         })
         .catch(err => console.error(err));
-
+      
       this.onClear();
       this.createNotification('addEvent')
       setTimeout(function(){window.location.reload(true);},1000);
@@ -242,16 +273,27 @@ class Calendar extends Component {
     document.addEventListener('mousedown', this.handleClick, false);
 
     this.getFriends(this.props.appState.current_user.id)
-    .then(res => this.setState({ friends: res }))
+    .then(res => {
+      const friendsIdArray = res.map(friend => friend.id);
+      this.setState({ friends: res, friendsIdArray: friendsIdArray })
+    })
     .catch(err => console.error(err));
 
     if (this.state.selectedFriend) {
+      console.log("Getting friend's events");
       this.getFriendEvents(this.state.selectedFriend.id)
-        .then(res => this.setState({ selectedEvents: res.data }))
+        .then(res => {
+          this.setState({ selectedEvents: res.data, pageLoadEvents: res.data });
+          this.getTagsForEvents(res.data);
+        })
         .catch(err => console.error(err));
     } else {
+      console.log("Getting all events");
       this.getAllEvents(this.props.appState.current_user.gym_id)
-        .then(res => this.setState({ selectedEvents: res.data }))
+        .then(res => {
+          this.setState({ selectedEvents: res.data, pageLoadEvents: res.data });
+          this.getTagsForEvents(res.data);
+        })
         .catch(err => console.error(err));
     }
   }
@@ -303,24 +345,104 @@ class Calendar extends Component {
 
   chooseFriend = (event) => {
     const thisFriend = JSON.parse(event.target.getAttribute('data-thisfriend'));
-
     this.setState({ selectedFriend: thisFriend })
     
     this.getFriendEvents(thisFriend.id)
       .then(res => {
-        this.setState({ selectedEvents: res.data })
-        if (res.data.length > 0) {
-          this.renderCells(res.data);
+        if (this.state.selectedTag) {
+          const filteredTagArray = this.state.eventTagsArray.filter((event) => {
+            return event.tags.includes(this.state.selectedTag.label);
+          })
+          .map((event) => {
+            return event = event.event_id;
+          });
+
+          let filteredEvents;
+
+          filteredEvents = res.data.filter((event) => {
+            return filteredTagArray.includes(event.id);
+          });
+
+          this.setState({ selectedEvents: filteredEvents, friendsSelectedEvents: res.data });
+        } else {
+          this.setState({ selectedEvents: res.data, friendsSelectedEvents: res.data });
         }
-      })
-      .then(res => {
       })
       .catch(err => console.error(err));
   }
 
-// Renders Calendar Header
+  clearChosenFriend = () => {
+    this.setState({ selectedFriend: '' })
+
+    if (this.state.selectedTag) {
+      const filteredTagArray = this.state.eventTagsArray.filter((event) => {
+        return event.tags.includes(this.state.selectedTag.label);
+      }).map((event) => {
+        return event = event.event_id;
+      });
+
+      let filteredEvents;
+
+      filteredEvents = this.state.pageLoadEvents.filter((event) => {
+        return filteredTagArray.includes(event.id);
+      });
+
+      this.setState({ selectedEvents: filteredEvents, friendsSelectedEvents: '' });
+    } else {
+      this.setState({ selectedEvents: this.state.pageLoadEvents, friendsSelectedEvents: '' });
+    }
+  }
+
+  chooseTag = (event) => {
+    const thisTag = JSON.parse(event.target.getAttribute('data-thistag'));
+
+    this.setState({ selectedTag: thisTag });
+
+    const filteredTagArray = this.state.eventTagsArray.filter((event) => {
+      return event.tags.includes(thisTag.label);
+    }).map((event) => {
+      return event = event.event_id;
+    });
+
+    let filteredEvents;
+    
+    if (this.state.selectedFriend) {
+      filteredEvents = this.state.friendsSelectedEvents.filter((event) => {
+        return filteredTagArray.includes(event.id);
+      });
+    } else {
+      filteredEvents = this.state.pageLoadEvents.filter((event) => {
+        return filteredTagArray.includes(event.id);
+      });
+    }
+
+    this.setState({ selectedEvents: filteredEvents, tagsSelectedEvents: filteredEvents })
+
+  }
+
+  clearChosenTag = () => {
+    this.setState({ selectedTag: '' });
+
+    if (this.state.friendsSelectedEvents) {
+      this.setState({ selectedEvents: this.state.friendsSelectedEvents, tagsSelectedEvents: '' });
+    } else {
+      this.setState({ selectedEvents: this.state.pageLoadEvents, tagsSelectedEvents: '' })
+    }
+  }
+
+  // Renders Calendar Header
   renderHeader() {
     const dateFormat = 'MMMM YYYY';
+
+    let currentTagButton = <button className="dropbtn">All Tags</button>;
+    let currentFriendButton = <button className="dropbtn">All Friends</button>;
+
+    if (this.state.selectedFriend) {
+      currentFriendButton = <button className="dropbtn">{this.state.selectedFriend.first_name} {this.state.selectedFriend.last_name}</button>;
+    }
+    if (this.state.selectedTag) {
+      currentTagButton = <button className="dropbtn">{this.state.selectedTag.label}</button>;
+    }
     return (
       <div className='header row flex-middle'>
         <div className='col col-start'>
@@ -328,14 +450,22 @@ class Calendar extends Component {
             chevron_left
           </div>
         </div>
-        <div className="col col-center">
-          <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
-        </div>
         <div className="dropdown">
-          <button className="dropbtn">Friends</button>
+          {currentTagButton}
           <div className="dropdown-content">
             <ul id="dropdownList">
-              <FriendList chooseFriend={this.chooseFriend} appState={this.props.appState}/>
+              <TagList clearChosenTag={this.clearChosenTag} chooseTag={this.chooseTag} appState={this.props.appState}/>
+            </ul>
+          </div>
+        </div>
+        <div className="col col-center">
+          <span className="calendar-header-month">{dateFns.format(this.state.currentMonth, dateFormat)}</span>
+        </div>
+        <div className="dropdown">
+          {currentFriendButton}
+          <div className="dropdown-content">
+            <ul id="dropdownList">
+              <FriendList clearChosenFriend={this.clearChosenFriend} chooseFriend={this.chooseFriend} appState={this.props.appState}/>
             </ul>
           </div>
         </div>
@@ -385,7 +515,16 @@ class Calendar extends Component {
         for (let j = 0; j < filteredEvents.length; j++) {
           let eventStartDate = moment(filteredEvents[j].time_begin).format('YYYYMMDD');
           let calendarDate = moment(day).format('YYYYMMDD');
-          if (eventStartDate === calendarDate && (filteredEvents[j].public === true || filteredEvents[j].user_id === this.props.appState.current_user.id)) {
+          
+          let friendStatus = '';
+          if (this.state.friendsIdArray) {
+            const eventCreatorId = filteredEvents[j].user_id;
+            if (filteredEvents[j].public === false && this.state.friendsIdArray.includes(eventCreatorId)) {
+              friendStatus = true;
+            }
+          }
+
+          if (eventStartDate >= this.state.currentTime && eventStartDate === calendarDate && ((filteredEvents[j].public === true || filteredEvents[j].user_id === this.props.appState.current_user.id || friendStatus ))) { //  || this.state.friends.findIndex(friend => friend.friend_id === filteredEvents[j].user_id)
             dayEventsArray.push(<EventBubble showEventDataModal={this.showEventDataModal} thisEvent={filteredEvents[j]} key={filteredEvents[j].id} />)
           }
         }

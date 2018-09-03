@@ -140,15 +140,16 @@ class Connections extends Component {
   deleteThisEventRequest = (event) => {
     const request = JSON.parse(event.target.getAttribute('data-requestrow'));
 
-    let eventsArray = this.state.eventRequests
-    let targetIndex = eventsArray.findIndex(x => x.request_id==request[0].id)
-    eventsArray.splice(targetIndex, 1)
-    this.setState({eventRequests: eventsArray})
-    console.log(request[0])
+    // let eventsArray = this.state.eventRequests
+    // let targetIndex = eventsArray.findIndex(x => x.request_id==request[0].id)
+    // eventsArray.splice(targetIndex, 1)
+    // this.setState({eventRequests: eventsArray})
+    // console.log(request[0])
     this.createNotification('deleteFriend', request[0].first_name, request[0].last_name)
 
 
     this.deleteEventRequest(request[0].id)
+      .then(res => window.location.reload(true))
       .catch(err => console.error(err));
   }
 
@@ -182,6 +183,7 @@ class Connections extends Component {
 
     const eventRequests = this.state.eventRequests;
     let allEventRequests;
+    // if (eventRequests.length) {
     if (eventRequests.length) {
       allEventRequests = eventRequests.map((request) => {
         return <EventRequest acceptRequest={this.acceptThisEventRequest} deleteRequest={this.deleteThisEventRequest} request={request} key={request.id} />;
@@ -193,7 +195,6 @@ class Connections extends Component {
     return (
       <div>
         <div className="chat-head-list">
-          {/* {allConnections} */}
           <h2>Pending Event Requests</h2>
         </div>
         <div className="event-request-list">
