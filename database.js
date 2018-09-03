@@ -195,10 +195,6 @@ module.exports = function knexData(knex) {
           user_id: user_id,
           friend_id: friend_id
         })
-        .andWhere({
-          user_id: friend_id,
-          friend_id: user_id
-        })
         .del()
     },
 

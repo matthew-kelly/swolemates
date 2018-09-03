@@ -254,7 +254,7 @@ class Calendar extends Component {
         })
         .catch(err => console.error(err));
       this.onClear();
-      this.props.createNotification('addEvent')
+      this.props.createNotification('EventAdded')
     } else {
       window.alert("Event is not valid");
     }

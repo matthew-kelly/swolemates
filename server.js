@@ -330,10 +330,10 @@ app.get('/api/requests/:event_id/requester/:requester_id', (req, res) => {
 
 
 // Delete friends
-app.post('/api/friends/delete', (req, res) => {
+app.delete('/api/delete/:id/friends', (req, res) => {
   database.deleteFriend(req.body.user_id, req.body.friend_id)
     .then((result) => {
-      res.send(result);
+      res.sendStatus(202);
     })
     .catch((e) => {
       console.error(e)

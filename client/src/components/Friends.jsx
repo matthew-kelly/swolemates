@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import ChatWindow from './ChatWindow.jsx';
+import {NotificationContainer} from 'react-notifications';
+
 
 import User from './User.jsx'
 
@@ -39,11 +41,26 @@ class Friends extends Component {
     this.setState({currentFriend: ''})
   }
 
-  // onDelete = (event) => {
-  //   let user_id = this.props.appState.current_user.id
-  //   let friend_id = (JSON.parse(event.target.getAttribute('data-thisfriend')))
-  //   this.deleteFriend(user_id, friend_id.id)
-  // }
+  onDelete = (event) => {
+    let user_id = this.props.appState.current_user.id
+    let friend_id = (JSON.parse(event.target.getAttribute('data-thisfriend')))
+    let friendsArray = this.state.friends
+    // console.log(friendsArray)
+    // console.log(friend_id)
+    this.props.createNotification('friendDeleted', friend_id.first_name, friend_id.last_name)
+    let targetIndex = friendsArray.findIndex(x => x.friend_id === friend_id.id)
+    friendsArray.splice(targetIndex, 1)
+    this.setState({eventRequests: friendsArray})
+    this.deleteFriend(user_id, friend_id.id)
+    .then(res => {
+      if(res === "Accepted"){
+        this.deleteFriend(friend_id.id, user_id)
+      }
+    })
+    .catch(err => console.log(err));
+
+
+  }
 
   // Get all friends
   async getFriends(id) {
@@ -78,12 +95,13 @@ class Friends extends Component {
   async deleteFriend(user_id, friend_id) {
     const res = await axios({
       method: 'delete',
-      url: `${API}/friends/delete`,
+      url: `${API}/delete/${friend_id}/friends`,
       data: {
         user_id: user_id,
         friend_id: friend_id,
       }
     })
+    console.log(res.data)
     return await res.data;
   }
 
@@ -121,6 +139,7 @@ class Friends extends Component {
         <div>
         {chatWindow}
         </div>
+        <NotificationContainer/>
       </div>
     );
   }

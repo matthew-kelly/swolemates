@@ -86,16 +86,19 @@ class App extends Component {
         NotificationManager.info('Info message');
         break;
       case 'eventAccepted' :
-        NotificationManager.info('Event Added!', `Your event with ${first_name} ${last_name} has been added to your upcoming events`, 3000);
-        break;
-      case 'addEvent':
-        NotificationManager.success('Success!', 'Your event is being added to the Calendar');
+        NotificationManager.info('Event Added!', `Your event with ${first_name} ${last_name} has been added to your upcoming events`, 2000);
         break;
       case 'addFriend':
-        NotificationManager.success('Friend Added!', `${first_name} ${last_name} was added to your friends list`, 3000);
+        NotificationManager.success('Friend Added!', `${first_name} ${last_name} is now your SwoleMate! 🏋️🏋️`, 3000);
         break;
       case 'deleteFriend':
-        NotificationManager.warning('Request Denied', `${first_name} ${last_name}'s request was denied`, 3000);
+        NotificationManager.warning('Request Denied', `${first_name} ${last_name}'s request was denied`, 1000);
+        break;
+      case 'EventAdded':
+        NotificationManager.success('Success!', 'Your event is being added to the Calendar', 1000);
+        break;
+      case 'friendDeleted':
+        NotificationManager.error('Friend Deleted!', `${first_name} ${last_name} was removed from your friends list`, 1000);
         break;
       case 'error':
         NotificationManager.error('Error message', 'Click me!', 5000, () => {
@@ -138,7 +141,7 @@ class App extends Component {
             <this.PropsRoute exact path="/calendar" createNotification={this.createNotification} component={Calendar} appState={this.state} />
             <this.PropsRoute exact path="/dashboard" createNotification={this.createNotification} component={Dashboard} changeUserInformation={this.changeUserInformation} appState={this.state} />
             <this.PropsRoute exact path="/connections" createNotification={this.createNotification} component={Connections} appState={this.state} />
-            <this.PropsRoute exact path="/friends" component={Friends} appState={this.state} />
+            <this.PropsRoute exact path="/friends" createNotification={this.createNotification} component={Friends} appState={this.state} />
             <this.PropsRoute path ='/profiles/:id' component={FriendPage} appState={this.state}/>
             <this.PropsRoute exact path="/login" component={Login} loginSubmit={this.loginSubmit} appState={this.state} />
             <this.PropsRoute exact path="/register" component={Register} loginSubmit={this.loginSubmit} appState={this.state} />
