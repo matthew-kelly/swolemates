@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Calendar from './Calendar.jsx'
-import ProfilePictureComponent from './DashboardComponents/ProfilePictureComponent.jsx'
-import GymTileComponent from './DashboardComponents/GymTileComponent.jsx'
-import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx'
-import BioComponent from './DashboardComponents/BioComponent.jsx'
-import GoalComponent from './DashboardComponents/GoalComponent.jsx'
-import AcitivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx'
-import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsComponent.jsx'
 import moment from 'moment';
+// import Calendar from './Calendar.jsx';
+import ProfilePictureComponent from './DashboardComponents/ProfilePictureComponent.jsx';
+import GymTileComponent from './DashboardComponents/GymTileComponent.jsx';
+import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx';
+import BioComponent from './DashboardComponents/BioComponent.jsx';
+import GoalComponent from './DashboardComponents/GoalComponent.jsx';
+import ActivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx';
+import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsComponent.jsx';
 import NoUpcomingEvents from './DashboardComponents/NoUpcomingEvents';
 
 
@@ -125,7 +125,7 @@ class Dashboard extends Component {
             </div>
         <BioComponent content={user_data}/>
         <GoalComponent content={allGoals}/>
-        <AcitivityGraphComponent/>
+        <ActivityGraphComponent/>
         <div id="confirmed-events">
           <h1>Upcoming Events</h1>
           <ul>

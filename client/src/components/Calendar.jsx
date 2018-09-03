@@ -42,7 +42,8 @@ class Calendar extends Component {
       selectedTag: '',
       currentEventTags: '',
       currentEventRequests: '',
-      currentTime: moment(new Date()).format('YYYYMMDD')
+      currentTime: moment(new Date()).format('YYYYMMDD'),
+      incomingUser: ''
     };
     this.getAllEvents = this.getAllEvents.bind(this);
   }
@@ -139,7 +140,6 @@ class Calendar extends Component {
         })
         .catch(err => console.error(err));
     })
-    console.log("eventTagsArray: ", eventTagsArray);
     this.setState({ eventTagsArray: eventTagsArray });
   }
   
@@ -273,25 +273,25 @@ class Calendar extends Component {
     document.addEventListener('mousedown', this.handleClick, false);
 
     this.getFriends(this.props.appState.current_user.id)
-    .then(res => {
-      const friendsIdArray = res.map(friend => friend.id);
-      this.setState({ friends: res, friendsIdArray: friendsIdArray })
-    })
-    .catch(err => console.error(err));
+      .then(res => {
+        const friendsIdArray = res.map(friend => friend.id);
+        this.setState({ friends: res, friendsIdArray: friendsIdArray })
+      })
+      .catch(err => console.error(err));
 
-    if (this.state.selectedFriend) {
-      console.log("Getting friend's events");
-      this.getFriendEvents(this.state.selectedFriend.id)
+    this.getAllEvents(this.props.appState.current_user.gym_id)
+      .then(res => {
+        this.setState({ selectedEvents: res.data, pageLoadEvents: res.data });
+        this.getTagsForEvents(res.data);
+      })
+      .catch(err => console.error(err));
+
+    if (this.props.location.state) {
+      const incomingUser = this.props.location.state.user_data
+      this.setState({ incomingUser: incomingUser, selectedFriend: incomingUser });
+      this.getFriendEvents(incomingUser.id)
         .then(res => {
-          this.setState({ selectedEvents: res.data, pageLoadEvents: res.data });
-          this.getTagsForEvents(res.data);
-        })
-        .catch(err => console.error(err));
-    } else {
-      console.log("Getting all events");
-      this.getAllEvents(this.props.appState.current_user.gym_id)
-        .then(res => {
-          this.setState({ selectedEvents: res.data, pageLoadEvents: res.data });
+          this.setState({ selectedEvents: res.data }); // friendsSelectedEvents
           this.getTagsForEvents(res.data);
         })
         .catch(err => console.error(err));
@@ -346,7 +346,7 @@ class Calendar extends Component {
   chooseFriend = (event) => {
     const thisFriend = JSON.parse(event.target.getAttribute('data-thisfriend'));
     this.setState({ selectedFriend: thisFriend })
-    
+    console.log("this friend", thisFriend);
     this.getFriendEvents(thisFriend.id)
       .then(res => {
         if (this.state.selectedTag) {
@@ -373,6 +373,12 @@ class Calendar extends Component {
 
   clearChosenFriend = () => {
     this.setState({ selectedFriend: '' })
+
+    if (this.state.incomingUser) {
+
+    } else {
+      this.setState({ selectedEvents: this.state.pageLoadEvents, friendsSelectedEvents: '' });
+    }
 
     if (this.state.selectedTag) {
       const filteredTagArray = this.state.eventTagsArray.filter((event) => {
