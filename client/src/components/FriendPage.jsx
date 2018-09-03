@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
-// import Calendar from './Calendar.jsx'
+
 import ProfilePictureComponent from './DashboardComponents/ProfilePictureComponent.jsx'
 import GymTileComponent from './DashboardComponents/GymTileComponent.jsx'
 import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx'
@@ -12,7 +12,8 @@ import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsCompo
 import moment from 'moment';
 import NoUpcomingEvents from './DashboardComponents/NoUpcomingEvents';
 
-const API = 'http://localhost:5000/api'
+
+const API = 'http://localhost:5000/api';
 
 class Dashboard extends Component {
   constructor() {
@@ -49,7 +50,6 @@ class Dashboard extends Component {
     this.getConfirmedEvents(this.props.location.state.user_obj.id)
     .then(res => this.setState({ confirmedEvents: res }))
     .catch(err => console.log(err));
-
   }
 
   // Get user's goals
@@ -59,7 +59,6 @@ class Dashboard extends Component {
   }
 
   render() {
-
     if (this.props.appState.isLoggedIn !== true) {
       return <Redirect to='/' />
     }
@@ -109,7 +108,7 @@ class Dashboard extends Component {
       <div className="container">
       <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data.profile_pic}/>
       <GymTileComponent appState={this.props.appState} content={gym}/>
-      <CalendarTileComponent appState={this.props.appState} />
+      <CalendarTileComponent appState={this.props.appState} content={user_data}/>
       <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
       <GoalComponent appState={this.props.appState} content={allGoals}/>
       <AcitivityGraphComponent appState={this.props.appState}/>
@@ -130,3 +129,4 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
+

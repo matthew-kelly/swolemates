@@ -111,15 +111,6 @@ module.exports = function knexData(knex) {
         .whereRaw('events.gym_id = ?', [gym_id])
     },
 
-    // // Return list of all events for a gym
-    // allGymEvents: (gym_id) => {
-    //   return knex.select(knex.raw('events.id AS id'), knex.raw('events.gym_id AS gym_id'), knex.raw('tags.id AS tag_id'), 'user_id', 'public', 'time_begin', 'time_end', 'tag')
-    //     .from('events')
-    //     .join('users', 'user_id', '=', 'users.id')
-    //     .join('tags', 'event_id', '=', 'events.id')
-    //     .whereRaw('events.gym_id = ?' ,[gym_id])
-    // },
-
     // Create a new event
     createNewEvent: (user_id, gym_id, description, public, time_begin, time_end) => {
       return knex('events')
@@ -134,13 +125,13 @@ module.exports = function knexData(knex) {
         .returning('id')
     },
 
-    getConfirmedEvents: (user) => {
+    getConfirmedEvents: (user_id) => {
       return knex.select(knex.raw('events.id AS event_id'), knex.raw('event_requests.id AS request_id'), 'time_begin', 'time_end', 'first_name', 'last_name', 'requester_id')
         .from('events')
         .join('event_requests', 'event_id', '=', 'events.id')
         .join('users', 'requester_id', '=', 'users.id')
         .where({
-          user_id: user,
+          user_id: user_id,
           accepted: true
         })
     },

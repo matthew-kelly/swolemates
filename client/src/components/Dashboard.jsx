@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import Calendar from './Calendar.jsx'
-import ProfilePictureComponent from './DashboardComponents/ProfilePictureComponent.jsx'
-import GymTileComponent from './DashboardComponents/GymTileComponent.jsx'
-import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx'
-import BioComponent from './DashboardComponents/BioComponent.jsx'
-import GoalComponent from './DashboardComponents/GoalComponent.jsx'
-import AcitivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx'
-import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsComponent.jsx'
 import moment from 'moment';
+// import Calendar from './Calendar.jsx';
+import ProfilePictureComponent from './DashboardComponents/ProfilePictureComponent.jsx';
+import GymTileComponent from './DashboardComponents/GymTileComponent.jsx';
+import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx';
+import BioComponent from './DashboardComponents/BioComponent.jsx';
+import GoalComponent from './DashboardComponents/GoalComponent.jsx';
+import ActivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx';
+import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsComponent.jsx';
 import NoUpcomingEvents from './DashboardComponents/NoUpcomingEvents';
 
 
@@ -118,10 +118,10 @@ class Dashboard extends Component {
       <div className="container">
       <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data.profile_pic}/>
       <GymTileComponent appState={this.props.appState} content={gymName}/>
-      <CalendarTileComponent appState={this.props.appState} />
+      <CalendarTileComponent appState={this.props.appState} content={this.props.appState.current_user}/>
       <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
       <GoalComponent appState={this.props.appState} content={allGoals}/>
-      <AcitivityGraphComponent appState={this.props.appState}/>
+      <ActivityGraphComponent appState={this.props.appState}/>
       {/*<ConfirmedEventsComponent appState={this.props.appState} content={earliestEventFormatted}/>*/}
         <div id="confirmed-events" className="tile tileBig">
          <div className="dashboardComponentHeader">
