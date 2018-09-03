@@ -14,7 +14,7 @@ class EventBubble extends Component {
   }
 
   async getEventTags(event_id) {
-    const res = axios.get(`${API}/events/${event_id}/tags`);
+    const res = await axios.get(`${API}/events/${event_id}/tags`);
     return await res;
   }
 

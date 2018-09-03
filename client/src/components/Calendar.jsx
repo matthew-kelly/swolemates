@@ -31,8 +31,11 @@ class Calendar extends Component {
       events: '',
       selectedEvents: '',
       selectedFriend: '',
+      eventTagsArray: '',
+      pageLoadEvents: '',
       showEventModal: false,
       currentEvent: '',
+      selectedTag: '',
       currentEventTags: '',
       currentEventRequests: '',
       currentTime: moment(new Date()).format('YYYYMMDD')
@@ -52,6 +55,11 @@ class Calendar extends Component {
 
   async getFriends(user_id) {
     const res = await axios.get(`${API}/users/${user_id}/friends`);
+    return await res.data;
+  }
+
+  async getEventTags(event_id) {
+    const res = await axios.get(`${API}/events/${event_id}/tags`);
     return await res.data;
   }
 
@@ -110,6 +118,25 @@ class Calendar extends Component {
     } else {
       return false;
     }
+  }
+
+  getTagsForEvents = (eventsList) => {
+    const eventTagsArray = [];
+
+    eventsList.forEach(event => {
+      this.getEventTags(event.id)
+        .then(res => {
+          let eventTagsObj = { event_id: '', tags: [] };
+          res.forEach(row => {
+            eventTagsObj.event_id = row.event_id;
+            eventTagsObj.tags.push(row.tag);
+          })
+          eventTagsArray.push(eventTagsObj);
+        })
+        .catch(err => console.error(err));
+    })
+    console.log("eventTagsArray: ", eventTagsArray);
+    this.setState({ eventTagsArray: eventTagsArray });
   }
 
   showEventDataModal = (event) => {
@@ -231,12 +258,18 @@ class Calendar extends Component {
     if (this.state.selectedFriend) {
       console.log("Getting friend's events");
       this.getFriendEvents(this.state.selectedFriend.id)
-        .then(res => this.setState({ selectedEvents: res.data }))
+        .then(res => {
+          this.setState({ selectedEvents: res.data, pageLoadEvents: res.data });
+          this.getTagsForEvents(res.data);
+        })
         .catch(err => console.error(err));
     } else {
       console.log("Getting all events");
       this.getAllEvents(this.props.appState.current_user.gym_id)
-        .then(res => this.setState({ selectedEvents: res.data }))
+        .then(res => {
+          this.setState({ selectedEvents: res.data, pageLoadEvents: res.data });
+          this.getTagsForEvents(res.data);
+        })
         .catch(err => console.error(err));
     }
   }
@@ -292,9 +325,23 @@ class Calendar extends Component {
     
     this.getFriendEvents(thisFriend.id)
       .then(res => {
-        this.setState({ selectedEvents: res.data })
-        if (res.data.length > 0) {
-          this.renderCells(res.data);
+        if (this.state.selectedTag) {
+          const filteredTagArray = this.state.eventTagsArray.filter((event) => {
+            return event.tags.includes(this.state.selectedTag.label);
+          })
+          .map((event) => {
+            return event = event.event_id;
+          });
+
+          let filteredEvents;
+
+          filteredEvents = res.data.filter((event) => {
+            return filteredTagArray.includes(event.id);
+          });
+
+          this.setState({ selectedEvents: filteredEvents, friendsSelectedEvents: res.data });
+        } else {
+          this.setState({ selectedEvents: res.data, friendsSelectedEvents: res.data });
         }
       })
       .catch(err => console.error(err));
@@ -303,42 +350,60 @@ class Calendar extends Component {
   clearChosenFriend = () => {
     this.setState({ selectedFriend: '' })
 
-    this.getAllEvents(this.props.appState.current_user.gym_id)
-    .then(res => {
-      this.setState({ selectedEvents: res.data })
-      if (res.data.length > 0) {
-        this.renderCells(res.data);
-      }
-    })
-    .catch(err => console.error(err));
+    if (this.state.selectedTag) {
+      const filteredTagArray = this.state.eventTagsArray.filter((event) => {
+        return event.tags.includes(this.state.selectedTag.label);
+      }).map((event) => {
+        return event = event.event_id;
+      });
+
+      let filteredEvents;
+
+      filteredEvents = this.state.pageLoadEvents.filter((event) => {
+        return filteredTagArray.includes(event.id);
+      });
+
+      this.setState({ selectedEvents: filteredEvents, friendsSelectedEvents: '' });
+    } else {
+      this.setState({ selectedEvents: this.state.pageLoadEvents, friendsSelectedEvents: '' });
+    }
   }
 
   chooseTag = (event) => {
     const thisTag = JSON.parse(event.target.getAttribute('data-thistag'));
 
-    this.setState({ selectedTag: thisTag })
+    this.setState({ selectedTag: thisTag });
+
+    const filteredTagArray = this.state.eventTagsArray.filter((event) => {
+      return event.tags.includes(thisTag.label);
+    }).map((event) => {
+      return event = event.event_id;
+    });
+
+    let filteredEvents;
     
-    // this.getTagEvents(thisTag.tag_id)
-    //   .then(res => {
-    //     this.setState({ selectedEvents: res.data })
-    //     if (res.data.length > 0) {
-    //       this.renderCells(res.data);
-    //     }
-    //   })
-    //   .catch(err => console.error(err));
+    if (this.state.selectedFriend) {
+      filteredEvents = this.state.friendsSelectedEvents.filter((event) => {
+        return filteredTagArray.includes(event.id);
+      });
+    } else {
+      filteredEvents = this.state.pageLoadEvents.filter((event) => {
+        return filteredTagArray.includes(event.id);
+      });
+    }
+
+    this.setState({ selectedEvents: filteredEvents, tagsSelectedEvents: filteredEvents })
+
   }
 
   clearChosenTag = () => {
-    this.setState({ selectedTag: '' })
+    this.setState({ selectedTag: '' });
 
-    this.getAllEvents(this.props.appState.current_user.gym_id)
-    .then(res => {
-      this.setState({ selectedEvents: res.data })
-      if (res.data.length > 0) {
-        this.renderCells(res.data);
-      }
-    })
-    .catch(err => console.error(err));
+    if (this.state.friendsSelectedEvents) {
+      this.setState({ selectedEvents: this.state.friendsSelectedEvents, tagsSelectedEvents: '' });
+    } else {
+      this.setState({ selectedEvents: this.state.pageLoadEvents, tagsSelectedEvents: '' })
+    }
   }
 
   // Renders Calendar Header
