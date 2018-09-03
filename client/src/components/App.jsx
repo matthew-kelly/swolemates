@@ -14,7 +14,8 @@ import Friends from './Friends.jsx'
 import Login from './Login.jsx'
 import Register from './Register.jsx'
 import FriendPage from './FriendPage.jsx'
-import Example from './Example.jsx'
+import {NotificationManager} from 'react-notifications';
+
 
 const API = 'http://localhost:5000/api'
 
@@ -32,7 +33,7 @@ class App extends Component {
 
     const cachedUser = sessionStorage.getItem('current_user');
     const cachedLogin = sessionStorage.getItem('isLoggedIn');
-    if (JSON.parse(cachedLogin) === true && cachedUser) {
+    if (JSON.parse(cachedLogin) === true) {
       this.state = { isLoggedIn: JSON.parse(cachedLogin), current_user: JSON.parse(cachedUser) };
     }
   }
@@ -59,26 +60,51 @@ class App extends Component {
 
     this.checkLogin(userEmail, userPassword)
       .then(res => {
-        if (res) {
           sessionStorage.setItem('isLoggedIn', true);
           sessionStorage.setItem('current_user', JSON.stringify(res[0]));
           this.setState({
             isLoggedIn : true,
             current_user: res[0]
-          })
-        } else {
-          event.target.email.value = '';
-          event.target.password.value = '';
-          window.alert("Could not log in. Please try again")
-        }
+        })
       })
       .catch(err => console.error(err));
   }
 
   logoutSubmit = (event) => {
     sessionStorage.setItem('isLoggedIn', false);
-    sessionStorage.setItem('current_user', undefined);
+    this.setState({ current_user: undefined});
   }
+
+  changeUserInformation = (key, value) => {
+    let current_user = this.state.current_user;
+    current_user[key] = value;
+    this.setState({current_user: current_user})
+  }
+
+  createNotification = (type, first_name, last_name) => {
+    switch (type) {
+      case 'info':
+        NotificationManager.info('Info message');
+        break;
+      case 'eventAccepted' :
+        NotificationManager.info('Event Added!', `Your event with ${first_name} ${last_name} has been added to your upcoming events`, 3000);
+        break;
+      case 'addEvent':
+        NotificationManager.success('Success!', 'Your event is being added to the Calendar');
+        break;
+      case 'addFriend':
+        NotificationManager.success('Friend Added!', `${first_name} ${last_name} was added to your friends list`, 3000);
+        break;
+      case 'deleteFriend':
+        NotificationManager.warning('Request Denied', `${first_name} ${last_name}'s request was denied`, 3000);
+        break;
+      case 'error':
+        NotificationManager.error('Error message', 'Click me!', 5000, () => {
+          alert('callback');
+        });
+      break;
+    }
+  };
 
   // -------------------------------------------------
   //              RENDER PROP ROUTES
@@ -102,22 +128,21 @@ class App extends Component {
   //                     RENDER
   // -------------------------------------------------
   render() {
-    const appState = this.state;
+    // const appState = this.state;
 
     return (
       <Router>
         <Route path='/'>
           <div>
-            <this.PropsRoute path="/" component={NavBar} logoutSubmit={this.logoutSubmit} appState={appState} />
-            <this.PropsRoute exact path="/" component={Homepage} loginSubmit={this.loginSubmit} appState={appState} />
-            <this.PropsRoute exact path="/calendar" component={Calendar} appState={appState} />
-            <this.PropsRoute exact path="/dashboard" component={Dashboard} appState={appState} />
-            <this.PropsRoute exact path="/connections" component={Connections} appState={appState} />
-            <this.PropsRoute exact path="/friends" component={Friends} appState={appState} />
-            <this.PropsRoute path ='/profiles/:id' component={FriendPage} appState={appState}/>
-            <this.PropsRoute exact path="/login" component={Login} loginSubmit={this.loginSubmit} appState={appState} />
-            <this.PropsRoute exact path="/register" component={Register} loginSubmit={this.loginSubmit} appState={appState} />
-            <this.PropsRoute exact path='/example' component={Example}/>
+            <this.PropsRoute path="/" component={NavBar} logoutSubmit={this.logoutSubmit} appState={this.state} />
+            <this.PropsRoute exact path="/" component={Homepage} loginSubmit={this.loginSubmit} appState={this.state} />
+            <this.PropsRoute exact path="/calendar" createNotification={this.createNotification} component={Calendar} appState={this.state} />
+            <this.PropsRoute exact path="/dashboard" createNotification={this.createNotification} component={Dashboard} changeUserInformation={this.changeUserInformation} appState={this.state} />
+            <this.PropsRoute exact path="/connections" createNotification={this.createNotification} component={Connections} appState={this.state} />
+            <this.PropsRoute exact path="/friends" component={Friends} appState={this.state} />
+            <this.PropsRoute path ='/profiles/:id' component={FriendPage} appState={this.state}/>
+            <this.PropsRoute exact path="/login" component={Login} loginSubmit={this.loginSubmit} appState={this.state} />
+            <this.PropsRoute exact path="/register" component={Register} loginSubmit={this.loginSubmit} appState={this.state} />
           </div>
         </Route>
       </Router>

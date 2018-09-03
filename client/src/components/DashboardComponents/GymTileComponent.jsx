@@ -7,10 +7,15 @@ class GymTileComponent extends Component{
 
   render(){
     return(
-     <div id="gym" className="tile tileSmall">
-            <i className="fas fa-dumbbell"></i>
-            <h4 className='dashboardSubtitle'>{this.props.content}</h4>
-          </div>
+     <div id="gym" className="tile tileBig">
+      <div className="dashboardComponentHeader">
+        <span>Gym</span>
+        <i className="fas fa-dumbbell"></i>
+      </div>
+        <div className="dashboardComponentContentCenter">
+          <h4 className='dashboardSubtitle'>{this.props.content}</h4>
+        </div>
+      </div>
     )
   }
 }

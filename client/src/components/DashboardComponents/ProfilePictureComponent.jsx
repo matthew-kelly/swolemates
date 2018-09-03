@@ -14,14 +14,26 @@ class ProfilePictureComponent extends Component{
   }
 
   onClick = (event) => {
-    document.getElementById('inputPicture').style = 'display:inline'
-    document.getElementById('pictureContainer').style = 'display:none'
+    if(document.getElementById('inputPicture').style.display === 'inline'){
+      document.getElementById('inputPicture').style = 'display:none'
+      document.getElementById('pictureContainer').style = 'display:inline'
+    } else {
+      document.getElementById('inputPicture').style = 'display:inline'
+      document.getElementById('pictureContainer').style = 'display:none'
+    }
+  }
+
+  onEnterPress = (event) => {
+  if(event.keyCode === 13 && event.shiftKey === false) {
+     this.onSubmit(event);
+    }
   }
 
   onSubmit = (event) => {
     event.preventDefault();
     let newValue = document.getElementById('inputPicture').value
-    this.setState({profile_pic : newValue})
+    this.props.changeUserInformation('profile_pic', newValue)
+    this.setState({profile_pic : this.props.appState.current_user.profile_pic})
     document.getElementById('inputPicture').style = 'display:none'
     document.getElementById('pictureContainer').style = 'display:inline'
     this.changeSessionInfo(newValue);
@@ -33,8 +45,8 @@ class ProfilePictureComponent extends Component{
     current_user = JSON.parse(current_user);
     current_user.profile_pic = newValue;
     sessionStorage.setItem('current_user', JSON.stringify(current_user));
-    window.location.reload(true);
-    this.changeUserPicture(this.state.id, this.state.profile_pic)
+    // window.location.reload(true);
+    setTimeout(() =>{this.changeUserPicture(this.state.id, this.state.profile_pic)}, 1000)
   }
 
   async changeUserPicture(user_id, user_profile_pic) {
@@ -51,12 +63,15 @@ class ProfilePictureComponent extends Component{
 
   render(){
     return(
-      <form onSubmit={this.onSubmit} id="profileImage" className="tile tileMedium">
+      <form onSubmit={this.onSubmit} id="profileImage" className="tile tileBig">
       <div className="dashboardComponentHeader">
+        <span>Profile Picture</span>
         <i onClick={this.onClick} className="far fa-edit"></i>
       </div>
-        <img id='pictureContainer' className="profile_pic" src={this.state.profile_pic} alt="profile" />
-        <input defaultValue={this.state.profile_pic} id='inputPicture' style={{display: 'none'}}/>
+        <div className="dashboardComponentContentCenter">
+          <img id='pictureContainer' className="profile_pic" src={this.state.profile_pic} alt="profile" />
+          <textarea defaultValue={this.state.profile_pic} id='inputPicture' onKeyDown={this.onEnterPress} style={{display: 'none'}}/>
+        </div>
       </form>
     )
   }

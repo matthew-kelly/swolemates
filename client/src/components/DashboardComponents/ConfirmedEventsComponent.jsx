@@ -7,11 +7,15 @@ class ConfirmedEventsComponent extends Component{
 
   render(){
     return(
-      <div id="confirmed-events">
-        <h1>Next Event</h1>
-        <ul>
-          {this.props.content}
-        </ul>
+      <div id="confirmed-events" className="tile tileBig">
+        <div className="dashboardComponentHeader">
+          <span>Upcoming Events</span>
+        </div>
+        <div className="dashboardComponentContent">
+          <ul>
+            {this.props.content}
+          </ul>
+        </div>
       </div>
     )
   }

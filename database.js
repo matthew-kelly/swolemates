@@ -20,6 +20,15 @@ module.exports = function knexData(knex) {
       })
     },
 
+    //get new Event
+    getNewEvent: (id) => {
+      return knex.select('*')
+      .from('events')
+      .where({
+        id: id
+      })
+    },
+
     // Return user data for Connections list
     getConnectionsList: (id) => {
       return result = knex.select('*')
@@ -96,10 +105,10 @@ module.exports = function knexData(knex) {
 
     // Return list of all events for a gym
     allGymEvents: (gym_id) => {
-      return knex.select('*')
+      return knex.select(knex.raw('events.id AS id'), knex.raw('events.gym_id AS gym_id'), 'user_id', 'public', 'time_begin', 'time_end')
         .from('events')
         .join('users', 'user_id', '=', 'users.id')
-        .whereRaw('events.gym_id = ?' ,[gym_id])
+        .whereRaw('events.gym_id = ?', [gym_id])
     },
 
     // Create a new event
@@ -205,7 +214,7 @@ module.exports = function knexData(knex) {
 
 // Get user's pending event requests
     getPendingEventRequests: (user_id) => {
-      return knex.select(knex.raw('event_requests.id AS request_id'), 'requester_id', 'first_name', 'last_name', 'event_id', 'time_begin', 'time_end', 'profile_pic')
+      return knex.select(knex.raw('event_requests.id AS request_id'), knex.raw('events.id AS event_id'), 'requester_id', 'first_name', 'last_name', 'time_begin', 'time_end', 'profile_pic', 'accepted')
         .from('event_requests')
         .join('events', 'event_id', '=', 'events.id')
         .join('users', 'requester_id', '=', 'users.id')

@@ -99,6 +99,18 @@ app.get('/api/users/:id/events', (req, res) => {
     })
 });
 
+//get specific event information
+
+app.get('/api/events/:id', (req, res) => {
+  database.getNewEvent(req.params.id)
+  .then((result) => {
+    res.send(result);
+  })
+  .catch((e) => {
+    console.error(e)
+  })
+});
+
 // Add a new friend
 app.post('/api/users/:id/friends/new', (req, res) => {
   database.addFriend(req.params.id, req.body.friend_id)
@@ -286,10 +298,10 @@ app.post('/api/users/:id/profile_pic', (req, res) => {
     })
 });
 
-app.post('/api/requests/:request_id/accept', (req, res) => {
+app.put('/api/requests/:request_id/accept', (req, res) => {
   database.acceptRequest(req.params.request_id, req.body.accepted)
     .then((result) => {
-      res.sendStatus(200);
+      res.sendStatus(202);
     })
     .catch((e) => {
       console.error(e);

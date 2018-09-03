@@ -40,7 +40,9 @@ canvas.chartjs-render-monitor{
   background-color: steelblue;
   height: 15%;
   display: flex;
-  padding: 1em;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 1.5em 1em 1em;
   color: white;
   font-weight: bold;
   font-size: 1.3em;
@@ -55,7 +57,8 @@ canvas.chartjs-render-monitor{
 }
 
 #chatWindowClose{
-  position: fixed;
+  cursor: pointer;
+  /*position: fixed;*/
   bottom: 25em;
   right: 3em;
   float:right;
@@ -94,11 +97,11 @@ canvas.chartjs-render-monitor{
   grid-template-rows: 20vh 10vh 13vh 20vh 20vh;
   grid-gap: 1em;
   grid-template-areas:
-  "profile-image profile-image bio bio goals goals"
-  "profile-image profile-image bio bio goals goals"
-  "profile-image profile-image activity activity activity activity"
-  "gym calendarDashboard1 activity activity activity activity"
-  "calendarDashboard2 calendarDashboard3 activity activity activity activity";
+  "profile-image profile-image bio bio confirmed-events confirmed-events"
+  "profile-image profile-image bio bio confirmed-events confirmed-events"
+  "profile-image profile-image bio bio confirmed-events confirmed-events"
+  "gym goals activity activity confirmed-events confirmed-events"
+  "calendarDashboard1 goals activity activity confirmed-events confirmed-events";
 }
 
 .tile {
@@ -158,13 +161,22 @@ canvas.chartjs-render-monitor{
 
 .fa-edit{
   display: none;
+  cursor: pointer;
+}
+.chatWindowIcon.fa-comments{
+  cursor: pointer;
+  color: steelblue;
 }
 
-#inputBio{
+#inputBio, #inputPicture{
   width: -webkit-fill-available;
-  height: 12em;
+  height: 19em;
   border-radius: 1em;
   padding: 0.5em;
+  font-family: 'Open Sans', sans-serif;
+}
+#inputPicture{
+  height: 23em;
 }
 
 #goals:hover .fa-edit{
@@ -188,14 +200,9 @@ canvas.chartjs-render-monitor{
   cursor: pointer;
 }
 
-#calendarDashboard2 {
-  grid-area: calendarDashboard2;
+#confirmed-events{
+  grid-area: confirmed-events;
 }
-
-#calendarDashboard3 {
-  grid-area: calendarDashboard3;
-}
-
 #activity {
   grid-area: activity;
 }
@@ -212,6 +219,12 @@ canvas.chartjs-render-monitor{
 
 .dashboardComponentContent{
   margin: 0.8em;
+}
+.dashboardComponentContentCenter{
+  margin: 0.8em;
+  display: flex;
+  justify-content: center;
+  height: 80%;
 }
 .navbar {
   background-color: white;
@@ -324,6 +337,10 @@ div#start-component.component {
 
 .profile_pic {
   max-width: 300px;
+}
+
+#pictureContainer{
+  border-radius: 3em;
 }
 
 
@@ -518,9 +535,11 @@ path{
 }
 
 .event-request-list .event-request-container {
+  background-color: white;
+  border-radius: 1em;
   border: 1px solid black;
   margin: 5px;
-  padding: 5px;
+  padding: 10px;
   min-width: 275px;
 }
 

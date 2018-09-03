@@ -100,23 +100,19 @@ class Dashboard extends Component {
 
     if (gym_data){
       gymName = gym_data.map((gym) => {
-        return <span key={gym.id}>{gym.name}</span>
+        return <span key={gym.id}>{gym.name}<br/>{gym.address}</span>
       })
     }
 
     return (
       <div className="container">
-      <ProfilePictureComponent appState={this.props.appState} content={user_data.profile_pic}/>
-      <GymTileComponent content={gymName}/>
-      <CalendarTileComponent />
-          <div id="calendarDashboard3" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
-          </div>
-      <BioComponent content={user_data}/>
-      <GoalComponent content={allGoals}/>
-      <AcitivityGraphComponent/>
-      <ConfirmedEventsComponent content={earliestEventFormatted}/>
+      <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data.profile_pic}/>
+      <GymTileComponent appState={this.props.appState} content={gymName}/>
+      <CalendarTileComponent appState={this.props.appState} />
+      <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
+      <GoalComponent appState={this.props.appState} content={allGoals}/>
+      <AcitivityGraphComponent appState={this.props.appState}/>
+      <ConfirmedEventsComponent appState={this.props.appState} content={earliestEventFormatted}/>
       </div>
     );
   }

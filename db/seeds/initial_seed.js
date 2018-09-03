@@ -849,14 +849,63 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('event_requests').insert({
         event_id: 1,
-        requester_id: 2,
-        accepted: true
+        requester_id: 5,
+        accepted: false
       });
     })
     .then(() => {
       return knex('event_requests').insert({
         event_id: 1,
-        requester_id: 5,
+        requester_id: 4,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 6,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 7,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 8,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 9,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 10,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 11,
+        accepted: false
+      });
+    })
+    .then(() => {
+      return knex('event_requests').insert({
+        event_id: 1,
+        requester_id: 12,
         accepted: false
       });
     })

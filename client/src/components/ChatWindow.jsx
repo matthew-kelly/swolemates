@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
 import Message from './Message'
 
 class ChatWindow extends Component {
@@ -27,8 +26,8 @@ class ChatWindow extends Component {
     return(
       <div id='chatWindow'>
         <div id='chatWindowHeader'>
-        {`${friend.first_name} ${friend.last_name}`}
-        <span id='chatWindowClose'onClick={this.props.closeWindow}>X</span>
+          <h3>{`${friend.first_name} ${friend.last_name}`}</h3>
+          <h3 id='chatWindowClose'><i onClick={this.props.closeWindow} className="far fa-times-circle"></i></h3>
         </div>
         <div id='chatWindowMessageContainer'>
           {allMessages}

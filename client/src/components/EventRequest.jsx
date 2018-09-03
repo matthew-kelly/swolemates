@@ -9,27 +9,31 @@ class EventRequest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      requestRow: ''
+      requestRow: '',
     }
   }
 
   // Get request row
   async getRequestRow(event_id, requester_id) {
-    const res = await axios.get(`${API}/requests/${event_id}/requester/${requester_id}`);
+    let res = await axios.get(`${API}/requests/${event_id}/requester/${requester_id}`);
+    // console.log('res data', res.data[0])
     return await res.data;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getRequestRow(this.props.request.event_id, this.props.request.requester_id)
-    .then(res => this.setState({ requestRow: res }))
+    .then(res => this.setState({ requestRow: res[0] }))
     .catch(err => console.error(err));
   }
 
-  render() {
-    const request = this.props.request;
-    const user_obj = request;
 
-    if (!request.accepted) {
+  render() {
+    let request = this.props.request;
+    let user_obj = request;
+
+    // console.log('user obj', user_obj)
+
+    if (this.state.requestRow.accepted === false && this.state.requestRow) {
       return (
         <div className="event-request-container">
           <div className="event-request-content">

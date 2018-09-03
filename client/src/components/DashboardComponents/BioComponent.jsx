@@ -8,17 +8,23 @@ class BioComponent extends Component{
     this.state = {
       id: this.props.content.id,
       first_name: this.props.content.first_name,
+      last_name: this.props.content.last_name,
       bio: this.props.content.bio
     }
   }
 
   onClick = (event) => {
-    document.getElementById('inputBio').style = 'display:inline'
-    document.getElementById('bioContainer').style = 'display:none'
+    if(document.getElementById('inputBio').style.display === 'inline'){
+      document.getElementById('inputBio').style = 'display:none'
+      document.getElementById('bioContainer').style = 'display:inline'
+    } else {
+      document.getElementById('inputBio').style = 'display:inline'
+      document.getElementById('bioContainer').style = 'display:none'
+    }
   }
 
   onEnterPress = (event) => {
-  if(event.keyCode == 13 && event.shiftKey == false) {
+  if(event.keyCode === 13 && event.shiftKey === false) {
      this.onSubmit(event);
     }
   }
@@ -26,7 +32,8 @@ class BioComponent extends Component{
   onSubmit = (event) => {
     event.preventDefault();
     let newValue = document.getElementById('inputBio').value
-    this.setState({bio : newValue})
+    this.props.changeUserInformation('bio', newValue)
+    this.setState({bio : this.props.appState.current_user.bio})
     document.getElementById('inputBio').style = 'display:none'
     document.getElementById('bioContainer').style = 'display:inline'
     this.changeSessionInfo(newValue);
@@ -61,7 +68,8 @@ class BioComponent extends Component{
         <i onClick={this.onClick} className="far fa-edit"></i>
       </div>
       <div className="dashboardComponentContent">
-        <h3>About {this.state.first_name}</h3>
+        <h3>About {this.state.first_name} {this.state.last_name}</h3>
+        <br/>
         <p id="bioContainer">{this.state.bio}</p>
         <textarea defaultValue={this.state.bio} id='inputBio' onKeyDown={this.onEnterPress} style={{display: 'none'}}/>
       </div>

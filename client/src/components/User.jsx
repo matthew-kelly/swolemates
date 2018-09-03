@@ -3,16 +3,17 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 class User extends Component {
 
-renderFriendMenu(){
-  let user_obj = this.props.user_obj;
-  return(
-    <div className='friendMenu'>
-      <Link to ={{pathname: `/profiles/${user_obj.id}`, state: {user_obj} }}><i className="far fa-user"></i></Link>
-      <p data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.renderChatWindow}>Chat</p>
-      <span><i data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.onDelete} className="far fa-trash-alt"></i></span>
-    </div>
-  )
-}
+  renderFriendMenu(){
+    let user_obj = this.props.user_obj;
+    return(
+      <div className='friendMenu'>
+        <Link to ={{pathname: `/profiles/${user_obj.id}`, state: {user_obj} }}><i className="far fa-user"></i></Link>
+        <span><i data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.renderChatWindow}className="far chatWindowIcon fa-comments"></i></span>
+        <span><i data-thisfriend={JSON.stringify(this.props.user_obj)} onClick={this.props.onDelete} className="far fa-trash-alt"></i></span>
+      </div>
+    )
+  }
+
 
   render() {
     let user_obj = this.props.user_obj;

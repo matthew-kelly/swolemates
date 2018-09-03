@@ -22,7 +22,7 @@ class Homepage extends Component {
           </g>
         </svg>
         <div id="homepageTitle">
-          <h1> GYM <br/> BUDDY </h1>
+          <h1>SWOLE<br/>MATES</h1>
         </div>
         </div>
       </div>

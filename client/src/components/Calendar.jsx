@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import dateFns from "date-fns";
 import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated';
@@ -13,7 +13,7 @@ import axios from 'axios';
 import EventBubble from './EventBubble';
 import EventDataModal from './EventDataModal';
 import FriendList from './FriendList';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {NotificationContainer} from 'react-notifications';
 
 import 'react-notifications/lib/notifications.css';
 
@@ -35,7 +35,9 @@ class Calendar extends Component {
       showEventModal: false,
       currentEvent: '',
       currentEventTags: '',
-      currentEventRequests: ''
+      currentEventRequests: '',
+      // startTime: moment(new Date()).toString(),
+
     };
     this.getAllEvents = this.getAllEvents.bind(this);
   }
@@ -90,6 +92,11 @@ class Calendar extends Component {
     }
   }
 
+  async getNewEvent(event_id){
+    const res = axios.get(`${API}/events/${event_id}`);
+    return await res;
+  }
+
   async currentEventJoinRequests(event_id) {
     const res = await axios.get(`${API}/events/${event_id}/request`);
     return await res;
@@ -111,25 +118,6 @@ class Calendar extends Component {
       return false;
     }
   }
-
-  createNotification = (type) =>{
-    switch (type) {
-      case 'info':
-        NotificationManager.info('Info message');
-        break;
-      case 'addEvent':
-        NotificationManager.success('Success!', 'Your event is being added to the Calendar');
-        break;
-      case 'warning':
-        NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
-        break;
-      case 'error':
-        NotificationManager.error('Error message', 'Click me!', 5000, () => {
-          alert('callback');
-        });
-      break;
-    }
-  };
 
   showEventDataModal = (event) => {
     const thisEvent = JSON.parse(event.target.getAttribute('data-thisevent'));
@@ -207,7 +195,7 @@ class Calendar extends Component {
       publicCheck = true;
     }
     for(let tag of this.state.tags){
-      tagArray.push(tag.value);
+      tagArray.push(tag.label);
     }
 
     if (description.length > 0 && tagArray.length > 0 && date.length > 0 && sTime < eTime) {
@@ -219,20 +207,26 @@ class Calendar extends Component {
         time_begin: sTime,
         time_end: eTime,
       }
+
       this.postEvent(eventObj)
         .then(res => {
           const eventId = res[0];
-
           tagArray.map((tag) => {
             this.addEventTag(eventId, tag)
             .catch(err => console.error(err));
+          this.getNewEvent(eventId)
+          .then(res => {
+            this.setState({selectedEvents: this.state.selectedEvents.concat(res.data)})
+          })
+          .catch(err => console.error(err));
           });
+
+          this.renderCells(this.state.selectedEvents)
         })
-        .catch(err => console.error(err));
+
 
       this.onClear();
-      this.createNotification('addEvent')
-      setTimeout(function(){window.location.reload(true);},1000);
+      this.props.createNotification('addEvent')
     } else {
       window.alert("Event is not valid");
     }
@@ -262,6 +256,12 @@ class Calendar extends Component {
 
   // Renders the popup with forms/buttons
   renderPopUp() {
+
+    let startTime = new Date().toString()
+    let endTime = new Date();
+    endTime.setHours(endTime.getHours() + 1)
+    endTime.toString()
+
     return(
       <div>
         <div style={{display:'none'}} id='popupBackground'>
@@ -287,6 +287,7 @@ class Calendar extends Component {
               startMoment={this.state.startTime}
               endMoment={this.state.endTime}
               onChange={this.changeTime}
+              endValue={endTime}
             />
             <div className='checkbox'>
               <input id='publicCheckbox'type='checkbox' name='public' value='public'/>Public Event
@@ -305,7 +306,7 @@ class Calendar extends Component {
     const thisFriend = JSON.parse(event.target.getAttribute('data-thisfriend'));
 
     this.setState({ selectedFriend: thisFriend })
-    
+
     this.getFriendEvents(thisFriend.id)
       .then(res => {
         this.setState({ selectedEvents: res.data })
@@ -381,7 +382,6 @@ class Calendar extends Component {
       for (let i = 0; i < 7; i++) {
 
         const dayEventsArray = [];
-
         for (let j = 0; j < filteredEvents.length; j++) {
           let eventStartDate = moment(filteredEvents[j].time_begin).format('YYYYMMDD');
           let calendarDate = moment(day).format('YYYYMMDD');
@@ -437,10 +437,6 @@ class Calendar extends Component {
   };
 
   render() {
-    if (this.props.appState.isLoggedIn !== true) {
-      return <Redirect to='/' />
-    }
-
     return (
       <div>
         {this.renderPopUp()}
