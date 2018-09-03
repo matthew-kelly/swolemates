@@ -69,7 +69,7 @@ exports.up = function(knex, Promise) {
       table.increments('id');
       table.integer('event_id').references('events.id');
       table.integer('requester_id').references('users.id');
-      table.boolean('accepted');
+      table.boolean('accepted').defaultTo(false);
     })
 };
 

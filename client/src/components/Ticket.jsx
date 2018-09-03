@@ -13,6 +13,8 @@ class Ticket extends Component {
 
   render(){
     let user_obj = this.props.request;
+
+    console.log(user_obj);
     return(
         <div className="event-request-container">
 

@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 // import Calendar from './Calendar.jsx'
+import ProfilePictureComponent from './DashboardComponents/ProfilePictureComponent.jsx'
+import GymTileComponent from './DashboardComponents/GymTileComponent.jsx'
+import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx'
+import BioComponent from './DashboardComponents/BioComponent.jsx'
+import GoalComponent from './DashboardComponents/GoalComponent.jsx'
+import AcitivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx'
+import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsComponent.jsx'
+import moment from 'moment';
+import NoUpcomingEvents from './DashboardComponents/NoUpcomingEvents';
 
 const API = 'http://localhost:5000/api'
 
@@ -10,15 +19,37 @@ class Dashboard extends Component {
     super();
     this.state = {
       user_data: '',
-      goals: ''
+      goals: '',
+      gym: '',
+      currentTime: moment(new Date()).format('YYYYMMDDHHmm')
     }
   }
 
-  componentWillMount() {
+  async getGym(id) {
+    const res = await axios.get(`${API}/gyms/${id}`);
+    return await res.data;
+  }
 
+  async getConfirmedEvents(id) {
+    const res = await axios.get(`${API}/users/${id}/events/confirmed`);
+    return await res.data;
+
+  }
+
+  componentWillMount() {
     this.getGoals(this.props.location.state.user_obj.id)
     .then(res => this.setState({ goals: res }))
     .catch(err => console.log(err));
+
+    this.getGym(this.props.location.state.user_obj.gym_id)
+      .then(res => this.setState({ gym: res}))
+      .catch(err => console.log(err));
+
+
+    this.getConfirmedEvents(this.props.location.state.user_obj.id)
+    .then(res => this.setState({ confirmedEvents: res }))
+    .catch(err => console.log(err));
+
   }
 
   // Get user's goals
@@ -33,8 +64,18 @@ class Dashboard extends Component {
       return <Redirect to='/' />
     }
 
+    const events_data = this.state.confirmedEvents;
     const user_data = this.props.location.state.user_obj;
     const goals_data = this.state.goals;
+    let gym;
+
+    if (this.state.gym){
+      gym = this.state.gym.map((gym) => {
+        return <span key={gym.id}>{gym.name}<br/>{gym.address}</span>
+      })
+    } else {
+      gym = '';
+    }
 
     let allGoals;
     if (goals_data){
@@ -42,40 +83,47 @@ class Dashboard extends Component {
         return <li key={goal.id}>{goal.goal}</li>
       });
     }
+
+    let noUpcomingEvents = <li><p>No upcoming events</p></li>;
+    let eventsListFormatted = '';
+
+    if (events_data && events_data.length > 0) {
+      noUpcomingEvents = '';
+      eventsListFormatted = events_data.map((event) => {
+        if (moment(event.time_end).format('YYYYMMDDHHmm') > this.state.currentTime) {
+          return <ConfirmedEventsComponent key={event.request_id} content={event} />
+        } else {
+          return;
+        }
+      }).sort((a, b) => {
+        return moment(a.props.content.time_begin).format('YYYYMMDDHHmm') - moment(b.props.content.time_begin).format('YYYYMMDDHHmm')
+      })
+    }
+
+
+    if (noUpcomingEvents) {
+      eventsListFormatted = <NoUpcomingEvents content={noUpcomingEvents}/>
+    }
+
     return (
       <div className="container">
-        <div id="profileImage" className="tile tileMedium">
-          <img className="profile_pic" src={user_data.profile_pic} alt="profile" />
+      <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data.profile_pic}/>
+      <GymTileComponent appState={this.props.appState} content={gym}/>
+      <CalendarTileComponent appState={this.props.appState} />
+      <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
+      <GoalComponent appState={this.props.appState} content={allGoals}/>
+      <AcitivityGraphComponent appState={this.props.appState}/>
+              <div id="confirmed-events" className="tile tileBig">
+         <div className="dashboardComponentHeader">
+           <span>Upcoming Events</span>
         </div>
-          <div id="gym" className="tile tileSmall">
-            <i className="fas fa-dumbbell"></i>
-            <h4 className='dashboardSubtitle'>{user_data.gym_id}</h4>
-          </div>
-          <div id="calendarDashboard1" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
-          </div>
-          <div id="calendarDashboard2" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
-          </div>
-          <div id="calendarDashboard3" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
-          </div>
-        <div id="bio" className="tile tileBig">
-          <h1>About {user_data.first_name}</h1>
-          <p>{user_data.bio}</p>
-        </div>
-        <div id="goals" className="tile tileMedium">
-          <h1>Goals</h1>
+        <div className="dashboardComponentContent">
           <ul>
-            {allGoals}
+            {eventsListFormatted}
           </ul>
+          </div>
         </div>
-        <div id="activity" className="tile">
-          <p>This is my activity graph</p>
-        </div>
+
       </div>
     );
   }

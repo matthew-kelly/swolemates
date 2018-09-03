@@ -52,19 +52,19 @@ export const colourStyles = {
 };
 
 export const tagOptions = [
-        { value: 'back', label: 'Back', color: '#ff6a6a'},
-        { value: 'biceps', label: 'Biceps', color: '#ffaa5d'},
-        { value: 'calisthenics', label: 'Calisthenics', color: '#5243AA'},
-        { value: 'cardio', label: 'Cardio', color: '#fae747'},
-        { value: 'chest', label: 'Chest', color: '#a6d3ff'},
-        { value: 'core', label: 'Core', color: '#5effab'},
-        { value: 'hIT', label: 'HIT', color: '#253858'},
-        { value: 'legs', label: 'Legs', color: '#cf93ff'},
-        { value: 'oRM', label: 'ORM', color: '#6d6fc3'},
-        { value: 'shoulders', label: 'Shoulders', color: '#ff93fd'},
-        { value: 'sprints', label: 'Sprints', color: '#e84b85'},
-        { value: 'stretching', label: 'Stretching', color: '#7fb378'},
-        { value: 'traps', label: 'Traps', color: '#929292'},
-        { value: 'triceps', label: 'Triceps', color: '#017eff'},
-        { value: 'yoga', label: 'Yoga', color: '#b9bc7f'}
+        { tag_id: 1, value: 'back', label: 'Back', color: '#ff6a6a'},
+        { tag_id: 2, value: 'biceps', label: 'Biceps', color: '#ffaa5d'},
+        { tag_id: 3, value: 'calisthenics', label: 'Calisthenics', color: '#5243AA'},
+        { tag_id: 4, value: 'cardio', label: 'Cardio', color: '#fae747'},
+        { tag_id: 5, value: 'chest', label: 'Chest', color: '#a6d3ff'},
+        { tag_id: 6, value: 'core', label: 'Core', color: '#5effab'},
+        { tag_id: 7, value: 'hIT', label: 'HIT', color: '#253858'},
+        { tag_id: 8, value: 'legs', label: 'Legs', color: '#cf93ff'},
+        { tag_id: 9, value: 'oRM', label: 'ORM', color: '#6d6fc3'},
+        { tag_id: 10, value: 'shoulders', label: 'Shoulders', color: '#ff93fd'},
+        { tag_id: 11, value: 'sprints', label: 'Sprints', color: '#e84b85'},
+        { tag_id: 12, value: 'stretching', label: 'Stretching', color: '#7fb378'},
+        { tag_id: 13, value: 'traps', label: 'Traps', color: '#929292'},
+        { tag_id: 14, value: 'triceps', label: 'Triceps', color: '#017eff'},
+        { tag_id: 15, value: 'yoga', label: 'Yoga', color: '#b9bc7f'}
       ]

@@ -20,7 +20,9 @@ class Connections extends Component {
     this.state = {
       eventRequests: '',
       friends: '',
-      newFriend: false
+      newFriend: false,
+      currentTime: moment(new Date()).format('YYYYMMDDHHmm')
+
     }
   }
 
@@ -95,14 +97,12 @@ class Connections extends Component {
 
   acceptThisEventRequest = (event) => {
 
-    // console.log(JSON.parse(event.target.getAttribute('data-requester')))
     let request = JSON.parse(event.target.getAttribute('data-requester'))
     let current_user = this.props.appState.current_user;
     let friends = this.state.friends
     let alreadyAFriend = false;
     let eventsArray = this.state.eventRequests
 
-    // let request = JSON.parse(event.target.getAttribute('data-requestrow'))
 
     for(let friend of friends){
       if(friend.id === request.requester_id){
@@ -117,16 +117,11 @@ class Connections extends Component {
         .catch(err => console.error(err));
     }
 
-    // console.log('eventsarray', eventsArray)
-    console.log('request', request)
     let targetIndex = eventsArray.findIndex(x => x.request_id === request.request_id)
-    // console.log(targetIndex)
     eventsArray.splice(targetIndex, 1)
-    // console.log('spliced array', eventsArray)
 
     this.setState({eventRequests: eventsArray})
 
-    console.log('request ID : ', request.request_id)
     this.props.createNotification('eventAccepted', request.first_name, request.last_name)
     this.acceptEventRequest(request.request_id)
   }
@@ -142,19 +137,7 @@ class Connections extends Component {
     this.deleteEventRequest(request.request_id)
       .catch(err => console.error(err));
 
-
-    // const request = JSON.parse(event.target.getAttribute('data-requestrow'));
-
-    // let eventsArray = this.state.eventRequests
-    // let targetIndex = eventsArray.findIndex(x => x.request_id===request.id)
-    // // console.log(eventsArray)
-    // eventsArray.splice(targetIndex, 1)
-    // this.setState({eventRequests: eventsArray})
     this.props.createNotification('deleteFriend', request.first_name, request.last_name)
-
-    // // console.log("request,", request)
-    // this.deleteEventRequest(request.id)
-    //   .catch(err => console.error(err));
   }
 
   componentDidMount() {
@@ -168,28 +151,16 @@ class Connections extends Component {
       .then(res => this.setState({ eventRequests: res }))
       .catch(err => console.error(err));
 
-    // this.getConnections(current_user.id)
-    //   .then(res => this.setState({ connections: res }))
-    //   .catch(err => console.error(err));
   }
 
   render() {
-    // if (this.props.appState.isLoggedIn !== true) {
-    //   return <Redirect to='/' />
-    // }
-
-    // let eventRequests = this.state.eventRequests;
-
-    // console.log(this.state)
     let allEventRequests;
     if(this.state.eventRequests.length > 0) {
-      console.log(this.state.eventRequests)
 
       allEventRequests = this.state.eventRequests;
       allEventRequests = this.state.eventRequests.map((request) => {
-        console.log(request);
 
-        if (request.accepted === false ){
+        if (request.accepted === false && moment(request.time_end).format('YYYYMMDDHHmm') > this.state.currentTime){
           return <Ticket key={request.request_id} deleteRequest={this.deleteThisEventRequest} acceptRequest={this.acceptThisEventRequest} request={request}/>
         } else {
           return;
@@ -198,22 +169,6 @@ class Connections extends Component {
         return moment(a.props.request.time_begin).format('YYYYMMDDHHmm') - moment(b.props.request.time_begin).format('YYYYMMDDHHmm');
       })
     }
-
-
-    // if (eventRequests.length) {
-    //   allEventRequests = eventRequests.map((request) => {
-    //     return <EventRequest acceptRequest={this.acceptThisEventRequest} eventRequests={this.state.eventRequests} request={request} key={request.id} />
-    //   })
-    // }
-    // console.log('alleventrequests', allEventRequests)
-
-    // if (eventRequests.length) {
-    //   allEventRequests = eventRequests.map((request) => {
-    //     return <EventRequest acceptRequest={this.acceptThisEventRequest} deleteRequest={this.deleteThisEventRequest} request={request} key={request.id} />;
-    //   }).sort((a, b) => {
-    //     return moment(a.props.request.time_begin).format('YYYYMMDDHHmm') - moment(b.props.request.time_begin).format('YYYYMMDDHHmm');
-    //   })
-    // }
 
     return (
       <div>

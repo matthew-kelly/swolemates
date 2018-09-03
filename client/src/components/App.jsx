@@ -16,7 +16,6 @@ import Register from './Register.jsx'
 import FriendPage from './FriendPage.jsx'
 import {NotificationManager} from 'react-notifications';
 
-
 const API = 'http://localhost:5000/api'
 
 

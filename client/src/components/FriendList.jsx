@@ -8,8 +8,7 @@ class FriendList extends Component {
   constructor(props){
     super(props)
     this.state = {
-      friends: '',
-      selectedFriendEvents: ''
+      friends: ''
     }
   }
 
@@ -34,7 +33,12 @@ class FriendList extends Component {
     }
 
     return (
-      <p>{allFriends}</p>
+      <div>
+        <li onClick={this.props.clearChosenFriend}>All Friends</li>
+        <li key={this.props.appState.current_user.id} data-thisfriend={JSON.stringify(this.props.appState.current_user)} onClick={this.props.chooseFriend}>Your Events</li>
+        <hr />
+        {allFriends}
+      </div>
     )
   }
 }

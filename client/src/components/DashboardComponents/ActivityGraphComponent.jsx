@@ -3,9 +3,6 @@ import Graph from './Graph.jsx'
 
 
 class ActivityGraphComponent extends Component{
-  constructor(props){
-    super(props)
-  }
 
   render(){
     return(

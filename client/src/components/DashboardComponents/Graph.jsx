@@ -3,12 +3,8 @@ import { Doughnut } from 'react-chartjs-2'
 
 
 class Graph extends Component {
-  constructor(props){
-    super(props)
-  }
 
   render () {
-
     const dataCreated = {
       labels: ['Back', 'Biceps', 'Calisthenics', 'Cardio', 'Chest', 'Core', 'HIT', 'Legs', 'ORM', 'Shoulders', 'Sprints', 'Stretching', 'Traps', 'Triceps', 'Yoga'],
       datasets: [

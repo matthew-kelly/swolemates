@@ -15,6 +15,9 @@ exports.seed = function(knex, Promise) {
       return knex('blocks').del()
     })
     .then(() => {
+      return knex('messages').del()
+    })
+    .then(() => {
       return knex('connections').del()
     })
     .then(() => {
@@ -28,9 +31,6 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('gyms').del()
-    })
-    .then(() => {
-      return knex('messages').del()
     })
     .then(() => {
       return knex('gyms').insert({
@@ -137,8 +137,8 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Arnie',
-        last_name: 'ARNIE',
+        first_name: 'Arnold',
+        last_name: 'Schwarzenegger',
         email: 'arnie@arnie.arnie',
         password: 'arnie',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
@@ -615,8 +615,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
-        time_begin: '20180830 1100',
-        time_end: '20180830 1500'
+        time_begin: '20180908 1100',
+        time_end: '20180908 1500'
       });
     })
     .then(() => {
@@ -626,19 +626,25 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
+      return knex('tags').insert({
+        event_id: 1,
+        tag: "Back"
+      });
+    })
+    .then(() => {
       return knex('events').insert({
         user_id: 1,
         gym_id: 1,
         description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
-        time_begin: '20180902 1000',
-        time_end: '20180902 1200'
+        time_begin: '20180909 1000',
+        time_end: '20180909 1200'
       });
     })
     .then(() => {
       return knex('tags').insert({
         event_id: 2,
-        tag: "Legs"
+        tag: "Cardio"
       });
     })
     .then(() => {
@@ -653,8 +659,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
         public: true,
-        time_begin: '20180903 1700',
-        time_end: '20180903 1830'
+        time_begin: '20180910 1700',
+        time_end: '20180910 1830'
       });
     })
     .then(() => {
@@ -666,7 +672,7 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 3,
-        tag: "Tris"
+        tag: "Triceps"
       });
     })
     .then(() => {
@@ -675,8 +681,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
         public: true,
-        time_begin: '20180828 1400',
-        time_end: '20180828 1500'
+        time_begin: '20180911 1400',
+        time_end: '20180911 1500'
       });
     })
     .then(() => {
@@ -691,8 +697,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Donec eu ex nec velit dignissim semper.',
         public: true,
-        time_begin: '20180809 1930',
-        time_end: '20180809 2030'
+        time_begin: '20180912 1930',
+        time_end: '20180912 2030'
       });
     })
     .then(() => {
@@ -702,13 +708,19 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
+      return knex('tags').insert({
+        event_id: 5,
+        tag: "Stretching"
+      });
+    })
+    .then(() => {
       return knex('events').insert({
         user_id: 3,
         gym_id: 1,
         description: 'Donec eu ex nec velit dignissim semper.',
         public: false,
-        time_begin: '20180901 1300',
-        time_end: '20180901 1430'
+        time_begin: '20180907 1300',
+        time_end: '20180907 1430'
       });
     })
     .then(() => {
@@ -723,8 +735,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 4,
         description: 'Work everything, I must',
         public: true,
-        time_begin: '20180901 1300',
-        time_end: '20180901 1430'
+        time_begin: '20180907 1300',
+        time_end: '20180907 1430'
       });
     })
     .then(() => {
@@ -739,14 +751,20 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Working on my fitness (be my witness?)',
         public: true,
-        time_begin: '20180831 1300',
-        time_end: '20180831 1430'
+        time_begin: '20180908 1300',
+        time_end: '20180908 1430'
       });
     })
     .then(() => {
       return knex('tags').insert({
         event_id: 8,
         tag: "ORM"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 8,
+        tag: "HIT"
       });
     })
     .then(() => {
