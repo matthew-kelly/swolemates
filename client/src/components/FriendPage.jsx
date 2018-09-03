@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
-// import Calendar from './Calendar.jsx'
 
-const API = 'http://localhost:5000/api'
+const API = 'http://localhost:5000/api';
 
 class Dashboard extends Component {
   constructor() {
@@ -15,10 +14,9 @@ class Dashboard extends Component {
   }
 
   componentWillMount() {
-
     this.getGoals(this.props.location.state.user_obj.id)
-    .then(res => this.setState({ goals: res }))
-    .catch(err => console.log(err));
+      .then(res => this.setState({ goals: res }))
+      .catch(err => console.log(err));
   }
 
   // Get user's goals
@@ -28,7 +26,6 @@ class Dashboard extends Component {
   }
 
   render() {
-
     if (this.props.appState.isLoggedIn !== true) {
       return <Redirect to='/' />
     }
@@ -51,10 +48,12 @@ class Dashboard extends Component {
             <i className="fas fa-dumbbell"></i>
             <h4 className='dashboardSubtitle'>{user_data.gym_id}</h4>
           </div>
-          <div id="calendarDashboard1" className="tile tileSmall">
-            <i className="far fa-calendar"></i>
-            <h4 className='dashboardSubtitle'>Calendar</h4>
-          </div>
+          <Link to ={{pathname: `/calendar`, state: {user_data} }}>
+            <div id="calendarDashboard1" className="tile tileSmall">
+              <i className="far fa-calendar"></i>
+              <h4 className='dashboardSubtitle'>{user_data.first_name}'s Calendar</h4>
+            </div>
+          </Link>
           <div id="calendarDashboard2" className="tile tileSmall">
             <i className="far fa-calendar"></i>
             <h4 className='dashboardSubtitle'>Calendar</h4>

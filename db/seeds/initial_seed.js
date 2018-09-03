@@ -1,10 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('ratings').del()
-    .then(() => {
-      return knex('tags').del()
-    })
+  return knex('tags').del()
     .then(() => {
       return knex('event_requests').del()
     })
@@ -768,84 +765,25 @@ exports.seed = function(knex, Promise) {
       });
     })
     .then(() => {
-      return knex('ratings').insert({
-        user_id: 1,
-        category1: 4,
-        category2: 4,
-        category3: 5,
-        comment: 'He was great to work out with. Super nice guy.'
+      return knex('events').insert({
+        user_id: 6,
+        gym_id: 1,
+        description: 'Working on my fitness (be my witness?)',
+        public: true,
+        time_begin: '20180908 1300',
+        time_end: '20180908 1430'
       });
     })
     .then(() => {
-      return knex('ratings').insert({
-        user_id: 2,
-        category1: 1,
-        category2: 1,
-        category3: 1,
-        comment: 'Distracted the entire time.'
+      return knex('tags').insert({
+        event_id: 8,
+        tag: "ORM"
       });
     })
     .then(() => {
-      return knex('ratings').insert({
-        user_id: 2,
-        category1: 2,
-        category2: 5,
-        category3: 5,
-        comment: 'Living his best life.'
-      });
-    })
-    .then(() => {
-      return knex('ratings').insert({
-        user_id: 1,
-        category1: 4,
-        category2: 4,
-        category3: 5,
-        comment: 'He was great to work out with. Super nice guy.'
-      });
-    })
-    .then(() => {
-      return knex('ratings').insert({
-        user_id: 1,
-        category1: 3,
-        category2: 4,
-        category3: 4,
-        comment: 'Pretty good, kind of cocky.'
-      });
-    })
-    .then(() => {
-      return knex('ratings').insert({
-        user_id: 1,
-        category1: 5,
-        category2: 5,
-        category3: 5,
-        comment: 'Absolutely incredible lad.'
-      });
-    })
-    .then(() => {
-      return knex('ratings').insert({
-        user_id: 2,
-        category1: 2,
-        category2: 1,
-        category3: 2,
-        comment: 'This guy sucks. Seriously.'
-      });
-    })
-    .then(() => {
-      return knex('ratings').insert({
-        user_id: 2,
-        category1: 3,
-        category2: 2,
-        category3: 3,
-        comment: 'Didn\'t really vibe with him'
-      });
-    })
-    .then(() => {
-      return knex('ratings').insert({
-        user_id: 2,
-        category1: 1,
-        category2: 1,
-        category3: 2,
-        comment: 'His parents obviously failed him. He sucks.'
+      return knex('tags').insert({
+        event_id: 8,
+        tag: "HIT"
       });
     })
     .then(() => {
