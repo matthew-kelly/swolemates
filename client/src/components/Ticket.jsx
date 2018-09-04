@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import moment from 'moment';
-
-const API = 'http://localhost:5000/api'
-
 
 class Ticket extends Component {
 
