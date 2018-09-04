@@ -7,7 +7,7 @@ import GymTileComponent from './DashboardComponents/GymTileComponent.jsx'
 import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx'
 import BioComponent from './DashboardComponents/BioComponent.jsx'
 import GoalComponent from './DashboardComponents/GoalComponent.jsx'
-import AcitivityGraphComponent from './DashboardComponents/ActivityGraphComponent.jsx'
+import FriendAcitivityGraphComponent from './DashboardComponents/FriendActivityGraphComponent.jsx'
 import ConfirmedEventsComponent from './DashboardComponents/ConfirmedEventsComponent.jsx'
 import moment from 'moment';
 import NoUpcomingEvents from './DashboardComponents/NoUpcomingEvents';
@@ -111,7 +111,7 @@ class FriendPage extends Component {
       <CalendarTileComponent appState={this.props.appState} content={user_data}/>
       <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
       <GoalComponent appState={this.props.appState} goalData={goals_data} content={allGoals}/>
-      <AcitivityGraphComponent appState={this.props.appState}/>
+      <FriendAcitivityGraphComponent appState={this.props.appState}/>
               <div id="confirmed-events" className="tile tileBig">
          <div className="dashboardComponentHeader">
            <span>Upcoming Events</span>

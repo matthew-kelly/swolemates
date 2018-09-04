@@ -9,7 +9,8 @@
 body {
   margin: 0 auto;
   max-width: 90vw;
-  padding: 1em 0;
+  max-height: 100vh;
+  padding-top: 2em;
   background-color: #efefef;
 }
 
@@ -118,8 +119,6 @@ canvas.chartjs-render-monitor {
 
 .tile {
   background: white;
-  /*align-self: center;*/
-  /*justify-self: stretch;*/
   box-shadow: 0px 0px 8px 1px #eeeeee;
   border-radius: 0.5em;
   overflow: hidden;
@@ -137,21 +136,12 @@ canvas.chartjs-render-monitor {
 }
 
 .tile:hover {
-  box-shadow: 0px 0px 10px 2px #ff6200;
+  box-shadow: 0px 0px 10px 2px #ff620050;
+  transition: .15s linear all;
 }
-
-.tileSmall {
-  font-size: 1.2em;
-  /*align-content: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;*/
-}
-
-.tileMedium {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.tile:hover .dashboardComponentHeader{
+  background-color: #ff7722;
+  transition: .15s linear all;
 }
 
 #profileImage {
@@ -228,7 +218,7 @@ canvas.chartjs-render-monitor {
 .dashboardComponentHeader {
   display: flex;
   justify-content: space-between;
-  background-color: #ff620075;
+  background-color: #ff8f49;
   padding: 0.5em;
   color: white;
   font-weight: bold;
@@ -236,6 +226,10 @@ canvas.chartjs-render-monitor {
 }
 .dashboard-subtitle{
   color: #ff6200;
+}
+
+h4.dashboardSubtitle{
+  margin: 0.5em;
 }
 
 .dashboardComponentContent {
@@ -261,12 +255,42 @@ canvas.chartjs-render-monitor {
   background-color: white;
   font-size: 1.4em;
   display: flex;
+  align-content: flex-start;
+  flex-direction: column;
+  height: 50%;
+  position: fixed;
+  top: 25%;
+  left: 0.6em;
   justify-content: space-around;
   box-shadow: 0px 0px 8px 1px lightgrey;
   border-radius: 2em;
   margin-bottom: 1em;
-  padding: 0.2em;
+  padding: 0.2em 0.2em 0.2em 0;
   color: #ff6200;
+}
+.navbar-longstyle {
+  align-items: center;
+  font-weight: bold;
+  width: 80%;
+  height: 2em;
+  margin: 3.3em auto 0 auto;
+  background-color: white;
+  font-size: 1.4em;
+  display: flex;
+  align-content: flex-start;
+  justify-content: space-around;
+  box-shadow: 0px 0px 8px 1px lightgrey;
+  border-radius: 2em;
+  margin-bottom: 1em;
+  color: #ff6200;
+}
+
+
+#friendsIcon, #connectionsIcon{
+  margin-left: -0.15em;
+}
+#profileIcon{
+  margin-left: -0.07em;
 }
 
 .NavLink{
@@ -574,11 +598,36 @@ div.col.cell {
   display: none;
 }
 
+.inputLogin {
+  border-radius: 1em;
+  border: 1px solid lightgrey;
+  padding: 0.3em;
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+}
+#button-loginButton{
+  background-color: #ff6200;
+  color: white;
+  border: none;
+  height: 2em;
+  width: 5em;
+  border-radius: 2em;
+  margin-left: 1em;
+}
+
 #homepageContainer {
+  padding-top: 4em;
   display: flex;
-  flex-direction: column;
-  /*justify-content: center;*/
-  /*align-items: center;*/
+  flex-direction: column-reverse;
+  justify-content: space-between;
+}
+
+.homepageMenu{
+  color: #ff6200;
+}
+
+.homepageMenu i{
+  padding-right: 1em;
 }
 
 #homepageLogoContainer {
@@ -601,7 +650,9 @@ path {
 .event-request-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
+
 
 .event-request-list * {
   margin: 0;
@@ -612,9 +663,21 @@ path {
   background-color: white;
   border-radius: 1em;
   border: 1px solid #efefef;
-  margin: 5px;
-  padding: 10px;
+  margin: 4px;
+  padding: 10px 10px 10px 15px;
   min-width: 300px;
+  max-width: 300px;
+  overflow: hidden;
+  opacity: 0.85;
+
+}
+.event-request-list .event-request-container:hover{
+  box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+.event-request-list .event-request-container:hover .request-buttons{
+  opacity: 1;
+  transition: .20s linear all;
 }
 
 .event-request-container .event-request-body {
@@ -650,12 +713,15 @@ path {
 }
 
 .event-request-body .request-buttons {
+  opacity: 0;
   grid-area: buttons;
   display: flex;
   justify-content: space-between;
   width: 100px;
-  font-size: 1.5em;
+  font-size: 2em;
+  margin-left: 0.8em;
 }
+
 
 .accept-request, .delete-request {
   padding: 0 10px 0 0;
@@ -669,7 +735,6 @@ path {
 }
 
 .accept-request:hover, .delete-request:hover {
-  color: orangered;
   cursor: pointer;
 }
 

@@ -7,9 +7,9 @@ class Homepage extends Component {
     if (this.props.appState.isLoggedIn !== true) {
       return(
         <div id="homepageContainer">
-        <nav className="navbar">
-          <span><a href='/login'><i className="far fa-user-circle"></i>Login</a></span>
-          <span><a href='/register'><i className="far fa-calendar"></i>Register</a></span>
+        <nav className="navbar-longstyle">
+          <span><a className="homepageMenu" href='/login'><i className="far fa-user-circle"></i>Login</a></span>
+          <span><a className="homepageMenu" href='/register'><i className="far fa-calendar"></i>Register</a></span>
         </nav>
         <div id="homepageLogoContainer">
             <svg id='Capa_1' xmlns='http://www.w3.org/2000/svg' width='481.482' height='481.482' viewBox='0 0 481.482 481.482'><g id='_x31_7_51_'>

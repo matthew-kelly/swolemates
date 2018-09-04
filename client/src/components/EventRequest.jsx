@@ -39,7 +39,7 @@ class EventRequest extends Component {
           <div className="event-request-content">
             <Link to={{pathname: `/profiles/${request.requester_id}`, state: {user_obj} }}>
               <h2>{moment(request.time_begin).format('MMMM Do, YYYY')}</h2>
-              <h3>{moment(request.time_begin).format('h:mm a')} - {moment(request.time_end).format('h:mm a')}</h3>
+              <h4>{moment(request.time_begin).format('h:mm a')} - {moment(request.time_end).format('h:mm a')}</h4>
             </Link>
             <div className="event-request-body">
               <div className="event-request-pic">

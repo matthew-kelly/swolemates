@@ -7,8 +7,8 @@ class ConfirmedEventsComponent extends Component{
 
     return (
       <li>
-        <p>{moment(this.props.content.time_begin).format('MMM. Do, YYYY, h:mm a')} - {moment(this.props.content.time_end).format('h:mm a')}</p>
-        <p>{this.props.content.first_name} {this.props.content.last_name}</p>
+        <p>{moment(this.props.content.time_begin).format('MMM. Do, YYYY')}<br/>{moment(this.props.content.time_begin).format('h:mm a')} - {moment(this.props.content.time_end).format('h:mm a')}</p>
+        <p>with {this.props.content.first_name} {this.props.content.last_name}</p>
       </li>
     )
   }

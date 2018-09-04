@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Doughnut } from 'react-chartjs-2'
 
 
-class Graph extends Component {
+class FriendGraph extends Component {
 
   render () {
     const dataCreated = {
@@ -16,7 +16,7 @@ class Graph extends Component {
         pointBorderColor: '#ffffff',
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgba(179,181,198,1)',
-        data: [15, 30, 10, 40, 15, 20, 15, 10, 1, 11, 7, 4, 3, 2, 0]
+        data: [3, 10, 40, 40, 3, 11, 10, 23, 14, 11, 7, 1, 3, 2, 20]
       },
     ]
   };
@@ -73,4 +73,4 @@ class Graph extends Component {
   }
 }
 
-export default Graph
+export default FriendGraph
