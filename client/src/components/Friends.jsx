@@ -110,9 +110,11 @@ class Friends extends Component {
     event.preventDefault()
     const receiver = (JSON.parse(event.target.getAttribute('data-currentfriend')))
     const messageBody = (event.target.children[0].value)
-    this.writeMessagetoDB(this.props.appState.current_user.id, receiver.id, messageBody)
-    .then(res => this.setState({ messages: this.state.messages.concat(res)}))
-    event.target.children[0].value = ''
+    if (messageBody) {
+      this.writeMessagetoDB(this.props.appState.current_user.id, receiver.id, messageBody)
+      .then(res => this.setState({ messages: this.state.messages.concat(res)}))
+      event.target.children[0].value = ''
+    }
   }
 
   render() {

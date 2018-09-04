@@ -150,7 +150,7 @@ exports.seed = function(knex, Promise) {
         email: 'ronda@rousey.rousey',
         password: 'ronda',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
-        gym_id: 2,
+        gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/8f14e45fceea167a5a36dedd4bea2543.svg'
       });
     })
@@ -161,7 +161,7 @@ exports.seed = function(knex, Promise) {
         email: 'yuna@kim.kim',
         password: 'yuna',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
-        gym_id: 2,
+        gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/c9f0f895fb98ab9159f51fd0297e236d.svg'
       });
     })
@@ -172,7 +172,7 @@ exports.seed = function(knex, Promise) {
         email: 'simone@biles.biles',
         password: 'simone',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
-        gym_id: 2,
+        gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/45c48cce2e2d7fbdea1afc51c7c6ad26.svg'
       });
     })
@@ -183,7 +183,7 @@ exports.seed = function(knex, Promise) {
         email: 'chris@hadfield.hadfield',
         password: 'chris',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
-        gym_id: 3,
+        gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/d3d9446802a44259755d38e6d163e820.svg'
       });
     })
@@ -194,7 +194,7 @@ exports.seed = function(knex, Promise) {
         email: 'robert@thirsk.thirsk',
         password: 'robert',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
-        gym_id: 3,
+        gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/6512bd43d9caa6e02c990b0a82652dca.svg'
       });
     })
@@ -205,7 +205,7 @@ exports.seed = function(knex, Promise) {
         email: 'don@cherry.cherry',
         password: 'don',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
-        gym_id: 3,
+        gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/c20ad4d76fe97759aa27a0c99bff6710.svg'
       });
     })
@@ -216,7 +216,7 @@ exports.seed = function(knex, Promise) {
         email: 'henrik@sedin.sedin',
         password: 'henrik',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
-        gym_id: 3,
+        gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/c51ce410c124a10e0db5e4b97fc2af39.svg'
       });
     })
@@ -227,7 +227,7 @@ exports.seed = function(knex, Promise) {
         email: 'daniel@sedin.sedin',
         password: 'daniel',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
-        gym_id: 3,
+        gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/aab3238922bcc25a6f606eb525ffdc56.svg'
       });
     })
@@ -414,18 +414,18 @@ exports.seed = function(knex, Promise) {
         friend_id: 1
       });
     })
-    .then(() => {
-      return knex('friends').insert({
-        user_id: 1,
-        friend_id: 6
-      });
-    })
-    .then(() => {
-      return knex('friends').insert({
-        user_id: 6,
-        friend_id: 1
-      });
-    })
+    // .then(() => {
+    //   return knex('friends').insert({
+    //     user_id: 1,
+    //     friend_id: 6
+    //   });
+    // })
+    // .then(() => {
+    //   return knex('friends').insert({
+    //     user_id: 6,
+    //     friend_id: 1
+    //   });
+    // })
     .then(() => {
       return knex('friends').insert({
         user_id: 1,
@@ -522,30 +522,30 @@ exports.seed = function(knex, Promise) {
         friend_id: 1
       });
     })
-    .then(() => {
-      return knex('friends').insert({
-        user_id: 1,
-        friend_id: 15
-      });
-    })
-    .then(() => {
-      return knex('friends').insert({
-        user_id: 15,
-        friend_id: 1
-      });
-    })
-    .then(() => {
-      return knex('friends').insert({
-        user_id: 1,
-        friend_id: 16
-      });
-    })
-    .then(() => {
-      return knex('friends').insert({
-        user_id: 16,
-        friend_id: 1
-      });
-    })
+    // .then(() => {
+    //   return knex('friends').insert({
+    //     user_id: 1,
+    //     friend_id: 15
+    //   });
+    // })
+    // .then(() => {
+    //   return knex('friends').insert({
+    //     user_id: 15,
+    //     friend_id: 1
+    //   });
+    // })
+    // .then(() => {
+    //   return knex('friends').insert({
+    //     user_id: 1,
+    //     friend_id: 16
+    //   });
+    // })
+    // .then(() => {
+    //   return knex('friends').insert({
+    //     user_id: 16,
+    //     friend_id: 1
+    //   });
+    // })
     .then(() => {
       return knex('connections').insert({
         user_id: 2,
@@ -816,13 +816,13 @@ exports.seed = function(knex, Promise) {
         accepted: false
       });
     })
-    .then(() => {
-      return knex('event_requests').insert({
-        event_id: 1,
-        requester_id: 6,
-        accepted: false
-      });
-    })
+    // .then(() => {
+    //   return knex('event_requests').insert({
+    //     event_id: 1,
+    //     requester_id: 6,
+    //     accepted: false
+    //   });
+    // })
     .then(() => {
       return knex('event_requests').insert({
         event_id: 1,
