@@ -450,13 +450,13 @@ class Calendar extends Component {
       currentTagButton = <button className="dropbtn">{this.state.selectedTag.label}</button>;
     }
     return (
-      <div className='header row flex-middle'>
-        <div className='col col-start'>
+      <div className='header row calendar-header-container'>
+        <div className='col col-start month-back'>
           <div className='icon' onClick={this.prevMonth}>
             chevron_left
           </div>
         </div>
-        <div className="dropdown">
+        <div className="dropdown tag-dropdown">
           {currentTagButton}
           <div className="dropdown-content">
             <ul id="dropdownList">
@@ -464,10 +464,10 @@ class Calendar extends Component {
             </ul>
           </div>
         </div>
-        <div className="col col-center">
+        <div className="col col-center month-name">
           <span className="calendar-header-month">{dateFns.format(this.state.currentMonth, dateFormat)}</span>
         </div>
-        <div className="dropdown">
+        <div className="dropdown friend-dropdown">
           {currentFriendButton}
           <div className="dropdown-content">
             <ul id="dropdownList">
@@ -475,7 +475,7 @@ class Calendar extends Component {
             </ul>
           </div>
         </div>
-        <div className="col col-end" onClick={this.nextMonth}>
+        <div className="col col-end month-next" onClick={this.nextMonth}>
           <div className="icon">chevron_right</div>
         </div>
       </div>
