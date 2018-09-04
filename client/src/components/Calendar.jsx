@@ -295,8 +295,6 @@ class Calendar extends Component {
 
   // Renders the popup with forms/buttons
   renderPopUp() {
-
-    let startTime = new Date().toString()
     let endTime = new Date();
     endTime.setHours(endTime.getHours() + 1)
     endTime.toString()
@@ -318,6 +316,7 @@ class Calendar extends Component {
           <textarea name='eventDescription' id='eventDescription' placeholder='Event description...'/>
           </form>
           </div>
+          <h3>Tags</h3>
           <Select
             onChange={this.addTag}
             className='tagform'

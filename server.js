@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express = require('express');
-const cookieSession = require('cookie-session');
 const app = express();
 const port = process.env.PORT || 5000;
 const ENV = process.env.ENV || "development";
@@ -9,10 +8,6 @@ const knex = require("knex")(knexConfig[ENV]);
 const database = require("./database")(knex);
 const bodyParser = require('body-parser');
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['secret']
-}))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
@@ -100,7 +95,6 @@ app.get('/api/users/:id/events', (req, res) => {
 });
 
 //get specific event information
-
 app.get('/api/events/:id', (req, res) => {
   database.getNewEvent(req.params.id)
   .then((result) => {

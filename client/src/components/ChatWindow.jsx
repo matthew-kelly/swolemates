@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import Message from './Message'
 
 class ChatWindow extends Component {
-  constructor(props){
-    super(props);
-  }
 
   render(){
     const messages = this.props.messages;

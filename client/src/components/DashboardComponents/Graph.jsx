@@ -8,17 +8,17 @@ class Graph extends Component {
     const dataCreated = {
       labels: ['Back', 'Biceps', 'Calisthenics', 'Cardio', 'Chest', 'Core', 'HIT', 'Legs', 'ORM', 'Shoulders', 'Sprints', 'Stretching', 'Traps', 'Triceps', 'Yoga'],
       datasets: [
-      {
-        label: 'Events Created',
-        backgroundColor:['#ff6a6a', '#ffaa5d', '#5243AA', '#fae747', '#a6d3ff', '#5effab', '#253858', '#cf93ff', '#6d6fc3', '#ff93fd', '#e84b85', '#7fb378', '#929292', '#017eff', '#b9bc7f'],
-        borderColor: '#ffffff',
-        pointBackgroundColor: 'rgba(179,181,198,1)',
-        pointBorderColor: '#ffffff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(179,181,198,1)',
-        data: [15, 30, 10, 40, 15, 20, 15, 10, 1, 11, 7, 4, 3, 2, 0]
-      },
-    ]
+        {
+          label: 'Events Created',
+          backgroundColor:['#ff6a6a', '#ffaa5d', '#5243AA', '#fae747', '#a6d3ff', '#5effab', '#253858', '#cf93ff', '#6d6fc3', '#ff93fd', '#e84b85', '#7fb378', '#929292', '#017eff', '#b9bc7f'],
+          borderColor: '#ffffff',
+          pointBackgroundColor: 'rgba(179,181,198,1)',
+          pointBorderColor: '#ffffff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(179,181,198,1)',
+          data: [15, 30, 10, 40, 15, 20, 15, 10, 1, 11, 7, 4, 3, 2, 0]
+        },
+      ]
   };
 
   const tagOptions = [
@@ -46,17 +46,17 @@ class Graph extends Component {
           display: true,
           position: 'left',
           labels: {
-                padding: 6,
-                boxWidth: 50
-            }
+            padding: 6,
+            boxWidth: 50
+          }
         },
         layout: {
-            padding: {
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: 0
-            }
+          padding: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+          }
         }
     }
     return (
