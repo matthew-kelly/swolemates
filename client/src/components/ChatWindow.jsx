@@ -3,6 +3,18 @@ import Message from './Message'
 
 class ChatWindow extends Component {
 
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   render(){
     const messages = this.props.messages;
     const friend = this.props.currentFriend;
@@ -28,6 +40,7 @@ class ChatWindow extends Component {
         </div>
         <div id='chatWindowMessageContainer'>
           {allMessages}
+          <div ref={(el) => { this.messagesEnd = el; }}></div>
         </div>
         <form onSubmit={this.props.handleUserMessage} data-currentfriend={JSON.stringify(this.props.currentFriend)}>
           <input defaultValue='' name='chatWindowInput' id='chatWindowInput'></input>

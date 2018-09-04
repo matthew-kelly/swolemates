@@ -60,9 +60,7 @@ canvas.chartjs-render-monitor {
 
 #chatWindowMessageContainer {
   padding: 0.7em;
-  display: flex;
   height: 100%;
-  flex-direction: column;
   overflow: overlay;
 }
 
