@@ -3,11 +3,19 @@ import React, {Component} from 'react'
 class GoalComponent extends Component{
 
   render(){
+    let editButton;
+
+    console.log(this.props.goalData)
+    if(this.props.goalData.length > 0){
+      if(this.props.appState.current_user.id === this.props.goalData[0].user_id){
+        editButton = <i onClick={this.onClick} className="far fa-edit"></i>
+      }
+    }
     return(
      <div id="goals" className="tile tileBig">
         <div className="dashboardComponentHeader">
           <span>Goals</span>
-          <i onClick={this.onClick} className="far fa-edit"></i>
+          {editButton}
         </div>
       <div className="dashboardComponentContent">
             <ul>

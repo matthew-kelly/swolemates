@@ -245,7 +245,6 @@ canvas.chartjs-render-monitor{
 }
 
 div#popup {
-  border: 1px solid black;
   border-radius: 1.1em;
   display: flex;
   flex-direction: column;
@@ -253,7 +252,7 @@ div#popup {
   padding: 0 1.5em 1.5em 1.5em;
   position: fixed;
   width: 40%;
-  height: 80%;
+  height: 70%;
   top: 0;
   left: 0;
   right: 0;
@@ -262,7 +261,13 @@ div#popup {
   background-color: #fcfcfc;
   z-index: 999;
 }
-
+#descriptionCheckbox{
+  padding-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 h3 {
   margin-top: -1em;
 }
@@ -274,19 +279,23 @@ h3 {
 }
 
 .eventButton {
+  border: none;
   width: 25%;
   height: 3em;
   border-radius: 2em;
-  border: 1px solid black;
   color: white;
   font-size: 1em;
   font-weight: bold;
+  cursor: pointer;
 }
 
 div#react-time-range,
 div#start-component.component {
-  padding: 0;
+  text-align: center;
+  padding: 1;
 }
+
+
 
 #confirmButton {
   background-color: #5ed95e;
@@ -315,7 +324,6 @@ div#start-component.component {
 }
 
 #popupBackground {
-  opacity: 0.5;
   position: fixed;
   /*position: absolute;*/
   width: 100%;
@@ -325,7 +333,7 @@ div#start-component.component {
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: #7a7a7a;
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 998;
 }
 
@@ -480,17 +488,43 @@ div.col.cell {
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
+.event-data-modal-status{
+  font-weight:bold;
+}
 
 .event-data-modal-main {
   position:fixed;
   background: white;
-  width: 80%;
+  border-radius: 1em;
+  width: 60%;
   height: auto;
   padding: 2em 5em;
   top: 50%;
   left:50%;
   transform: translate(-50%,-50%);
   z-index: 1001;
+}
+#event-data-modal-button-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.event-data-button{
+  font-size: 1em;
+  font-weight: bold;
+  width: 25%;
+  height: 3em;
+  border-radius: 3em;
+  border: none;
+  cursor: pointer;
+  margin: 0.5em;
+  color: white;
+}
+.request-to-join-button{
+  background-color: #5ed95e;
+}
+.close-modal-button{
+  background-color: tomato;
 }
 
 .event-data-modal-main h2, h3, p {

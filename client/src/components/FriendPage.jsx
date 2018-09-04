@@ -15,7 +15,7 @@ import NoUpcomingEvents from './DashboardComponents/NoUpcomingEvents';
 
 const API = 'http://localhost:5000/api';
 
-class Dashboard extends Component {
+class FriendPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -106,11 +106,11 @@ class Dashboard extends Component {
 
     return (
       <div className="container">
-      <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data.profile_pic}/>
+      <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
       <GymTileComponent appState={this.props.appState} content={gym}/>
       <CalendarTileComponent appState={this.props.appState} content={user_data}/>
       <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
-      <GoalComponent appState={this.props.appState} content={allGoals}/>
+      <GoalComponent appState={this.props.appState} goalData={goals_data} content={allGoals}/>
       <AcitivityGraphComponent appState={this.props.appState}/>
               <div id="confirmed-events" className="tile tileBig">
          <div className="dashboardComponentHeader">
@@ -128,5 +128,5 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default FriendPage;
 

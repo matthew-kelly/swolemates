@@ -62,15 +62,21 @@ class ProfilePictureComponent extends Component{
   }
 
   render(){
+    let editButton;
+
+    if(this.props.appState.current_user.id === this.props.content.id){
+      editButton = <i onClick={this.onClick} className="far fa-edit"></i>
+    }
+
     return(
       <form onSubmit={this.onSubmit} id="profileImage" className="tile tileBig">
       <div className="dashboardComponentHeader">
         <span>Profile Picture</span>
-        <i onClick={this.onClick} className="far fa-edit"></i>
+        {editButton}
       </div>
         <div className="dashboardComponentContentCenter">
-          <img id='pictureContainer' className="profile_pic" src={this.state.profile_pic} alt="profile" />
-          <textarea defaultValue={this.state.profile_pic} id='inputPicture' onKeyDown={this.onEnterPress} style={{display: 'none'}}/>
+          <img id='pictureContainer' className="profile_pic" src={this.props.content.profile_pic} alt="profile" />
+          <textarea defaultValue={this.props.content.profile_pic} id='inputPicture' onKeyDown={this.onEnterPress} style={{display: 'none'}}/>
         </div>
       </form>
     )

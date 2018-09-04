@@ -5,7 +5,6 @@ class ConfirmedEventsComponent extends Component{
 
   render() {
 
-    console.log('props', this.props.content)
     return (
       <li>
         <p>{moment(this.props.content.time_begin).format('MMM. Do, YYYY, h:mm a')} - {moment(this.props.content.time_end).format('h:mm a')}</p>

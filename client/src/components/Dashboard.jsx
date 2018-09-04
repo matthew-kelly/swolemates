@@ -116,11 +116,11 @@ class Dashboard extends Component {
 
     return (
       <div className="container">
-      <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data.profile_pic}/>
+      <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
       <GymTileComponent appState={this.props.appState} content={gymName}/>
       <CalendarTileComponent appState={this.props.appState} content={this.props.appState.current_user}/>
       <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
-      <GoalComponent appState={this.props.appState} content={allGoals}/>
+      <GoalComponent appState={this.props.appState} goalData={goals_data} content={allGoals}/>
       <ActivityGraphComponent appState={this.props.appState}/>
       {/*<ConfirmedEventsComponent appState={this.props.appState} content={earliestEventFormatted}/>*/}
         <div id="confirmed-events" className="tile tileBig">

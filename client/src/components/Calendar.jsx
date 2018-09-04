@@ -307,10 +307,17 @@ class Calendar extends Component {
         </div>
         <div ref={node => this.node = node} style={{display:'none'}} id='popup'>
           <h1 id="popuptitle">Create an Event</h1>
+          <div id="descriptionCheckboxContainer">
+          <div id="descriptionCheckbox">
           <h3>Description</h3>
+            <div className='checkbox'>
+              <input id='publicCheckbox'type='checkbox' name='public' value='public'/>Public Event
+            </div>
+          </div>
           <form>
           <textarea name='eventDescription' id='eventDescription' placeholder='Event description...'/>
           </form>
+          </div>
           <Select
             onChange={this.addTag}
             className='tagform'
@@ -328,9 +335,6 @@ class Calendar extends Component {
               onChange={this.changeTime}
               endValue={endTime}
             />
-            <div className='checkbox'>
-              <input id='publicCheckbox'type='checkbox' name='public' value='public'/>Public Event
-            </div>
           </div>
           <div id='eventButtonMenu'>
             <button id='confirmButton' className='eventButton' onClick={this.createEvent}>Confirm</button>

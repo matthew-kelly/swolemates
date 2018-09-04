@@ -9,7 +9,8 @@ class BioComponent extends Component{
       id: this.props.content.id,
       first_name: this.props.content.first_name,
       last_name: this.props.content.last_name,
-      bio: this.props.content.bio
+      bio: this.props.content.bio,
+      logged_in_user: this.props.appState.current_user
     }
   }
 
@@ -61,11 +62,16 @@ class BioComponent extends Component{
   }
 
   render(){
+    let editButton;
+    if(this.props.appState.current_user.id === this.props.content.id){
+      editButton = <i onClick={this.onClick} className="far fa-edit"></i>
+    }
+
     return(
       <form onSubmit={this.onSubmit} id="bio" className="tile tileBig">
       <div className="dashboardComponentHeader">
         <span>Bio</span>
-        <i onClick={this.onClick} className="far fa-edit"></i>
+        {editButton}
       </div>
       <div className="dashboardComponentContent">
         <h3>About {this.state.first_name} {this.state.last_name}</h3>

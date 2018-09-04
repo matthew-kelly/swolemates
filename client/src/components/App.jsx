@@ -45,9 +45,10 @@ class App extends Component {
   async checkLogin(email, password) {
     const res = await axios({method: 'post', url: `${API}/login`, data: {email: email, password: password}})
     if (res.data.length > 0) {
+      console.log(res.status)
       return await res.data;
     } else {
-      return false;
+      window.alert("Sorry, your details seem to be incorrect!");
     }
   }
 

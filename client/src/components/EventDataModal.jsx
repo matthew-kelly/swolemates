@@ -36,16 +36,16 @@ class EventDataModal extends Component {
       });
     }
     let currentEventRequests = this.props.currentEventRequests;
-    let requestToJoinButton = <button className="request-to-join-button" onClick={this.props.requestToJoin} data-event={JSON.stringify(this.props.currentEvent)}>Request to Join</button>;
-    
+    let requestToJoinButton = <button className="request-to-join-button event-data-button" onClick={this.props.requestToJoin} data-event={JSON.stringify(this.props.currentEvent)}>Request to Join</button>;
+
     if (this.props.currentEvent.user_id === this.props.currentUser.id) {
-      requestToJoinButton = <p><em>This is your event</em></p>;
+      requestToJoinButton = <p className="event-data-modal-status"><em>This is your event</em></p>;
     }
 
     if (currentEventRequests) {
       currentEventRequests.forEach(request => {
         if (request.requester_id === this.props.currentUser.id) {
-          requestToJoinButton = <p><em>Pending Request</em></p>;
+          requestToJoinButton = <p className="event-data-modal-status"><em>Pending Request</em></p>;
         }
       })
     }
@@ -66,7 +66,7 @@ class EventDataModal extends Component {
     if (this.props.currentEvent.user_id === this.props.currentUser.id) {
       eventOwner = <h2>Your Event</h2>
     }
-      
+
     return (
       <div className={showHideClassName}>
         <div className="event-data-modal-main">
@@ -79,8 +79,10 @@ class EventDataModal extends Component {
           <ul>
             {eventTags}
           </ul>
+          <div id='event-data-modal-button-container'>
           {requestToJoinButton}
-          <button className="close-modal-button" onClick={this.props.handleClose}>Close</button>
+          <button className="close-modal-button event-data-button" onClick={this.props.handleClose}>Close</button>
+          </div>
         </div>
       </div>
     )
