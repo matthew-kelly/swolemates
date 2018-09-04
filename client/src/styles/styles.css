@@ -18,13 +18,17 @@ body {
 }
 
 a {
-  color: #ff6200;
   text-decoration: none;
+  color: #545454;
 }
 
 canvas.chartjs-render-monitor {
   height: 5em;
   width: 10em;
+}
+
+.user-profile-icon {
+  color: #ff6200;
 }
 
 #chatWindow {
@@ -229,6 +233,9 @@ canvas.chartjs-render-monitor {
   font-weight: bold;
   align-items: center;
 }
+.dashboard-subtitle{
+  color: #ff6200;
+}
 
 .dashboardComponentContent {
   margin: 0.8em;
@@ -258,6 +265,11 @@ canvas.chartjs-render-monitor {
   border-radius: 2em;
   margin-bottom: 1em;
   padding: 0.2em;
+  color: #ff6200;
+}
+
+.NavLink{
+  color:#ff6200;
 }
 
 div#popup {
@@ -588,10 +600,10 @@ path {
 .event-request-list .event-request-container {
   background-color: white;
   border-radius: 1em;
-  border: 1px solid black;
+  border: 1px solid #efefef;
   margin: 5px;
   padding: 10px;
-  min-width: 275px;
+  min-width: 300px;
 }
 
 .event-request-container .event-request-body {
@@ -637,6 +649,12 @@ path {
 .accept-request, .delete-request {
   padding: 0 10px 0 0;
   text-align: center;
+}
+.accept-request{
+  color: #16d4a3;
+}
+.delete-request{
+  color: tomato;
 }
 
 .accept-request:hover, .delete-request:hover {

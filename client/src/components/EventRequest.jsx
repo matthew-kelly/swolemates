@@ -37,7 +37,7 @@ class EventRequest extends Component {
       return (
         <div className="event-request-container">
           <div className="event-request-content">
-            <Link to ={{pathname: `/profiles/${request.requester_id}`, state: {user_obj} }}>
+            <Link to={{pathname: `/profiles/${request.requester_id}`, state: {user_obj} }}>
               <h2>{moment(request.time_begin).format('MMMM Do, YYYY')}</h2>
               <h3>{moment(request.time_begin).format('h:mm a')} - {moment(request.time_end).format('h:mm a')}</h3>
             </Link>
@@ -45,8 +45,8 @@ class EventRequest extends Component {
               <div className="event-request-pic">
                 <img src={request.profile_pic} width="200" alt="profile" />
               </div>
-              <Link to ={{pathname: `/profiles/${request.requester_id}`, state: {user_obj} }}>
-                <h3>{request.first_name} {request.last_name}</h3>
+              <Link to={{pathname: `/profiles/${request.requester_id}`, state: {user_obj} }}>
+                <h3 style={{color: 'black'}}>{request.first_name} {request.last_name}</h3>
               </Link>
               <div className="request-buttons">
                 <span data-requestrow={JSON.stringify(this.state.requestRow)} className="accept-request" onClick={this.props.acceptRequest}>&#10004;</span>

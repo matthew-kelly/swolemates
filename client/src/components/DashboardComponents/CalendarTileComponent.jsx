@@ -15,7 +15,7 @@ class CalendarTileComponent extends Component{
           <i className="far fa-calendar"></i>
         </div>
           <div className="dashboardComponentContentCenter">
-          <h4 className='dashboardSubtitle'>{user_data.first_name}'s Calendar</h4>
+          <h4 className='dashboard-subtitle'>{user_data.first_name}'s Calendar</h4>
         </div>
       </Link>
         </div>
