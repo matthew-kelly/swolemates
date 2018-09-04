@@ -29,16 +29,16 @@ canvas.chartjs-render-monitor {
 
 #chatWindow {
   border: 1.2px solid black;
-  height: 80vh;
+  height: 60vh;
   width: 30vw;
   position: fixed;
-  bottom: 0.75em;
-  right: 0.75em;
+  bottom: 0;
+  right: 1em;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 0.7em 0.7em 0em 0.7em;
+  border-radius: 0.7em 0.7em 0 0;
 }
 
 #chatWindowHeader {
@@ -57,6 +57,7 @@ canvas.chartjs-render-monitor {
 #chatWindowMessageContainer {
   padding: 0.7em;
   display: flex;
+  height: 100%;
   flex-direction: column;
   overflow: overlay;
 }
@@ -371,14 +372,21 @@ div#start-component.component {
 }
 
 .friendMenu {
-  display: none;
+  opacity: 0;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  transition: 0.15s linear all;
 }
 
 .chat-head-container:hover .friendMenu {
-  display: flex
+  opacity: 1;
+}
+
+.friendMenu i:hover {
+  color: rgb(22, 207, 22);
+  transition: 0.1s linear all;
 }
 
 .chat-head-content {
@@ -387,6 +395,7 @@ div#start-component.component {
 
 .friendName {
   text-align: center;
+  margin: 10px 0;
 }
 
 .chat-head-container {
@@ -395,23 +404,25 @@ div#start-component.component {
   height: 250px;
   width: 250px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 1em;
   opacity: 0.8;
+  transition: 0.15s ease all;
 }
 
 .chat-head-container:hover {
   opacity: 1;
-  border: 0.3px solid #aaa;
-  box-shadow: 0px 0px 10px 1px #dbdbdb;
+  box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, 0.2)
 }
 
 .chat-head-pic {
   margin: auto;
+  margin-top: 10px;
   border-radius: 100%;
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   position: relative;
   overflow: hidden;
   background-color: black;
