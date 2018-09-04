@@ -1139,3 +1139,18 @@ main {
 #registerInputGym {
   grid-area: registerInputGym;
 }
+
+@media screen and (max-width:1200px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    grid-template-areas:
+      "profile-image bio"
+      "profile-image bio"
+      "profile-image bio"
+      "gym goals"
+      "calendarDashboard1 goals"
+      "activity activity"
+      "confirmed-events confirmed-events";
+  }
+}
