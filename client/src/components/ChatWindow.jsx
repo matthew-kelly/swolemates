@@ -2,8 +2,17 @@ import React, {Component} from 'react';
 import Message from './Message'
 
 class ChatWindow extends Component {
-  constructor(props){
-    super(props);
+
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   render(){
@@ -31,6 +40,7 @@ class ChatWindow extends Component {
         </div>
         <div id='chatWindowMessageContainer'>
           {allMessages}
+          <div ref={(el) => { this.messagesEnd = el; }}></div>
         </div>
         <form onSubmit={this.props.handleUserMessage} data-currentfriend={JSON.stringify(this.props.currentFriend)}>
           <input defaultValue='' name='chatWindowInput' id='chatWindowInput'></input>

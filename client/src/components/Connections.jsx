@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 import {NotificationContainer} from 'react-notifications';
 import Ticket from './Ticket.jsx'
-
-
-import User from './User.jsx';
-import EventRequest from './EventRequest.jsx';
 
 
 import 'react-notifications/lib/notifications.css';
@@ -25,12 +20,6 @@ class Connections extends Component {
 
     }
   }
-
-  // Get all connections
-  // async getConnections(id) {
-  //   const res = await axios.get(`${API}/users/${id}/connections`);
-  //   return await res.data;
-  // }
 
   // Get all friends
   async getFriends(id) {
@@ -173,7 +162,6 @@ class Connections extends Component {
     return (
       <div>
         <div className="chat-head-list">
-          {/* {allConnections} */}
           <h2>Pending Event Requests</h2>
         </div>
         <div className="event-request-list">

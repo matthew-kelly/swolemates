@@ -61,15 +61,12 @@ canvas.chartjs-render-monitor {
 
 #chatWindowMessageContainer {
   padding: 0.7em;
-  display: flex;
   height: 100%;
-  flex-direction: column;
   overflow: overlay;
 }
 
 #chatWindowClose {
   cursor: pointer;
-  /*position: fixed;*/
   bottom: 25em;
   right: 3em;
   float: right;
@@ -139,6 +136,7 @@ canvas.chartjs-render-monitor {
   box-shadow: 0px 0px 10px 2px #ff620050;
   transition: .15s linear all;
 }
+
 .tile:hover .dashboardComponentHeader{
   background-color: #ff7722;
   transition: .15s linear all;
@@ -224,7 +222,8 @@ canvas.chartjs-render-monitor {
   font-weight: bold;
   align-items: center;
 }
-.dashboard-subtitle{
+
+.dashboard-subtitle {
   color: #ff6200;
 }
 
@@ -293,8 +292,8 @@ h4.dashboardSubtitle{
   margin-left: -0.07em;
 }
 
-.NavLink{
-  color:#ff6200;
+.NavLink {
+  color: #ff6200;
 }
 
 div#popup {
@@ -302,9 +301,9 @@ div#popup {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 0 1.5em 1.5em 1.5em;
+  padding: 0 5em 2em 5em;
   position: fixed;
-  width: 40%;
+  width: 60%;
   height: 70%;
   top: 0;
   left: 0;
@@ -314,13 +313,15 @@ div#popup {
   background-color: #fcfcfc;
   z-index: 999;
 }
-#descriptionCheckbox{
+
+#descriptionCheckbox {
   padding-bottom: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
+
 h3 {
   margin-top: -1em;
 }
@@ -348,10 +349,8 @@ div#start-component.component {
   padding: 1;
 }
 
-
-
 #confirmButton {
-  background-color: #5ed95e;
+  background-color: #4eb94e;
 }
 
 #cancelButton {
@@ -362,6 +361,7 @@ div#start-component.component {
   width: 100%;
   height: 5em;
   border-radius: 0.5em;
+  border: 1px solid #bbb;
   padding: 0.5em;
   font-family: 'Open Sans', sans-serif;
 }
@@ -378,7 +378,6 @@ div#start-component.component {
 
 #popupBackground {
   position: fixed;
-  /*position: absolute;*/
   width: 100%;
   height: 100%;
   top: 0;
@@ -542,8 +541,9 @@ div.col.cell {
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
-.event-data-modal-status{
-  font-weight:bold;
+
+.event-data-modal-status {
+  font-weight: bold;
 }
 
 .event-data-modal-main {
@@ -558,12 +558,14 @@ div.col.cell {
   transform: translate(-50%, -50%);
   z-index: 1001;
 }
-#event-data-modal-button-container{
+
+#event-data-modal-button-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.event-data-button{
+
+.event-data-button {
   font-size: 1em;
   font-weight: bold;
   width: 25%;
@@ -574,10 +576,12 @@ div.col.cell {
   margin: 0.5em;
   color: white;
 }
-.request-to-join-button{
-  background-color: #5ed95e;
+
+.request-to-join-button {
+  background-color: #4eb94e;
 }
-.close-modal-button{
+
+.close-modal-button {
   background-color: tomato;
 }
 
@@ -727,10 +731,12 @@ path {
   padding: 0 10px 0 0;
   text-align: center;
 }
-.accept-request{
+
+.accept-request {
   color: #16d4a3;
 }
-.delete-request{
+
+.delete-request {
   color: tomato;
 }
 
@@ -819,12 +825,18 @@ main {
 }
 
 .dropbtn {
-  background-color: #fe6103;
-  color: white;
+  background-color: #ffe0cd;
+  color: black;
   padding: 16px;
   font-size: 16px;
   font-weight: bold;
+  min-width: 150px;
   border: none;
+  border-bottom: 5px solid orangered;
+}
+
+.dropbtn:hover+.dropdown-content, .dropdown-content:hover {
+  display: block;
 }
 
 #dropdownList {
@@ -853,6 +865,7 @@ main {
 .dropdown-content {
   display: none;
   position: absolute;
+  top: 55px;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -868,14 +881,6 @@ main {
 
 .dropdown-content a:hover {
   background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
 }
 
 #dropdownList .event-circle {
@@ -1038,24 +1043,39 @@ main {
   width: calc(100%/7);
 }
 
-/*-----RESIZEABLE BOX STYLE---------*/
-.react-resizable {
-  position: relative;
+.calendar-header-container {
+  display: grid;
+  grid-auto-columns: 1fr 2fr 3fr 2fr 1fr;
+  grid-template-areas:
+    "month-back tags month friends month-next";
 }
 
-.react-resizable-handle {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  bottom: 0;
-  right: 0;
-  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDYiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmYwMCIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iNnB4Ij48ZyBvcGFjaXR5PSIwLjMwMiI+PHBhdGggZD0iTSA2IDYgTCAwIDYgTCAwIDQuMiBMIDQgNC4yIEwgNC4yIDQuMiBMIDQuMiAwIEwgNiAwIEwgNiA2IEwgNiA2IFoiIGZpbGw9IiMwMDAwMDAiLz48L2c+PC9zdmc+');
-  background-position: bottom right;
-  padding: 0 3px 3px 0;
-  background-repeat: no-repeat;
-  background-origin: content-box;
-  box-sizing: border-box;
-  cursor: se-resize;
+.month-back {
+  grid-area: month-back;
+}
+
+.tag-dropdown {
+  grid-area: tags;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.month-name {
+  grid-area: month;
+}
+
+.friend-dropdown {
+  grid-area: friends;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.month-next {
+  grid-area: month-next;
+}
+
+.calendar-header-month {
+  font-size: 1.7em;
 }
 
 /*--------Register Page------*/
