@@ -2,6 +2,10 @@
 @import url(https://fonts.googleapis.com/css?family=Baloo+Tammudu|Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
+*:focus {
+  outline: none;
+}
+
 body {
   margin: 0 auto;
   max-width: 90vw;
@@ -9,22 +13,22 @@ body {
   background-color: #efefef;
 }
 
-.far, .fas{
+.far, .fas {
   margin-left: 0.5em;
 }
 
-a{
+a {
   color: #ff6200;
   text-decoration: none;
 }
 
-canvas.chartjs-render-monitor{
-  height:5em;
+canvas.chartjs-render-monitor {
+  height: 5em;
   width: 10em;
 }
 
-#chatWindow{
-  border:1.2px solid black;
+#chatWindow {
+  border: 1.2px solid black;
   height: 80vh;
   width: 30vw;
   position: fixed;
@@ -36,7 +40,8 @@ canvas.chartjs-render-monitor{
   justify-content: space-between;
   border-radius: 0.7em 0.7em 0em 0.7em;
 }
-#chatWindowHeader{
+
+#chatWindowHeader {
   background-color: steelblue;
   height: 15%;
   display: flex;
@@ -49,24 +54,24 @@ canvas.chartjs-render-monitor{
   border-radius: 0.5em 0.5em 0em 0em;
 }
 
-#chatWindowMessageContainer{
+#chatWindowMessageContainer {
   padding: 0.7em;
   display: flex;
   flex-direction: column;
   overflow: overlay;
 }
 
-#chatWindowClose{
+#chatWindowClose {
   cursor: pointer;
   /*position: fixed;*/
   bottom: 25em;
   right: 3em;
-  float:right;
+  float: right;
   font-weight: bold;
   color: white;
 }
 
-#chatWindowInput{
+#chatWindowInput {
   display: flex;
   width: stretch;
   border-top: 1px solid black;
@@ -76,17 +81,19 @@ canvas.chartjs-render-monitor{
   padding-left: 0.5em;
 }
 
-.outgoingMessage{
+.outgoingMessage {
   display: flex;
   justify-content: flex-end;
   border-radius: 1em 1em 0em 1em;
 }
-.incomingMessage{
+
+.incomingMessage {
   background-color: lightblue;
   width: fit-content;
   border-radius: 1em 1em 1em 0em;
 }
-.message{
+
+.message {
   padding: 0.5em;
   margin: 0.5em;
 }
@@ -97,11 +104,11 @@ canvas.chartjs-render-monitor{
   grid-template-rows: 20vh 10vh 13vh 20vh 20vh;
   grid-gap: 1em;
   grid-template-areas:
-  "profile-image profile-image bio bio confirmed-events confirmed-events"
-  "profile-image profile-image bio bio confirmed-events confirmed-events"
-  "profile-image profile-image bio bio confirmed-events confirmed-events"
-  "gym goals activity activity confirmed-events confirmed-events"
-  "calendarDashboard1 goals activity activity confirmed-events confirmed-events";
+    "profile-image profile-image bio bio confirmed-events confirmed-events"
+    "profile-image profile-image bio bio confirmed-events confirmed-events"
+    "profile-image profile-image bio bio confirmed-events confirmed-events"
+    "gym goals activity activity confirmed-events confirmed-events"
+    "calendarDashboard1 goals activity activity confirmed-events confirmed-events";
 }
 
 .tile {
@@ -117,7 +124,8 @@ canvas.chartjs-render-monitor{
   display: flex;
   justify-content: flex-end;
 }
-.tileComponent{
+
+.tileComponent {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -141,7 +149,6 @@ canvas.chartjs-render-monitor{
   align-items: center;
 }
 
-
 #profileImage {
   grid-area: profile-image;
   display: flex;
@@ -159,33 +166,37 @@ canvas.chartjs-render-monitor{
   flex-direction: column;
 }
 
-.fa-edit{
+.fa-edit {
   display: none;
   cursor: pointer;
 }
-.chatWindowIcon.fa-comments{
+
+.chatWindowIcon.fa-comments {
   cursor: pointer;
   color: steelblue;
 }
 
-#inputBio, #inputPicture{
+#inputBio, #inputPicture {
   width: stretch;
   height: 19em;
   border-radius: 1em;
   padding: 0.5em;
   font-family: 'Open Sans', sans-serif;
 }
-#inputPicture{
+
+#inputPicture {
   height: 23em;
 }
 
-#goals:hover .fa-edit{
+#goals:hover .fa-edit {
   display: block;
 }
-#bio:hover .fa-edit{
+
+#bio:hover .fa-edit {
   display: block;
 }
-#profileImage:hover .fa-edit{
+
+#profileImage:hover .fa-edit {
   display: block;
 }
 
@@ -196,43 +207,48 @@ canvas.chartjs-render-monitor{
 #calendarDashboard1 {
   grid-area: calendarDashboard1;
 }
+
 #calendarDashboard1:hover {
   cursor: pointer;
 }
 
-#confirmed-events{
+#confirmed-events {
   grid-area: confirmed-events;
 }
+
 #activity {
   grid-area: activity;
 }
 
-.dashboardComponentHeader{
+.dashboardComponentHeader {
   display: flex;
   justify-content: space-between;
   background-color: #ff620075;
   padding: 0.5em;
   color: white;
   font-weight: bold;
-  align-items:center;
+  align-items: center;
 }
 
-.dashboardComponentContent{
+.dashboardComponentContent {
   margin: 0.8em;
 }
 
-.dashboardComponentContent ul{
+.dashboardComponentContent ul {
   padding-left: 0.7em;
 }
-.dashboardComponentContent li{
+
+.dashboardComponentContent li {
   padding-bottom: 0.5em;
 }
-.dashboardComponentContentCenter{
+
+.dashboardComponentContentCenter {
   margin: 0.8em;
   display: flex;
   justify-content: center;
   height: 80%;
 }
+
 .navbar {
   background-color: white;
   font-size: 1.4em;
@@ -343,41 +359,36 @@ div#start-component.component {
 }
 
 .profile_pic {
-  max-width: 300px;
+  max-height: 100%;
+  height: 100%;
 }
-
-#pictureContainer{
-  border-radius: 3em;
-}
-
 
 /* ------------- User.jsx Chat Heads ------------- */
-
 .chat-head-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-
-.friendMenu{
-  display:none;
+.friendMenu {
+  display: none;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
 }
 
-.chat-head-container:hover .friendMenu{
-  display:flex
+.chat-head-container:hover .friendMenu {
+  display: flex
 }
 
-.chat-head-content{
+.chat-head-content {
   width: 12em;
 }
-.friendName{
+
+.friendName {
   text-align: center;
 }
+
 .chat-head-container {
   background-color: white;
   margin: 0.2em;
@@ -398,24 +409,21 @@ div#start-component.component {
 
 .chat-head-pic {
   margin: auto;
-  border-radius: 50%;
+  border-radius: 100%;
   width: 100px;
   height: 100px;
   position: relative;
   overflow: hidden;
-  border: 1px solid black;
+  background-color: black;
 }
 
 .chat-head-pic img {
-  max-width: 130%;
-  width: auto;
-  height: auto;
+  width: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
 
 /*-----------Calender Events -----------*/
 .add-event-button {
@@ -469,27 +477,26 @@ div.col.cell {
   opacity: 0.3;
 }
 
-
 /* -------------- EventDataModal -------------- */
 .event-data-modal {
   position: fixed;
   top: 0;
   left: 0;
-  width:100%;
+  width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
 
 .event-data-modal-main {
-  position:fixed;
+  position: fixed;
   background: white;
   width: 80%;
   height: auto;
   padding: 2em 5em;
   top: 50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1001;
 }
 
@@ -510,25 +517,26 @@ div.col.cell {
   display: none;
 }
 
-#homepageContainer{
+#homepageContainer {
   display: flex;
   flex-direction: column;
   /*justify-content: center;*/
   /*align-items: center;*/
 }
 
-#homepageLogoContainer{
+#homepageLogoContainer {
   display: flex;
   justify-content: space-around;
 }
 
-#homepageTitle{
+#homepageTitle {
   font-weight: bold;
   font-size: 3em;
   color: #ff6200;
   font-family: 'Baloo Tammudu', cursive;
 }
-path{
+
+path {
   fill: #ff6200;
 }
 
@@ -563,19 +571,16 @@ path{
 
 .event-request-container .event-request-pic {
   margin: 0;
-  border-radius: 50%;
+  border-radius: 100%;
   width: 100px;
   height: 100px;
   position: relative;
   overflow: hidden;
-  border: 1px solid black;
   grid-area: pic;
 }
 
 .event-request-pic img {
-  max-width: 130%;
-  width: auto;
-  height: auto;
+  width: 100%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -587,7 +592,7 @@ path{
   padding-top: 10px;
 }
 
-.event-request-body .request-buttons{
+.event-request-body .request-buttons {
   grid-area: buttons;
   display: flex;
   justify-content: space-between;
@@ -605,11 +610,8 @@ path{
   cursor: pointer;
 }
 
-
 /* ------------- Calendar.jsx Styles ------------- */
-
 /* VARIABLES */
-
 :root {
   --main-color: #1a8fff;
   --text-color: #777;
@@ -620,7 +622,6 @@ path{
 }
 
 /* GENERAL */
-
 * {
   box-sizing: border-box;
 }
@@ -683,7 +684,6 @@ main {
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
@@ -691,15 +691,15 @@ main {
 }
 
 .dropbtn {
-    background-color: #fe6103;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
+  background-color: #fe6103;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
 }
 
-#dropdownList{
+#dropdownList {
   display: flex;
   justify-content: start;
   list-style-type: none;
@@ -718,31 +718,37 @@ main {
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 998;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 998;
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
 
 #dropdownList .event-circle {
   margin: 3.5px 5px 3.5px 0;
@@ -750,11 +756,9 @@ main {
 
 .tag-li {
   display: flex;
-
 }
 
 /* GRID */
-
 .row {
   margin: 0;
   padding: 0;
@@ -790,7 +794,6 @@ main {
 }
 
 /* Calendar */
-
 .calendar {
   display: block;
   position: relative;
@@ -908,10 +911,10 @@ main {
 }
 
 /*-----RESIZEABLE BOX STYLE---------*/
-
 .react-resizable {
   position: relative;
 }
+
 .react-resizable-handle {
   position: absolute;
   width: 20px;
@@ -927,27 +930,26 @@ main {
   cursor: se-resize;
 }
 
-
 /*--------Register Page------*/
-
-.registerContainer{
+.registerContainer {
   padding-top: 1.5em;
 }
-.formContainer{
+
+.formContainer {
   display: grid;
   grid-template-columns: 20vw 20;
   grid-template-rows: 20vh;
   grid-gap: 1em;
   grid-template-areas:
-  "registerInputFirstName registerInputFirstName registerInputLastName registerInputLastName"
-  "registerInputEmail registerInputEmail registerInputPassword registerInputPassword"
-  "registerInputBio registerInputBio registerInputBio registerInputBio"
-  "registerInputBio registerInputBio registerInputBio registerInputBio"
-  "registerInputGym registerInputGym registerInputGym registerInputGym"
-  "registerButton registerButton registerButton registerButton";
-
+    "registerInputFirstName registerInputFirstName registerInputLastName registerInputLastName"
+    "registerInputEmail registerInputEmail registerInputPassword registerInputPassword"
+    "registerInputBio registerInputBio registerInputBio registerInputBio"
+    "registerInputBio registerInputBio registerInputBio registerInputBio"
+    "registerInputGym registerInputGym registerInputGym registerInputGym"
+    "registerButton registerButton registerButton registerButton";
 }
-.registerInput{
+
+.registerInput {
   padding: 1em;
   border: 0;
   border-radius: 0.5em;
@@ -955,7 +957,8 @@ main {
   background-color: lightblue;
   width: 100%;
 }
-#registerButton{
+
+#registerButton {
   grid-area: registerButton;
   background-color: lightblue;
   border: none;
@@ -963,22 +966,28 @@ main {
   height: 2em;
   width: 5em;
 }
-#registerInputBio{
+
+#registerInputBio {
   grid-area: registerInputBio;
   height: 100%;
 }
-#registerInputFirstName{
+
+#registerInputFirstName {
   grid-area: registerInputFirstName;
 }
-#registerInputLastName{
+
+#registerInputLastName {
   grid-area: registerInputLastName;
 }
-#registerInputEmail{
+
+#registerInputEmail {
   grid-area: registerInputEmail;
 }
-#registerInputPassword{
+
+#registerInputPassword {
   grid-area: registerInputPassword;
 }
-#registerInputGym{
+
+#registerInputGym {
   grid-area: registerInputGym;
 }
