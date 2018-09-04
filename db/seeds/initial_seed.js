@@ -85,7 +85,7 @@ exports.seed = function(knex, Promise) {
         password: 'mark',
         bio: 'Hi, my name is Mark. I am new to Vancouver and am keen to meet some like-minded gym go-ers. Currently working in and around Yaletown so working out somewhere like the Steve Nash Club near the 7/11 would be ideal. Find me posting workouts in the calender pretty much everyday most weeks. "You miss 100% of the shots you don\'t take" -- Wayne Gretzky -- Michael Scott',
         gym_id: 1,
-        profile_pic: 'https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/32436_117915591572150_2707307_n.jpg?_nc_cat=0&oh=f8c80b6d9a7d9b47f8fc19d394d581c2&oe=5C03FF20'
+        profile_pic: 'https://vanillicon.com/v2/c4ca4238a0b923820dcc509a6f75849b.svg'
       });
     })
     .then(() => {
@@ -96,7 +96,7 @@ exports.seed = function(knex, Promise) {
         password: 'john',
         bio: 'I want to be really strong',
         gym_id: 1,
-        profile_pic: 'https://powerplay.co.uk/app/resources/php/timthumb/timthumb.php?src=L2FwcC9yZXNvdXJjZXMvaW1hZ2VzL3VzZXIvc2xpZGVyLzcyNS90ZWFtc2xpZGVyOTA5NTVHbG9ib0d5bS5qcGc=&w=635&h=400'
+        profile_pic: 'https://vanillicon.com/v2/c81e728d9d4c2f636f067f89cc14862c.svg'
       });
     })
     .then(() => {
@@ -107,7 +107,7 @@ exports.seed = function(knex, Promise) {
         password: 'paul',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         gym_id: 1,
-        profile_pic: 'https://powerplay.co.uk/app/resources/php/timthumb/timthumb.php?src=L2FwcC9yZXNvdXJjZXMvaW1hZ2VzL3VzZXIvc2xpZGVyLzcyNS90ZWFtc2xpZGVyOTA5NTVHbG9ib0d5bS5qcGc=&w=635&h=400'
+        profile_pic: 'https://vanillicon.com/v2/eccbc87e4b5ce2fe28308fd9f2a7baf3.svg'
       });
     })
     .then(() => {
@@ -118,7 +118,7 @@ exports.seed = function(knex, Promise) {
         password: 'keanu',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 1,
-        profile_pic: 'https://imgix.ranker.com/user_node_img/50013/1000250501/original/keanu-reeves-doesn-t-want-your-money-all-people-photo-u1?w=650&q=50&fm=jpg&fit=crop&crop=faces'
+        profile_pic: 'https://vanillicon.com/v2/a87ff679a2f3e71d9181a67b7542122c.svg'
       });
     })
     .then(() => {
@@ -129,7 +129,7 @@ exports.seed = function(knex, Promise) {
         password: 'terry',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 1,
-        profile_pic: 'https://timedotcom.files.wordpress.com/2017/12/terry-crews-person-of-year-2017-time-magazine-2.jpg'
+        profile_pic: 'https://vanillicon.com/v2/e4da3b7fbbce2345d7772b0674a318d5.svg'
       });
     })
     .then(() => {
@@ -140,7 +140,7 @@ exports.seed = function(knex, Promise) {
         password: 'arnie',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 2,
-        profile_pic: 'https://24smi.org/public/media/2018/4/9/06-9j5po29.jpg'
+        profile_pic: 'https://vanillicon.com/v2/1679091c5a880faf6fb5e6087eb1b2dc.svg'
       });
     })
     .then(() => {
@@ -151,7 +151,7 @@ exports.seed = function(knex, Promise) {
         password: 'ronda',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 2,
-        profile_pic: 'https://tribktla.files.wordpress.com/2015/09/rousey.jpg?quality=85&strip=all&strip=all'
+        profile_pic: 'https://vanillicon.com/v2/8f14e45fceea167a5a36dedd4bea2543.svg'
       });
     })
     .then(() => {
@@ -162,7 +162,7 @@ exports.seed = function(knex, Promise) {
         password: 'yuna',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 2,
-        profile_pic: 'http://www.nbcolympics.com/sites/default/files/field_image/19April2017/yuna-kim-ambassador-pyc-flickr-1920-15691841066_a142e51565_o.jpg'
+        profile_pic: 'https://vanillicon.com/v2/c9f0f895fb98ab9159f51fd0297e236d.svg'
       });
     })
     .then(() => {
@@ -173,7 +173,7 @@ exports.seed = function(knex, Promise) {
         password: 'simone',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 2,
-        profile_pic: 'https://usagym.org/pages/athletes/athletephotos/164887.jpg'
+        profile_pic: 'https://vanillicon.com/v2/45c48cce2e2d7fbdea1afc51c7c6ad26.svg'
       });
     })
     .then(() => {
@@ -184,7 +184,7 @@ exports.seed = function(knex, Promise) {
         password: 'chris',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 3,
-        profile_pic: 'http://www.spacefacts.de/bios/portraits_hi/international/hadfield_chris.jpg'
+        profile_pic: 'https://vanillicon.com/v2/d3d9446802a44259755d38e6d163e820.svg'
       });
     })
     .then(() => {
@@ -195,7 +195,7 @@ exports.seed = function(knex, Promise) {
         password: 'robert',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 3,
-        profile_pic: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Robert_thirsk_v2.jpg'
+        profile_pic: 'https://vanillicon.com/v2/6512bd43d9caa6e02c990b0a82652dca.svg'
       });
     })
     .then(() => {
@@ -206,7 +206,7 @@ exports.seed = function(knex, Promise) {
         password: 'don',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 3,
-        profile_pic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGsbOlAbIIuSjxiyEvAU31CHaQP0KM1emKTK91q5NeWVIpD7CJ'
+        profile_pic: 'https://vanillicon.com/v2/c20ad4d76fe97759aa27a0c99bff6710.svg'
       });
     })
     .then(() => {
@@ -217,7 +217,7 @@ exports.seed = function(knex, Promise) {
         password: 'henrik',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 3,
-        profile_pic: 'http://www.hockeydb.com/ihdb/photos/henrik-sedin-2017-39.jpg'
+        profile_pic: 'https://vanillicon.com/v2/c51ce410c124a10e0db5e4b97fc2af39.svg'
       });
     })
     .then(() => {
@@ -228,7 +228,7 @@ exports.seed = function(knex, Promise) {
         password: 'daniel',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 3,
-        profile_pic: 'http://www.hockeydb.com/ihdb/photos/daniel-sedin-2018-39.jpg'
+        profile_pic: 'https://vanillicon.com/v2/aab3238922bcc25a6f606eb525ffdc56.svg'
       });
     })
     .then(() => {
@@ -239,7 +239,7 @@ exports.seed = function(knex, Promise) {
         password: 'obi-wan',
         bio: 'Hello there.',
         gym_id: 4,
-        profile_pic: 'https://www.thoughtco.com/thmb/pYLUnM7lQ6ef-ShHTdunHcExcw0=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/EP2-IA-60435_R_8x10-56a83bea3df78cf7729d314a.jpg'
+        profile_pic: 'https://vanillicon.com/v2/9bf31c7ff062936a96d3c8bd1f8f2ff3.svg'
       });
     })
     .then(() => {
@@ -250,7 +250,7 @@ exports.seed = function(knex, Promise) {
         password: 'master',
         bio: 'Be fit, you must.',
         gym_id: 4,
-        profile_pic: 'https://vignette.wikia.nocookie.net/starwars/images/d/d6/Yoda_SWSB.png/revision/latest?cb=20150206140125'
+        profile_pic: 'https://vanillicon.com/v2/c74d97b01eae257e44aa9d5bade97baf.svg'
       });
     })
     .then(() => {
@@ -261,7 +261,7 @@ exports.seed = function(knex, Promise) {
         password: 'count',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 4,
-        profile_pic: 'https://vignette.wikia.nocookie.net/starwars/images/b/b8/Dooku_Headshot.jpg/revision/latest?cb=20180430181839'
+        profile_pic: 'https://vanillicon.com/v2/70efdf2ec9b086079795c442636b55fb.svg'
       });
     })
     .then(() => {
