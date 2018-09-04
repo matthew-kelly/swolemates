@@ -17,6 +17,7 @@
     "github-contributions-canvas": "^0.2.0",
     "knex": "^0.15.2",
     "material-dashboard-react": "^1.4.1",
+    "md5": "^2.2.1",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.21",
     "pg": "^7.4.3",
