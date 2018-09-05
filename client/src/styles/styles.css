@@ -650,10 +650,11 @@ div.col.cell {
 .inputLogin {
   border-radius: 1em;
   border: 1px solid lightgrey;
-  padding: 0.3em;
+  padding: 0.5em 1em;
   margin-bottom: 0.5em;
   margin-left: 1em;
 }
+
 #button-loginButton{
   background-color: #ff6200;
   color: white;
