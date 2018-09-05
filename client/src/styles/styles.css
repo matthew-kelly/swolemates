@@ -272,7 +272,7 @@ h4.dashboardSubtitle{
   color: #ff6200;
 }
 .navbar-longstyle {
-  width: 60%;
+  width: 50%;
   height: 2em;
   margin: 0 auto;
   display: flex;
@@ -297,9 +297,33 @@ h4.dashboardSubtitle{
 }
 
 .navbar-longstyle span:hover {
-  box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 1px 8px 1px rgba(0, 0, 0, 0.4);
   transition: 0.2s linear all;
 }
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 3em;
+  margin: 12em auto 0;
+  width: 60%;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container form input {
+  font-size: 1.2em;
+}
+
+.login-container form button {
+  font-size: 1.2em;
+  align-self: center;
+}
+
 
 #friendsIcon, #connectionsIcon{
   margin-left: -0.15em;
@@ -641,7 +665,7 @@ div.col.cell {
 }
 
 #homepageContainer {
-  padding-top: 8em;
+  margin-top: 8em;
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
@@ -653,7 +677,7 @@ div.col.cell {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url(../images/gym_friends.jpg) no-repeat center center;
+  background: url(../images/gym_friends_reduced2.jpg) no-repeat center center;
   background-size: cover;
   opacity: 0.5;
   z-index: -1;
@@ -1014,7 +1038,7 @@ main {
 
 .calendar .body .cell {
   position: relative;
-  height: 6.4em;
+  height: 6.3em;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
   background: var(--neutral-color);
@@ -1199,6 +1223,7 @@ main {
 @media screen and (max-width:800px) {
   #homepageContainer {
     padding-top: 2em;
+    margin-top: 5em;
   }
 
   #homepageLogoContainer {
@@ -1209,8 +1234,16 @@ main {
     font-size: 1.1em;
   }
 
+  #homepageContainer span {
+    font-size: 1em;
+  }
+
   .navbar-longstyle {
     font-size: 1em;
+    width: 90%;
+  }
+
+  .login-container {
     width: 90%;
   }
 }

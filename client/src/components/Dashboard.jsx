@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
-// import Calendar from './Calendar.jsx';
 import ProfilePictureComponent from './DashboardComponents/ProfilePictureComponent.jsx';
 import GymTileComponent from './DashboardComponents/GymTileComponent.jsx';
 import CalendarTileComponent from './DashboardComponents/CalendarTileComponent.jsx';
@@ -116,13 +115,12 @@ class Dashboard extends Component {
 
     return (
       <div className="container">
-      <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
-      <GymTileComponent appState={this.props.appState} content={gymName}/>
-      <CalendarTileComponent appState={this.props.appState} content={this.props.appState.current_user}/>
-      <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
-      <GoalComponent appState={this.props.appState} goalData={goals_data} content={allGoals}/>
-      <ActivityGraphComponent appState={this.props.appState}/>
-      {/*<ConfirmedEventsComponent appState={this.props.appState} content={earliestEventFormatted}/>*/}
+        <ProfilePictureComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
+        <GymTileComponent appState={this.props.appState} content={gymName}/>
+        <CalendarTileComponent appState={this.props.appState} content={this.props.appState.current_user}/>
+        <BioComponent changeUserInformation={this.props.changeUserInformation} appState={this.props.appState} content={user_data}/>
+        <GoalComponent appState={this.props.appState} goalData={goals_data} content={allGoals}/>
+        <ActivityGraphComponent appState={this.props.appState}/>
         <div id="confirmed-events" className="tile tileBig">
          <div className="dashboardComponentHeader">
            <span>Upcoming Events</span>
