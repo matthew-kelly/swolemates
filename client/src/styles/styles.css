@@ -1,5 +1,5 @@
 /* FONT IMPORTS */
-@import url(https://fonts.googleapis.com/css?family=Baloo+Tammudu|Open+Sans:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Bungee|Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 *:focus {
@@ -7,11 +7,15 @@
 }
 
 body {
+  margin: 0;
+  background-color: #eee;
+}
+
+#root {
   margin: 0 auto;
+  padding-top: 2em;
   max-width: 90vw;
   max-height: 100vh;
-  padding-top: 2em;
-  background-color: #efefef;
 }
 
 .far, .fas {
@@ -272,7 +276,7 @@ h4.dashboardSubtitle{
   font-weight: bold;
   width: 80%;
   height: 2em;
-  margin: 3.3em auto 0 auto;
+  margin: 0 auto;
   background-color: white;
   font-size: 1.4em;
   display: flex;
@@ -620,10 +624,22 @@ div.col.cell {
 }
 
 #homepageContainer {
-  padding-top: 4em;
+  padding-top: 8em;
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
+}
+
+.homepage-background-image {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(../images/gym_friends.jpg) no-repeat center center;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: -1;
 }
 
 .homepageMenu{
@@ -635,15 +651,23 @@ div.col.cell {
 }
 
 #homepageLogoContainer {
+  max-height: 450px;
+  padding: 0;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+#homepageLogoContainer h1 {
+  margin: 0;
 }
 
 #homepageTitle {
-  font-weight: bold;
   font-size: 3em;
-  color: #ff6200;
-  font-family: 'Baloo Tammudu', cursive;
+  font-style: italic;
+  color: rgb(255, 184, 103);
+  font-family: 'Bungee', sans-serif;
+  -webkit-text-stroke: 0.1px #ff6200;
 }
 
 path {
@@ -1152,5 +1176,23 @@ main {
       "calendarDashboard1 goals"
       "activity activity"
       "confirmed-events confirmed-events";
+  }
+}
+
+@media screen and (max-width:800px) {
+  #homepageContainer {
+    padding-top: 2em;
+  }
+
+  #homepageLogoContainer {
+    max-height: 300px;
+  }
+
+  #homepageContainer h1 {
+    font-size: 1.1em;
+  }
+
+  .navbar-longstyle {
+    font-size: 1em;
   }
 }

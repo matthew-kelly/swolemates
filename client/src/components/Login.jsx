@@ -10,6 +10,7 @@ class Login extends Component {
 
     return(
       <div className="navbar-longstyle">
+        <div className="homepage-background-image"></div>
         <form onSubmit={this.props.loginSubmit}>
           <input className='inputLogin' name='email' type='email' placeholder='email'/>
           <input className='inputLogin' name='password' type='password' placeholder='password'/>
