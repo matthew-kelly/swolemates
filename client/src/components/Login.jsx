@@ -9,10 +9,11 @@ class Login extends Component {
     }
 
     return(
-      <div className="navbar-longstyle">
+      <div className="login-container">
+        <div className="homepage-background-image"></div>
         <form onSubmit={this.props.loginSubmit}>
-          <input className='inputLogin' name='email' type='email' placeholder='email'/>
-          <input className='inputLogin' name='password' type='password' placeholder='password'/>
+          <input className='inputLogin' name='email' type='email' placeholder='Email'/>
+          <input className='inputLogin' name='password' type='password' placeholder='Password'/>
           <button id="button-loginButton">Login</button>
         </form>
       </div>

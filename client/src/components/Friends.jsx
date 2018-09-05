@@ -136,13 +136,18 @@ class Friends extends Component {
     }
 
     return (
-      <div className="chat-head-list">
-        {allFriends}
-        <div>
-        {chatWindow}
+      <React.Fragment>
+        <div className="chat-head-list">
+          <h2 className="chat-head-list-title">Friends</h2>
         </div>
-        <NotificationContainer/>
-      </div>
+        <div className="chat-head-list">
+          {allFriends}
+          <div>
+          {chatWindow}
+          </div>
+          <NotificationContainer/>
+        </div>
+      </React.Fragment>
     );
   }
 }
