@@ -776,14 +776,14 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('tags').insert({
-        event_id: 8,
-        tag: "ORM"
+        event_id: 9,
+        tag: "Triceps"
       });
     })
     .then(() => {
       return knex('tags').insert({
-        event_id: 8,
-        tag: "HIT"
+        event_id: 9,
+        tag: "Legs"
       });
     })
     .then(() => {
@@ -877,6 +877,262 @@ exports.seed = function(knex, Promise) {
         event_id: 4,
         requester_id: 2,
         accepted: false
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180907 1300',
+        time_end: '20180907 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180908 1300',
+        time_end: '20180908 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180909 1300',
+        time_end: '20180909 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180910 1300',
+        time_end: '20180910 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180911 1300',
+        time_end: '20180911 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180912 1300',
+        time_end: '20180912 1430'
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 9,
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 10,
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 11,
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 12,
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 13,
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 14,
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180913 1300',
+        time_end: '20180913 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180914 1300',
+        time_end: '20180914 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180915 1300',
+        time_end: '20180915 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180916 1300',
+        time_end: '20180916 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180917 1300',
+        time_end: '20180917 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180918 1300',
+        time_end: '20180918 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180919 1300',
+        time_end: '20180919 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180920 1300',
+        time_end: '20180920 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180921 1300',
+        time_end: '20180921 1430'
+      });
+    })
+    .then(() => {
+      return knex('events').insert({
+        user_id: 2,
+        gym_id: 1,
+        description: 'Donec eu ex nec velit dignissim semper.',
+        public: false,
+        time_begin: '20180922 1300',
+        time_end: '20180922 1430'
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 15,
+        tag: "Back"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 16,
+        tag: "Biceps"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 17,
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 18,
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 19,
+        tag: "Yoga"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 20,
+        tag: "Cardio"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 21,
+        tag: "Triceps"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 22,
+        tag: "Traps"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 23,
+        tag: "Shoulders"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 24,
+        tag: "Stretching"
       });
     })
 };
