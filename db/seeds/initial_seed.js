@@ -94,7 +94,7 @@ exports.seed = function(knex, Promise) {
         last_name: 'Doe',
         email: 'john@john.john',
         password: 'john',
-        bio: 'I want to be really strong',
+        bio: 'Originally from Chicago. I love playing tennis and loud music. Find me on the court any time of day! During my down-time I like to pretend I am a dog photographer. Trying to work on my fitness goals and find like-minded gym-goers!',
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/c81e728d9d4c2f636f067f89cc14862c.svg'
       });
@@ -105,7 +105,7 @@ exports.seed = function(knex, Promise) {
         last_name: 'Paulson',
         email: 'paul@paul.paul',
         password: 'paul',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        bio: 'Originally from Miami. I love black and white classics, chillout music and green tea. I am a 47-year-old former health centre receptionist who enjoys escapology, cookery and jigsaw puzzles. Energetic and friendly, but can also be a bit standoffish.',
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/eccbc87e4b5ce2fe28308fd9f2a7baf3.svg'
       });
@@ -297,7 +297,19 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('goals').insert({
         user_id: 2,
-        goal: "Prepare for my race"
+        goal: "Prepare for my race in July"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 2,
+        goal: "Up my freestyle 100m dash speed"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 2,
+        goal: "Increase finger dexterity and core strength"
       });
     })
     .then(() => {
@@ -310,6 +322,42 @@ exports.seed = function(knex, Promise) {
       return knex('goals').insert({
         user_id: 3,
         goal: "Join a weekly running group"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 3,
+        goal: "Increase my flexibility"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 3,
+        goal: "Increase finger strength"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 3,
+        goal: "Complete a yellow climbing route"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 4,
+        goal: "Complete a blue climbing route"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 4,
+        goal: "Run a 5 minute mile"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 4,
+        goal: "Up my vertical jump"
       });
     })
     .then(() => {
@@ -362,8 +410,20 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('goals').insert({
-        user_id: 11,
-        goal: "I want to do really well."
+        user_id: 6,
+        goal: "Be able to cycle the tour-de-France, if I have to"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 6,
+        goal: "Double my Beep-Test score"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 7,
+        goal: "Trying out for the soccer team - need to up my cardio!"
       });
     })
     .then(() => {
@@ -381,31 +441,43 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('goals').insert({
         user_id: 7,
-        goal: "Be as humanly fit as possible."
-      });
-    })
-    .then(() => {
-      return knex('goals').insert({
-        user_id: 6,
-        goal: "Cultivate strength."
+        goal: "Join the varsity basketball team - need to up my vertical too!"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 8,
-        goal: "Cultivate a lot of strength."
+        goal: "Just generally be stronger in general"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 8,
+        goal: "Want to be able to complete my daily crossfit challenges without breaking a sweat!"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 9,
-        goal: "Be fast."
+        goal: "My ultimate frisbee team needs a cherry picker"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 9,
+        goal: "Also working on my vertical for the same reason"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 10,
-        goal: "Be really fast."
+        goal: "Want to get my deadlifts up to 405 by mid-October"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 10,
+        goal: "Master stretching before and after a workout"
       });
     })
     .then(() => {
