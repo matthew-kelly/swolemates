@@ -6,7 +6,7 @@ class Graph extends Component {
 
   render () {
     const dataCreated = {
-      labels: ['Back', 'Biceps', 'Calisthenics', 'Cardio', 'Chest', 'Core', 'HIT', 'Legs', 'ORM', 'Shoulders', 'Sprints', 'Stretching', 'Traps', 'Triceps', 'Yoga'],
+      labels: ['Back', 'Biceps', 'Calisthenics', 'Cardio', 'Chest', 'Core', 'HIT', 'Legs', 'Shoulders', 'Sprints', 'Stretching', 'Traps', 'Triceps', 'Yoga'],
       datasets: [
         {
           label: 'Events Created',
@@ -16,7 +16,7 @@ class Graph extends Component {
           pointBorderColor: '#ffffff',
           pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor: 'rgba(179,181,198,1)',
-          data: [15, 30, 10, 40, 15, 20, 15, 10, 1, 11, 7, 4, 3, 2, 0]
+          data: [15, 30, 10, 40, 15, 20, 15, 10, 11, 7, 4, 3, 2, 0]
         },
       ]
   };
