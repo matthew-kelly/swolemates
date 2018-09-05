@@ -189,10 +189,10 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Henrietta',
+        first_name: 'Sally',
         last_name: 'Modal',
-        email: 'henrietta@henrietta.henrietta',
-        password: 'henrietta',
+        email: 'Sally@Sally.Sally',
+        password: 'Sally',
         bio: "Spent 2001-2004 working with puppets in New York, NY. Once had a dream of lecturing about bassoons in Minneapolis, MN. Spent a weekend investing in barbie dolls for fun and profit. Spent high school summers building human hair in the aftermarket. Once had a dream of analyzing gravy in Washington, DC. A real dynamo when it comes to merchandising barbie dolls for farmers.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/6512bd43d9caa6e02c990b0a82652dca.svg'
