@@ -6,7 +6,7 @@ class Graph extends Component {
 
   render () {
     const dataCreated = {
-      labels: ['Back', 'Biceps', 'Calisthenics', 'Cardio', 'Chest', 'Core', 'HIT', 'Legs', 'Shoulders', 'Sprints', 'Stretching', 'Traps', 'Triceps', 'Yoga'],
+      labels: ['Back', 'Biceps', 'Calisthenics', 'Cardio', 'Chest', 'Core', 'HIIT', 'Legs', 'Shoulders', 'Sprints', 'Stretching', 'Traps', 'Triceps', 'Yoga'],
       datasets: [
         {
           label: 'Events Created',

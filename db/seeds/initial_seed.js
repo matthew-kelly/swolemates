@@ -112,11 +112,11 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Keanu',
-        last_name: 'Reeves',
-        email: 'keanu@reeves.reeves',
-        password: 'keanu',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        first_name: 'Jane',
+        last_name: 'Doe',
+        email: 'jane@jane.jane',
+        password: 'jane',
+        bio: "Spent several months exporting Uno for no pay. Uniquely-equipped for creating marketing channels for basketballs in Minneapolis, MN. Spent a year building barbie dolls in Orlando, FL. Spent the better part of the 90's writing about Slinkies for fun and profit. Have a strong interest in writing about xylophones in Suffolk, NY. Spent two years writing about bassoons in Washington, DC.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/a87ff679a2f3e71d9181a67b7542122c.svg'
       });
@@ -127,7 +127,7 @@ exports.seed = function(knex, Promise) {
         last_name: 'Crews',
         email: 'terry@crews.crews',
         password: 'terry',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        bio: "Was quite successful at lecturing about rocking horses on Wall Street. Spent high school summers managing pogo sticks in Bethesda, MD. Enthusiastic about getting my feet wet with xylophones worldwide. Spent 2001-2007 getting to know rocks in Hanford, CA. Spent a weekend lecturing about rocking horses in Nigeria. Spent college summers consulting about rubik's cubes in Prescott, AZ.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/e4da3b7fbbce2345d7772b0674a318d5.svg'
       });
@@ -145,11 +145,11 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Ronda',
-        last_name: 'Rousey',
-        email: 'ronda@rousey.rousey',
-        password: 'ronda',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        first_name: 'Ellen',
+        last_name: 'Tarly',
+        email: 'ellen@ellen.ellen',
+        password: 'ellen',
+        bio: "Was quite successful at lecturing about rocking horses on Wall Street. Spent high school summers managing pogo sticks in Bethesda, MD. Enthusiastic about getting my feet wet with xylophones worldwide. Spent 2001-2007 getting to know saliva in Hanford, CA. Spent a weekend lecturing about rocking horses in Nigeria. Spent college summers consulting about rubik's cubes in Prescott, AZ.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/8f14e45fceea167a5a36dedd4bea2543.svg'
       });
@@ -160,28 +160,28 @@ exports.seed = function(knex, Promise) {
         last_name: 'Kim',
         email: 'yuna@kim.kim',
         password: 'yuna',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        bio: "Spent 2001-2004 getting my feet wet with fatback for the underprivileged. Was quite successful at buying and selling wooden horses in Bethesda, MD. Had moderate success getting to know jigsaw puzzles in Cuba. Have a strong interest in merchandising the elderly in Ohio. Spent 2001-2008 managing Yugos for fun and profit. Once had a dream of creating marketing channels for trumpets in Phoenix, AZ.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/c9f0f895fb98ab9159f51fd0297e236d.svg'
       });
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Simone',
-        last_name: 'Biles',
-        email: 'simone@biles.biles',
-        password: 'simone',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        first_name: 'Rachel',
+        last_name: 'Nash',
+        email: 'rachel@rachel.rachel',
+        password: 'rachel',
+        bio: "Crossed the country building Magic 8-Balls on Wall Street. Had a brief career working with toy soldiers in New York, NY. Spent 2001-2005 building carnival rides in the financial sector. Spent 2002-2009 lecturing about fried chicken in Suffolk, NY. Set new standards for getting to know tinker toys in West Palm Beach, FL. Spent 2001-2008 training dogmas in the financial sector.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/45c48cce2e2d7fbdea1afc51c7c6ad26.svg'
       });
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Chris',
-        last_name: 'Hadfield',
-        email: 'chris@hadfield.hadfield',
-        password: 'chris',
+        first_name: 'Robert',
+        last_name: 'Field',
+        email: 'robert@field.field',
+        password: 'robert',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/d3d9446802a44259755d38e6d163e820.svg'
@@ -189,33 +189,33 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Robert',
-        last_name: 'Thirsk',
-        email: 'robert@thirsk.thirsk',
-        password: 'robert',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        first_name: 'Henrietta',
+        last_name: 'Modal',
+        email: 'henrietta@henrietta.henrietta',
+        password: 'henrietta',
+        bio: "Spent 2001-2004 working with puppets in New York, NY. Once had a dream of lecturing about bassoons in Minneapolis, MN. Spent a weekend investing in barbie dolls for fun and profit. Spent high school summers building human hair in the aftermarket. Once had a dream of analyzing gravy in Washington, DC. A real dynamo when it comes to merchandising barbie dolls for farmers.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/6512bd43d9caa6e02c990b0a82652dca.svg'
       });
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Don',
-        last_name: 'Cherry',
-        email: 'don@cherry.cherry',
-        password: 'don',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        first_name: 'Jessie',
+        last_name: 'Chase',
+        email: 'jessie@jessie.jessie',
+        password: 'jessie',
+        bio: "Spent the better part of the 90's analyzing etch-a-sketches in Washington, DC. Won several awards for creating marketing channels for easy-bake-ovens for fun and profit. Spent high school summers buying and selling shaving cream in Ocean City, NJ. Spoke at an international conference about supervising the production of basketballs in Hanford, CA. Once had a dream of building human brains in the UK. In 2008 I was developing bagpipes in Africa.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/c20ad4d76fe97759aa27a0c99bff6710.svg'
       });
     })
     .then(() => {
       return knex('users').insert({
-        first_name: 'Henrik',
-        last_name: 'Sedin',
-        email: 'henrik@sedin.sedin',
-        password: 'henrik',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        first_name: 'Jacob',
+        last_name: 'Red',
+        email: 'jacob@jacob.jacob',
+        password: 'jacob',
+        bio: "Crossed the country promoting dogmas in Deltona, FL. Spent 2002-2009 donating methane in West Palm Beach, FL. Garnered an industry award while building tattoos in Tampa, FL. Spent 2001-2007 working with puppets in Fort Lauderdale, FL. Had a brief career buying and selling bassoons for fun and profit. Spent childhood lecturing about trumpets in the financial sector.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/c51ce410c124a10e0db5e4b97fc2af39.svg'
       });
@@ -223,10 +223,10 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('users').insert({
         first_name: 'Daniel',
-        last_name: 'Sedin',
-        email: 'daniel@sedin.sedin',
+        last_name: 'Blue',
+        email: 'daniel@daniel.daniel',
         password: 'daniel',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
+        bio: "Spent 2001-2008 supervising the production of dust in Miami, FL. Spent college summers building g.i. joes in Miami, FL. Spent 2002-2010 creating marketing channels for wool in Suffolk, NY. In 2009 I was testing the market for Slinkies in Tampa, FL. Uniquely-equipped for promoting bassoons in Hanford, CA. Won several awards for working on clip-on ties in Gainesville, FL.",
         gym_id: 1,
         profile_pic: 'https://vanillicon.com/v2/aab3238922bcc25a6f606eb525ffdc56.svg'
       });
@@ -267,37 +267,49 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('goals').insert({
         user_id: 1,
-        goal: "I wanna get jacked."
+        goal: "Complete a marathon by June"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 1,
-        goal: "Cultivate mass."
+        goal: "Do a hike a week"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 1,
+        goal: "Do a sub-thirty grind"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 1,
+        goal: "Up my bench to 315 lbs"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 2,
-        goal: "Gotta get yoked."
+        goal: "Run a 5-minute mile"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 2,
-        goal: "Look good."
+        goal: "Prepare for my race"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 3,
-        goal: "Cultivate mass."
+        goal: "Increase core strength"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 3,
-        goal: "Cultivate more mass."
+        goal: "Join a weekly running group"
       });
     })
     .then(() => {
@@ -321,13 +333,31 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('goals').insert({
         user_id: 5,
-        goal: "Be a walking tank."
+        goal: "Educate and teach others about fitness"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 5,
+        goal: "Join a running group"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 5,
+        goal: "Do my first Iron-man"
+      });
+    })
+    .then(() => {
+      return knex('goals').insert({
+        user_id: 5,
+        goal: "Swim the English channel"
       });
     })
     .then(() => {
       return knex('goals').insert({
         user_id: 6,
-        goal: "I want to be great."
+        goal: "Complete a marathon by June"
       });
     })
     .then(() => {
@@ -723,7 +753,7 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 6,
-        tag: "HIT"
+        tag: "HIIT"
       });
     })
     .then(() => {
@@ -761,7 +791,7 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 8,
-        tag: "HIT"
+        tag: "HIIT"
       });
     })
     .then(() => {

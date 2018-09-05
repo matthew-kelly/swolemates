@@ -6,7 +6,7 @@ class FriendGraph extends Component {
 
   render () {
     const dataCreated = {
-      labels: ['Back', 'Biceps', 'Calisthenics', 'Cardio', 'Chest', 'Core', 'HIT', 'Legs', 'ORM', 'Shoulders', 'Sprints', 'Traps', 'Triceps', 'Yoga'],
+      labels: ['Back', 'Biceps', 'Calisthenics', 'Cardio', 'Chest', 'Core', 'HIIT', 'Legs', 'Barre', 'Shoulders', 'Sprints', 'Traps', 'Triceps', 'Yoga'],
       datasets: [
       {
         label: 'Events Created',
