@@ -87,22 +87,22 @@ class App extends Component {
         NotificationManager.info('Info message');
         break;
       case 'eventAccepted' :
-        NotificationManager.info('Event Added!', `Your event with ${first_name} ${last_name} has been added to your upcoming events`, 2000);
+        NotificationManager.info('Event Added!', `Your event with ${first_name} ${last_name} has been added to your upcoming events`, 4000);
         break;
       case 'addFriend':
-        NotificationManager.success('Friend Added!', `${first_name} ${last_name} is now your SwoleMate! 🏋️🏋️`, 3000);
+        NotificationManager.success('Friend Added!', `${first_name} ${last_name} is now your SwoleMate! 🏋️🏋️`, 4000);
         break;
       case 'deleteFriend':
-        NotificationManager.warning('Request Denied', `${first_name} ${last_name}'s request was denied`, 1000);
+        NotificationManager.warning('Request Denied', `${first_name} ${last_name}'s request was denied`, 4000);
         break;
       case 'EventAdded':
-        NotificationManager.success('Success!', 'Your event is being added to the Calendar', 1000);
+        NotificationManager.success('Success!', 'Your event is being added to the Calendar', 4000);
         break;
       case 'friendDeleted':
-        NotificationManager.error('Friend Deleted!', `${first_name} ${last_name} was removed from your friends list`, 1000);
+        NotificationManager.error('Friend Deleted!', `${first_name} ${last_name} was removed from your friends list`, 4000);
         break;
       case 'error':
-        NotificationManager.error('Error message', 'Click me!', 5000, () => {
+        NotificationManager.error('Error message', 'Click me!', 4000, () => {
           alert('callback');
         });
       break;
