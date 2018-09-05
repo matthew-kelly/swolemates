@@ -162,7 +162,7 @@ class Connections extends Component {
     return (
       <div>
         <div className="chat-head-list">
-          <h2>Pending Event Requests</h2>
+          <h2 className="chat-head-list-title">Pending Event Requests</h2>
         </div>
         <div className="event-request-list">
         {allEventRequests}
