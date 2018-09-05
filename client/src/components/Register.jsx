@@ -46,6 +46,7 @@ class Register extends Component {
 
     return(
       <div className="registerContainer">
+        <div className="homepage-background-image"></div>
         <div className='formContainer'>
           <form onSubmit={this.handleSubmit}>
             <input id='registerInputFirstName' className='registerInput' name='first_name' placeholder='First name'/>
