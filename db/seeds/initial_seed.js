@@ -414,18 +414,6 @@ exports.seed = function(knex, Promise) {
         friend_id: 1
       });
     })
-    // .then(() => {
-    //   return knex('friends').insert({
-    //     user_id: 1,
-    //     friend_id: 6
-    //   });
-    // })
-    // .then(() => {
-    //   return knex('friends').insert({
-    //     user_id: 6,
-    //     friend_id: 1
-    //   });
-    // })
     .then(() => {
       return knex('friends').insert({
         user_id: 1,
@@ -522,30 +510,6 @@ exports.seed = function(knex, Promise) {
         friend_id: 1
       });
     })
-    // .then(() => {
-    //   return knex('friends').insert({
-    //     user_id: 1,
-    //     friend_id: 15
-    //   });
-    // })
-    // .then(() => {
-    //   return knex('friends').insert({
-    //     user_id: 15,
-    //     friend_id: 1
-    //   });
-    // })
-    // .then(() => {
-    //   return knex('friends').insert({
-    //     user_id: 1,
-    //     friend_id: 16
-    //   });
-    // })
-    // .then(() => {
-    //   return knex('friends').insert({
-    //     user_id: 16,
-    //     friend_id: 1
-    //   });
-    // })
     .then(() => {
       return knex('connections').insert({
         user_id: 2,
@@ -610,7 +574,7 @@ exports.seed = function(knex, Promise) {
       return knex('events').insert({
         user_id: 1,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'All my friends keep telling me I have bad form, so I am looking to improve that. Got any good pointers? If so, join me!',
         public: true,
         time_begin: '20180908 1100',
         time_end: '20180908 1500'
@@ -619,7 +583,7 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 1,
-        tag: "Legs"
+        tag: "Shoulders"
       });
     })
     .then(() => {
@@ -632,7 +596,7 @@ exports.seed = function(knex, Promise) {
       return knex('events').insert({
         user_id: 1,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'I want to become a long distance runner, but the treadmill can be so demotivating to do alone. Come with!',
         public: true,
         time_begin: '20180909 1000',
         time_end: '20180909 1200'
@@ -647,14 +611,14 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 2,
-        tag: "Shoulders"
+        tag: "Stretching"
       });
     })
     .then(() => {
       return knex('events').insert({
         user_id: 3,
         gym_id: 1,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
+        description: 'Looking for a spotting partner who loves dad jokes as much as I do.',
         public: true,
         time_begin: '20180910 1700',
         time_end: '20180910 1830'
@@ -674,9 +638,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 1,
+        user_id: 4,
         gym_id: 1,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat.',
+        description: 'Need someone to hold me accountable for going to the gym. Need that motivation!',
         public: true,
         time_begin: '20180911 1400',
         time_end: '20180911 1500'
@@ -685,14 +649,14 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 4,
-        tag: "Back"
+        tag: "Legs"
       });
     })
     .then(() => {
       return knex('events').insert({
         user_id: 2,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Trying to get my reps up, while keeping the overall vibe chill. Meatheads need not apply.',
         public: true,
         time_begin: '20180912 1930',
         time_end: '20180912 2030'
@@ -701,20 +665,20 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 5,
-        tag: "Cardio"
+        tag: "Shoulders"
       });
     })
     .then(() => {
       return knex('tags').insert({
         event_id: 5,
-        tag: "Stretching"
+        tag: "Biceps"
       });
     })
     .then(() => {
       return knex('events').insert({
         user_id: 3,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Not ready to slow down yet even though beach season is ending.',
         public: false,
         time_begin: '20180907 1300',
         time_end: '20180907 1430'
@@ -723,7 +687,13 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 6,
-        tag: "HIT"
+        tag: "Chest"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 6,
+        tag: "Back"
       });
     })
     .then(() => {
@@ -739,14 +709,14 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 7,
-        tag: "ORM"
+        tag: "Barre"
       });
     })
     .then(() => {
       return knex('events').insert({
         user_id: 6,
         gym_id: 1,
-        description: 'Working on my fitness (be my witness?)',
+        description: 'Looking to find a new running partner. Gotta keep pace, I am going for a sub-five minute mile.',
         public: true,
         time_begin: '20180908 1300',
         time_end: '20180908 1430'
@@ -755,20 +725,20 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 8,
-        tag: "ORM"
+        tag: "Cardio"
       });
     })
     .then(() => {
       return knex('tags').insert({
         event_id: 8,
-        tag: "HIT"
+        tag: "HIIT"
       });
     })
     .then(() => {
       return knex('events').insert({
         user_id: 6,
         gym_id: 1,
-        description: 'Working on my fitness (be my witness?)',
+        description: 'Mindfulness is key!',
         public: true,
         time_begin: '20180908 1300',
         time_end: '20180908 1430'
@@ -777,20 +747,20 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 9,
-        tag: "Triceps"
+        tag: "Yoga"
       });
     })
     .then(() => {
       return knex('tags').insert({
         event_id: 9,
-        tag: "Legs"
+        tag: "Stretching"
       });
     })
     .then(() => {
       return knex('messages').insert({
         creator_id: 1,
         receiver_id: 2,
-        content: 'His parents obviously failed him. He sucks.',
+        content: 'So we are all set for the workout?',
         created_at: '2018-08-29T12:00:00+00:00'
       });
     })
@@ -798,7 +768,7 @@ exports.seed = function(knex, Promise) {
       return knex('messages').insert({
         creator_id: 2,
         receiver_id: 1,
-        content: 'My parents did not.',
+        content: 'Yeah, I can not wait!',
         created_at: '2018-08-30T12:00:00+00:00'
       });
     })
@@ -816,13 +786,6 @@ exports.seed = function(knex, Promise) {
         accepted: false
       });
     })
-    // .then(() => {
-    //   return knex('event_requests').insert({
-    //     event_id: 1,
-    //     requester_id: 6,
-    //     accepted: false
-    //   });
-    // })
     .then(() => {
       return knex('event_requests').insert({
         event_id: 1,
@@ -881,9 +844,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 5,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Looking for friendly and helpful motivation, but do not go too easy on me.',
         public: false,
         time_begin: '20180907 1300',
         time_end: '20180907 1430'
@@ -891,9 +854,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 3,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Want a partner to workout with who is not too intense.',
         public: false,
         time_begin: '20180908 1300',
         time_end: '20180908 1430'
@@ -901,9 +864,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 7,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Looking for a new nutrition plan, let me know if you have any good recipes.',
         public: false,
         time_begin: '20180909 1300',
         time_end: '20180909 1430'
@@ -911,9 +874,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 8,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Just trying to get my reps up, anyone who is naturally super motivating would be a huge help!',
         public: false,
         time_begin: '20180910 1300',
         time_end: '20180910 1430'
@@ -921,9 +884,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 3,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'I want to become a long distance runner, so I need someone who is okay with chatting during their workout.',
         public: false,
         time_begin: '20180911 1300',
         time_end: '20180911 1430'
@@ -933,16 +896,16 @@ exports.seed = function(knex, Promise) {
       return knex('events').insert({
         user_id: 2,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'I am new at this. If you are intense, you are better off looking elsewhere. Want to workout with people who can keep the gym fun!',
         public: false,
-        time_begin: '20180912 1300',
-        time_end: '20180912 1430'
+        time_begin: '20180916 1300',
+        time_end: '20180916 1430'
       });
     })
     .then(() => {
       return knex('tags').insert({
-        event_id: 9,
-        tag: "Chest"
+        event_id: 10,
+        tag: "Triceps"
       });
     })
     .then(() => {
@@ -954,13 +917,19 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 11,
-        tag: "Chest"
+        tag: "Cardio"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 11,
+        tag: "Calisthenics"
       });
     })
     .then(() => {
       return knex('tags').insert({
         event_id: 12,
-        tag: "Chest"
+        tag: "Legs"
       });
     })
     .then(() => {
@@ -977,9 +946,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 4,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Apply only if you are committed and focus. I want an intense workout with little distraction.',
         public: false,
         time_begin: '20180913 1300',
         time_end: '20180913 1430'
@@ -987,9 +956,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 5,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Looking for a workout partner who loves dad jokes as much as I do.',
         public: false,
         time_begin: '20180914 1300',
         time_end: '20180914 1430'
@@ -997,9 +966,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 3,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Looking for a workout partner who loves bad jokes as much as I do.',
         public: false,
         time_begin: '20180915 1300',
         time_end: '20180915 1430'
@@ -1007,9 +976,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 4,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Looking for a workout partner who also hates leg day as much as I do.',
         public: false,
         time_begin: '20180916 1300',
         time_end: '20180916 1430'
@@ -1019,7 +988,7 @@ exports.seed = function(knex, Promise) {
       return knex('events').insert({
         user_id: 2,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Does anyone actually like leg day? My sources say no. I do not want to suffer alone haha.',
         public: false,
         time_begin: '20180917 1300',
         time_end: '20180917 1430'
@@ -1027,9 +996,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 8,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Trying to work on my Grouse Grind time.',
         public: false,
         time_begin: '20180918 1300',
         time_end: '20180918 1430'
@@ -1037,9 +1006,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 1,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Trying to work on my endurance.',
         public: false,
         time_begin: '20180919 1300',
         time_end: '20180919 1430'
@@ -1049,7 +1018,7 @@ exports.seed = function(knex, Promise) {
       return knex('events').insert({
         user_id: 2,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Trying to work on my Grouse Grind time.',
         public: false,
         time_begin: '20180920 1300',
         time_end: '20180920 1430'
@@ -1057,9 +1026,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 3,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'Trying to work on my distance.',
         public: false,
         time_begin: '20180921 1300',
         time_end: '20180921 1430'
@@ -1067,9 +1036,9 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('events').insert({
-        user_id: 2,
+        user_id: 7,
         gym_id: 1,
-        description: 'Donec eu ex nec velit dignissim semper.',
+        description: 'I honestly can not even touch my toes. It is embarassing.',
         public: false,
         time_begin: '20180922 1300',
         time_end: '20180922 1430'
@@ -1108,7 +1077,7 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 20,
-        tag: "Cardio"
+        tag: "Legs"
       });
     })
     .then(() => {
@@ -1132,6 +1101,12 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return knex('tags').insert({
         event_id: 24,
+        tag: "Cardio"
+      });
+    })
+    .then(() => {
+      return knex('tags').insert({
+        event_id: 25,
         tag: "Stretching"
       });
     })
