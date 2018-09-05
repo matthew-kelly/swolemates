@@ -776,13 +776,13 @@ exports.seed = function(knex, Promise) {
     })
     .then(() => {
       return knex('tags').insert({
-        event_id: 8,
-        tag: "ORM"
+        event_id: 9,
+        tag: "Cardio"
       });
     })
     .then(() => {
       return knex('tags').insert({
-        event_id: 8,
+        event_id: 9,
         tag: "HIT"
       });
     })
