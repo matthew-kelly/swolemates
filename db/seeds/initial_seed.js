@@ -85,7 +85,7 @@ exports.seed = function(knex, Promise) {
         password: 'mark',
         bio: 'Hi, my name is Mark. I am new to Vancouver and am keen to meet some like-minded gym go-ers. Currently working in and around Yaletown so working out somewhere like the Steve Nash Club near the 7/11 would be ideal. Find me posting workouts in the calender pretty much everyday most weeks. "You miss 100% of the shots you don\'t take" -- Wayne Gretzky -- Michael Scott',
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/c4ca4238a0b923820dcc509a6f75849b.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageM25.jpg'
       });
     })
     .then(() => {
@@ -96,7 +96,7 @@ exports.seed = function(knex, Promise) {
         password: 'john',
         bio: 'Originally from Chicago. I love playing tennis and loud music. Find me on the court any time of day! During my down-time I like to pretend I am a dog photographer. Trying to work on my fitness goals and find like-minded gym-goers!',
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/c81e728d9d4c2f636f067f89cc14862c.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageM7.jpg'
       });
     })
     .then(() => {
@@ -107,7 +107,7 @@ exports.seed = function(knex, Promise) {
         password: 'paul',
         bio: 'Originally from Miami. I love black and white classics, chillout music and green tea. I am a 47-year-old former health centre receptionist who enjoys escapology, cookery and jigsaw puzzles. Energetic and friendly, but can also be a bit standoffish.',
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/eccbc87e4b5ce2fe28308fd9f2a7baf3.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageM20.jpg'
       });
     })
     .then(() => {
@@ -118,7 +118,7 @@ exports.seed = function(knex, Promise) {
         password: 'jane',
         bio: "Spent several months exporting Uno for no pay. Uniquely-equipped for creating marketing channels for basketballs in Minneapolis, MN. Spent a year building barbie dolls in Orlando, FL. Spent the better part of the 90's writing about Slinkies for fun and profit. Have a strong interest in writing about xylophones in Suffolk, NY. Spent two years writing about bassoons in Washington, DC.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/a87ff679a2f3e71d9181a67b7542122c.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageF2.jpg'
       });
     })
     .then(() => {
@@ -129,7 +129,7 @@ exports.seed = function(knex, Promise) {
         password: 'terry',
         bio: "Was quite successful at lecturing about rocking horses on Wall Street. Spent high school summers managing pogo sticks in Bethesda, MD. Enthusiastic about getting my feet wet with xylophones worldwide. Spent 2001-2007 getting to know rocks in Hanford, CA. Spent a weekend lecturing about rocking horses in Nigeria. Spent college summers consulting about rubik's cubes in Prescott, AZ.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/e4da3b7fbbce2345d7772b0674a318d5.svg'
+        profile_pic: 'http://bernhardtdesign.com/wp-content/uploads/2017/08/DesignerHeadshot_TerryCrews.jpg'
       });
     })
     .then(() => {
@@ -151,18 +151,18 @@ exports.seed = function(knex, Promise) {
         password: 'ellen',
         bio: "Was quite successful at lecturing about rocking horses on Wall Street. Spent high school summers managing pogo sticks in Bethesda, MD. Enthusiastic about getting my feet wet with xylophones worldwide. Spent 2001-2007 getting to know saliva in Hanford, CA. Spent a weekend lecturing about rocking horses in Nigeria. Spent college summers consulting about rubik's cubes in Prescott, AZ.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/8f14e45fceea167a5a36dedd4bea2543.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageF27.jpg'
       });
     })
     .then(() => {
       return knex('users').insert({
         first_name: 'Yuna',
-        last_name: 'Kim',
-        email: 'yuna@kim.kim',
+        last_name: 'Lee',
+        email: 'yuna@lee.lee',
         password: 'yuna',
         bio: "Spent 2001-2004 getting my feet wet with fatback for the underprivileged. Was quite successful at buying and selling wooden horses in Bethesda, MD. Had moderate success getting to know jigsaw puzzles in Cuba. Have a strong interest in merchandising the elderly in Ohio. Spent 2001-2008 managing Yugos for fun and profit. Once had a dream of creating marketing channels for trumpets in Phoenix, AZ.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/c9f0f895fb98ab9159f51fd0297e236d.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageF31.jpg'
       });
     })
     .then(() => {
@@ -173,7 +173,7 @@ exports.seed = function(knex, Promise) {
         password: 'rachel',
         bio: "Crossed the country building Magic 8-Balls on Wall Street. Had a brief career working with toy soldiers in New York, NY. Spent 2001-2005 building carnival rides in the financial sector. Spent 2002-2009 lecturing about fried chicken in Suffolk, NY. Set new standards for getting to know tinker toys in West Palm Beach, FL. Spent 2001-2008 training dogmas in the financial sector.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/45c48cce2e2d7fbdea1afc51c7c6ad26.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageF41.jpg'
       });
     })
     .then(() => {
@@ -184,18 +184,18 @@ exports.seed = function(knex, Promise) {
         password: 'robert',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/d3d9446802a44259755d38e6d163e820.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageM47.jpg'
       });
     })
     .then(() => {
       return knex('users').insert({
         first_name: 'Sally',
-        last_name: 'Modal',
-        email: 'Sally@Sally.Sally',
-        password: 'Sally',
+        last_name: 'Jones',
+        email: 'sally@sally.sally',
+        password: 'sally',
         bio: "Spent 2001-2004 working with puppets in New York, NY. Once had a dream of lecturing about bassoons in Minneapolis, MN. Spent a weekend investing in barbie dolls for fun and profit. Spent high school summers building human hair in the aftermarket. Once had a dream of analyzing gravy in Washington, DC. A real dynamo when it comes to merchandising barbie dolls for farmers.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/6512bd43d9caa6e02c990b0a82652dca.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageF45.jpg'
       });
     })
     .then(() => {
@@ -206,7 +206,7 @@ exports.seed = function(knex, Promise) {
         password: 'jessie',
         bio: "Spent the better part of the 90's analyzing etch-a-sketches in Washington, DC. Won several awards for creating marketing channels for easy-bake-ovens for fun and profit. Spent high school summers buying and selling shaving cream in Ocean City, NJ. Spoke at an international conference about supervising the production of basketballs in Hanford, CA. Once had a dream of building human brains in the UK. In 2008 I was developing bagpipes in Africa.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/c20ad4d76fe97759aa27a0c99bff6710.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageF21.jpg'
       });
     })
     .then(() => {
@@ -217,7 +217,7 @@ exports.seed = function(knex, Promise) {
         password: 'jacob',
         bio: "Crossed the country promoting dogmas in Deltona, FL. Spent 2002-2009 donating methane in West Palm Beach, FL. Garnered an industry award while building tattoos in Tampa, FL. Spent 2001-2007 working with puppets in Fort Lauderdale, FL. Had a brief career buying and selling bassoons for fun and profit. Spent childhood lecturing about trumpets in the financial sector.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/c51ce410c124a10e0db5e4b97fc2af39.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageM17.jpg'
       });
     })
     .then(() => {
@@ -228,7 +228,7 @@ exports.seed = function(knex, Promise) {
         password: 'daniel',
         bio: "Spent 2001-2008 supervising the production of dust in Miami, FL. Spent college summers building g.i. joes in Miami, FL. Spent 2002-2010 creating marketing channels for wool in Suffolk, NY. In 2009 I was testing the market for Slinkies in Tampa, FL. Uniquely-equipped for promoting bassoons in Hanford, CA. Won several awards for working on clip-on ties in Gainesville, FL.",
         gym_id: 1,
-        profile_pic: 'https://vanillicon.com/v2/aab3238922bcc25a6f606eb525ffdc56.svg'
+        profile_pic: 'https://www.designskilz.com/random-users/images/imageM37.jpg'
       });
     })
     .then(() => {
