@@ -85,7 +85,7 @@ exports.seed = function(knex, Promise) {
         password: 'mark',
         bio: 'Hi, my name is Mark. I am new to Vancouver and am keen to meet some like-minded gym go-ers. Currently working in and around Yaletown so working out somewhere like the Steve Nash Club near the 7/11 would be ideal. Find me posting workouts in the calender pretty much everyday most weeks. "You miss 100% of the shots you don\'t take" -- Wayne Gretzky -- Michael Scott',
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageM25.jpg'
+        profile_pic: 'https://vanillicon.com/v2/c4ca4238a0b923820dcc509a6f75849b.svg'
       });
     })
     .then(() => {
@@ -96,7 +96,7 @@ exports.seed = function(knex, Promise) {
         password: 'john',
         bio: 'Originally from Chicago. I love playing tennis and loud music. Find me on the court any time of day! During my down-time I like to pretend I am a dog photographer. Trying to work on my fitness goals and find like-minded gym-goers!',
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageM7.jpg'
+        profile_pic: 'https://vanillicon.com/v2/c81e728d9d4c2f636f067f89cc14862c.svg'
       });
     })
     .then(() => {
@@ -107,7 +107,7 @@ exports.seed = function(knex, Promise) {
         password: 'paul',
         bio: 'Originally from Miami. I love black and white classics, chillout music and green tea. I am a 47-year-old former health centre receptionist who enjoys escapology, cookery and jigsaw puzzles. Energetic and friendly, but can also be a bit standoffish.',
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageM20.jpg'
+        profile_pic: 'https://vanillicon.com/v2/35a322a37e6fb34b2aaea6f4ed30aa7f.svg'
       });
     })
     .then(() => {
@@ -118,7 +118,7 @@ exports.seed = function(knex, Promise) {
         password: 'jane',
         bio: "Spent several months exporting Uno for no pay. Uniquely-equipped for creating marketing channels for basketballs in Minneapolis, MN. Spent a year building barbie dolls in Orlando, FL. Spent the better part of the 90's writing about Slinkies for fun and profit. Have a strong interest in writing about xylophones in Suffolk, NY. Spent two years writing about bassoons in Washington, DC.",
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageF2.jpg'
+        profile_pic: 'https://vanillicon.com/v2/01b08bb5485ac730df19af55ba4bb01c.svg'
       });
     })
     .then(() => {
@@ -151,7 +151,7 @@ exports.seed = function(knex, Promise) {
         password: 'ellen',
         bio: "Was quite successful at lecturing about rocking horses on Wall Street. Spent high school summers managing pogo sticks in Bethesda, MD. Enthusiastic about getting my feet wet with xylophones worldwide. Spent 2001-2007 getting to know saliva in Hanford, CA. Spent a weekend lecturing about rocking horses in Nigeria. Spent college summers consulting about rubik's cubes in Prescott, AZ.",
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageF27.jpg'
+        profile_pic: 'https://vanillicon.com/v2/54eb60304b1e9ec6f5e9e482612a7f0c.svg'
       });
     })
     .then(() => {
@@ -162,7 +162,7 @@ exports.seed = function(knex, Promise) {
         password: 'yuna',
         bio: "Spent 2001-2004 getting my feet wet with fatback for the underprivileged. Was quite successful at buying and selling wooden horses in Bethesda, MD. Had moderate success getting to know jigsaw puzzles in Cuba. Have a strong interest in merchandising the elderly in Ohio. Spent 2001-2008 managing Yugos for fun and profit. Once had a dream of creating marketing channels for trumpets in Phoenix, AZ.",
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageF31.jpg'
+        profile_pic: 'https://vanillicon.com/v2/7b1db8bf801f301c25a4beac0a4e6cfe.svg'
       });
     })
     .then(() => {
@@ -173,7 +173,7 @@ exports.seed = function(knex, Promise) {
         password: 'rachel',
         bio: "Crossed the country building Magic 8-Balls on Wall Street. Had a brief career working with toy soldiers in New York, NY. Spent 2001-2005 building carnival rides in the financial sector. Spent 2002-2009 lecturing about fried chicken in Suffolk, NY. Set new standards for getting to know tinker toys in West Palm Beach, FL. Spent 2001-2008 training dogmas in the financial sector.",
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageF41.jpg'
+        profile_pic: 'https://vanillicon.com/v2/77963b7a931377ad4ab5ad6a9cd718aa.svg'
       });
     })
     .then(() => {
@@ -184,7 +184,7 @@ exports.seed = function(knex, Promise) {
         password: 'robert',
         bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu ex nec velit dignissim semper. Duis iaculis odio ac massa tincidunt dictum. Nullam ornare sapien et tortor gravida, ut tincidunt mi volutpat. Vivamus id ex orci. Sed urna felis, convallis a porta quis, elementum eu dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque gravida, libero et lacinia rutrum, turpis nisl dictum libero, vitae vulputate purus turpis et augue. Donec tempus nisi justo, at dapibus lorem hendrerit sit amet.',
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageM47.jpg'
+        profile_pic: 'https://vanillicon.com/v2/50f84daf3a6dfd6a9f20c9f8ef428942.svg'
       });
     })
     .then(() => {
@@ -195,7 +195,7 @@ exports.seed = function(knex, Promise) {
         password: 'sally',
         bio: "Spent 2001-2004 working with puppets in New York, NY. Once had a dream of lecturing about bassoons in Minneapolis, MN. Spent a weekend investing in barbie dolls for fun and profit. Spent high school summers building human hair in the aftermarket. Once had a dream of analyzing gravy in Washington, DC. A real dynamo when it comes to merchandising barbie dolls for farmers.",
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageF45.jpg'
+        profile_pic: 'https://vanillicon.com/v2/912ec803b2ce49e4a541068d495ab570.svg'
       });
     })
     .then(() => {
@@ -206,7 +206,7 @@ exports.seed = function(knex, Promise) {
         password: 'jessie',
         bio: "Spent the better part of the 90's analyzing etch-a-sketches in Washington, DC. Won several awards for creating marketing channels for easy-bake-ovens for fun and profit. Spent high school summers buying and selling shaving cream in Ocean City, NJ. Spoke at an international conference about supervising the production of basketballs in Hanford, CA. Once had a dream of building human brains in the UK. In 2008 I was developing bagpipes in Africa.",
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageF21.jpg'
+        profile_pic: 'https://vanillicon.com/v2/3bb4fd40fe6186ee8830a3f4a48dfdaf.svg'
       });
     })
     .then(() => {
@@ -217,7 +217,7 @@ exports.seed = function(knex, Promise) {
         password: 'jacob',
         bio: "Crossed the country promoting dogmas in Deltona, FL. Spent 2002-2009 donating methane in West Palm Beach, FL. Garnered an industry award while building tattoos in Tampa, FL. Spent 2001-2007 working with puppets in Fort Lauderdale, FL. Had a brief career buying and selling bassoons for fun and profit. Spent childhood lecturing about trumpets in the financial sector.",
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageM17.jpg'
+        profile_pic: 'https://vanillicon.com/v2/8180ca2aacec21b7f0479b692ec58e1a.svg'
       });
     })
     .then(() => {
@@ -228,7 +228,7 @@ exports.seed = function(knex, Promise) {
         password: 'daniel',
         bio: "Spent 2001-2008 supervising the production of dust in Miami, FL. Spent college summers building g.i. joes in Miami, FL. Spent 2002-2010 creating marketing channels for wool in Suffolk, NY. In 2009 I was testing the market for Slinkies in Tampa, FL. Uniquely-equipped for promoting bassoons in Hanford, CA. Won several awards for working on clip-on ties in Gainesville, FL.",
         gym_id: 1,
-        profile_pic: 'https://www.designskilz.com/random-users/images/imageM37.jpg'
+        profile_pic: 'https://vanillicon.com/v2/f367de35d48c3dd9ed73e01b91c1d147.svg'
       });
     })
     .then(() => {
@@ -678,8 +678,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'All my friends keep telling me I have bad form, so I am looking to improve that. Got any good pointers? If so, join me!',
         public: true,
-        time_begin: '20180908 1100',
-        time_end: '20180908 1500'
+        time_begin: '20181108 1100',
+        time_end: '20181108 1500'
       });
     })
     .then(() => {
@@ -700,8 +700,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'I want to become a long distance runner, but the treadmill can be so demotivating to do alone. Come with!',
         public: true,
-        time_begin: '20180909 1000',
-        time_end: '20180909 1200'
+        time_begin: '20181109 1000',
+        time_end: '20181109 1200'
       });
     })
     .then(() => {
@@ -722,8 +722,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Looking for a spotting partner who loves dad jokes as much as I do.',
         public: true,
-        time_begin: '20180910 1700',
-        time_end: '20180910 1830'
+        time_begin: '20181110 1700',
+        time_end: '20181110 1830'
       });
     })
     .then(() => {
@@ -744,8 +744,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Need someone to hold me accountable for going to the gym. Need that motivation!',
         public: true,
-        time_begin: '20180911 1400',
-        time_end: '20180911 1500'
+        time_begin: '20181111 1400',
+        time_end: '20181111 1500'
       });
     })
     .then(() => {
@@ -760,8 +760,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Trying to get my reps up, while keeping the overall vibe chill. Meatheads need not apply.',
         public: true,
-        time_begin: '20180912 1930',
-        time_end: '20180912 2030'
+        time_begin: '20181112 1930',
+        time_end: '20181112 2030'
       });
     })
     .then(() => {
@@ -782,8 +782,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Not ready to slow down yet even though beach season is ending.',
         public: false,
-        time_begin: '20180907 1300',
-        time_end: '20180907 1430'
+        time_begin: '20181107 1300',
+        time_end: '20181107 1430'
       });
     })
     .then(() => {
@@ -804,8 +804,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 4,
         description: 'Work everything, I must',
         public: true,
-        time_begin: '20180907 1300',
-        time_end: '20180907 1430'
+        time_begin: '20181107 1300',
+        time_end: '20181107 1430'
       });
     })
     .then(() => {
@@ -820,8 +820,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Looking to find a new running partner. Gotta keep pace, I am going for a sub-five minute mile.',
         public: true,
-        time_begin: '20180908 1300',
-        time_end: '20180908 1430'
+        time_begin: '20181108 1300',
+        time_end: '20181108 1430'
       });
     })
     .then(() => {
@@ -842,8 +842,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Mindfulness is key!',
         public: true,
-        time_begin: '20180908 1300',
-        time_end: '20180908 1430'
+        time_begin: '20181108 1300',
+        time_end: '20181108 1430'
       });
     })
     .then(() => {
@@ -950,8 +950,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Looking for friendly and helpful motivation, but do not go too easy on me.',
         public: false,
-        time_begin: '20180907 1300',
-        time_end: '20180907 1430'
+        time_begin: '20181107 1300',
+        time_end: '20181107 1430'
       });
     })
     .then(() => {
@@ -960,8 +960,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Want a partner to workout with who is not too intense.',
         public: false,
-        time_begin: '20180908 1300',
-        time_end: '20180908 1430'
+        time_begin: '20181108 1300',
+        time_end: '20181108 1430'
       });
     })
     .then(() => {
@@ -970,8 +970,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Looking for a new nutrition plan, let me know if you have any good recipes.',
         public: false,
-        time_begin: '20180909 1300',
-        time_end: '20180909 1430'
+        time_begin: '20181109 1300',
+        time_end: '20181109 1430'
       });
     })
     .then(() => {
@@ -980,8 +980,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Just trying to get my reps up, anyone who is naturally super motivating would be a huge help!',
         public: false,
-        time_begin: '20180910 1300',
-        time_end: '20180910 1430'
+        time_begin: '20181110 1300',
+        time_end: '20181110 1430'
       });
     })
     .then(() => {
@@ -990,8 +990,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'I want to become a long distance runner, so I need someone who is okay with chatting during their workout.',
         public: false,
-        time_begin: '20180911 1300',
-        time_end: '20180911 1430'
+        time_begin: '20181111 1300',
+        time_end: '20181111 1430'
       });
     })
     .then(() => {
@@ -1000,8 +1000,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'I am new at this. If you are intense, you are better off looking elsewhere. Want to workout with people who can keep the gym fun!',
         public: false,
-        time_begin: '20180916 1300',
-        time_end: '20180916 1430'
+        time_begin: '20181116 1300',
+        time_end: '20181116 1430'
       });
     })
     .then(() => {
@@ -1052,8 +1052,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Apply only if you are committed and focus. I want an intense workout with little distraction.',
         public: false,
-        time_begin: '20180913 1300',
-        time_end: '20180913 1430'
+        time_begin: '20181113 1300',
+        time_end: '20181113 1430'
       });
     })
     .then(() => {
@@ -1062,8 +1062,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Looking for a workout partner who loves dad jokes as much as I do.',
         public: false,
-        time_begin: '20180914 1300',
-        time_end: '20180914 1430'
+        time_begin: '20181114 1300',
+        time_end: '20181114 1430'
       });
     })
     .then(() => {
@@ -1072,8 +1072,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Looking for a workout partner who loves bad jokes as much as I do.',
         public: false,
-        time_begin: '20180915 1300',
-        time_end: '20180915 1430'
+        time_begin: '20181115 1300',
+        time_end: '20181115 1430'
       });
     })
     .then(() => {
@@ -1082,8 +1082,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Looking for a workout partner who also hates leg day as much as I do.',
         public: false,
-        time_begin: '20180916 1300',
-        time_end: '20180916 1430'
+        time_begin: '20181116 1300',
+        time_end: '20181116 1430'
       });
     })
     .then(() => {
@@ -1092,8 +1092,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Does anyone actually like leg day? My sources say no. I do not want to suffer alone haha.',
         public: false,
-        time_begin: '20180917 1300',
-        time_end: '20180917 1430'
+        time_begin: '20181117 1300',
+        time_end: '20181117 1430'
       });
     })
     .then(() => {
@@ -1102,8 +1102,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Trying to work on my Grouse Grind time.',
         public: false,
-        time_begin: '20180918 1300',
-        time_end: '20180918 1430'
+        time_begin: '20181118 1300',
+        time_end: '20181118 1430'
       });
     })
     .then(() => {
@@ -1112,8 +1112,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Trying to work on my endurance.',
         public: false,
-        time_begin: '20180919 1300',
-        time_end: '20180919 1430'
+        time_begin: '20181119 1300',
+        time_end: '20181119 1430'
       });
     })
     .then(() => {
@@ -1122,8 +1122,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Trying to work on my Grouse Grind time.',
         public: false,
-        time_begin: '20180920 1300',
-        time_end: '20180920 1430'
+        time_begin: '20181120 1300',
+        time_end: '20181120 1430'
       });
     })
     .then(() => {
@@ -1132,8 +1132,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'Trying to work on my distance.',
         public: false,
-        time_begin: '20180921 1300',
-        time_end: '20180921 1430'
+        time_begin: '20181121 1300',
+        time_end: '20181121 1430'
       });
     })
     .then(() => {
@@ -1142,8 +1142,8 @@ exports.seed = function(knex, Promise) {
         gym_id: 1,
         description: 'I honestly can not even touch my toes. It is embarassing.',
         public: false,
-        time_begin: '20180922 1300',
-        time_end: '20180922 1430'
+        time_begin: '20181122 1300',
+        time_end: '20181122 1430'
       });
     })
     .then(() => {
